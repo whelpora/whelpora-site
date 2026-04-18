@@ -4,12 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Whelpora — Breeding can be messy. Your records don't have to be.</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta name="description" content="Less spreadsheets. Fewer sticky notes. More time with your dogs. Whelpora is the breeding program tool built by breeders, for breeders.">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --bg: #1a0f08;
+      --bg-lift: #22160d;
       --brown-dark: #2A1F14;
       --brown-mid: #3D2B1F;
       --green: #A8D832;
@@ -34,7 +36,12 @@
       overflow-x: hidden;
     }
 
-    /* Noise texture overlay for depth */
+    .serif {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+      font-style: italic;
+    }
+
     body::before {
       content: '';
       position: fixed;
@@ -61,7 +68,7 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .wordmark {
+    .nav-wordmark {
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 3.5px;
@@ -92,11 +99,11 @@
     }
     .nav-btn:hover { background: var(--green-dark); transform: translateY(-1px); }
 
-    /* ── HERO — photo fills viewport, glass card floats ── */
+    /* ── HERO ── */
     .hero {
       position: relative;
       height: 100vh;
-      min-height: 640px;
+      min-height: 780px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -108,22 +115,20 @@
       inset: 0;
       background: url('img-golden.png') center 30% / cover no-repeat;
       transform: scale(1.06);
-      animation: heroZoom 12s ease forwards;
+      animation: heroZoom 14s ease forwards;
     }
 
     @keyframes heroZoom {
       to { transform: scale(1); }
     }
 
-    /* Multi-layer overlay — darkens bottom, keeps top photo visible */
     .hero-overlay {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(26,15,8,0.92) 0%, rgba(26,15,8,0.55) 35%, rgba(26,15,8,0.2) 65%, rgba(26,15,8,0.35) 100%);
+        linear-gradient(to top, rgba(26,15,8,0.95) 0%, rgba(26,15,8,0.55) 35%, rgba(26,15,8,0.22) 65%, rgba(26,15,8,0.4) 100%);
     }
 
-    /* Warm colour grade on top of photo */
     .hero-grade {
       position: absolute;
       inset: 0;
@@ -135,7 +140,18 @@
       z-index: 2;
       text-align: center;
       padding: 0 24px;
-      max-width: 780px;
+      max-width: 900px;
+    }
+
+    .hero-wordmark {
+      font-size: clamp(34px, 4.4vw, 56px);
+      font-weight: 500;
+      letter-spacing: 12px;
+      color: var(--white-60);
+      margin: 0 auto 44px;
+      display: block;
+      padding-left: 12px; /* optical centring for wide tracking */
+      text-align: center;
     }
 
     .hero-pill {
@@ -151,7 +167,7 @@
       border: 1px solid rgba(168,216,50,0.2);
       padding: 6px 16px;
       border-radius: 100px;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
     }
 
     .hero-pill-dot {
@@ -166,24 +182,32 @@
     }
 
     .hero-h1 {
-      font-size: clamp(44px, 6vw, 84px);
+      font-size: clamp(42px, 5.8vw, 80px);
       font-weight: 300;
-      line-height: 1.06;
-      letter-spacing: -1px;
+      line-height: 1.04;
+      letter-spacing: -1.2px;
       color: var(--white-100);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .hero-h1-2 {
-      font-size: clamp(44px, 6vw, 84px);
+      font-size: clamp(42px, 5.8vw, 80px);
       font-weight: 300;
-      line-height: 1.06;
-      letter-spacing: -1px;
+      line-height: 1.04;
+      letter-spacing: -1.2px;
       color: var(--white-35);
-      margin-bottom: 44px;
+      margin-bottom: 30px;
     }
 
-    /* Glass CTA card floating in hero */
+    .hero-sub {
+      font-size: clamp(15px, 1.3vw, 18px);
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--white-60);
+      max-width: 620px;
+      margin: 0 auto 40px;
+    }
+
     .hero-glass {
       display: inline-flex;
       flex-direction: column;
@@ -239,7 +263,6 @@
       letter-spacing: 0.3px;
     }
 
-    /* Scroll indicator */
     .scroll-hint {
       position: absolute;
       bottom: 32px;
@@ -278,7 +301,7 @@
     .marquee-track {
       display: flex;
       gap: 48px;
-      animation: scroll 28s linear infinite;
+      animation: scroll 32s linear infinite;
       width: max-content;
     }
 
@@ -300,11 +323,17 @@
       to { transform: translateX(-50%); }
     }
 
-    /* ── SECTION SHARED ── */
+    /* ── SHARED ── */
     .section { position: relative; z-index: 1; }
 
     .container {
       max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 52px;
+    }
+
+    .container-wide {
+      max-width: 1280px;
       margin: 0 auto;
       padding: 0 52px;
     }
@@ -322,14 +351,122 @@
     }
     .eyebrow::before { content:''; width:24px; height:1px; background:var(--white-15); }
 
-    .section-title {
-      font-size: clamp(28px, 3.5vw, 48px);
+    .eyebrow.centred { justify-content: center; }
+    .eyebrow.centred::before { display: none; }
+
+    /* ── PROBLEM VIGNETTES ── */
+    .problem-section {
+      padding: 140px 0 100px;
+      position: relative;
+    }
+
+    .problem-section::before {
+      content: '';
+      position: absolute;
+      width: 800px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(61,43,31,0.35) 0%, transparent 70%);
+      top: 30%; left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .problem-intro {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 80px;
+    }
+
+    .problem-title {
+      font-size: clamp(36px, 5vw, 68px);
       font-weight: 300;
-      line-height: 1.15;
+      line-height: 1.1;
+      letter-spacing: -0.8px;
       color: var(--white-100);
-      letter-spacing: -0.5px;
-      max-width: 520px;
-      margin-bottom: 52px;
+    }
+
+    .problem-title .serif {
+      color: var(--white-60);
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .problem-card {
+      background: var(--white-04);
+      border: 1px solid var(--border);
+      border-top-color: var(--border-bright);
+      border-radius: 20px;
+      padding: 40px 48px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s, transform 0.3s;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+    }
+
+    .problem-card:hover {
+      background: var(--white-08);
+      transform: translateY(-3px);
+    }
+
+    .problem-card-main {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .problem-card-h {
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--white-100);
+      letter-spacing: -0.3px;
+    }
+
+    .problem-card-body {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--white-60);
+    }
+
+    .problem-card-cost {
+      font-size: 13px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white-60);
+      line-height: 1.5;
+      max-width: 280px;
+      padding-left: 28px;
+      border-left: 1px solid var(--white-08);
+    }
+
+    .problem-card-cost::before {
+      content: 'The cost';
+      color: var(--green);
+      font-style: normal;
+      font-weight: 400;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
     }
 
     /* ── FEATURES ── */
@@ -337,7 +474,22 @@
       padding: 112px 0;
     }
 
-    /* Radial glow behind features */
+    .features-section-head {
+      text-align: left;
+      max-width: 640px;
+      margin-bottom: 56px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 3.8vw, 50px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white-100);
+      letter-spacing: -0.6px;
+    }
+
+    .section-title .serif { color: var(--white-100); }
+
     .features-section::before {
       content: '';
       position: absolute;
@@ -364,13 +516,12 @@
 
     .feature-cell {
       background: var(--white-04);
-      padding: 40px 32px;
-      transition: background 0.3s, transform 0.3s;
+      padding: 44px 34px;
+      transition: background 0.3s;
       position: relative;
       cursor: default;
     }
 
-    /* Inner top-highlight on hover */
     .feature-cell::before {
       content: '';
       position: absolute;
@@ -381,9 +532,7 @@
       transition: opacity 0.3s;
     }
 
-    .feature-cell:hover {
-      background: var(--white-08);
-    }
+    .feature-cell:hover { background: var(--white-08); }
     .feature-cell:hover::before { opacity: 1; }
 
     .feature-num {
@@ -395,21 +544,145 @@
     }
 
     .feature-title {
-      font-size: 15px;
+      font-size: 17px;
       font-weight: 500;
       color: var(--white-100);
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       letter-spacing: -0.2px;
+      line-height: 1.3;
     }
 
     .feature-body {
       font-size: 13px;
       font-weight: 300;
       line-height: 1.75;
-      color: var(--white-35);
+      color: var(--white-60);
     }
 
-    /* ── PHOTO SECTIONS — photo is the bg, glass card floats ── */
+    /* ── PRODUCT SHOWCASE ── */
+    .showcase-section {
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .showcase-section::before {
+      content: '';
+      position: absolute;
+      width: 900px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(61,43,31,0.4) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .showcase-grid.reverse { grid-template-columns: 1.4fr 1fr; }
+    .showcase-grid.reverse .showcase-copy { order: 2; }
+    .showcase-grid.reverse .showcase-art { order: 1; }
+
+    .showcase-copy .eyebrow { margin-bottom: 20px; }
+
+    .showcase-h {
+      font-size: clamp(28px, 3.2vw, 42px);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      color: var(--white-100);
+      margin-bottom: 22px;
+    }
+
+    .showcase-h .serif { color: var(--white-100); }
+
+    .showcase-body {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--white-60);
+      margin-bottom: 28px;
+    }
+
+    .showcase-link {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--green);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+    .showcase-link:hover { gap: 10px; }
+
+    /* Browser frame */
+    .browser {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #f2f2f2;
+      box-shadow:
+        0 40px 100px rgba(0,0,0,0.55),
+        0 16px 40px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .browser:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 50px 120px rgba(0,0,0,0.6),
+        0 20px 48px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.14);
+    }
+
+    .browser-chrome {
+      height: 36px;
+      background: #ebebeb;
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      gap: 8px;
+      border-bottom: 1px solid #d8d8d8;
+    }
+
+    .tl {
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .tl-r { background: #ff5f56; }
+    .tl-y { background: #ffbd2e; }
+    .tl-g { background: #27c93f; }
+
+    .browser-url {
+      margin-left: auto;
+      margin-right: auto;
+      background: #dcdcdc;
+      color: #666;
+      font-size: 11px;
+      padding: 4px 16px;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      min-width: 240px;
+      text-align: center;
+    }
+
+    .browser-img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* ── PHOTO SECTIONS ── */
     .photo-section {
       position: relative;
       min-height: 620px;
@@ -425,28 +698,22 @@
       background-position: center;
     }
 
-    /* gradient pulls from both sides to frame the glass card */
-    .photo-section-overlay {
-      position: absolute;
-      inset: 0;
-    }
+    .photo-section-overlay { position: absolute; inset: 0; }
 
     .photo-section-overlay.left {
       background: linear-gradient(to right,
         rgba(26,15,8,0.0) 0%,
-        rgba(26,15,8,0.0) 45%,
-        rgba(26,15,8,0.85) 70%,
-        rgba(26,15,8,0.97) 100%
-      );
+        rgba(26,15,8,0.0) 40%,
+        rgba(26,15,8,0.85) 68%,
+        rgba(26,15,8,0.97) 100%);
     }
 
     .photo-section-overlay.right {
       background: linear-gradient(to left,
         rgba(26,15,8,0.0) 0%,
-        rgba(26,15,8,0.0) 45%,
-        rgba(26,15,8,0.85) 70%,
-        rgba(26,15,8,0.97) 100%
-      );
+        rgba(26,15,8,0.0) 40%,
+        rgba(26,15,8,0.85) 68%,
+        rgba(26,15,8,0.97) 100%);
     }
 
     .photo-section-content {
@@ -462,7 +729,6 @@
     .photo-section-content.align-right { justify-content: flex-end; }
     .photo-section-content.align-left { justify-content: flex-start; }
 
-    /* The floating glass card */
     .float-card {
       width: 480px;
       background: rgba(255,255,255,0.07);
@@ -474,8 +740,7 @@
       padding: 52px 48px;
       box-shadow:
         0 32px 80px rgba(0,0,0,0.4),
-        inset 0 1px 0 rgba(255,255,255,0.18),
-        inset 0 -1px 0 rgba(0,0,0,0.1);
+        inset 0 1px 0 rgba(255,255,255,0.18);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
@@ -483,26 +748,27 @@
       transform: translateY(-6px);
       box-shadow:
         0 48px 100px rgba(0,0,0,0.5),
-        inset 0 1px 0 rgba(255,255,255,0.22),
-        inset 0 -1px 0 rgba(0,0,0,0.1);
+        inset 0 1px 0 rgba(255,255,255,0.22);
     }
 
     .float-card .eyebrow { margin-bottom: 16px; }
 
     .float-title {
-      font-size: clamp(22px, 2.5vw, 32px);
+      font-size: clamp(24px, 2.7vw, 34px);
       font-weight: 300;
-      line-height: 1.2;
+      line-height: 1.18;
       color: var(--white-100);
-      letter-spacing: -0.3px;
-      margin-bottom: 18px;
+      letter-spacing: -0.4px;
+      margin-bottom: 20px;
     }
+
+    .float-title .serif { color: var(--white-100); }
 
     .float-body {
       font-size: 14px;
       font-weight: 300;
       line-height: 1.8;
-      color: var(--white-35);
+      color: var(--white-60);
       margin-bottom: 28px;
     }
 
@@ -517,7 +783,7 @@
     .float-list li {
       font-size: 13px;
       font-weight: 300;
-      color: var(--white-35);
+      color: var(--white-60);
       line-height: 1.6;
       display: flex;
       align-items: flex-start;
@@ -544,9 +810,156 @@
     }
     .float-link:hover { gap: 10px; }
 
+    /* ── MOBILE HYPE ── */
+    .mobile-section {
+      padding: 140px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mobile-section::before {
+      content: '';
+      position: absolute;
+      width: 900px; height: 900px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168,216,50,0.08) 0%, transparent 60%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .mobile-card {
+      background: linear-gradient(160deg, rgba(168,216,50,0.07) 0%, rgba(255,255,255,0.03) 60%);
+      border: 1px solid rgba(168,216,50,0.18);
+      border-top-color: rgba(168,216,50,0.32);
+      border-radius: 28px;
+      padding: 100px 80px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(168,216,50,0.22);
+      text-align: center;
+    }
+
+    .mobile-card::after {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168,216,50,0.1) 0%, transparent 60%);
+      bottom: -300px; right: -200px;
+      pointer-events: none;
+    }
+
+    .mobile-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      background: rgba(168,216,50,0.14);
+      border: 1px solid rgba(168,216,50,0.3);
+      padding: 7px 18px;
+      border-radius: 100px;
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .mobile-pill-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: blink 2s ease infinite;
+    }
+
+    .mobile-h {
+      font-size: clamp(36px, 5.2vw, 72px);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -1.2px;
+      color: var(--white-100);
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .mobile-h .serif { color: var(--white-100); }
+    .mobile-h-2 { color: var(--white-35); }
+
+    .mobile-body {
+      font-size: clamp(15px, 1.3vw, 18px);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--white-60);
+      max-width: 640px;
+      margin: 0 auto 44px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .mobile-features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .mobile-feat {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--white-60);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--white-08);
+      padding: 10px 20px;
+      border-radius: 100px;
+      letter-spacing: 0.2px;
+    }
+
+    .mobile-feat::before {
+      content: '→ ';
+      color: var(--green);
+      margin-right: 4px;
+    }
+
+    .mobile-cta-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── PROMISE STRIP ── */
+    .promise-section {
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .promise-line {
+      font-size: clamp(28px, 3.6vw, 52px);
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.6px;
+      color: var(--white-100);
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .promise-line .serif { color: var(--white-100); }
+    .promise-line .dim { color: var(--white-35); }
+
     /* ── TESTIMONIALS ── */
     .testimonials-section {
-      padding: 112px 0;
+      padding: 120px 0 100px;
       position: relative;
     }
 
@@ -563,6 +976,13 @@
       pointer-events: none;
     }
 
+    .testi-head {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .testi-head .eyebrow { justify-content: center; }
+    .testi-head .eyebrow::before { display: none; }
+
     .testi-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -574,7 +994,7 @@
       border: 1px solid var(--border);
       border-top-color: var(--border-bright);
       border-radius: 16px;
-      padding: 32px 28px;
+      padding: 36px 30px;
       display: flex;
       flex-direction: column;
       gap: 24px;
@@ -605,18 +1025,29 @@
     }
 
     .testi-attr {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-top: 16px;
+      border-top: 1px solid var(--white-08);
+    }
+
+    .testi-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white-100);
+      letter-spacing: -0.1px;
+    }
+
+    .testi-meta {
       font-size: 10px;
       font-weight: 400;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--white-15);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      color: var(--white-35);
     }
-    .testi-attr::before { content:''; width:16px; height:1px; background:var(--white-15); }
 
-    /* ── QUOTE SECTION ── */
+    /* ── QUOTE ── */
     .quote-section {
       padding: 0 0 112px;
       position: relative;
@@ -628,7 +1059,7 @@
       border: 1px solid var(--border);
       border-top-color: var(--border-bright);
       border-radius: 20px;
-      padding: 80px;
+      padding: 96px 80px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -638,25 +1069,27 @@
     .quote-card::before {
       content: '"';
       position: absolute;
-      top: -20px;
+      top: -30px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 200px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.02);
+      font-size: 240px;
+      font-weight: 400;
+      color: rgba(168,216,50,0.04);
       line-height: 1;
       pointer-events: none;
-      font-family: Georgia, serif;
+      font-family: 'DM Serif Display', Georgia, serif;
     }
 
     .quote-text {
-      font-size: clamp(22px, 3vw, 40px);
+      font-size: clamp(24px, 3.2vw, 44px);
       font-weight: 300;
-      line-height: 1.3;
+      line-height: 1.25;
       color: var(--white-100);
-      letter-spacing: -0.3px;
-      margin-bottom: 24px;
+      letter-spacing: -0.4px;
+      margin-bottom: 28px;
     }
+
+    .quote-text .serif { color: var(--white-100); }
 
     .quote-attr {
       font-size: 10px;
@@ -678,7 +1111,7 @@
       border: 1px solid var(--border);
       border-top-color: var(--border-bright);
       border-radius: 24px;
-      padding: 88px 80px;
+      padding: 96px 80px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
@@ -688,7 +1121,6 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
     }
 
-    /* Green glow accent */
     .beta-card::after {
       content: '';
       position: absolute;
@@ -706,36 +1138,49 @@
       font-weight: 400;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--white-15);
+      color: var(--green);
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 20px;
     }
-    .beta-eyebrow::before { content:''; width:24px; height:1px; background:var(--white-15); }
+    .beta-eyebrow::before {
+      content:'';
+      width:24px;
+      height:1px;
+      background:var(--green);
+    }
 
     .beta-title {
-      font-size: clamp(32px, 4vw, 56px);
+      font-size: clamp(30px, 3.6vw, 48px);
       font-weight: 300;
-      line-height: 1.1;
+      line-height: 1.15;
       color: var(--white-100);
-      letter-spacing: -0.5px;
+      letter-spacing: -0.6px;
+      position: relative;
+      z-index: 2;
     }
+    .beta-title .serif { color: var(--white-100); }
 
     .beta-body {
       font-size: 15px;
       font-weight: 300;
-      line-height: 1.8;
-      color: var(--white-35);
-      margin-bottom: 12px;
+      line-height: 1.75;
+      color: var(--white-60);
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
     }
 
     .beta-offer {
       display: block;
-      font-size: 13px;
-      font-weight: 300;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.3px;
       color: var(--green);
-      margin-bottom: 36px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
     }
 
     .beta-cta {
@@ -744,15 +1189,17 @@
       font-weight: 500;
       color: var(--bg);
       background: var(--green);
-      padding: 16px 48px;
+      padding: 16px 40px;
       border-radius: 8px;
       text-decoration: none;
       transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      position: relative;
+      z-index: 2;
     }
     .beta-cta:hover {
       background: var(--green-dark);
       transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(168,216,50,0.2);
+      box-shadow: 0 8px 24px rgba(168,216,50,0.25);
     }
 
     .beta-note {
@@ -761,55 +1208,479 @@
       font-size: 11px;
       font-weight: 300;
       color: var(--white-15);
+      letter-spacing: 0.3px;
+      position: relative;
+      z-index: 2;
     }
 
     /* ── FOOTER ── */
     footer {
+      padding: 40px 52px;
       border-top: 1px solid var(--border);
-      padding: 36px 52px;
+      background: rgba(0,0,0,0.25);
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       position: relative;
       z-index: 1;
     }
 
-    .footer-left { display: flex; flex-direction: column; gap: 5px; }
-    .footer-mark { font-size: 10px; font-weight: 500; letter-spacing: 3px; color: var(--white-15); }
-    .footer-co { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.1); }
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
 
-    .footer-links { display: flex; gap: 28px; }
+    .footer-mark {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      color: var(--white-60);
+    }
+
+    .footer-co {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--white-15);
+      letter-spacing: 0.3px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
     .footer-link {
       font-size: 12px;
       font-weight: 300;
-      color: rgba(255,255,255,0.15);
+      color: var(--white-35);
       text-decoration: none;
       transition: color 0.2s;
     }
-    .footer-link:hover { color: var(--white-35); }
+    .footer-link:hover { color: var(--white-100); }
+
+    /* ── WAITLIST FORM (inside mobile-section) ── */
+    .waitlist-form {
+      max-width: 520px;
+      margin: 16px auto 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .waitlist-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white-35);
+      margin-bottom: 12px;
+    }
+
+    .waitlist-row {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--white-15);
+      border-radius: 100px;
+      padding: 6px;
+      transition: border-color 0.2s;
+    }
+
+    .waitlist-row:focus-within {
+      border-color: rgba(168,216,50,0.4);
+    }
+
+    .waitlist-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 10px 18px;
+      color: var(--white-100);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    .waitlist-input::placeholder {
+      color: var(--white-35);
+    }
+
+    .waitlist-btn {
+      background: rgba(168,216,50,0.18);
+      border: 1px solid rgba(168,216,50,0.35);
+      color: var(--green);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+
+    .waitlist-btn:hover {
+      background: var(--green);
+      color: var(--bg);
+    }
+
+    .waitlist-fineprint {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--white-35);
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+
+    /* ── PRICING ── */
+    .pricing-section {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .pricing-section::before {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(61,43,31,0.4) 0%, transparent 70%);
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .pricing-head {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 56px;
+    }
+
+    .pricing-title {
+      font-size: clamp(30px, 3.8vw, 50px);
+      font-weight: 300;
+      line-height: 1.15;
+      letter-spacing: -0.6px;
+      color: var(--white-100);
+      margin-bottom: 20px;
+    }
+
+    .pricing-title .serif { color: var(--white-60); }
+
+    .pricing-sub {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--white-60);
+      margin-bottom: 36px;
+    }
+
+    .pricing-toggle {
+      display: inline-flex;
+      background: var(--white-04);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .pt-btn {
+      background: transparent;
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--white-35);
+      padding: 10px 22px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pt-btn:hover { color: var(--white-60); }
+
+    .pt-btn.active {
+      background: var(--white-08);
+      color: var(--white-100);
+    }
+
+    .pt-save {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      color: var(--green);
+      background: rgba(168,216,50,0.12);
+      padding: 3px 8px;
+      border-radius: 100px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--white-04);
+      border: 1px solid var(--border);
+      border-top-color: var(--border-bright);
+      border-radius: 20px;
+      padding: 44px 40px 36px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+    }
+
+    .pricing-card:hover {
+      background: var(--white-08);
+      transform: translateY(-4px);
+    }
+
+    .pricing-card-featured {
+      background: linear-gradient(160deg, rgba(168,216,50,0.08) 0%, rgba(255,255,255,0.03) 60%);
+      border-color: rgba(168,216,50,0.22);
+      border-top-color: rgba(168,216,50,0.4);
+      box-shadow: inset 0 1px 0 rgba(168,216,50,0.25);
+    }
+
+    .pricing-card-featured::before {
+      background: linear-gradient(to right, transparent, rgba(168,216,50,0.4), transparent);
+    }
+
+    .pricing-featured-tag {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green);
+      background: rgba(168,216,50,0.14);
+      border: 1px solid rgba(168,216,50,0.3);
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+
+    .pricing-card-head {
+      margin-bottom: 28px;
+    }
+
+    .pricing-tier {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--white-100);
+      margin-bottom: 10px;
+    }
+
+    .pricing-tagline {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.55;
+      color: var(--white-60);
+    }
+
+    .pricing-amount {
+      margin-bottom: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--white-08);
+    }
+
+    .pricing-amount-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .pricing-amount-row.hidden { display: none; }
+
+    .pricing-strike {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--white-35);
+      text-decoration: line-through;
+      text-decoration-thickness: 1px;
+    }
+
+    .pricing-price {
+      font-size: 44px;
+      font-weight: 400;
+      color: var(--white-100);
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .pricing-period {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--white-60);
+    }
+
+    .pricing-note {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      color: var(--green);
+    }
+
+    .pricing-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .pricing-list li {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--white-60);
+      line-height: 1.55;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .pricing-list li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    .pricing-list li strong {
+      font-weight: 500;
+      color: var(--white-100);
+    }
+
+    .pricing-cta {
+      display: block;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 14px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      margin-top: auto;
+    }
+
+    .pricing-cta-solid {
+      background: var(--green);
+      color: var(--bg);
+    }
+    .pricing-cta-solid:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(168,216,50,0.25);
+    }
+
+    .pricing-cta-ghost {
+      background: transparent;
+      color: var(--white-100);
+      border: 1px solid var(--border-bright);
+    }
+    .pricing-cta-ghost:hover {
+      background: var(--white-08);
+    }
+
+    .pricing-free-note {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--white-35);
+      text-align: center;
+      margin-top: 14px;
+      letter-spacing: 0.2px;
+    }
+
+    .pricing-footnote {
+      max-width: 760px;
+      margin: 40px auto 0;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--white-35);
+      text-align: center;
+      line-height: 1.6;
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      nav { padding: 0 20px; }
-      .nav-links .nav-link { display: none; }
-      .container { padding: 0 20px; }
-      .features-section { padding: 72px 0; }
+      nav { padding: 0 24px; }
+      .nav-links { gap: 20px; }
+      .container, .container-wide { padding: 0 24px; }
+
+      .hero { min-height: 700px; }
+      .hero-wordmark { letter-spacing: 8px; padding-left: 8px; margin-bottom: 28px; }
+      .hero-glass { padding: 24px 28px; }
+      .hero-glass-actions { flex-direction: column; gap: 14px; }
+
+      .problem-section { padding: 100px 0 80px; }
+      .problem-grid { grid-template-columns: 1fr; gap: 12px; }
+      .problem-card { padding: 32px 28px; grid-template-columns: 1fr; gap: 20px; }
+      .problem-card-h { font-size: 19px; }
+      .problem-card-cost { padding-left: 0; border-left: none; padding-top: 18px; border-top: 1px solid var(--white-08); max-width: 100%; }
+
+      .features-section { padding: 80px 0; }
       .features-grid { grid-template-columns: 1fr; }
-      .photo-section { min-height: auto; }
-      .photo-section-bg { position: relative; height: 300px; }
-      .photo-section-overlay { display: none; }
-      .photo-section-content { padding: 32px 20px; justify-content: center !important; }
-      .float-card { width: 100%; }
-      .testimonials-section { padding: 72px 0; }
-      .testi-grid { grid-template-columns: 1fr; }
-      .quote-section { padding: 0 0 72px; }
-      .quote-card { padding: 48px 28px; }
+
+      .showcase-section { padding: 80px 0; }
+      .showcase-grid, .showcase-grid.reverse {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .showcase-grid.reverse .showcase-copy { order: 1; }
+      .showcase-grid.reverse .showcase-art { order: 2; }
+
+      .photo-section { min-height: 520px; }
+      .photo-section-content { padding: 60px 24px; }
+      .float-card { width: 100%; padding: 40px 32px; }
+
+      .mobile-section { padding: 80px 0; }
+      .mobile-card { padding: 60px 32px; }
+      .mobile-features { gap: 10px; }
+      .waitlist-row { flex-direction: column; border-radius: 20px; padding: 8px; }
+      .waitlist-btn { border-radius: 14px; padding: 14px 20px; }
+      .waitlist-input { padding: 14px 18px; }
+
+      .pricing-section { padding: 80px 0; }
+      .pricing-grid { grid-template-columns: 1fr; gap: 16px; }
+      .pricing-card { padding: 36px 28px; }
+      .pricing-price { font-size: 38px; }
+
+      .promise-section { padding: 0; display: none; }
+
       .beta-section { padding: 0 0 60px; }
-      .beta-card { grid-template-columns: 1fr; gap: 40px; padding: 48px 28px; }
+      .beta-card { grid-template-columns: 1fr; gap: 40px; padding: 56px 28px; }
+
       footer { flex-direction: column; gap: 20px; text-align: center; padding: 28px 20px; }
       .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
-      .hero-glass { padding: 24px 28px; }
-      .hero-glass-actions { flex-direction: column; }
+      .footer-left { flex-direction: column; gap: 8px; }
     }
   </style>
 </head>
@@ -817,35 +1688,41 @@
 
   <!-- NAV -->
   <nav>
-    <a href="/" class="wordmark">WHELPORA</a>
+    <a href="/" class="nav-wordmark">WHELPORA</a>
     <div class="nav-links">
       <a href="#features" class="nav-link">Features</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#mobile" class="nav-link">Mobile</a>
       <a href="https://app.whelpora.com" class="nav-link">Sign in</a>
       <a href="https://app.whelpora.com/signup" class="nav-btn">Join the Beta</a>
     </div>
   </nav>
 
-  <!-- HERO — Golden Retriever fills viewport -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-photo"></div>
     <div class="hero-overlay"></div>
     <div class="hero-grade"></div>
 
     <div class="hero-content">
+      <div class="hero-wordmark">WHELPORA</div>
+
       <div class="hero-pill">
         <span class="hero-pill-dot"></span>
-        Now in Beta · Australian Breeders
+        Now in Beta &nbsp;·&nbsp; Built in Australia
       </div>
 
-      <h1 class="hero-h1">Breeding can be messy.</h1>
+      <h1 class="hero-h1">Breeding can be <span class="serif">messy.</span></h1>
       <h1 class="hero-h1-2">Your records don't have to be.</h1>
+
+      <p class="hero-sub">Less spreadsheets. Fewer sticky notes. More time with your dogs.</p>
 
       <div class="hero-glass">
         <div class="hero-glass-actions">
           <a href="https://app.whelpora.com/signup" class="btn-green">Join the Beta — It's Free</a>
           <a href="#features" class="btn-ghost">See what's inside</a>
         </div>
-        <p class="hero-note">Free for your first month &nbsp;·&nbsp; No credit card required &nbsp;·&nbsp; Cancel anytime</p>
+        <p class="hero-note">Free during beta &nbsp;·&nbsp; Beta ends 30 May 2026 &nbsp;·&nbsp; No credit card required</p>
       </div>
     </div>
 
@@ -860,129 +1737,358 @@
       <span class="marquee-item">Litter Management</span>
       <span class="marquee-item">Health Records</span>
       <span class="marquee-item">Customer Management</span>
-      <span class="marquee-item">Invoicing & Contracts</span>
-      <span class="marquee-item">Tasks & Calendar</span>
+      <span class="marquee-item">Invoicing &amp; Contracts</span>
+      <span class="marquee-item">Tasks &amp; Calendar</span>
       <span class="marquee-item">Dog Profiles</span>
       <span class="marquee-item">Financial Insights</span>
-      <span class="marquee-item">Paperwork</span>
+      <span class="marquee-item">Coat Predictor</span>
+      <span class="marquee-item">Genetics</span>
+      <span class="marquee-item">Pedigree</span>
       <span class="marquee-item">Litter Management</span>
       <span class="marquee-item">Health Records</span>
       <span class="marquee-item">Customer Management</span>
-      <span class="marquee-item">Invoicing & Contracts</span>
-      <span class="marquee-item">Tasks & Calendar</span>
+      <span class="marquee-item">Invoicing &amp; Contracts</span>
+      <span class="marquee-item">Tasks &amp; Calendar</span>
       <span class="marquee-item">Dog Profiles</span>
       <span class="marquee-item">Financial Insights</span>
-      <span class="marquee-item">Paperwork</span>
+      <span class="marquee-item">Coat Predictor</span>
+      <span class="marquee-item">Genetics</span>
+      <span class="marquee-item">Pedigree</span>
     </div>
   </div>
+
+  <!-- PROBLEM VIGNETTES -->
+  <section class="section problem-section">
+    <div class="container">
+      <div class="problem-intro">
+        <div class="eyebrow centred">A quiet problem</div>
+        <h2 class="problem-title">You didn't become a breeder to do the <span class="serif">paperwork.</span></h2>
+      </div>
+      <div class="problem-grid">
+
+        <div class="problem-card">
+          <div class="problem-card-main">
+            <div class="problem-card-h">The whelping notebook you can't find.</div>
+            <p class="problem-card-body">Yesterday's weights on a Post-it. Today's on your phone. Last litter's in a notebook somewhere. When the vet asks, you're scrolling through your camera roll.</p>
+          </div>
+          <div class="problem-card-cost">The records you need most are the ones you can never find.</div>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-card-main">
+            <div class="problem-card-h">The tax-time shoebox.</div>
+            <p class="problem-card-body">A bag of vet receipts. Bank statements with payments half-labelled. Deposits you can't match back to litters. Three extra hours on your accountant's bill.</p>
+          </div>
+          <div class="problem-card-cost">The profit on a whole puppy, eaten by disorganisation.</div>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-card-main">
+            <div class="problem-card-h">The vaccination you almost missed.</div>
+            <p class="problem-card-body">Your calendar just says "Vax". No puppy, no dose, no vet. You find out at pickup that Dose 2 got skipped. The buyer is understanding. You're mortified.</p>
+          </div>
+          <div class="problem-card-cost">The trust you can't ever fully get back.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- FEATURES -->
   <section class="section features-section" id="features">
     <div class="container">
-      <div class="eyebrow">What's inside</div>
-      <h2 class="section-title">Everything your kennel needs. Nothing it doesn't.</h2>
+      <div class="features-section-head">
+        <div class="eyebrow">What's inside</div>
+        <h2 class="section-title">One system for the whole <span class="serif">program.</span></h2>
+        <p style="font-size:15px;font-weight:300;line-height:1.7;color:var(--white-60);max-width:620px;margin-top:20px;">Whelpora doesn't do your tax return or reply to your buyers. It holds the structure — the records, the milestones, the paperwork — so you stop holding it in your head.</p>
+      </div>
       <div class="features-grid">
         <div class="feature-cell">
           <div class="feature-num">01</div>
-          <div class="feature-title">Litter management</div>
-          <p class="feature-body">From planned breeding to last placement. Timelines, puppy weights, care plans and milestone reminders — all in one place.</p>
+          <div class="feature-title">Every puppy, every milestone, one place.</div>
+          <p class="feature-body">From planned breeding to last placement. Weights, care plans, photos and reminders — all tied to the litter, all ready when the vet or buyer asks.</p>
         </div>
         <div class="feature-cell">
           <div class="feature-num">02</div>
-          <div class="feature-title">Health records</div>
-          <p class="feature-body">Vaccinations, vet visits, medications and genetic testing — attached to each dog and puppy. Never scramble for a health record again.</p>
+          <div class="feature-title">Health records that find themselves.</div>
+          <p class="feature-body">Vaccinations, vet visits, medications and genetic testing, attached to each dog and puppy. No more scrambling through emails at 9 pm to find a vax date.</p>
         </div>
         <div class="feature-cell">
           <div class="feature-num">03</div>
-          <div class="feature-title">Paperwork & finances</div>
-          <p class="feature-body">Invoices, contracts, expenses and receipts — generated, sent and tracked in one place. See your profit position at a glance.</p>
+          <div class="feature-title">Paperwork that stays on top of itself.</div>
+          <p class="feature-body">Invoices, expenses and contracts — tracked in one place, ready for your accountant. Build your own contract templates once, reuse them forever.</p>
         </div>
         <div class="feature-cell">
           <div class="feature-num">04</div>
-          <div class="feature-title">Customer management</div>
-          <p class="feature-body">Buyer enquiries, waiting lists and deposit records — organised and clear. Know exactly where every buyer is in the process.</p>
+          <div class="feature-title">Buyers and deposits — no crossed wires.</div>
+          <p class="feature-body">Know exactly where every buyer is. Interested, deposit paid, matched to a puppy, pickup, gone home. One source of truth per litter.</p>
         </div>
         <div class="feature-cell">
           <div class="feature-num">05</div>
-          <div class="feature-title">Tasks & calendar</div>
-          <p class="feature-body">A daily checklist that knows what's due for each dog and litter. Reminders for heats, vet appointments and whelping milestones.</p>
+          <div class="feature-title">A calendar that knows what's due.</div>
+          <p class="feature-body">Heats, matings, vet visits, whelping milestones, deworming weeks. The system pulls from every dog and litter and tells you what today actually looks like.</p>
         </div>
         <div class="feature-cell">
           <div class="feature-num">06</div>
-          <div class="feature-title">Dog profiles</div>
-          <p class="feature-body">Every dog in your program — full history, health records, breeding data, photos and documents — stored cleanly, accessible anywhere.</p>
+          <div class="feature-title">The program, not just the paperwork.</div>
+          <p class="feature-body">Pedigree, genetics, coat predictor, guardian homes, retained puppies. The tools serious breeders actually use, built in — not bolted on.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PHOTO SECTION 1 — Dachshunds bg, glass card right -->
+  <!-- PRODUCT SHOWCASE 1 — Progesterone + Costs (promoted to first) -->
+  <section class="section showcase-section">
+    <div class="container-wide">
+      <div class="showcase-grid reverse">
+        <div class="showcase-art">
+          <div class="browser">
+            <div class="browser-chrome">
+              <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
+              <span class="browser-url">app.whelpora.com</span>
+            </div>
+            <img src="03_progesterone_cost.png" class="browser-img" alt="Whelpora progesterone trend and cost summary">
+          </div>
+        </div>
+        <div class="showcase-copy">
+          <div class="eyebrow">Breeding &amp; finances</div>
+          <h2 class="showcase-h">For the parts spreadsheets can't <span class="serif">handle.</span></h2>
+          <p class="showcase-body">Progesterone trends, ovulation anchors, TCI methods, vet clinic links. Cost summaries, stud fees, net position per litter. The level of detail serious breeders already track — now in one place that remembers it for you.</p>
+          <a href="https://app.whelpora.com/signup" class="showcase-link">See the full toolkit →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO SECTION 1 — Dachshunds, copy right -->
   <section class="section photo-section">
     <div class="photo-section-bg" style="background-image:url('img-dachshunds.png'); background-position: center top;"></div>
     <div class="photo-section-overlay right"></div>
     <div class="photo-section-content align-right">
       <div class="float-card">
-        <div class="eyebrow">The dashboard</div>
-        <h2 class="float-title">Your whole kennel. One screen.</h2>
-        <p class="float-body">Active litters, today's tasks, pending paperwork — visible the moment you open the app. No hunting through folders. No sticky notes.</p>
+        <div class="eyebrow">Dogs &amp; program</div>
+        <h2 class="float-title">Your whole kennel. <span class="serif">One screen.</span></h2>
+        <p class="float-body">Every dam, sire, guardian and retained puppy. Filter by role, breeding status, age. Photos, pedigree, genetics — all one click away. The program you built, finally visible in one view.</p>
         <ul class="float-list">
-          <li>Active litters and puppy milestones front and centre</li>
-          <li>Daily checklist pulls from every dog and litter automatically</li>
-          <li>Pending documents and unsigned contracts flagged clearly</li>
-          <li>Quick-add for litters, dogs, customers and tasks</li>
+          <li>Filter by Dam, Sire, Stud, Guardian, Retired, Keeper</li>
+          <li>Linked pedigree and genetics per dog</li>
+          <li>Health records and breeding history per profile</li>
+          <li>Quick-add for new dogs and imported pedigrees</li>
         </ul>
         <a href="https://app.whelpora.com/signup" class="float-link">See it for yourself →</a>
       </div>
     </div>
   </section>
 
-  <!-- PHOTO SECTION 2 — Frenchies bg, glass card left -->
+  <!-- PRODUCT SHOWCASE 2 — Litter Overview -->
+  <section class="section showcase-section">
+    <div class="container-wide">
+      <div class="showcase-grid">
+        <div class="showcase-copy">
+          <div class="eyebrow">Litters</div>
+          <h2 class="showcase-h">Every puppy, every milestone, in the place you'd actually <span class="serif">look.</span></h2>
+          <p class="showcase-body">From Planned to Complete, every litter has a pipeline that moves with you. Photos, weights, upcoming tasks, whelping notes — all on one screen, all on your phone when you need it at 2 am.</p>
+          <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself →</a>
+        </div>
+        <div class="showcase-art">
+          <div class="browser">
+            <div class="browser-chrome">
+              <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
+              <span class="browser-url">app.whelpora.com</span>
+            </div>
+            <img src="01_litter_overview.png" class="browser-img" alt="Whelpora litter overview">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO SECTION 2 — Frenchies, copy left. Reframed around paperwork TRACKING, no waitlist/e-sign/conversation claims -->
   <section class="section photo-section">
     <div class="photo-section-bg" style="background-image:url('img-frenchies.png'); background-position: center 30%;"></div>
     <div class="photo-section-overlay left"></div>
     <div class="photo-section-content align-left">
       <div class="float-card">
-        <div class="eyebrow">Finances</div>
-        <h2 class="float-title">Run your program like a business.</h2>
-        <p class="float-body">Most breeders manage a serious operation from a spreadsheet and a folder of receipts. Whelpora gives you a clear financial picture without the complexity.</p>
+        <div class="eyebrow">Buyers &amp; paperwork</div>
+        <h2 class="float-title">Track the paperwork, not your <span class="serif">inbox.</span></h2>
+        <p class="float-body">High-level tracking for every buyer, every invoice, every contract. Whelpora keeps the structure — you keep the voice. It won't do your tax return, but it'll make sure your accountant has everything they need when you ask.</p>
         <ul class="float-list">
-          <li>Generate professional invoices directly from litter records</li>
-          <li>Track expenses by category with receipt attachments</li>
-          <li>See income, expenses and net position at a glance</li>
-          <li>Digital contracts with e-signature — no printing required</li>
+          <li>Every buyer and deposit tracked per litter</li>
+          <li>Professional invoices generated from litter records</li>
+          <li>Build your own contract templates, reusable across litters</li>
+          <li>Expense categories, receipts and net position per litter</li>
         </ul>
+        <a href="https://app.whelpora.com/signup" class="float-link">See it for yourself →</a>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="section testimonials-section">
-    <div class="container">
-      <div class="eyebrow" style="margin-bottom:48px;">From our beta testers</div>
-      <div class="testi-grid">
-        <div class="testi-card">
-          <p class="testi-quote">"I didn't realise how much mental load I was carrying until Whelpora took it off me. Everything is just where it should be."</p>
-          <div class="testi-attr">Beta tester · Australian Breeder</div>
+  <!-- PRODUCT SHOWCASE 3 — Coat Predictor -->
+  <section class="section showcase-section">
+    <div class="container-wide">
+      <div class="showcase-grid">
+        <div class="showcase-copy">
+          <div class="eyebrow">Planning</div>
+          <h2 class="showcase-h">Plan pairings before you <span class="serif">mate.</span></h2>
+          <p class="showcase-body">Coat predictor, pedigree builder, genetic loci tracking. Pair two dogs and see what the litter might look like — or pull the stud's pedigree before the season starts. The fun, strategic side of breeding, built in from day one.</p>
+          <a href="https://app.whelpora.com/signup" class="showcase-link">Try the planning tools →</a>
         </div>
-        <div class="testi-card">
-          <p class="testi-quote">"The paperwork side alone has saved me hours every litter. Invoices, contracts, all of it — done in minutes instead of an afternoon."</p>
-          <div class="testi-attr">Beta tester · Australian Breeder</div>
-        </div>
-        <div class="testi-card">
-          <p class="testi-quote">"Finally a platform that feels like it was built for someone like me. Not adapted from something else — actually designed for breeders."</p>
-          <div class="testi-attr">Beta tester · Australian Breeder</div>
+        <div class="showcase-art">
+          <div class="browser">
+            <div class="browser-chrome">
+              <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
+              <span class="browser-url">app.whelpora.com</span>
+            </div>
+            <img src="04_coat_predictor.png" class="browser-img" alt="Whelpora coat predictor">
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- QUOTE -->
-  <section class="section quote-section">
+  <!-- MOBILE — clearly not available yet + waitlist form -->
+  <section class="section mobile-section" id="mobile">
     <div class="container">
-      <div class="quote-card">
-        <p class="quote-text">Breeding can be messy.<br>Your records don't have to be.</p>
-        <p class="quote-attr">Whelpora · Built for Australian Breeders</p>
+      <div class="mobile-card">
+        <div class="mobile-pill">
+          <span class="mobile-pill-dot"></span>
+          In development &nbsp;·&nbsp; Not available yet
+        </div>
+        <h2 class="mobile-h">
+          Your desktop for the big picture.<br>
+          <span class="mobile-h-2">Your pocket for the <span class="serif" style="color:#fff;">3 am whelp.</span></span>
+        </h2>
+        <p class="mobile-body">The Whelpora mobile app is in active development — built for one-handed use when you need it most. It's not available yet, and early access isn't something we're selling. Join the waitlist and we'll let you know the moment it ships.</p>
+        <div class="mobile-features">
+          <span class="mobile-feat">Whelping Mode</span>
+          <span class="mobile-feat">One-handed quick-add</span>
+          <span class="mobile-feat">Offline-first</span>
+          <span class="mobile-feat">Photo &amp; weigh logs</span>
+          <span class="mobile-feat">Push reminders</span>
+        </div>
+
+        <!-- Mailchimp-embedded waitlist form.
+             TODO: replace action URL with your Mailchimp embedded form URL.
+             In Mailchimp: Audience → Signup forms → Embedded forms → copy the <form action="..."> URL.
+             The format is: https://<DC>.list-manage.com/subscribe/post?u=<userID>&id=<listID>&f_id=<formID>
+             Also replace the hidden honeypot name field if your Mailchimp account requires a different one. -->
+        <form
+          class="waitlist-form"
+          action="https://YOURDC.list-manage.com/subscribe/post?u=YOUR_USER_ID&amp;id=YOUR_LIST_ID"
+          method="post"
+          target="_blank"
+          novalidate
+        >
+          <label for="mce-EMAIL" class="waitlist-label">Email for mobile app notification</label>
+          <div class="waitlist-row">
+            <input
+              type="email"
+              name="EMAIL"
+              id="mce-EMAIL"
+              class="waitlist-input"
+              placeholder="you@kennel.com"
+              required
+            >
+            <button type="submit" class="waitlist-btn">Join mobile waitlist</button>
+          </div>
+          <!-- Mailchimp honeypot. DO NOT remove or rename without updating in Mailchimp. -->
+          <div aria-hidden="true" style="position:absolute;left:-5000px;">
+            <input type="text" name="b_YOUR_USER_ID_YOUR_LIST_ID" tabindex="-1" value="">
+          </div>
+          <p class="waitlist-fineprint">We'll email you when the mobile app drops. Occasional build updates. Unsubscribe anytime.</p>
+        </form>
       </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section pricing-section" id="pricing">
+    <div class="container">
+      <div class="pricing-head">
+        <div class="eyebrow centred">Founding rates</div>
+        <h2 class="pricing-title">Two plans. No feature <span class="serif">walls.</span></h2>
+        <p class="pricing-sub">Every Whelpora user gets every tool — no matter the tier. The only thing that changes is how many litters you record per year. Founding members lock in 40% off, forever.</p>
+
+        <!-- Monthly/Annual toggle -->
+        <div class="pricing-toggle" role="tablist" aria-label="Billing period">
+          <button class="pt-btn" data-period="monthly" role="tab" aria-selected="false">Monthly</button>
+          <button class="pt-btn active" data-period="annual" role="tab" aria-selected="true">
+            Annual
+            <span class="pt-save">Save ~20%</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- ESSENTIAL -->
+        <div class="pricing-card">
+          <div class="pricing-card-head">
+            <div class="pricing-tier">Essential</div>
+            <p class="pricing-tagline">For smaller programs — up to 2 litters per rolling 12 months.</p>
+          </div>
+          <div class="pricing-amount">
+            <div class="pricing-amount-row" data-show-for="annual">
+              <span class="pricing-strike">$89</span>
+              <span class="pricing-price">$53</span>
+              <span class="pricing-period">/ year</span>
+            </div>
+            <div class="pricing-amount-row hidden" data-show-for="monthly">
+              <span class="pricing-strike">$8.99</span>
+              <span class="pricing-price">$5.49</span>
+              <span class="pricing-period">/ month</span>
+            </div>
+            <p class="pricing-note">AUD · 40% off founding rate, locked forever</p>
+          </div>
+          <ul class="pricing-list">
+            <li>All Whelpora features included</li>
+            <li>All breeding tools included</li>
+            <li>Litter &amp; puppy tracking</li>
+            <li>Health records &amp; vet history</li>
+            <li>Customer &amp; waitlist management</li>
+            <li>Paperwork &amp; contract templates</li>
+            <li><strong>Up to 2 litters per rolling 12 months</strong></li>
+          </ul>
+          <a href="https://app.whelpora.com/signup" class="pricing-cta pricing-cta-ghost">Start on Essential</a>
+          <p class="pricing-free-note">Free during beta · First charge 30 May 2026</p>
+        </div>
+
+        <!-- PRO (highlighted) -->
+        <div class="pricing-card pricing-card-featured">
+          <div class="pricing-featured-tag">Most Popular</div>
+          <div class="pricing-card-head">
+            <div class="pricing-tier">Pro</div>
+            <p class="pricing-tagline">For active programs — unlimited litters, no caps.</p>
+          </div>
+          <div class="pricing-amount">
+            <div class="pricing-amount-row" data-show-for="annual">
+              <span class="pricing-strike">$229</span>
+              <span class="pricing-price">$137</span>
+              <span class="pricing-period">/ year</span>
+            </div>
+            <div class="pricing-amount-row hidden" data-show-for="monthly">
+              <span class="pricing-strike">$22.99</span>
+              <span class="pricing-price">$13.99</span>
+              <span class="pricing-period">/ month</span>
+            </div>
+            <p class="pricing-note">AUD · 40% off founding rate, locked forever</p>
+          </div>
+          <ul class="pricing-list">
+            <li>All Whelpora features included</li>
+            <li>All breeding tools included</li>
+            <li>Litter &amp; puppy tracking</li>
+            <li>Health records &amp; vet history</li>
+            <li>Customer &amp; waitlist management</li>
+            <li>Paperwork &amp; contract templates</li>
+            <li><strong>Unlimited litters</strong></li>
+          </ul>
+          <a href="https://app.whelpora.com/signup" class="pricing-cta pricing-cta-solid">Start on Pro</a>
+          <p class="pricing-free-note">Free during beta · First charge 30 May 2026</p>
+        </div>
+
+      </div>
+
+      <p class="pricing-footnote">Founding rates are locked in while your subscription is active, and held for 12 months if you cancel. Both plans are solo accounts.</p>
     </div>
   </section>
 
@@ -991,14 +2097,14 @@
     <div class="container">
       <div class="beta-card">
         <div>
-          <div class="beta-eyebrow">Second-stage Beta</div>
-          <h2 class="beta-title">Join the founding group.</h2>
+          <div class="beta-eyebrow">Founding beta</div>
+          <h2 class="beta-title">Join the <span class="serif">founding group.</span></h2>
         </div>
         <div>
-          <p class="beta-body">A small group of Australian breeders helping shape Whelpora before public launch. Founding members lock in a preferential rate forever.</p>
-          <span class="beta-offer">Free for your first month · Founding member rate locked in at launch</span>
+          <p class="beta-body">Beta is free until 30 May 2026. After that, founding members pay 40% off the regular rate — locked in forever while your subscription stays active. Shape the product with us, get first access to the mobile app, and never pay full price.</p>
+          <span class="beta-offer">Free during beta &nbsp;·&nbsp; Beta ends 30 May 2026 &nbsp;·&nbsp; Founder rate locked forever</span>
           <a href="https://app.whelpora.com/signup" class="beta-cta">Join the Beta</a>
-          <span class="beta-note">No credit card required · Cancel anytime</span>
+          <span class="beta-note">No credit card required &nbsp;·&nbsp; Cancel anytime</span>
         </div>
       </div>
     </div>
@@ -1017,6 +2123,27 @@
       <a href="https://app.whelpora.com" class="footer-link">Sign in</a>
     </div>
   </footer>
+
+  <!-- Pricing toggle: flip between monthly and annual prices -->
+  <script>
+    (function() {
+      var buttons = document.querySelectorAll('.pt-btn');
+      var rows = document.querySelectorAll('.pricing-amount-row');
+      buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var period = btn.getAttribute('data-period');
+          buttons.forEach(function(b) {
+            var on = b.getAttribute('data-period') === period;
+            b.classList.toggle('active', on);
+            b.setAttribute('aria-selected', on ? 'true' : 'false');
+          });
+          rows.forEach(function(r) {
+            r.classList.toggle('hidden', r.getAttribute('data-show-for') !== period);
+          });
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
