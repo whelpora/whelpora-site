@@ -47,15 +47,7 @@
       font-weight: 400;
     }
 
-    /* Subtle noise overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-    }
+    /* Subtle noise overlay — omitted in standalone build */
 
     /* ─── AMBIENT ORBS ───────────────────────────── */
     .orb {
@@ -211,12 +203,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
     }
 
     .hero-photo {
       position: absolute;
       inset: 0;
+      overflow: hidden;
       background: url('img-golden-puppies.png') center 40% / cover no-repeat;
       transform: scale(1.06);
       animation: heroZoom 16s ease forwards;
@@ -253,7 +245,7 @@
       border: 1px solid rgba(159,207,40,0.18);
       padding: 6px 16px 6px 12px;
       border-radius: 100px;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
     .hero-pill-dot {
@@ -280,7 +272,7 @@
       line-height: 1.03;
       letter-spacing: -2px;
       color: rgba(255,255,255,0.28);
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
 
     .hero-sub {
@@ -288,7 +280,7 @@
       font-weight: 300;
       line-height: 1.7;
       color: var(--white-50);
-      margin: 0 auto 48px;
+      margin: 0 auto 28px;
       max-width: 480px;
     }
 
@@ -1346,6 +1338,14 @@
       .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
     }
   </style>
+  <template id="__bundler_thumbnail" data-bg-color="#18100a">
+    <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+      <rect width="400" height="260" fill="#18100a"/>
+      <text x="200" y="118" font-family="sans-serif" font-size="13" font-weight="300" letter-spacing="14" fill="rgba(255,255,255,0.9)" text-anchor="middle">WHELPORA</text>
+      <rect x="160" y="135" width="80" height="2" rx="1" fill="rgba(159,207,40,0.5)"/>
+      <text x="200" y="158" font-family="sans-serif" font-size="8" letter-spacing="3" fill="rgba(159,207,40,0.7)" text-anchor="middle">BREEDING SOFTWARE</text>
+    </svg>
+  </template>
 </head>
 <body>
 
@@ -1371,7 +1371,7 @@
     <div class="hero-photo"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div style="font-size:clamp(36px,5.5vw,76px);font-weight:300;letter-spacing:20px;color:var(--white-100);margin-bottom:28px;line-height:1;text-transform:uppercase;text-indent:20px;">WHELPORA</div>
+      <div style="font-size:clamp(28px,4.5vw,68px);font-weight:300;letter-spacing:clamp(12px,1.8vw,22px);color:var(--white-100);margin-bottom:20px;line-height:1;text-transform:uppercase;">WHELPORA</div>
       <div class="hero-pill">
         <span class="hero-pill-dot"></span>
         Now in Beta &nbsp;·&nbsp; Built in Australia
