@@ -119,18 +119,19 @@
 
     @keyframes heroZoom { to { transform: scale(1); } }
 
+    /* UPDATED: lighter centre overlay so dog's face is more visible */
     .hero-overlay {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 70% at 50% 40%, rgba(26,15,8,0.55) 0%, rgba(26,15,8,0.92) 100%),
-        linear-gradient(to top, rgba(26,15,8,0.98) 0%, rgba(26,15,8,0.3) 50%, rgba(26,15,8,0.5) 100%);
+        radial-gradient(ellipse 90% 75% at 50% 38%, rgba(26,15,8,0.38) 0%, rgba(26,15,8,0.88) 100%),
+        linear-gradient(to top, rgba(26,15,8,0.98) 0%, rgba(26,15,8,0.25) 50%, rgba(26,15,8,0.45) 100%);
     }
 
     .hero-grade {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 40%, rgba(26,15,8,0.4) 0%, transparent 65%);
+      background: radial-gradient(ellipse at 50% 40%, rgba(26,15,8,0.25) 0%, transparent 65%);
     }
 
     .hero-content {
@@ -272,94 +273,6 @@
       50%{opacity:1;transform:scaleY(1.1);}
     }
 
-    /* FOUNDING STRIP */
-    .founding-strip {
-      position: relative;
-      z-index: 1;
-      padding: 0 52px;
-    }
-
-    .founding-strip-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      background: linear-gradient(135deg, rgba(168,216,50,0.09) 0%, rgba(255,255,255,0.03) 100%);
-      border: 1px solid rgba(168,216,50,0.22);
-      border-top-color: rgba(168,216,50,0.38);
-      border-radius: var(--radius);
-      padding: 36px 52px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 40px;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      transform: none;
-      margin-top: 0;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(168,216,50,0.28);
-    }
-
-    .founding-strip-inner::after {
-      content: '';
-      position: absolute;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(168,216,50,0.08) 0%, transparent 70%);
-      top: -200px; right: -100px;
-      pointer-events: none;
-    }
-
-    .founding-label {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .founding-label::before {
-      content: '';
-      width: 20px; height: 1px;
-      background: var(--green);
-    }
-
-    .founding-h {
-      font-size: clamp(20px, 2.2vw, 28px);
-      font-weight: 300;
-      color: var(--white-100);
-      letter-spacing: -0.3px;
-      line-height: 1.2;
-    }
-
-    .founding-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 14px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .founding-copy {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--white-60);
-      line-height: 1.65;
-      text-align: right;
-      max-width: 400px;
-    }
-
-    .founding-actions { display: flex; align-items: center; gap: 20px; }
-
-    .founding-note {
-      font-size: 11px;
-      font-weight: 300;
-      color: var(--white-35);
-    }
-
     /* MARQUEE */
     .marquee-wrap {
       border-top: 1px solid var(--border);
@@ -415,7 +328,7 @@
     }
     .eyebrow::before { content:''; width:24px; height:1px; background:var(--white-15); }
 
-    /* PROBLEM */
+    /* PROBLEM — UPDATED: lighter cards for contrast */
     .problem-section { padding: 60px 0 100px; }
 
     .problem-title {
@@ -440,9 +353,10 @@
     .problem-card {
       display: grid;
       grid-template-columns: 1fr 300px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-top-color: var(--border-bright);
+      /* UPDATED: significantly lighter background for contrast against page */
+      background: #2e1a0c;
+      border: 1px solid rgba(255,255,255,0.13);
+      border-top-color: rgba(255,255,255,0.22);
       border-radius: 16px;
       overflow: hidden;
       position: relative;
@@ -454,10 +368,10 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
     }
 
-    .problem-card:hover { background: #261408; transform: translateY(-2px); }
+    .problem-card:hover { background: #381f0e; transform: translateY(-2px); }
 
     .problem-card-main { padding: 32px 36px; }
 
@@ -479,8 +393,9 @@
 
     .problem-card-cost {
       padding: 32px 36px;
-      background: rgba(168,216,50,0.04);
-      border-left: 1px solid rgba(168,216,50,0.14);
+      /* UPDATED: slightly warmer tint to distinguish from main side */
+      background: rgba(168,216,50,0.06);
+      border-left: 1px solid rgba(168,216,50,0.18);
       display: flex;
       align-items: center;
       font-size: 13px;
@@ -556,14 +471,14 @@
     }
     .showcase-link:hover { border-color: var(--green); }
 
-    /* BROWSER */
+    /* BROWSER — UPDATED: lighter shadows so screenshots aren't dim at rest */
     .browser {
       border-radius: 12px;
       overflow: hidden;
       background: #f2f2f2;
       box-shadow:
-        0 40px 100px rgba(0,0,0,0.55),
-        0 16px 40px rgba(0,0,0,0.4),
+        0 24px 60px rgba(0,0,0,0.30),
+        0 8px 24px rgba(0,0,0,0.20),
         inset 0 1px 0 rgba(255,255,255,0.1);
       border: 1px solid rgba(255,255,255,0.06);
       transition: transform 0.5s ease, box-shadow 0.5s ease;
@@ -572,8 +487,8 @@
     .browser:hover {
       transform: translateY(-4px);
       box-shadow:
-        0 50px 120px rgba(0,0,0,0.6),
-        0 20px 48px rgba(0,0,0,0.45),
+        0 40px 90px rgba(0,0,0,0.45),
+        0 16px 40px rgba(0,0,0,0.30),
         0 0 0 1px rgba(168,216,50,0.1),
         inset 0 1px 0 rgba(255,255,255,0.14);
     }
@@ -699,113 +614,160 @@
       color: var(--white-60);
     }
 
-    /* TWO-UP */
-    .twoup-section { padding: 80px 0; }
-
-    .twoup-head { text-align: center; margin-bottom: 48px; }
-
-    .twoup-title {
-      font-size: clamp(26px, 2.8vw, 40px);
-      font-weight: 300;
-      letter-spacing: -0.5px;
-      color: var(--white-100);
-      line-height: 1.15;
-    }
-
-    .twoup-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .twoup-item { display: flex; flex-direction: column; gap: 14px; }
-
-    .twoup-label {
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--white-35);
-      text-align: center;
-    }
-
-    /* PHOTO SECTIONS */
-    .photo-section {
+    /* FOUNDING STRIP */
+    .founding-strip {
       position: relative;
-      min-height: 540px;
+      z-index: 1;
+      padding: 0 52px;
+    }
+
+    .founding-strip-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(168,216,50,0.09) 0%, rgba(255,255,255,0.03) 100%);
+      border: 1px solid rgba(168,216,50,0.22);
+      border-top-color: rgba(168,216,50,0.38);
+      border-radius: var(--radius);
+      padding: 36px 52px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(168,216,50,0.28);
+    }
+
+    .founding-strip-inner::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168,216,50,0.08) 0%, transparent 70%);
+      top: -200px; right: -100px;
+      pointer-events: none;
+    }
+
+    .founding-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
+      gap: 10px;
+    }
+
+    .founding-label::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--green);
+    }
+
+    .founding-h {
+      font-size: clamp(20px, 2.2vw, 28px);
+      font-weight: 300;
+      color: var(--white-100);
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    .founding-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .founding-copy {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--white-60);
+      line-height: 1.65;
+      text-align: right;
+      max-width: 400px;
+    }
+
+    .founding-actions { display: flex; align-items: center; gap: 20px; }
+
+    .founding-note {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--white-35);
+    }
+
+    /* PHOTO SECTIONS — UPDATED: editorial full-bleed treatment */
+    .photo-section {
+      position: relative;
       overflow: hidden;
     }
 
-    .photo-section-bg {
+    /* Full-bleed photo with top/bottom fades — dogs show across full width */
+    .photo-full {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+    }
+
+    .photo-full-bg {
       position: absolute;
       inset: 0;
       background-size: cover;
-      background-position: center;
+      background-repeat: no-repeat;
     }
 
-    .photo-overlay { position: absolute; inset: 0; }
-
-    .photo-overlay.right {
-      background: linear-gradient(to left,
-        rgba(26,15,8,0.0) 0%,
-        rgba(26,15,8,0.0) 30%,
-        rgba(26,15,8,0.9) 62%,
-        rgba(26,15,8,0.99) 100%);
+    /* Top and bottom fades into page bg — no side vignette killing the dogs */
+    .photo-full-fade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(26,15,8,1) 0%,
+          rgba(26,15,8,0) 18%,
+          rgba(26,15,8,0) 78%,
+          rgba(26,15,8,1) 100%
+        );
     }
 
-    .photo-overlay.left {
-      background: linear-gradient(to right,
-        rgba(26,15,8,0.0) 0%,
-        rgba(26,15,8,0.0) 30%,
-        rgba(26,15,8,0.9) 62%,
-        rgba(26,15,8,0.99) 100%);
-    }
-
-    .photo-content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
+    /* Text strip below the photo */
+    .photo-text-strip {
+      padding: 52px 52px 60px;
       max-width: 1120px;
       margin: 0 auto;
-      padding: 68px 52px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .photo-text-eyebrow {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 16px;
       display: flex;
+      align-items: center;
+      gap: 10px;
     }
+    .photo-text-eyebrow::before { content:''; width:20px; height:1px; background:var(--green); }
 
-    .photo-content.left { justify-content: flex-start; }
-    .photo-content.right { justify-content: flex-end; }
-
-    .photo-card {
-      width: 420px;
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(40px);
-      -webkit-backdrop-filter: blur(40px);
-      border: 1px solid var(--border);
-      border-top-color: var(--border-bright);
-      border-radius: var(--radius);
-      padding: 40px 36px;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.18);
-      transition: transform 0.4s ease;
-    }
-
-    .photo-card:hover { transform: translateY(-4px); }
-
-    .photo-card .eyebrow { margin-bottom: 14px; }
-
-    .photo-card-title {
-      font-size: clamp(20px, 2.2vw, 28px);
+    .photo-text-title {
+      font-size: clamp(22px, 2.8vw, 36px);
       font-weight: 300;
-      line-height: 1.18;
+      line-height: 1.15;
       color: var(--white-100);
-      letter-spacing: -0.3px;
+      letter-spacing: -0.4px;
       margin-bottom: 14px;
     }
 
-    .photo-card-title .serif { color: var(--white-100); }
-
-    .photo-card-body {
-      font-size: 14px;
+    .photo-text-body {
+      font-size: 15px;
       font-weight: 300;
       line-height: 1.78;
       color: var(--white-60);
@@ -1326,7 +1288,7 @@
       .hero-glass { padding: 24px 28px; }
       .hero-glass-actions { flex-direction: column; gap: 14px; }
       .founding-strip { padding: 0 24px; }
-      .founding-strip-inner { grid-template-columns: 1fr; gap: 24px; padding: 32px 28px; transform: translateY(-20px); }
+      .founding-strip-inner { grid-template-columns: 1fr; gap: 24px; padding: 32px 28px; }
       .founding-right { align-items: flex-start; }
       .founding-copy { text-align: left; }
       .problem-card { grid-template-columns: 1fr; }
@@ -1336,10 +1298,8 @@
       .showcase-grid.reverse .showcase-copy { order: 1; }
       .showcase-grid.reverse .showcase-art { order: 2; }
       .features-grid { grid-template-columns: 1fr; }
-      .twoup-grid { grid-template-columns: 1fr; gap: 28px; }
-      .photo-section { min-height: auto; }
-      .photo-content { padding: 60px 24px; }
-      .photo-card { width: 100%; padding: 32px 28px; }
+      .photo-full { height: 340px; }
+      .photo-text-strip { grid-template-columns: 1fr; gap: 20px; padding: 36px 24px 48px; }
       .mobile-card { padding: 56px 28px; }
       .pricing-grid { grid-template-columns: 1fr; gap: 16px; }
       .sticky-bar { padding: 14px 24px; }
@@ -1414,23 +1374,6 @@
     </div>
   </div>
 
-  <!-- FOUNDING STRIP -->
-  <div class="founding-strip" style="padding-top:56px; padding-bottom:8px;">
-    <div class="founding-strip-inner">
-      <div>
-        <div class="founding-label">Founding beta</div>
-        <h2 class="founding-h">Join now. Your rate stays with you.</h2>
-      </div>
-      <div class="founding-right">
-        <p class="founding-copy">Beta is free until 30 May 2026. After that, founding members pay 40% off whatever we charge new members, for as long as they stay subscribed. Plus first access to the mobile app when it ships.</p>
-        <div class="founding-actions">
-          <a href="https://app.whelpora.com/signup" class="btn-green">Join the Beta</a>
-          <span class="founding-note">No credit card required</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- PROBLEM -->
   <section class="section problem-section">
     <div class="container">
@@ -1465,28 +1408,39 @@
     </div>
   </section>
 
-  <!-- PROGESTERONE SHOWCASE -->
-  <section class="section showcase-section">
-    <div class="container-wide">
-      <div class="showcase-grid reverse">
-        <div class="showcase-art">
-          <div class="browser">
-            <div class="browser-chrome">
-              <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
-              <span class="browser-url">app.whelpora.com</span>
-            </div>
-            <img src="03_progesterone_cost.png" class="browser-img" alt="Whelpora progesterone and cost tracking">
-          </div>
+  <!-- DACHSHUNDS — first dog moment, sits early to break up the copy -->
+  <section class="section photo-section">
+    <div class="photo-full">
+      <div class="photo-full-bg" style="background-image:url('img-dachshunds.png'); background-position:center 55%;"></div>
+      <div class="photo-full-fade"></div>
+    </div>
+    <div style="max-width:1120px; margin:0 auto; padding: 0 52px 72px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; padding-top:40px;">
+        <div>
+          <div class="photo-text-eyebrow">The breeding program</div>
+          <h2 class="photo-text-title">The program you built, finally <span class="serif">visible.</span></h2>
         </div>
-        <div class="showcase-copy">
-          <div class="showcase-eyebrow">Breeding &amp; finances</div>
-          <h2 class="showcase-h">For the parts spreadsheets can't <span class="serif">handle.</span></h2>
-          <p class="showcase-body">Progesterone trends, ovulation anchors, TCI records, vet clinic links, stud fees and net position per litter. The level of detail serious breeders already track, now in one place that remembers it for you.</p>
-          <a href="https://app.whelpora.com/signup" class="showcase-link">See the full toolkit</a>
-        </div>
+        <p class="photo-text-body" style="padding-top:8px;">Every dog, every role, every relationship in one place. The structure that lives in your head, now somewhere you can actually look at it.</p>
       </div>
     </div>
   </section>
+
+  <!-- FOUNDING STRIP — after problem + first dog moment, before features -->
+  <div class="founding-strip" style="padding-top:8px; padding-bottom:72px;">
+    <div class="founding-strip-inner">
+      <div>
+        <div class="founding-label">Founding beta</div>
+        <h2 class="founding-h">Join now. Your rate stays with you.</h2>
+      </div>
+      <div class="founding-right">
+        <p class="founding-copy">Beta is free until 30 May 2026. After that, founding members pay 40% off whatever we charge new members, for as long as they stay subscribed. Plus first access to the mobile app when it ships.</p>
+        <div class="founding-actions">
+          <a href="https://app.whelpora.com/signup" class="btn-green">Join the Beta</a>
+          <span class="founding-note">No credit card required</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- FEATURES -->
   <section class="section features-section" id="features">
@@ -1544,7 +1498,29 @@
     </div>
   </section>
 
-  <!-- TWO-UP SHOWCASE -->
+  <!-- PROGESTERONE SHOWCASE -->
+  <section class="section showcase-section">
+    <div class="container-wide">
+      <div class="showcase-grid reverse">
+        <div class="showcase-art">
+          <div class="browser">
+            <div class="browser-chrome">
+              <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
+              <span class="browser-url">app.whelpora.com</span>
+            </div>
+            <img src="03_progesterone_cost.png" class="browser-img" alt="Whelpora progesterone and cost tracking">
+          </div>
+        </div>
+        <div class="showcase-copy">
+          <div class="showcase-eyebrow">Breeding &amp; finances</div>
+          <h2 class="showcase-h">For the parts spreadsheets can't <span class="serif">handle.</span></h2>
+          <p class="showcase-body">Progesterone trends, ovulation anchors, TCI records, vet clinic links, stud fees and net position per litter. The level of detail serious breeders already track, now in one place that remembers it for you.</p>
+          <a href="https://app.whelpora.com/signup" class="showcase-link">See the full toolkit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SHOWCASE: Puppy profile -->
   <section class="section showcase-section">
     <div class="container-wide">
@@ -1568,7 +1544,7 @@
     </div>
   </section>
 
-  <!-- SHOWCASE: Weight graph (reversed) -->
+  <!-- SHOWCASE: Weight graph — using litter overview as placeholder (02_weight_graph.png not uploaded) -->
   <section class="section showcase-section">
     <div class="container-wide">
       <div class="showcase-grid reverse">
@@ -1578,7 +1554,7 @@
               <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
               <span class="browser-url">app.whelpora.com</span>
             </div>
-            <img src="02_weight_graph.png" class="browser-img" alt="Whelpora weight tracking graph">
+            <img src="01_litter_overview.png" class="browser-img" alt="Whelpora litter overview">
           </div>
         </div>
         <div class="showcase-copy">
@@ -1614,7 +1590,7 @@
     </div>
   </section>
 
-  <!-- SHOWCASE: Coat predictor (reversed) -->
+  <!-- SHOWCASE: Coat predictor -->
   <section class="section showcase-section">
     <div class="container-wide">
       <div class="showcase-grid reverse">
@@ -1660,28 +1636,19 @@
     </div>
   </section>
 
-  <!-- DACHSHUNDS PHOTO — fixed crop to show puppies -->
-  <section class="section photo-section" style="min-height:560px;">
-    <div class="photo-section-bg" style="background-image:url('img-dachshunds.png'); background-position:center 65%;"></div>
-    <div class="photo-overlay right"></div>
-    <div class="photo-content right">
-      <div class="photo-card">
-        <div class="eyebrow">The breeding program</div>
-        <h2 class="photo-card-title">The program you built, finally <span class="serif">visible.</span></h2>
-        <p class="photo-card-body">Every dog, every role, every relationship in one place. The structure that lives in your head, now somewhere you can actually look at it.</p>
-      </div>
+  <!-- FRENCHIES — second dog moment, after showcases before mobile -->
+  <section class="section photo-section">
+    <div class="photo-full">
+      <div class="photo-full-bg" style="background-image:url('img-frenchies.png'); background-position:center 28%;"></div>
+      <div class="photo-full-fade"></div>
     </div>
-  </section>
-
-  <!-- FRENCHIES PHOTO -->
-  <section class="section photo-section" style="min-height:600px;">
-    <div class="photo-section-bg" style="background-image:url('img-frenchies.png'); background-position:center 30%;"></div>
-    <div class="photo-overlay left"></div>
-    <div class="photo-content left">
-      <div class="photo-card">
-        <div class="eyebrow">Buyers &amp; paperwork</div>
-        <h2 class="photo-card-title">Track the paperwork, not your <span class="serif">inbox.</span></h2>
-        <p class="photo-card-body">Buyers tracked, invoices generated, contracts filed. The admin that used to take an afternoon takes twenty minutes. The structure is there when you need it, out of the way when you don't.</p>
+    <div style="max-width:1120px; margin:0 auto; padding: 0 52px 72px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; padding-top:40px;">
+        <div>
+          <div class="photo-text-eyebrow">Buyers &amp; paperwork</div>
+          <h2 class="photo-text-title">Track the paperwork, not your <span class="serif">inbox.</span></h2>
+        </div>
+        <p class="photo-text-body" style="padding-top:8px;">Buyers tracked, invoices generated, contracts filed. The admin that used to take an afternoon takes twenty minutes. The structure is there when you need it, out of the way when you don't.</p>
       </div>
     </div>
   </section>
@@ -1706,9 +1673,6 @@
           <span class="mobile-chip"><span>Soon</span>Photo logs</span>
           <span class="mobile-chip"><span>Soon</span>Push reminders</span>
         </div>
-        <!-- TODO: Replace action URL with your Mailchimp embedded form URL
-             Format: https://<DC>.list-manage.com/subscribe/post?u=<userID>&id=<listID>
-             Also update the honeypot field name to match your Mailchimp account. -->
         <form
           class="waitlist-form"
           action="https://YOURDC.list-manage.com/subscribe/post?u=YOUR_USER_ID&amp;id=YOUR_LIST_ID"
@@ -1850,7 +1814,7 @@
       });
     })();
 
-    // Sticky bar — appears after 800px scroll, hides when back above 400px
+    // Sticky bar
     (function() {
       var bar = document.getElementById('stickyBar');
       var dismiss = document.getElementById('stickyDismiss');
