@@ -126,21 +126,13 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(26,15,8,0.95) 0%, rgba(26,15,8,0.55) 35%, rgba(26,15,8,0.22) 65%, rgba(26,15,8,0.4) 100%);
+        linear-gradient(to top, rgba(26,15,8,0.98) 0%, rgba(26,15,8,0.88) 30%, rgba(26,15,8,0.75) 60%, rgba(26,15,8,0.82) 100%);
     }
 
     .hero-grade {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 60% 40%, rgba(90,50,20,0.3) 0%, transparent 65%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 0 24px;
-      max-width: 900px;
+      background: radial-gradient(ellipse at 50% 40%, rgba(26,15,8,0.45) 0%, transparent 65%);
     }
 
     .hero-wordmark {
@@ -150,8 +142,17 @@
       color: var(--white-60);
       margin: 0 auto 44px;
       display: block;
-      padding-left: 12px; /* optical centring for wide tracking */
+      padding-left: 12px;
       text-align: center;
+    }
+
+    /* Push hero content down from nav so WHELPORA breathes */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 80px 24px 0;
+      max-width: 900px;
     }
 
     .hero-pill {
@@ -1355,6 +1356,19 @@
       pointer-events: none;
     }
 
+    .pricing-beta-notice {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--green);
+      background: rgba(168,216,50,0.08);
+      border: 1px solid rgba(168,216,50,0.2);
+      padding: 10px 24px;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 32px;
+      letter-spacing: 0.2px;
+    }
+
     .pricing-head {
       text-align: center;
       max-width: 680px;
@@ -1719,7 +1733,7 @@
 
       <div class="hero-glass">
         <div class="hero-glass-actions">
-          <a href="https://app.whelpora.com/signup" class="btn-green">Join the Beta — It's Free</a>
+          <a href="https://app.whelpora.com/signup" class="btn-green">Join the Beta. It's Free.</a>
           <a href="#features" class="btn-ghost">See what's inside</a>
         </div>
         <p class="hero-note">Free during beta &nbsp;·&nbsp; Beta ends 30 May 2026 &nbsp;·&nbsp; No credit card required</p>
@@ -1761,7 +1775,6 @@
   <section class="section problem-section">
     <div class="container">
       <div class="problem-intro">
-        <div class="eyebrow centred">A quiet problem</div>
         <h2 class="problem-title">You didn't become a breeder to do the <span class="serif">paperwork.</span></h2>
       </div>
       <div class="problem-grid">
@@ -1777,17 +1790,17 @@
         <div class="problem-card">
           <div class="problem-card-main">
             <div class="problem-card-h">The tax-time shoebox.</div>
-            <p class="problem-card-body">A bag of vet receipts. Bank statements with payments half-labelled. Deposits you can't match back to litters. Three extra hours on your accountant's bill.</p>
+            <p class="problem-card-body">A shoebox of vet receipts. Bank statements with payments half-labelled. Deposits you can't match back to litters. Three extra hours on your accountant's bill.</p>
           </div>
-          <div class="problem-card-cost">The profit on a whole puppy, eaten by disorganisation.</div>
+          <div class="problem-card-cost">Your accountant charges for the chaos. You pay for it twice.</div>
         </div>
 
         <div class="problem-card">
           <div class="problem-card-main">
-            <div class="problem-card-h">The vaccination you almost missed.</div>
-            <p class="problem-card-body">Your calendar just says "Vax". No puppy, no dose, no vet. You find out at pickup that Dose 2 got skipped. The buyer is understanding. You're mortified.</p>
+            <div class="problem-card-h">The vaccination record at pickup.</div>
+            <p class="problem-card-body">At pickup the buyer asks when the second vaccination was. You check your phone, then your notes, then your camera roll. You tell them you'll send it through. Three days later, you still haven't found it.</p>
           </div>
-          <div class="problem-card-cost">The trust you can't ever fully get back.</div>
+          <div class="problem-card-cost">The moment a buyer starts to wonder if you're as careful as you seemed.</div>
         </div>
 
       </div>
@@ -1800,28 +1813,28 @@
       <div class="features-section-head">
         <div class="eyebrow">What's inside</div>
         <h2 class="section-title">One system for the whole <span class="serif">program.</span></h2>
-        <p style="font-size:15px;font-weight:300;line-height:1.7;color:var(--white-60);max-width:620px;margin-top:20px;">Whelpora doesn't do your tax return or reply to your buyers. It holds the structure — the records, the milestones, the paperwork — so you stop holding it in your head.</p>
+        <p style="font-size:15px;font-weight:300;line-height:1.7;color:var(--white-60);max-width:620px;margin-top:20px;">Whelpora won't do your tax return or reply to your buyers. It holds the structure so you stop holding it all in your head.</p>
       </div>
       <div class="features-grid">
         <div class="feature-cell">
           <div class="feature-num">01</div>
           <div class="feature-title">Every puppy, every milestone, one place.</div>
-          <p class="feature-body">From planned breeding to last placement. Weights, care plans, photos and reminders — all tied to the litter, all ready when the vet or buyer asks.</p>
+          <p class="feature-body">From planned breeding to last placement. Weights, care plans, photos and reminders all tied to the litter, ready when the vet or buyer asks.</p>
         </div>
         <div class="feature-cell">
           <div class="feature-num">02</div>
           <div class="feature-title">Health records that find themselves.</div>
-          <p class="feature-body">Vaccinations, vet visits, medications and genetic testing, attached to each dog and puppy. No more scrambling through emails at 9 pm to find a vax date.</p>
+          <p class="feature-body">Vaccinations, vet visits, medications and genetic testing attached to each dog and puppy. No more scrambling through emails at 9 pm to find a vax date.</p>
         </div>
         <div class="feature-cell">
           <div class="feature-num">03</div>
           <div class="feature-title">Paperwork that stays on top of itself.</div>
-          <p class="feature-body">Invoices, expenses and contracts — tracked in one place, ready for your accountant. Build your own contract templates once, reuse them forever.</p>
+          <p class="feature-body">Invoices, expenses and contracts tracked in one place, ready for your accountant. Build your own contract templates once and reuse them across every litter.</p>
         </div>
         <div class="feature-cell">
           <div class="feature-num">04</div>
-          <div class="feature-title">Buyers and deposits — no crossed wires.</div>
-          <p class="feature-body">Know exactly where every buyer is. Interested, deposit paid, matched to a puppy, pickup, gone home. One source of truth per litter.</p>
+          <div class="feature-title">Buyers and deposits, clearly tracked.</div>
+          <p class="feature-body">Know exactly where every buyer stands. Interested, deposit paid, matched to a puppy, pickup, gone home. No crossed wires. No forgotten follow-ups.</p>
         </div>
         <div class="feature-cell">
           <div class="feature-num">05</div>
@@ -1831,7 +1844,7 @@
         <div class="feature-cell">
           <div class="feature-num">06</div>
           <div class="feature-title">The program, not just the paperwork.</div>
-          <p class="feature-body">Pedigree, genetics, coat predictor, guardian homes, retained puppies. The tools serious breeders actually use, built in — not bolted on.</p>
+          <p class="feature-body">Pedigree, genetics, coat predictor, guardian homes, retained puppies. The tools serious breeders actually use, built in from day one.</p>
         </div>
       </div>
     </div>
@@ -1853,8 +1866,8 @@
         <div class="showcase-copy">
           <div class="eyebrow">Breeding &amp; finances</div>
           <h2 class="showcase-h">For the parts spreadsheets can't <span class="serif">handle.</span></h2>
-          <p class="showcase-body">Progesterone trends, ovulation anchors, TCI methods, vet clinic links. Cost summaries, stud fees, net position per litter. The level of detail serious breeders already track — now in one place that remembers it for you.</p>
-          <a href="https://app.whelpora.com/signup" class="showcase-link">See the full toolkit →</a>
+          <p class="showcase-body">Progesterone trends, ovulation anchors, TCI methods, vet clinic links. Cost summaries, stud fees, net position per litter. The level of detail serious breeders already track, now in one place that remembers it for you.</p>
+          <a href="https://app.whelpora.com/signup" class="showcase-link">See the full toolkit</a>
         </div>
       </div>
     </div>
@@ -1868,14 +1881,14 @@
       <div class="float-card">
         <div class="eyebrow">Dogs &amp; program</div>
         <h2 class="float-title">Your whole kennel. <span class="serif">One screen.</span></h2>
-        <p class="float-body">Every dam, sire, guardian and retained puppy. Filter by role, breeding status, age. Photos, pedigree, genetics — all one click away. The program you built, finally visible in one view.</p>
+        <p class="float-body">Every dam, sire, guardian and retained puppy. Filter by role, breeding status, age. Photos, pedigree, genetics all one click away. The program you built, finally visible in one view.</p>
         <ul class="float-list">
           <li>Filter by Dam, Sire, Stud, Guardian, Retired, Keeper</li>
           <li>Linked pedigree and genetics per dog</li>
           <li>Health records and breeding history per profile</li>
           <li>Quick-add for new dogs and imported pedigrees</li>
         </ul>
-        <a href="https://app.whelpora.com/signup" class="float-link">See it for yourself →</a>
+        <a href="https://app.whelpora.com/signup" class="float-link">See it for yourself</a>
       </div>
     </div>
   </section>
@@ -1887,8 +1900,8 @@
         <div class="showcase-copy">
           <div class="eyebrow">Litters</div>
           <h2 class="showcase-h">Every puppy, every milestone, in the place you'd actually <span class="serif">look.</span></h2>
-          <p class="showcase-body">From Planned to Complete, every litter has a pipeline that moves with you. Photos, weights, upcoming tasks, whelping notes — all on one screen, all on your phone when you need it at 2 am.</p>
-          <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself →</a>
+          <p class="showcase-body">From Planned to Complete, every litter has a pipeline that moves with you. Photos, weights, upcoming tasks and whelping notes all on one screen.</p>
+          <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself</a>
         </div>
         <div class="showcase-art">
           <div class="browser">
@@ -1911,14 +1924,14 @@
       <div class="float-card">
         <div class="eyebrow">Buyers &amp; paperwork</div>
         <h2 class="float-title">Track the paperwork, not your <span class="serif">inbox.</span></h2>
-        <p class="float-body">High-level tracking for every buyer, every invoice, every contract. Whelpora keeps the structure — you keep the voice. It won't do your tax return, but it'll make sure your accountant has everything they need when you ask.</p>
+        <p class="float-body">High-level tracking for every buyer, every invoice, every contract. It won't do your tax return, but it'll make sure your accountant has everything they need when you ask.</p>
         <ul class="float-list">
           <li>Every buyer and deposit tracked per litter</li>
           <li>Professional invoices generated from litter records</li>
           <li>Build your own contract templates, reusable across litters</li>
           <li>Expense categories, receipts and net position per litter</li>
         </ul>
-        <a href="https://app.whelpora.com/signup" class="float-link">See it for yourself →</a>
+        <a href="https://app.whelpora.com/signup" class="float-link">See it for yourself</a>
       </div>
     </div>
   </section>
@@ -1930,8 +1943,8 @@
         <div class="showcase-copy">
           <div class="eyebrow">Planning</div>
           <h2 class="showcase-h">Plan pairings before you <span class="serif">mate.</span></h2>
-          <p class="showcase-body">Coat predictor, pedigree builder, genetic loci tracking. Pair two dogs and see what the litter might look like — or pull the stud's pedigree before the season starts. The fun, strategic side of breeding, built in from day one.</p>
-          <a href="https://app.whelpora.com/signup" class="showcase-link">Try the planning tools →</a>
+          <p class="showcase-body">Coat predictor, pedigree builder, genetic loci tracking. Pair two dogs and see what the litter might look like, or pull the stud's pedigree before the season starts. The fun, strategic side of breeding, built in from day one.</p>
+          <a href="https://app.whelpora.com/signup" class="showcase-link">Try the planning tools</a>
         </div>
         <div class="showcase-art">
           <div class="browser">
@@ -1958,7 +1971,7 @@
           Your desktop for the big picture.<br>
           <span class="mobile-h-2">Your pocket for the <span class="serif" style="color:#fff;">3 am whelp.</span></span>
         </h2>
-        <p class="mobile-body">The Whelpora mobile app is in active development — built for one-handed use when you need it most. It's not available yet, and early access isn't something we're selling. Join the waitlist and we'll let you know the moment it ships.</p>
+        <p class="mobile-body">The Whelpora mobile app is in active development, built for one-handed use when you need it most. It's not available yet, and early access isn't something we're selling. Join the waitlist and we'll let you know the moment it ships.</p>
         <div class="mobile-features">
           <span class="mobile-feat">Whelping Mode</span>
           <span class="mobile-feat">One-handed quick-add</span>
@@ -2007,7 +2020,11 @@
       <div class="pricing-head">
         <div class="eyebrow centred">Founding rates</div>
         <h2 class="pricing-title">Two plans. No feature <span class="serif">walls.</span></h2>
-        <p class="pricing-sub">Every Whelpora user gets every tool — no matter the tier. The only thing that changes is how many litters you record per year. Founding members lock in 40% off, forever.</p>
+        <p class="pricing-sub">Every Whelpora user gets every tool, no matter the tier. The only thing that changes is how many litters you record per year. Join during beta and your founding rate stays with you.</p>
+
+        <div class="pricing-beta-notice">
+          Free until 30 May 2026 &nbsp;·&nbsp; No credit card required &nbsp;·&nbsp; These are your rates from 30 May 2026
+        </div>
 
         <!-- Monthly/Annual toggle -->
         <div class="pricing-toggle" role="tablist" aria-label="Billing period">
@@ -2025,7 +2042,7 @@
         <div class="pricing-card">
           <div class="pricing-card-head">
             <div class="pricing-tier">Essential</div>
-            <p class="pricing-tagline">For smaller programs — up to 2 litters per rolling 12 months.</p>
+            <p class="pricing-tagline">For smaller programs. Up to 2 litters per rolling 12 months.</p>
           </div>
           <div class="pricing-amount">
             <div class="pricing-amount-row" data-show-for="annual">
@@ -2038,19 +2055,19 @@
               <span class="pricing-price">$5.49</span>
               <span class="pricing-period">/ month</span>
             </div>
-            <p class="pricing-note">AUD · 40% off founding rate, locked forever</p>
+            <p class="pricing-note">AUD · 40% off, your rate stays as long as you stay subscribed</p>
           </div>
           <ul class="pricing-list">
             <li>All Whelpora features included</li>
             <li>All breeding tools included</li>
             <li>Litter &amp; puppy tracking</li>
             <li>Health records &amp; vet history</li>
-            <li>Customer &amp; waitlist management</li>
+            <li>Customer management</li>
             <li>Paperwork &amp; contract templates</li>
             <li><strong>Up to 2 litters per rolling 12 months</strong></li>
           </ul>
-          <a href="https://app.whelpora.com/signup" class="pricing-cta pricing-cta-ghost">Start on Essential</a>
-          <p class="pricing-free-note">Free during beta · First charge 30 May 2026</p>
+          <a href="https://app.whelpora.com/signup" class="pricing-cta pricing-cta-ghost">Start free on Essential</a>
+          <p class="pricing-free-note">Free during beta. First charge 30 May 2026.</p>
         </div>
 
         <!-- PRO (highlighted) -->
@@ -2058,7 +2075,7 @@
           <div class="pricing-featured-tag">Most Popular</div>
           <div class="pricing-card-head">
             <div class="pricing-tier">Pro</div>
-            <p class="pricing-tagline">For active programs — unlimited litters, no caps.</p>
+            <p class="pricing-tagline">For active programs. Unlimited litters, no caps.</p>
           </div>
           <div class="pricing-amount">
             <div class="pricing-amount-row" data-show-for="annual">
@@ -2071,24 +2088,24 @@
               <span class="pricing-price">$13.99</span>
               <span class="pricing-period">/ month</span>
             </div>
-            <p class="pricing-note">AUD · 40% off founding rate, locked forever</p>
+            <p class="pricing-note">AUD · 40% off, your rate stays as long as you stay subscribed</p>
           </div>
           <ul class="pricing-list">
             <li>All Whelpora features included</li>
             <li>All breeding tools included</li>
             <li>Litter &amp; puppy tracking</li>
             <li>Health records &amp; vet history</li>
-            <li>Customer &amp; waitlist management</li>
+            <li>Customer management</li>
             <li>Paperwork &amp; contract templates</li>
             <li><strong>Unlimited litters</strong></li>
           </ul>
-          <a href="https://app.whelpora.com/signup" class="pricing-cta pricing-cta-solid">Start on Pro</a>
-          <p class="pricing-free-note">Free during beta · First charge 30 May 2026</p>
+          <a href="https://app.whelpora.com/signup" class="pricing-cta pricing-cta-solid">Start free on Pro</a>
+          <p class="pricing-free-note">Free during beta. First charge 30 May 2026.</p>
         </div>
 
       </div>
 
-      <p class="pricing-footnote">Founding rates are locked in while your subscription is active, and held for 12 months if you cancel. Both plans are solo accounts.</p>
+      <p class="pricing-footnote">Your founding rate stays with you for as long as your subscription is active, and is held for 12 months if you cancel. Both plans are solo accounts.</p>
     </div>
   </section>
 
@@ -2101,8 +2118,8 @@
           <h2 class="beta-title">Join the <span class="serif">founding group.</span></h2>
         </div>
         <div>
-          <p class="beta-body">Beta is free until 30 May 2026. After that, founding members pay 40% off the regular rate — locked in forever while your subscription stays active. Shape the product with us, get first access to the mobile app, and never pay full price.</p>
-          <span class="beta-offer">Free during beta &nbsp;·&nbsp; Beta ends 30 May 2026 &nbsp;·&nbsp; Founder rate locked forever</span>
+          <p class="beta-body">Beta is free until 30 May 2026. After that, founding members pay 40% off the regular rate, and that rate stays with you for as long as you're subscribed. Shape the product, get first access to the mobile app when it ships, and never pay full price.</p>
+          <span class="beta-offer">Free during beta &nbsp;·&nbsp; Beta ends 30 May 2026 &nbsp;·&nbsp; Your founding rate stays with you</span>
           <a href="https://app.whelpora.com/signup" class="beta-cta">Join the Beta</a>
           <span class="beta-note">No credit card required &nbsp;·&nbsp; Cancel anytime</span>
         </div>
