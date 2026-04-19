@@ -122,11 +122,9 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top,
-        rgba(26,15,8,0.98) 0%,
-        rgba(26,15,8,0.88) 30%,
-        rgba(26,15,8,0.75) 60%,
-        rgba(26,15,8,0.82) 100%);
+      background:
+        radial-gradient(ellipse 80% 70% at 50% 40%, rgba(26,15,8,0.55) 0%, rgba(26,15,8,0.92) 100%),
+        linear-gradient(to top, rgba(26,15,8,0.98) 0%, rgba(26,15,8,0.3) 50%, rgba(26,15,8,0.5) 100%);
     }
 
     .hero-grade {
@@ -295,7 +293,8 @@
       align-items: center;
       position: relative;
       overflow: hidden;
-      transform: translateY(-28px);
+      transform: none;
+      margin-top: 0;
       box-shadow: 0 32px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(168,216,50,0.28);
     }
 
@@ -646,11 +645,11 @@
     }
 
     .feature-cell {
-      background: var(--card);
+      background: #2a1a0c;
       padding: 48px 44px;
       position: relative;
       cursor: default;
-      transition: background 0.3s;
+      transition: background 0.3s, box-shadow 0.3s;
       overflow: hidden;
     }
 
@@ -667,14 +666,17 @@
       pointer-events: none;
     }
 
-    .feature-cell:hover { background: #261408; }
+    .feature-cell:hover {
+      background: #321f0e;
+      box-shadow: inset 0 0 40px rgba(168,216,50,0.04);
+    }
 
     .feature-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: rgba(168,216,50,0.1);
-      border: 1px solid rgba(168,216,50,0.2);
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(168,216,50,0.12);
+      border: 1px solid rgba(168,216,50,0.25);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1386,23 +1388,6 @@
     <div class="scroll-hint"><div class="scroll-line"></div></div>
   </section>
 
-  <!-- FOUNDING STRIP -->
-  <div class="founding-strip">
-    <div class="founding-strip-inner">
-      <div>
-        <div class="founding-label">Founding beta</div>
-        <h2 class="founding-h">Join now. Your rate stays with you.</h2>
-      </div>
-      <div class="founding-right">
-        <p class="founding-copy">Beta is free until 30 May 2026. After that, founding members pay 40% off whatever we charge new members, for as long as they stay subscribed. Plus first access to the mobile app when it ships.</p>
-        <div class="founding-actions">
-          <a href="https://app.whelpora.com/signup" class="btn-green">Join the Beta</a>
-          <span class="founding-note">No credit card required</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- MARQUEE -->
   <div class="marquee-wrap">
     <div class="marquee-track">
@@ -1429,6 +1414,23 @@
     </div>
   </div>
 
+  <!-- FOUNDING STRIP -->
+  <div class="founding-strip" style="padding-top:56px; padding-bottom:8px;">
+    <div class="founding-strip-inner">
+      <div>
+        <div class="founding-label">Founding beta</div>
+        <h2 class="founding-h">Join now. Your rate stays with you.</h2>
+      </div>
+      <div class="founding-right">
+        <p class="founding-copy">Beta is free until 30 May 2026. After that, founding members pay 40% off whatever we charge new members, for as long as they stay subscribed. Plus first access to the mobile app when it ships.</p>
+        <div class="founding-actions">
+          <a href="https://app.whelpora.com/signup" class="btn-green">Join the Beta</a>
+          <span class="founding-note">No credit card required</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- PROBLEM -->
   <section class="section problem-section">
     <div class="container">
@@ -1448,7 +1450,7 @@
             <div class="problem-card-h">The tax-time shoebox.</div>
             <p class="problem-card-body">A shoebox of vet receipts. Bank statements with payments half-labelled. Deposits you can't match back to litters. Three extra hours on your accountant's bill.</p>
           </div>
-          <div class="problem-card-cost">Your accountant charges for the chaos. You pay for it twice.</div>
+          <div class="problem-card-cost">Tax time becomes a reconstruction project. Every year.</div>
         </div>
 
         <div class="problem-card">
@@ -1503,7 +1505,7 @@
             </svg>
           </div>
           <div class="feature-title">Litter and puppy tracking</div>
-          <p class="feature-body">Full pipeline from planned breeding to last placement. Weights, care plans, photos and upcoming milestones, all tied to the litter.</p>
+          <p class="feature-body">Full pipeline from planned breeding to puppy placement. Weights, care plans, photos and upcoming milestones, all tied to the litter.</p>
         </div>
 
         <div class="feature-cell" data-num="02">
@@ -1543,23 +1545,80 @@
   </section>
 
   <!-- TWO-UP SHOWCASE -->
-  <section class="section twoup-section">
+  <!-- SHOWCASE: Puppy profile -->
+  <section class="section showcase-section">
     <div class="container-wide">
-      <div class="twoup-head">
-        <h2 class="twoup-title">See what it looks like <span class="serif">inside.</span></h2>
-      </div>
-      <div class="twoup-grid">
-        <div class="twoup-item">
+      <div class="showcase-grid">
+        <div class="showcase-copy">
+          <div class="showcase-eyebrow">Puppies</div>
+          <h2 class="showcase-h">Every puppy tracked from day <span class="serif">one.</span></h2>
+          <p class="showcase-body">Weight at birth, collar colour, matched status, photos, export ready. The profile a buyer sees on pickup day is built the moment the puppy arrives.</p>
+          <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself</a>
+        </div>
+        <div class="showcase-art">
           <div class="browser">
             <div class="browser-chrome">
               <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
               <span class="browser-url">app.whelpora.com</span>
             </div>
-            <img src="01_litter_overview.png" class="browser-img" alt="Whelpora litter overview">
+            <img src="07_puppy_profile.png" class="browser-img" alt="Whelpora puppy profile">
           </div>
-          <p class="twoup-label">Litter pipeline and milestone tracking</p>
         </div>
-        <div class="twoup-item">
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE: Weight graph (reversed) -->
+  <section class="section showcase-section">
+    <div class="container-wide">
+      <div class="showcase-grid reverse">
+        <div class="showcase-art">
+          <div class="browser">
+            <div class="browser-chrome">
+              <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
+              <span class="browser-url">app.whelpora.com</span>
+            </div>
+            <img src="02_weight_graph.png" class="browser-img" alt="Whelpora weight tracking graph">
+          </div>
+        </div>
+        <div class="showcase-copy">
+          <div class="showcase-eyebrow">Health records</div>
+          <h2 class="showcase-h">Every weigh-in from day zero. All of <span class="serif">them.</span></h2>
+          <p class="showcase-body">18 weigh-ins, a growth curve, a health history. The vet asks for it at pickup. You open the app and read it out.</p>
+          <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE: Dog genetics -->
+  <section class="section showcase-section">
+    <div class="container-wide">
+      <div class="showcase-grid">
+        <div class="showcase-copy">
+          <div class="showcase-eyebrow">Genetics</div>
+          <h2 class="showcase-h">DNA results on every dog in your <span class="serif">program.</span></h2>
+          <p class="showcase-body">E locus, B locus, D locus, K locus and more. Every genetic test result stored on the dog's profile, linked to the pedigree, accessible when you're planning the next pairing.</p>
+          <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself</a>
+        </div>
+        <div class="showcase-art">
+          <div class="browser">
+            <div class="browser-chrome">
+              <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
+              <span class="browser-url">app.whelpora.com</span>
+            </div>
+            <img src="06_dog_genetics.png" class="browser-img" alt="Whelpora dog genetics profile">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE: Coat predictor (reversed) -->
+  <section class="section showcase-section">
+    <div class="container-wide">
+      <div class="showcase-grid reverse">
+        <div class="showcase-art">
           <div class="browser">
             <div class="browser-chrome">
               <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
@@ -1567,27 +1626,55 @@
             </div>
             <img src="04_coat_predictor.png" class="browser-img" alt="Whelpora coat predictor">
           </div>
-          <p class="twoup-label">Coat predictor and genetics planning tools</p>
+        </div>
+        <div class="showcase-copy">
+          <div class="showcase-eyebrow">Planning</div>
+          <h2 class="showcase-h">Plan pairings before you <span class="serif">mate.</span></h2>
+          <p class="showcase-body">Coat predictor, pedigree builder, genetic loci tracking. Pair two dogs and see what the litter might look like, or pull the stud's pedigree before the season starts.</p>
+          <a href="https://app.whelpora.com/signup" class="showcase-link">Try the planning tools</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DACHSHUNDS PHOTO -->
-  <section class="section photo-section">
-    <div class="photo-section-bg" style="background-image:url('img-dachshunds.png'); background-position:center top;"></div>
+  <!-- SHOWCASE: Dogs grid -->
+  <section class="section showcase-section">
+    <div class="container-wide">
+      <div class="showcase-grid">
+        <div class="showcase-copy">
+          <div class="showcase-eyebrow">Dogs &amp; program</div>
+          <h2 class="showcase-h">Your whole kennel. <span class="serif">One screen.</span></h2>
+          <p class="showcase-body">Every dam, sire, guardian and retained puppy. Filter by role, age or breeding status. The program you built, finally mapped the way your brain already holds it.</p>
+          <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself</a>
+        </div>
+        <div class="showcase-art">
+          <div class="browser">
+            <div class="browser-chrome">
+              <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
+              <span class="browser-url">app.whelpora.com</span>
+            </div>
+            <img src="05_dogs_grid.png" class="browser-img" alt="Whelpora dogs grid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DACHSHUNDS PHOTO — fixed crop to show puppies -->
+  <section class="section photo-section" style="min-height:560px;">
+    <div class="photo-section-bg" style="background-image:url('img-dachshunds.png'); background-position:center 65%;"></div>
     <div class="photo-overlay right"></div>
     <div class="photo-content right">
       <div class="photo-card">
-        <div class="eyebrow">Dogs &amp; program</div>
-        <h2 class="photo-card-title">Your whole kennel. <span class="serif">One screen.</span></h2>
-        <p class="photo-card-body">Every dam, sire, guardian and retained puppy visible in one view. The program you built, finally mapped the way your brain already holds it. Filter, find, act without opening a spreadsheet.</p>
+        <div class="eyebrow">The breeding program</div>
+        <h2 class="photo-card-title">The program you built, finally <span class="serif">visible.</span></h2>
+        <p class="photo-card-body">Every dog, every role, every relationship in one place. The structure that lives in your head, now somewhere you can actually look at it.</p>
       </div>
     </div>
   </section>
 
   <!-- FRENCHIES PHOTO -->
-  <section class="section photo-section">
+  <section class="section photo-section" style="min-height:600px;">
     <div class="photo-section-bg" style="background-image:url('img-frenchies.png'); background-position:center 30%;"></div>
     <div class="photo-overlay left"></div>
     <div class="photo-content left">
@@ -1763,15 +1850,18 @@
       });
     })();
 
-    // Sticky bar — appears after 500px scroll, dismissable
+    // Sticky bar — appears after 800px scroll, hides when back above 400px
     (function() {
       var bar = document.getElementById('stickyBar');
       var dismiss = document.getElementById('stickyDismiss');
       var dismissed = false;
 
       window.addEventListener('scroll', function() {
-        if (!dismissed && window.scrollY > 500) {
+        if (dismissed) return;
+        if (window.scrollY > 800) {
           bar.classList.add('visible');
+        } else if (window.scrollY < 400) {
+          bar.classList.remove('visible');
         }
       }, { passive: true });
 
