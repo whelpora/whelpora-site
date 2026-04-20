@@ -168,6 +168,68 @@
     }
     .nav-btn:hover { background: var(--green-bright); transform: translateY(-1px); }
 
+    /* Hamburger button — hidden on desktop */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 210;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px; height: 1.5px;
+      background: var(--white-70);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile nav drawer */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: rgba(24,16,10,0.97);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 24px 28px;
+      flex-direction: column;
+      gap: 0;
+      z-index: 190;
+      transform: translateY(-8px);
+      opacity: 0;
+      transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.25s;
+      pointer-events: none;
+    }
+    .nav-drawer.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .nav-drawer .nav-link {
+      font-size: 15px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--white-50);
+    }
+    .nav-drawer .nav-link:last-of-type { border-bottom: none; }
+    .nav-drawer .nav-btn {
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+      padding: 14px 20px;
+      font-size: 14px;
+      border-radius: 8px;
+    }
+
     /* ─── GLASS CARD ─────────────────────────────── */
     .glass-card {
       background: rgba(255,255,255,0.05);
@@ -1331,7 +1393,7 @@
       .founding-strip { padding: 0 20px; }
       .founding-strip-inner { grid-template-columns: 1fr; gap: 24px; padding: 32px 28px; }
       .founding-right { align-items: flex-start; }
-      .founding-copy { text-align: left; }
+      .founding-copy { text-align: left; max-width: 100%; }
       .problem-card { grid-template-columns: 1fr; gap: 16px; }
       .problem-card-quote { border-left: none; border-top: 1px solid rgba(159,207,40,0.15); padding-left: 0; padding-top: 16px; }
       .showcase-grid, .showcase-grid.reverse { grid-template-columns: 1fr; gap: 36px; }
@@ -1348,6 +1410,104 @@
       .footer-left { flex-direction: column; gap: 8px; }
       .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
     }
+
+    /* ─── MOBILE (≤ 640px) ────────────────────────── */
+    @media (max-width: 640px) {
+      /* Nav: hide desktop links, show hamburger */
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-drawer { display: flex; }
+
+      /* Hero */
+      .hero { padding: 80px 0 60px; min-height: 100svh; }
+      .hero-content { padding: 0 20px; }
+      .hero-pill { font-size: 9px; letter-spacing: 2px; padding: 5px 12px 5px 10px; }
+
+      /* Hero CTA glass card — full width, sensible padding */
+      .hero-content .glass-card {
+        display: block !important;
+        width: 100%;
+        padding: 20px 20px 18px !important;
+        border-radius: 14px !important;
+      }
+      .hero-actions { flex-direction: column; gap: 10px; width: 100%; }
+      .btn-green { display: block; text-align: center; padding: 15px 24px; width: 100%; }
+      .btn-ghost { justify-content: center; }
+
+      /* Hero note — allow wrapping */
+      .hero-note {
+        font-size: 10px;
+        white-space: normal;
+        line-height: 1.6;
+      }
+
+      /* Problem section */
+      .problem-section { padding: 56px 0 72px; }
+      .problem-card { padding: 24px 20px 20px; }
+
+      /* Founding strip */
+      .founding-strip-inner { padding: 28px 20px; }
+      .founding-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .founding-note { font-size: 11px; }
+      .founding-h { font-size: clamp(20px, 5vw, 28px); }
+
+      /* Features */
+      .features-section { padding: 72px 0 56px; }
+      .feature-cell { padding: 32px 24px 28px; }
+
+      /* Photo sections */
+      .photo-full { height: 260px; }
+      .photo-overlap-card { margin-top: -48px; padding: 0 16px 48px; gap: 12px; }
+      .photo-text-title { font-size: clamp(22px, 6vw, 32px); }
+
+      /* Showcase */
+      .showcase-section { padding: 56px 0; }
+      .showcase-grid, .showcase-grid.reverse { gap: 24px; }
+
+      /* Waitlist form — stack input and button vertically */
+      .waitlist-row {
+        flex-direction: column;
+        border-radius: 12px;
+        padding: 8px;
+        gap: 8px;
+      }
+      .waitlist-input { padding: 10px 12px; text-align: center; }
+      .waitlist-btn { width: 100%; border-radius: 8px; padding: 12px 20px; font-size: 13px; }
+
+      /* Mobile app card */
+      .mobile-section { padding: 56px 0 72px; }
+      .mobile-card { padding: 40px 20px 36px; border-radius: 20px; }
+      .mobile-chips { gap: 6px; }
+      .mobile-chip { font-size: 11px; padding: 6px 12px; }
+
+      /* Pricing */
+      .pricing-section { padding: 56px 0 72px; }
+      .pricing-card { padding: 28px 24px 24px; }
+      .pricing-price { font-size: 38px; }
+      .pricing-head-sub { font-size: 13.5px; }
+
+      /* Sticky bar — stack on very small screens */
+      .sticky-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 14px 16px;
+      }
+      .sticky-bar-text { font-size: 12px; line-height: 1.5; }
+      .sticky-bar-right { width: 100%; justify-content: space-between; }
+      .sticky-bar-right .btn-green { flex: 1; text-align: center; padding: 10px 16px !important; font-size: 12px !important; }
+
+      /* Footer */
+      .footer-co { font-size: 10px; }
+    }
+
+    /* ─── VERY SMALL (≤ 380px) ───────────────────── */
+    @media (max-width: 380px) {
+      .hero-h1, .hero-h1-dim { letter-spacing: -1px; }
+      .mobile-card { padding: 32px 16px 28px; }
+      .feature-cell { padding: 24px 16px 20px; }
+      .pricing-card { padding: 24px 16px 20px; }
+    }
   </style>
   <template id="__bundler_thumbnail" data-bg-color="#18100a">
     <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
@@ -1363,6 +1523,7 @@
   <!-- NAV -->
   <nav>
     <a href="/" class="nav-wordmark">WHELPORA</a>
+    <!-- Desktop links -->
     <div class="nav-links">
       <a href="#features" class="nav-link">Features</a>
       <a href="#pricing" class="nav-link">Pricing</a>
@@ -1370,7 +1531,19 @@
       <a href="https://app.whelpora.com" class="nav-link">Sign in</a>
       <a href="https://app.whelpora.com/signup" class="nav-btn">Join the Beta</a>
     </div>
+    <!-- Mobile hamburger -->
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+  <!-- Mobile nav drawer -->
+  <div class="nav-drawer" id="navDrawer" aria-hidden="true">
+    <a href="#features" class="nav-link">Features</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#mobile" class="nav-link">Mobile</a>
+    <a href="https://app.whelpora.com" class="nav-link">Sign in</a>
+    <a href="https://app.whelpora.com/signup" class="nav-btn">Join the Beta</a>
+  </div>
 
   <!-- AMBIENT ORBS -->
   <div class="orb orb-1"></div>
@@ -1740,31 +1913,7 @@
           Your desktop for the big picture.<br>
           <span class="mobile-h-dim">Your pocket for the <span class="serif" style="color:rgba(255,255,255,0.5);">3 am whelp.</span></span>
         </h2>
-        <p class="mobile-body">The Whelpora mobile app is in active development, built for one-handed use when you need it most. It's not available yet. Join the waitlist and we'll notify you the moment it ships.</p>
-        <div class="mobile-chips">
-          <span class="mobile-chip"><span>Soon</span>Whelping mode</span>
-          <span class="mobile-chip"><span>Soon</span>Quick weigh-ins</span>
-          <span class="mobile-chip"><span>Soon</span>Offline-first</span>
-          <span class="mobile-chip"><span>Soon</span>Photo logs</span>
-          <span class="mobile-chip"><span>Soon</span>Push reminders</span>
-        </div>
-        <form
-          class="waitlist-form"
-          action="https://YOURDC.list-manage.com/subscribe/post?u=YOUR_USER_ID&amp;id=YOUR_LIST_ID"
-          method="post"
-          target="_blank"
-          novalidate
-        >
-          <label for="mce-EMAIL" class="waitlist-label">Notify me when mobile launches</label>
-          <div class="waitlist-row">
-            <input type="email" name="EMAIL" id="mce-EMAIL" class="waitlist-input" placeholder="you@kennel.com" required>
-            <button type="submit" class="waitlist-btn">Join waitlist</button>
-          </div>
-          <div aria-hidden="true" style="position:absolute;left:-5000px;">
-            <input type="text" name="b_YOUR_USER_ID_YOUR_LIST_ID" tabindex="-1" value="">
-          </div>
-          <p class="waitlist-fine">We'll email you when it drops. No spam. Unsubscribe anytime.</p>
-        </form>
+        <p class="mobile-body">The Whelpora mobile app is in active development, built for one-handed use when you need it most. It's not available yet.</p>
       </div>
     </div>
   </section>
@@ -1914,6 +2063,27 @@
       dismiss.addEventListener('click', function() {
         dismissed = true;
         bar.classList.remove('visible');
+      });
+    })();
+    // Hamburger nav
+    (function() {
+      var btn = document.getElementById('navHamburger');
+      var drawer = document.getElementById('navDrawer');
+      if (!btn || !drawer) return;
+      function toggle(open) {
+        btn.classList.toggle('open', open);
+        drawer.classList.toggle('open', open);
+        btn.setAttribute('aria-expanded', String(open));
+        drawer.setAttribute('aria-hidden', String(!open));
+      }
+      btn.addEventListener('click', function() { toggle(!btn.classList.contains('open')); });
+      // Close on link click
+      drawer.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() { toggle(false); });
+      });
+      // Close on outside click
+      document.addEventListener('click', function(e) {
+        if (!btn.contains(e.target) && !drawer.contains(e.target)) toggle(false);
       });
     })();
   </script>
