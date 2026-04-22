@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Whelpora — Breeding can be messy. Your records don't have to be.</title>
-  <meta name="description" content="Less spreadsheets. Fewer sticky notes. More time with your dogs. Whelpora is the breeding program management tool built by breeders, for breeders.">
+  <title>Whelpora | Breeding program management for dog breeders</title>
+  <meta name="description" content="Less spreadsheets. Fewer sticky notes. More time with your dogs. Whelpora is built for breeders who take their program seriously.">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.whelpora.com">
-  <meta property="og:title" content="Whelpora — Breeding program management for dog breeders">
+  <meta property="og:title" content="Whelpora | Breeding program management for dog breeders">
   <meta property="og:description" content="Less spreadsheets. Fewer sticky notes. More time with your dogs. The complete breeding program management platform.">
   <meta property="og:image" content="https://www.whelpora.com/og-image.png">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Whelpora — Breeding program management for dog breeders">
+  <meta name="twitter:title" content="Whelpora | Breeding program management for dog breeders">
   <meta name="twitter:description" content="Less spreadsheets. Fewer sticky notes. More time with your dogs.">
   <meta name="twitter:image" content="https://www.whelpora.com/og-image.png">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -318,7 +318,7 @@
       border: 1px solid rgba(159,207,40,0.18);
       padding: 6px 16px 6px 12px;
       border-radius: 100px;
-      margin-bottom: 20px;
+      margin-bottom: 36px;
     }
 
     .hero-pill-dot {
@@ -345,16 +345,16 @@
       line-height: 1.03;
       letter-spacing: -2px;
       color: rgba(255,255,255,0.28);
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
 
     .hero-sub {
       font-size: clamp(15px, 1.4vw, 18px);
       font-weight: 300;
-      line-height: 1.7;
+      line-height: 1.8;
       color: var(--white-50);
-      margin: 0 auto 28px;
-      max-width: 480px;
+      margin: 0 auto 48px;
+      max-width: 680px;
     }
 
     .hero-actions {
@@ -478,19 +478,29 @@
     }
     .eyebrow::before { content:''; width:24px; height:1px; background:var(--green); flex-shrink:0; }
 
-    /* ─── PROBLEM ─────────────────────────────────── */
-    .problem-section { padding: 80px 0 96px; }
+    /* ─── BREEDING BELIEF ────────────────────────── */
+    .breeding-belief { padding: 64px 0 0; }
 
-    .problem-title {
-      font-size: clamp(32px, 4.4vw, 58px);
-      font-weight: 300;
-      line-height: 1.1;
-      letter-spacing: -0.8px;
-      color: var(--white-100);
+    .breeding-belief-inner {
+      border-radius: var(--radius);
+      padding: 56px 64px;
       text-align: center;
-      max-width: 820px;
-      margin: 0 auto 60px;
+      position: relative;
+      overflow: hidden;
     }
+
+    .breeding-belief-text {
+      font-size: clamp(16px, 1.6vw, 20px);
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--white-70);
+      max-width: 780px;
+      margin: 0 auto;
+      letter-spacing: 0.1px;
+    }
+
+    /* ─── PROBLEM ─────────────────────────────────── */
+    .problem-section { padding: 96px 0 120px; }
 
     .problem-grid {
       display: grid;
@@ -702,7 +712,7 @@
     }
 
     /* ─── FEATURES ────────────────────────────────── */
-    .features-section { padding: 104px 0 80px; }
+    .features-section { padding: 120px 0 96px; }
 
     .features-head { text-align: center; margin-bottom: 56px; }
 
@@ -781,7 +791,7 @@
     }
 
     /* ─── SHOWCASE ────────────────────────────────── */
-    .showcase-section { padding: 84px 0; }
+    .showcase-section { padding: 110px 0; }
 
     .showcase-section.wash {
       background: rgba(255,255,255,0.012);
@@ -1394,6 +1404,7 @@
       .founding-strip-inner { grid-template-columns: 1fr; gap: 24px; padding: 32px 28px; }
       .founding-right { align-items: flex-start; }
       .founding-copy { text-align: left; max-width: 100%; }
+      .breeding-belief-inner { padding: 36px 28px; }
       .problem-card { grid-template-columns: 1fr; gap: 16px; }
       .problem-card-quote { border-left: none; border-top: 1px solid rgba(159,207,40,0.15); padding-left: 0; padding-top: 16px; }
       .showcase-grid, .showcase-grid.reverse { grid-template-columns: 1fr; gap: 36px; }
@@ -1555,18 +1566,17 @@
     <div class="hero-photo"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div style="font-size:clamp(28px,4.5vw,68px);font-weight:300;letter-spacing:clamp(12px,1.8vw,22px);color:var(--white-100);margin-bottom:16px;line-height:1;text-transform:uppercase;">WHELPORA</div>
-      <p style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.38);letter-spacing:0.3px;margin-bottom:24px;line-height:1.5;">The complete breeding program management platform.</p>
+      <div style="font-size:clamp(28px,4.5vw,68px);font-weight:300;letter-spacing:clamp(12px,1.8vw,22px);color:var(--white-100);margin-bottom:48px;line-height:1;text-transform:uppercase;">WHELPORA</div>
       <div class="hero-pill">
         <span class="hero-pill-dot"></span>
         Now in Beta &nbsp;·&nbsp; Built in Australia
       </div>
       <h1 class="hero-h1">Breeding can be <span class="serif">messy.</span></h1>
-      <h1 class="hero-h1-dim">Your records don't have to be.</h1>
-      <p class="hero-sub">Less spreadsheets. Fewer sticky notes. More time with your dogs.</p>
+      <h1 class="hero-h1-dim">Managing your program doesn't have to be.</h1>
+      <p class="hero-sub">Breeding is made up of far more than milestones. It is planning, timing, testing, watching, recording, worrying, adjusting, and showing up again the next morning. Whelpora is built for all of it.</p>
       <div class="glass-card glass-shimmer" style="display:inline-block;border-radius:16px;padding:28px 40px 24px;margin-top:8px;">
         <div class="hero-actions">
-          <a href="https://app.whelpora.com/signup" class="btn-green">Join the Beta — It's Free</a>
+          <a href="https://app.whelpora.com/signup" class="btn-green">Join the Beta. It's Free</a>
           <a href="#features" class="btn-ghost">See what's inside</a>
         </div>
         <p class="hero-note" style="margin-top:16px;">Free during beta &nbsp;<span>·</span>&nbsp; Beta ends 30 May 2026 &nbsp;<span>·</span>&nbsp; No credit card required</p>
@@ -1604,7 +1614,6 @@
   <!-- PROBLEM -->
   <section class="section problem-section reveal">
     <div class="container">
-      <h2 class="problem-title">You didn't become a breeder to do the <span class="serif">paperwork.</span></h2>
       <div class="problem-grid">
 
         <div class="problem-card">
@@ -1619,42 +1628,26 @@
         <div class="problem-card">
           <div>
             <div class="problem-card-num">02</div>
-            <div class="problem-card-h">The tax-time scramble.</div>
-            <p class="problem-card-body">Every expense tracked, every litter's income separated, every receipt where it belongs. When your accountant asks, you send a clean summary — not a shoebox. Whelpora keeps your books organised all year so tax time is a five-minute job, not a fortnight of dread.</p>
+            <div class="problem-card-h">The heat you almost missed.</div>
+            <p class="problem-card-body">Three females, different cycles, one coming into season earlier than expected. The spreadsheet from last time. The note on your phone. The reminder you set and forgot to check. Managing multiple dogs means managing multiple timelines and one missed window changes everything.</p>
           </div>
-          <p class="problem-card-quote">Organised books, all year. Not just in a panic every June.</p>
+          <p class="problem-card-quote">The timing that determines everything, tracked in three different places.</p>
         </div>
 
         <div class="problem-card">
           <div>
             <div class="problem-card-num">03</div>
-            <div class="problem-card-h">The vaccination record at pickup.</div>
-            <p class="problem-card-body">At pickup the buyer asks when the second vaccination was. You check your phone, then your notes, then your camera roll. You tell them you'll send it through. Three days later, you still haven't found it.</p>
+            <div class="problem-card-h">The eight weeks before they go home.</div>
+            <p class="problem-card-body">Every weigh-in from day one. The collar colour, the personality note, the day their eyes opened. By pickup day you have watched this puppy become itself. That story deserves to be somewhere better than your camera roll.</p>
           </div>
-          <p class="problem-card-quote">The moment a buyer starts to wonder if you're as careful as you seemed.</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- NEWBORN PUPS — first dog moment -->
-  <section class="section photo-section">
-    <div class="photo-full">
-      <div class="photo-full-bg" style="background-image:url('img-newborn-pups.png'); background-position:center 42%;"></div>
-      <div class="photo-full-fade"></div>
-    </div>
-    <div class="photo-overlap-card">
-      <div>
-        <div class="eyebrow">The breeding program</div>
-        <h2 class="photo-text-title">The program you built, finally <span class="serif">visible.</span></h2>
-      </div>
-      <p class="photo-text-body">Every dog, every role, every relationship in one place. The structure that lives in your head, now somewhere you can actually look at it.</p>
-    </div>
-  </section>
-
   <!-- FOUNDING STRIP -->
-  <div class="founding-strip reveal" style="padding-bottom:0;">
+  <div class="founding-strip reveal" style="padding-top:80px;padding-bottom:80px;">
     <div class="founding-strip-inner">
       <div>
         <div class="founding-label">Founding beta</div>
@@ -1688,7 +1681,7 @@
             </svg>
           </div>
           <div class="feature-title">Litter and puppy tracking</div>
-          <p class="feature-body">Full pipeline from planned breeding to puppy placement. Weights, care plans, photos and upcoming milestones, all tied to the litter.</p>
+          <p class="feature-body">Full pipeline from planned breeding to puppy placement, all tied to the litter.</p>
         </div>
 
         <div class="feature-cell reveal reveal-delay-1">
@@ -1699,7 +1692,7 @@
             </svg>
           </div>
           <div class="feature-title">Health records and vet history</div>
-          <p class="feature-body">Vaccinations, vet visits, medications and genetic tests attached to each dog and puppy. Find any record in seconds, not phone scrolls.</p>
+          <p class="feature-body">Vaccinations, vet visits, medications and genetic tests attached to each dog. Find any record in seconds.</p>
         </div>
 
         <div class="feature-cell reveal reveal-delay-2">
@@ -1711,7 +1704,7 @@
             </svg>
           </div>
           <div class="feature-title">Paperwork and contracts</div>
-          <p class="feature-body">Invoices from litter records. Your own contract templates, reusable across litters. Expenses, receipts and net position per litter, tracked.</p>
+          <p class="feature-body">Invoices, contract templates and expenses tracked per litter, all in one place.</p>
         </div>
 
         <div class="feature-cell reveal reveal-delay-3">
@@ -1723,7 +1716,7 @@
             </svg>
           </div>
           <div class="feature-title">Calendar, tasks and reminders</div>
-          <p class="feature-body">Heats, matings, whelping milestones and deworming weeks pulled from every dog and litter. Today's checklist, built automatically.</p>
+          <p class="feature-body">Today's checklist, built automatically from every dog and litter in your program.</p>
         </div>
 
       </div>
@@ -1749,7 +1742,7 @@
         <div class="showcase-copy">
           <div class="eyebrow">Breeding &amp; finances</div>
           <h2 class="showcase-h">For the parts spreadsheets can't <span class="serif">handle.</span></h2>
-          <p class="showcase-body">Progesterone trends, ovulation anchors, TCI records, vet clinic links, stud fees and net position per litter. The level of detail serious breeders already track, now in one place that remembers it for you.</p>
+          <p class="showcase-body">The level of detail serious breeders already track, now in one place that remembers it for you.</p>
           <a href="https://app.whelpora.com/signup" class="showcase-link">See the full toolkit</a>
         </div>
       </div>
@@ -1763,7 +1756,7 @@
         <div class="showcase-copy">
           <div class="eyebrow">Puppies</div>
           <h2 class="showcase-h">Every puppy tracked from day <span class="serif">one.</span></h2>
-          <p class="showcase-body">Weight at birth, collar colour, matched status, photos, export ready. The profile a buyer sees on pickup day is built the moment the puppy arrives.</p>
+          <p class="showcase-body">The profile a buyer sees on pickup day is built the moment the puppy arrives.</p>
           <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself</a>
         </div>
         <div class="showcase-art">
@@ -1801,7 +1794,7 @@
         <div class="showcase-copy">
           <div class="eyebrow">Health records</div>
           <h2 class="showcase-h">Every weigh-in from day zero. All of <span class="serif">them.</span></h2>
-          <p class="showcase-body">Log every weigh-in from the moment they're born. Watch the growth curve climb. Catch the puppy falling behind before it becomes a problem — and know with confidence that every pup in the litter is thriving.</p>
+          <p class="showcase-body">Catch the puppy falling behind before it becomes a problem and know with confidence that every pup in the litter is thriving.</p>
           <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself</a>
         </div>
       </div>
@@ -1815,7 +1808,7 @@
         <div class="showcase-copy">
           <div class="eyebrow">Genetics</div>
           <h2 class="showcase-h">DNA results on every dog in your <span class="serif">program.</span></h2>
-          <p class="showcase-body">E locus, B locus, D locus, K locus and more. Every genetic test result stored on the dog's profile, linked to the pedigree, accessible when you're planning the next pairing.</p>
+          <p class="showcase-body">Every genetic test result stored on the dog's profile, linked to the pedigree, accessible when you're planning the next pairing.</p>
           <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself</a>
         </div>
         <div class="showcase-art">
@@ -1853,7 +1846,7 @@
         <div class="showcase-copy">
           <div class="eyebrow">Planning</div>
           <h2 class="showcase-h">Plan pairings before you <span class="serif">mate.</span></h2>
-          <p class="showcase-body">Coat predictor, pedigree builder, genetic loci tracking. Pair two dogs and see what the litter might look like, or pull the stud's pedigree before the season starts.</p>
+          <p class="showcase-body">Pair two dogs and see what the litter might look like before the season starts.</p>
           <a href="https://app.whelpora.com/signup" class="showcase-link">Try the planning tools</a>
         </div>
       </div>
@@ -1867,7 +1860,7 @@
         <div class="showcase-copy">
           <div class="eyebrow">Dogs &amp; program</div>
           <h2 class="showcase-h">Your whole kennel. <span class="serif">One screen.</span></h2>
-          <p class="showcase-body">Every dam, sire, guardian and retained puppy. Filter by role, age or breeding status. The program you built, finally mapped the way your brain already holds it.</p>
+          <p class="showcase-body">The program you built, finally mapped the way your brain already holds it.</p>
           <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself</a>
         </div>
         <div class="showcase-art">
@@ -1883,21 +1876,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- FRENCHIES — second dog moment -->
-  <section class="section photo-section">
-    <div class="photo-full">
-      <div class="photo-full-bg" style="background-image:url('img-frenchies.png'); background-position:center 26%;"></div>
-      <div class="photo-full-fade"></div>
-    </div>
-    <div class="photo-overlap-card">
-      <div>
-        <div class="eyebrow">Buyers &amp; paperwork</div>
-        <h2 class="photo-text-title">Track the paperwork, not your <span class="serif">inbox.</span></h2>
-      </div>
-      <p class="photo-text-body">Buyers tracked, invoices generated, contracts filed. The admin that used to take an afternoon takes twenty minutes. The structure is there when you need it, out of the way when you don't.</p>
     </div>
   </section>
 
