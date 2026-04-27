@@ -1912,16 +1912,16 @@
           <p class="pricing-tagline">Up to 2 litters per rolling 12 months.</p>
           <div class="pricing-amount">
             <div class="pricing-amount-row" data-show-for="annual">
-              <span class="pricing-strike">$89</span>
-              <span class="pricing-price">$53</span>
+              <span class="pricing-strike" data-price="essential_yr_full">$89</span>
+              <span class="pricing-price" data-price="essential_yr_disc">$53</span>
               <span class="pricing-period">/ yr</span>
             </div>
             <div class="pricing-amount-row hidden" data-show-for="monthly">
-              <span class="pricing-strike">$8.99</span>
-              <span class="pricing-price">$5.49</span>
+              <span class="pricing-strike" data-price="essential_mo_full">$8.99</span>
+              <span class="pricing-price" data-price="essential_mo_disc">$5.49</span>
               <span class="pricing-period">/ mo</span>
             </div>
-            <p class="pricing-note">AUD &nbsp;·&nbsp; 40% off &nbsp;·&nbsp; your rate stays with you</p>
+            <p class="pricing-note" data-currency-label>AUD &nbsp;·&nbsp; 40% off &nbsp;·&nbsp; your rate stays with you</p>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-list">
@@ -1939,16 +1939,16 @@
           <p class="pricing-tagline">Unlimited litters. No caps, ever.</p>
           <div class="pricing-amount">
             <div class="pricing-amount-row" data-show-for="annual">
-              <span class="pricing-strike">$229</span>
-              <span class="pricing-price">$137</span>
+              <span class="pricing-strike" data-price="pro_yr_full">$229</span>
+              <span class="pricing-price" data-price="pro_yr_disc">$137</span>
               <span class="pricing-period">/ yr</span>
             </div>
             <div class="pricing-amount-row hidden" data-show-for="monthly">
-              <span class="pricing-strike">$22.99</span>
-              <span class="pricing-price">$13.99</span>
+              <span class="pricing-strike" data-price="pro_mo_full">$22.99</span>
+              <span class="pricing-price" data-price="pro_mo_disc">$13.99</span>
               <span class="pricing-period">/ mo</span>
             </div>
-            <p class="pricing-note">AUD &nbsp;·&nbsp; 40% off &nbsp;·&nbsp; your rate stays with you</p>
+            <p class="pricing-note" data-currency-label>AUD &nbsp;·&nbsp; 40% off &nbsp;·&nbsp; your rate stays with you</p>
           </div>
           <div class="pricing-divider"></div>
           <ul class="pricing-list">
@@ -1961,7 +1961,7 @@
         </div>
 
       </div>
-      <p class="pricing-footnote">Founding rates stay active for as long as your subscription is active, and are held for 12 months if you cancel. Both plans are solo accounts. All prices in AUD.</p>
+      <p class="pricing-footnote" data-currency-footer>Founding rates stay active for as long as your subscription is active, and are held for 12 months if you cancel. Both plans are solo accounts. All prices in AUD.</p>
     </div>
   </section>
 
@@ -1990,6 +1990,73 @@
       <button class="sticky-dismiss" id="stickyDismiss" aria-label="Dismiss">&#215;</button>
     </div>
   </div>
+
+  <script>
+    // ─── CURRENCY LOCALISATION ───────────────────────
+    (function() {
+      var RATES = {
+        AU: { code: 'AUD', symbol: 'A$',  rate: 1    },
+        US: { code: 'USD', symbol: 'US$', rate: 0.64 },
+        GB: { code: 'GBP', symbol: '£',   rate: 0.50 },
+        CA: { code: 'CAD', symbol: 'CA$', rate: 0.88 },
+        NZ: { code: 'NZD', symbol: 'NZ$', rate: 1.08 },
+      };
+
+      // AUD source prices
+      var PRICES = {
+        essential_mo_full: 8.99,
+        essential_mo_disc: 5.49,
+        essential_yr_full: 89,
+        essential_yr_disc: 53,
+        pro_mo_full:       22.99,
+        pro_mo_disc:       13.99,
+        pro_yr_full:       229,
+        pro_yr_disc:       137,
+      };
+
+      function fmt(sym, amount) {
+        // Show decimals only if the source price has them
+        var hasDecimal = (amount % 1 !== 0);
+        return sym + (hasDecimal ? amount.toFixed(2) : Math.round(amount));
+      }
+
+      function applyPricing(curr) {
+        var r = curr.rate;
+        var s = curr.symbol;
+
+        Object.keys(PRICES).forEach(function(key) {
+          document.querySelectorAll('[data-price="' + key + '"]').forEach(function(el) {
+            el.textContent = fmt(s, PRICES[key] * r);
+          });
+        });
+
+        // Currency label under each price
+        document.querySelectorAll('[data-currency-label]').forEach(function(el) {
+          el.innerHTML = curr.code + ' &nbsp;·&nbsp; 40% off &nbsp;·&nbsp; your rate stays with you';
+        });
+
+        // Footer footnote
+        var footer = document.querySelector('[data-currency-footer]');
+        if (footer) {
+          if (curr.code === 'AUD') {
+            footer.textContent = 'Founding rates stay active for as long as your subscription is active, and are held for 12 months if you cancel. Both plans are solo accounts. All prices in AUD.';
+          } else {
+            footer.textContent = 'Founding rates stay active for as long as your subscription is active, and are held for 12 months if you cancel. Both plans are solo accounts. Prices shown in ' + curr.code + ' are approximate conversions — you will be charged in AUD. Your bank may apply a foreign transaction fee.';
+          }
+        }
+      }
+
+      fetch('https://ipapi.co/json/')
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          var curr = RATES[data.country_code] || RATES['US'];
+          applyPricing(curr);
+        })
+        .catch(function() {
+          // On error, leave AUD defaults as-is
+        });
+    })();
+  </script>
 
   <script>
     // Scroll reveal
