@@ -1,2142 +1,1140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Whelpora | Breeding program management for dog breeders</title>
-  <meta name="description" content="Less spreadsheets. Fewer sticky notes. More time with your dogs. Whelpora is built for breeders who take their program seriously.">
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.whelpora.com">
-  <meta property="og:title" content="Whelpora | Breeding program management for dog breeders">
-  <meta property="og:description" content="Less spreadsheets. Fewer sticky notes. More time with your dogs. The complete breeding program management platform.">
-  <meta property="og:image" content="https://www.whelpora.com/og-image.png">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Whelpora | Breeding program management for dog breeders">
-  <meta name="twitter:description" content="Less spreadsheets. Fewer sticky notes. More time with your dogs.">
-  <meta name="twitter:image" content="https://www.whelpora.com/og-image.png">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #18100a;
-      --bg-2: #1f1509;
-      --card: #221609;
-      --green: #9fcf28;
-      --green-bright: #b2e030;
-      --green-dark: #7aaa18;
-      --white-100: rgba(255,255,255,0.96);
-      --white-70: rgba(255,255,255,0.70);
-      --white-50: rgba(255,255,255,0.50);
-      --white-30: rgba(255,255,255,0.30);
-      --white-15: rgba(255,255,255,0.15);
-      --white-08: rgba(255,255,255,0.08);
-      --white-04: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.09);
-      --border-hi: rgba(255,255,255,0.17);
-      --radius: 20px;
-      --radius-sm: 12px;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--white-100);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .serif {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-    }
-
-    /* Subtle noise overlay — omitted in standalone build */
-
-    /* ─── AMBIENT ORBS ───────────────────────────── */
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0;
-      animation: orbFloat 0.8s ease forwards;
-    }
-    .orb-1 {
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(159,207,40,0.07) 0%, transparent 70%);
-      top: -200px; left: -150px;
-      animation: orbFloat 1s 0.2s ease forwards, orbDrift1 22s 1.2s ease-in-out infinite;
-    }
-    .orb-2 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(100,60,30,0.18) 0%, transparent 70%);
-      bottom: 20%; right: -100px;
-      animation: orbFloat 1s 0.5s ease forwards, orbDrift2 28s 1.5s ease-in-out infinite;
-    }
-    .orb-3 {
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(159,207,40,0.05) 0%, transparent 70%);
-      top: 50%; left: 40%;
-      animation: orbFloat 1s 0.8s ease forwards, orbDrift3 34s 1.8s ease-in-out infinite;
-    }
-    @keyframes orbFloat { to { opacity: 1; } }
-    @keyframes orbDrift1 {
-      0%,100% { transform: translate(0,0); }
-      33% { transform: translate(60px, 80px); }
-      66% { transform: translate(-40px, 120px); }
-    }
-    @keyframes orbDrift2 {
-      0%,100% { transform: translate(0,0); }
-      33% { transform: translate(-80px, -60px); }
-      66% { transform: translate(50px, -100px); }
-    }
-    @keyframes orbDrift3 {
-      0%,100% { transform: translate(0,0); }
-      33% { transform: translate(70px, -50px); }
-      66% { transform: translate(-60px, 70px); }
-    }
-
-    /* ─── SCROLL REVEAL ──────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.72s cubic-bezier(0.22,1,0.36,1), transform 0.72s cubic-bezier(0.22,1,0.36,1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.08s; }
-    .reveal-delay-2 { transition-delay: 0.18s; }
-    .reveal-delay-3 { transition-delay: 0.28s; }
-
-    /* ─── NAV ─────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      height: 60px;
-      padding: 0 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(24,16,10,0.80);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-wordmark {
-      font-size: 10.5px;
-      font-weight: 500;
-      letter-spacing: 4px;
-      color: var(--white-100);
-      text-decoration: none;
-    }
-
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-
-    .nav-link {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--white-30);
-      text-decoration: none;
-      transition: color 0.2s;
-      letter-spacing: 0.1px;
-    }
-    .nav-link:hover { color: var(--white-70); }
-
-    .nav-btn {
-      font-size: 12px;
-      font-weight: 500;
-      color: #0f0a04;
-      background: var(--green);
-      padding: 8px 20px;
-      border-radius: 7px;
-      text-decoration: none;
-      letter-spacing: 0.2px;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .nav-btn:hover { background: var(--green-bright); transform: translateY(-1px); }
-
-    /* Hamburger button — hidden on desktop */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      z-index: 210;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 22px; height: 1.5px;
-      background: var(--white-70);
-      border-radius: 2px;
-      transition: transform 0.25s, opacity 0.25s;
-    }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-    /* Mobile nav drawer */
-    .nav-drawer {
-      display: none;
-      position: fixed;
-      top: 60px; left: 0; right: 0;
-      background: rgba(24,16,10,0.97);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border-bottom: 1px solid var(--border);
-      padding: 24px 24px 28px;
-      flex-direction: column;
-      gap: 0;
-      z-index: 190;
-      transform: translateY(-8px);
-      opacity: 0;
-      transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), opacity 0.25s;
-      pointer-events: none;
-    }
-    .nav-drawer.open {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-    .nav-drawer .nav-link {
-      font-size: 15px;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--border);
-      color: var(--white-50);
-    }
-    .nav-drawer .nav-link:last-of-type { border-bottom: none; }
-    .nav-drawer .nav-btn {
-      margin-top: 20px;
-      display: block;
-      text-align: center;
-      padding: 14px 20px;
-      font-size: 14px;
-      border-radius: 8px;
-    }
-
-    /* ─── GLASS CARD ─────────────────────────────── */
-    .glass-card {
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-top-color: rgba(255,255,255,0.22);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.14);
-    }
-
-    .glass-card-green {
-      background: rgba(159,207,40,0.06);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border: 1px solid rgba(159,207,40,0.18);
-      border-top-color: rgba(159,207,40,0.34);
-      box-shadow: 0 24px 64px rgba(0,0,0,0.28), inset 0 1px 0 rgba(159,207,40,0.18);
-    }
-
-    /* Shimmer sweep on glass cards */
-    .glass-shimmer {
-      position: relative;
-      overflow: hidden;
-    }
-    .glass-shimmer::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.04) 50%, transparent 60%);
-      background-size: 200% 100%;
-      animation: shimmerSweep 6s ease infinite;
-      pointer-events: none;
-    }
-    @keyframes shimmerSweep {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    /* ─── HERO ────────────────────────────────────── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 100px 0 80px;
-    }
-
-    .hero-photo {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      background: url('img-golden-puppies.png') center 40% / cover no-repeat;
-      transform: scale(1.06);
-      animation: heroZoom 16s ease forwards;
-    }
-
-    @keyframes heroZoom { to { transform: scale(1); } }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 45%, rgba(24,16,10,0.28) 0%, rgba(24,16,10,0.82) 100%),
-        linear-gradient(to top, rgba(24,16,10,1) 0%, rgba(24,16,10,0.15) 44%, rgba(24,16,10,0.50) 100%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 0 24px;
-      max-width: 860px;
-    }
-
-    .hero-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 2.8px;
-      text-transform: uppercase;
-      color: var(--green);
-      background: rgba(159,207,40,0.08);
-      border: 1px solid rgba(159,207,40,0.18);
-      padding: 6px 16px 6px 12px;
-      border-radius: 100px;
-      margin-bottom: 56px;
-    }
-
-    .hero-pill-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--green);
-      animation: blink 2.4s ease infinite;
-    }
-
-    @keyframes blink { 0%,100%{opacity:1;}50%{opacity:0.25;} }
-
-    .hero-h1 {
-      font-size: clamp(36px, 4.8vw, 68px);
-      font-weight: 300;
-      line-height: 1.06;
-      letter-spacing: -1.5px;
-      color: var(--white-100);
-      margin-bottom: 4px;
-    }
-
-    .hero-h1-dim {
-      font-size: clamp(36px, 4.8vw, 68px);
-      font-weight: 300;
-      line-height: 1.06;
-      letter-spacing: -1.5px;
-      color: rgba(255,255,255,0.28);
-      margin-bottom: 40px;
-    }
-
-    .hero-sub {
-      font-size: clamp(15px, 1.4vw, 18px);
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--white-50);
-      margin: 0 auto 48px;
-      max-width: 680px;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 24px;
-    }
-
-    .btn-green {
-      font-size: 13px;
-      font-weight: 500;
-      color: #0f0a04;
-      background: var(--green);
-      padding: 15px 40px;
-      border-radius: 8px;
-      text-decoration: none;
-      letter-spacing: 0.1px;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    }
-    .btn-green:hover {
-      background: var(--green-bright);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(159,207,40,0.22);
-    }
-
-    .btn-ghost {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--white-30);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.2s;
-    }
-    .btn-ghost:hover { color: var(--white-70); }
-    .btn-ghost::after { content: '↓'; font-size: 11px; }
-
-    .hero-note {
-      font-size: 11px;
-      font-weight: 400;
-      color: rgba(255,255,255,0.18);
-      letter-spacing: 0.5px;
-    }
-
-    .hero-note span { color: rgba(255,255,255,0.28); }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 40px; left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .scroll-line {
-      width: 1px; height: 48px;
-      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.18));
-      animation: scrollPulse 2.4s ease infinite;
-    }
-
-    @keyframes scrollPulse { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
-
-    /* ─── MARQUEE ─────────────────────────────────── */
-    .marquee-wrap {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 0;
-      overflow: hidden;
-      background: rgba(255,255,255,0.015);
-      position: relative;
-      z-index: 1;
-    }
-
-    .marquee-track {
-      display: flex;
-      gap: 0;
-      animation: marqueeScroll 40s linear infinite;
-      width: max-content;
-    }
-
-    .marquee-item {
-      font-size: 9.5px;
-      font-weight: 500;
-      letter-spacing: 2.8px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.22);
-      white-space: nowrap;
-      padding: 0 40px;
-      display: flex;
-      align-items: center;
-      gap: 40px;
-    }
-    .marquee-item::after { content: '·'; color: rgba(255,255,255,0.10); letter-spacing: 0; padding: 0; }
-
-    @keyframes marqueeScroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* ─── SHARED ──────────────────────────────────── */
-    .section { position: relative; z-index: 1; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
-    .container-wide { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
-
-    .eyebrow {
-      font-size: 9.5px;
-      font-weight: 500;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--green);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-    .eyebrow::before { content:''; width:24px; height:1px; background:var(--green); flex-shrink:0; }
-
-    /* ─── BREEDING BELIEF ────────────────────────── */
-    .breeding-belief { padding: 64px 0 0; }
-
-    .breeding-belief-inner {
-      border-radius: var(--radius);
-      padding: 56px 64px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .breeding-belief-text {
-      font-size: clamp(16px, 1.6vw, 20px);
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--white-70);
-      max-width: 780px;
-      margin: 0 auto;
-      letter-spacing: 0.1px;
-    }
-
-    /* ─── PROBLEM ─────────────────────────────────── */
-    .problem-section { padding: 96px 0 120px; }
-
-    .problem-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2px;
-      max-width: 900px;
-      margin: 0 auto;
-      background: var(--border);
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .problem-card {
-      background: #241608;
-      padding: 36px 40px 32px;
-      display: block;
-      transition: background 0.3s;
-      position: relative;
-    }
-
-    .problem-card::before {
-      content: '';
-      position: absolute;
-      left: 40px; right: 40px;
-      bottom: 0;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .problem-card:last-child::before { display: none; }
-
-    .problem-card:hover { background: #2c1c0a; }
-
-    .problem-card-num {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      color: rgba(159,207,40,0.4);
-      margin-bottom: 12px;
-    }
-
-    .problem-card-h {
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--white-100);
-      letter-spacing: -0.2px;
-      margin-bottom: 10px;
-      line-height: 1.3;
-    }
-
-    .problem-card-body {
-      font-size: 13.5px;
-      font-weight: 400;
-      line-height: 1.72;
-      color: var(--white-50);
-    }
-
-    .problem-card-quote {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-style: italic;
-      font-size: clamp(15px, 1.6vw, 18px);
-      line-height: 1.5;
-      color: rgba(255,255,255,0.32);
-      border-left: 2px solid rgba(159,207,40,0.22);
-      padding-left: 20px;
-    }
-
-    /* ─── PHOTO SECTIONS ──────────────────────────── */
-    .photo-section { position: relative; z-index: 1; }
-
-    .photo-full {
-      position: relative;
-      height: 560px;
-      overflow: hidden;
-    }
-
-    .photo-full-bg {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
-
-    .photo-full-fade {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom,
-        rgba(24,16,10,1) 0%,
-        rgba(24,16,10,0) 14%,
-        rgba(24,16,10,0) 56%,
-        rgba(24,16,10,0.72) 80%,
-        rgba(24,16,10,1) 100%
-      );
-    }
-
-    .photo-overlap-card {
-      position: relative;
-      z-index: 2;
-      max-width: 1100px;
-      margin: -110px auto 0;
-      padding: 0 48px 88px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: start;
-    }
-
-    .photo-text-title {
-      font-size: clamp(26px, 3vw, 42px);
-      font-weight: 300;
-      line-height: 1.12;
-      color: var(--white-100);
-      letter-spacing: -0.4px;
-    }
-
-    .photo-text-body {
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 1.8;
-      color: var(--white-50);
-      padding-top: 52px;
-    }
-
-    /* ─── FOUNDING STRIP ──────────────────────────── */
-    .founding-strip {
-      position: relative;
-      z-index: 1;
-      padding: 0 48px;
-    }
-
-    .founding-strip-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      background: rgba(159,207,40,0.05);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(159,207,40,0.18);
-      border-top-color: rgba(159,207,40,0.32);
-      border-radius: var(--radius);
-      padding: 48px 56px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 48px;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 0 0 1px rgba(0,0,0,0.2), 0 32px 80px rgba(0,0,0,0.35), inset 0 1px 0 rgba(159,207,40,0.2);
-    }
-
-    .founding-strip-inner::after {
-      content: '';
-      position: absolute;
-      width: 480px; height: 480px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(159,207,40,0.07) 0%, transparent 70%);
-      top: -240px; right: -120px;
-      pointer-events: none;
-    }
-
-    .founding-label {
-      font-size: 9.5px;
-      font-weight: 500;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .founding-label::before { content:''; width:20px; height:1px; background:var(--green); }
-
-    .founding-h {
-      font-size: clamp(22px, 2.4vw, 32px);
-      font-weight: 300;
-      color: var(--white-100);
-      letter-spacing: -0.4px;
-      line-height: 1.2;
-    }
-
-    .founding-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 20px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .founding-copy {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--white-50);
-      line-height: 1.7;
-      text-align: right;
-      max-width: 420px;
-    }
-
-    .founding-actions { display: flex; align-items: center; gap: 20px; }
-
-    .founding-note {
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--white-30);
-    }
-
-    /* ─── FEATURES ────────────────────────────────── */
-    .features-section { padding: 120px 0 96px; }
-
-    .features-head { text-align: center; margin-bottom: 56px; }
-
-    .features-title {
-      font-size: clamp(28px, 3.4vw, 46px);
-      font-weight: 300;
-      line-height: 1.1;
-      letter-spacing: -0.6px;
-      color: var(--white-100);
-      margin-bottom: 16px;
-    }
-
-    .features-sub {
-      font-size: 15px;
-      font-weight: 400;
-      color: var(--white-50);
-      max-width: 500px;
-      margin: 0 auto;
-      line-height: 1.72;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      border: 1px solid var(--border-hi);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--border);
-      gap: 1px;
-    }
-
-    .feature-cell {
-      background: #221608;
-      padding: 48px 44px 44px;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
-    }
-
-    .feature-cell:hover { background: #2c1d0a; }
-
-    .feature-cell-num {
-      position: absolute;
-      top: 20px; right: 28px;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 1.5px;
-      color: rgba(255,255,255,0.07);
-    }
-
-    .feature-icon {
-      width: 36px; height: 36px;
-      border-radius: 9px;
-      background: rgba(159,207,40,0.10);
-      border: 1px solid rgba(159,207,40,0.20);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
-
-    .feature-title {
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--white-100);
-      margin-bottom: 10px;
-      letter-spacing: -0.15px;
-      line-height: 1.3;
-    }
-
-    .feature-body {
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 1.72;
-      color: var(--white-50);
-    }
-
-    /* ─── SHOWCASE ────────────────────────────────── */
-    .showcase-section { padding: 110px 0; }
-
-    .showcase-section.wash {
-      background: rgba(255,255,255,0.012);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .showcase-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.55fr;
-      gap: 72px;
-      align-items: center;
-    }
-
-    .showcase-grid.reverse { grid-template-columns: 1.55fr 1fr; }
-    .showcase-grid.reverse .showcase-copy { order: 2; }
-    .showcase-grid.reverse .showcase-art { order: 1; }
-
-    .showcase-h {
-      font-size: clamp(26px, 3vw, 42px);
-      font-weight: 300;
-      line-height: 1.1;
-      letter-spacing: -0.5px;
-      color: var(--white-100);
-      margin-bottom: 18px;
-    }
-
-    .showcase-body {
-      font-size: 14.5px;
-      font-weight: 400;
-      line-height: 1.8;
-      color: var(--white-50);
-      margin-bottom: 28px;
-    }
-
-    .showcase-link {
-      font-size: 12.5px;
-      font-weight: 500;
-      color: var(--green);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      letter-spacing: 0.1px;
-      transition: gap 0.2s;
-    }
-    .showcase-link::after { content: '→'; }
-    .showcase-link:hover { gap: 10px; }
-
-    /* Browser frame — more polished */
-    .browser-wrap {
-      position: relative;
-    }
-
-    .browser-glow {
-      position: absolute;
-      inset: -40px;
-      background: radial-gradient(ellipse at 50% 60%, rgba(159,207,40,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .browser {
-      position: relative;
-      border-radius: 11px;
-      overflow: hidden;
-      background: #f0f0ef;
-      box-shadow:
-        0 0 0 1px rgba(0,0,0,0.5),
-        0 24px 64px rgba(0,0,0,0.40),
-        0 8px 24px rgba(0,0,0,0.22);
-      transition: transform 0.5s cubic-bezier(0.23,1,0.32,1), box-shadow 0.5s;
-    }
-
-    .browser:hover {
-      transform: translateY(-6px);
-      box-shadow:
-        0 0 0 1px rgba(0,0,0,0.5),
-        0 40px 80px rgba(0,0,0,0.5),
-        0 16px 40px rgba(0,0,0,0.28);
-    }
-
-    .browser-chrome {
-      height: 34px;
-      background: #e6e5e3;
-      display: flex;
-      align-items: center;
-      padding: 0 12px;
-      gap: 6px;
-      border-bottom: 1px solid #d2d0ce;
-    }
-
-    .tl { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-    .tl-r { background: #ff5f56; }
-    .tl-y { background: #ffbd2e; }
-    .tl-g { background: #27c93f; }
-
-    .browser-url {
-      margin: 0 auto;
-      background: #dddbd9;
-      color: #777673;
-      font-size: 10.5px;
-      padding: 3px 12px;
-      border-radius: 5px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
-      min-width: 190px;
-      text-align: center;
-    }
-
-    .browser-img { display: block; width: 100%; height: auto; }
-
-    /* ─── MOBILE ──────────────────────────────────── */
-    .mobile-section { padding: 80px 0 104px; }
-
-    .mobile-card {
-      background: rgba(159,207,40,0.04);
-      backdrop-filter: blur(32px);
-      -webkit-backdrop-filter: blur(32px);
-      border: 1px solid rgba(159,207,40,0.15);
-      border-top-color: rgba(159,207,40,0.30);
-      border-radius: 28px;
-      padding: 96px 80px;
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-      box-shadow: 0 0 0 1px rgba(0,0,0,0.15), inset 0 1px 0 rgba(159,207,40,0.18), 0 40px 80px rgba(0,0,0,0.3);
-    }
-
-    .mobile-card::after {
-      content: '';
-      position: absolute;
-      width: 800px; height: 800px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(159,207,40,0.06) 0%, transparent 60%);
-      bottom: -400px; right: -300px;
-      pointer-events: none;
-    }
-
-    .mobile-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 9.5px;
-      font-weight: 500;
-      letter-spacing: 2.8px;
-      text-transform: uppercase;
-      color: var(--green);
-      background: rgba(159,207,40,0.10);
-      border: 1px solid rgba(159,207,40,0.22);
-      padding: 6px 16px;
-      border-radius: 100px;
-      margin-bottom: 36px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .mobile-pill-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--green);
-      animation: blink 2.4s ease infinite;
-    }
-
-    .mobile-h {
-      font-size: clamp(30px, 4.4vw, 60px);
-      font-weight: 300;
-      line-height: 1.08;
-      letter-spacing: -1px;
-      color: var(--white-100);
-      margin-bottom: 24px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .mobile-h-dim { color: rgba(255,255,255,0.28); }
-
-    .mobile-body {
-      font-size: clamp(14px, 1.2vw, 16px);
-      font-weight: 400;
-      line-height: 1.78;
-      color: var(--white-50);
-      max-width: 540px;
-      margin: 0 auto 40px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .mobile-chips {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 48px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .mobile-chip {
-      font-size: 11.5px;
-      font-weight: 400;
-      color: var(--white-50);
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      padding: 7px 16px;
-      border-radius: 100px;
-    }
-
-    .mobile-chip span {
-      color: var(--green);
-      font-weight: 500;
-      margin-right: 5px;
-    }
-
-    .waitlist-form {
-      max-width: 480px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .waitlist-label {
-      display: block;
-      font-size: 9.5px;
-      font-weight: 500;
-      letter-spacing: 2.4px;
-      text-transform: uppercase;
-      color: var(--white-30);
-      margin-bottom: 14px;
-    }
-
-    .waitlist-row {
-      display: flex;
-      gap: 6px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--white-15);
-      border-radius: 100px;
-      padding: 5px;
-      transition: border-color 0.2s;
-    }
-
-    .waitlist-row:focus-within { border-color: rgba(159,207,40,0.35); }
-
-    .waitlist-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      outline: none;
-      padding: 10px 16px;
-      color: var(--white-100);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13.5px;
-      font-weight: 400;
-    }
-
-    .waitlist-input::placeholder { color: var(--white-30); }
-
-    .waitlist-btn {
-      background: rgba(159,207,40,0.12);
-      border: 1px solid rgba(159,207,40,0.28);
-      color: var(--green);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      padding: 10px 20px;
-      border-radius: 100px;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      white-space: nowrap;
-    }
-
-    .waitlist-btn:hover { background: var(--green); color: #0f0a04; }
-
-    .waitlist-fine {
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--white-30);
-      margin-top: 14px;
-      line-height: 1.5;
-    }
-
-    /* ─── PRICING ─────────────────────────────────── */
-    .pricing-section { padding: 80px 0 104px; }
-
-    .pricing-head { text-align: center; margin-bottom: 56px; }
-
-    .pricing-free-banner {
-      display: block;
-      font-size: clamp(30px, 4vw, 54px);
-      font-weight: 300;
-      color: var(--white-100);
-      letter-spacing: -0.5px;
-      margin-bottom: 16px;
-      line-height: 1.15;
-    }
-
-    .pricing-free-banner em {
-      font-family: 'DM Serif Display', Georgia, serif;
-      font-style: italic;
-      color: var(--green);
-    }
-
-    .pricing-head-sub {
-      font-size: 14.5px;
-      font-weight: 400;
-      color: var(--white-50);
-      margin-bottom: 36px;
-      line-height: 1.7;
-    }
-
-    .pricing-toggle {
-      display: inline-flex;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 3px;
-    }
-
-    .pt-btn {
-      background: transparent;
-      border: none;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 12.5px;
-      font-weight: 400;
-      color: var(--white-30);
-      padding: 9px 20px;
-      border-radius: 100px;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .pt-btn:hover { color: var(--white-70); }
-    .pt-btn.active { background: var(--white-08); color: var(--white-100); }
-
-    .pt-save {
-      font-size: 9.5px;
-      font-weight: 500;
-      color: var(--green);
-      background: rgba(159,207,40,0.10);
-      padding: 2px 8px;
-      border-radius: 100px;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      max-width: 840px;
-      margin: 0 auto;
-    }
-
-    .pricing-card {
-      background: #221608;
-      border: 1px solid var(--border);
-      border-top-color: var(--border-hi);
-      border-radius: var(--radius);
-      padding: 40px 36px 32px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s;
-    }
-
-    .pricing-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-    }
-
-    .pricing-card:hover { transform: translateY(-3px); }
-
-    .pricing-card-featured {
-      background: linear-gradient(150deg, rgba(159,207,40,0.07) 0%, #221608 55%);
-      border-color: rgba(159,207,40,0.20);
-      border-top-color: rgba(159,207,40,0.36);
-    }
-
-    .pricing-card-featured::before {
-      background: linear-gradient(to right, transparent, rgba(159,207,40,0.35), transparent);
-    }
-
-    .pricing-featured-tag {
-      position: absolute;
-      top: 12px; right: 12px;
-      font-size: 9.5px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--green);
-      background: rgba(159,207,40,0.10);
-      border: 1px solid rgba(159,207,40,0.22);
-      padding: 4px 10px;
-      border-radius: 100px;
-    }
-
-    .pricing-tier {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--white-100);
-      margin-bottom: 8px;
-    }
-
-    .pricing-tagline {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--white-50);
-      margin-bottom: 28px;
-      line-height: 1.5;
-    }
-
-    .pricing-amount { margin-bottom: 20px; }
-
-    .pricing-amount-row {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      margin-bottom: 6px;
-    }
-
-    .pricing-amount-row.hidden { display: none; }
-
-    .pricing-strike {
-      font-size: 15px;
-      font-weight: 400;
-      color: var(--white-30);
-      text-decoration: line-through;
-      text-decoration-thickness: 1px;
-    }
-
-    .pricing-price {
-      font-size: 46px;
-      font-weight: 300;
-      color: var(--white-100);
-      letter-spacing: -1.5px;
-      line-height: 1;
-    }
-
-    .pricing-period {
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--white-50);
-    }
-
-    .pricing-note {
-      font-size: 11px;
-      font-weight: 400;
-      color: rgba(159,207,40,0.65);
-    }
-
-    .pricing-divider { height: 1px; background: var(--white-08); margin: 22px 0; }
-
-    .pricing-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-      margin-bottom: 28px;
-    }
-
-    .pricing-list li {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--white-50);
-      line-height: 1.5;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-
-    .pricing-list li::before {
-      content: '';
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--green);
-      flex-shrink: 0;
-      margin-top: 7px;
-      opacity: 0.7;
-    }
-
-    .pricing-list li strong { font-weight: 500; color: var(--white-100); }
-
-    .pricing-cta {
-      display: block;
-      text-align: center;
-      font-size: 13px;
-      font-weight: 500;
-      padding: 14px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-      margin-top: auto;
-      letter-spacing: 0.1px;
-    }
-
-    .pricing-cta-solid { background: var(--green); color: #0f0a04; }
-    .pricing-cta-solid:hover {
-      background: var(--green-bright);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 28px rgba(159,207,40,0.22);
-    }
-
-    .pricing-cta-ghost {
-      background: transparent;
-      color: var(--white-100);
-      border: 1px solid var(--border-hi);
-    }
-    .pricing-cta-ghost:hover { background: var(--white-08); }
-
-    .pricing-card-note {
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--white-30);
-      text-align: center;
-      margin-top: 12px;
-    }
-
-    .pricing-footnote {
-      max-width: 700px;
-      margin: 44px auto 0;
-      font-size: 12px;
-      font-weight: 400;
-      color: var(--white-30);
-      text-align: center;
-      line-height: 1.7;
-    }
-
-    /* ─── STICKY BAR ──────────────────────────────── */
-    .sticky-bar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 150;
-      background: rgba(24,16,10,0.94);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border-top: 1px solid rgba(159,207,40,0.16);
-      padding: 14px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transform: translateY(100%);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .sticky-bar.visible { transform: translateY(0); }
-
-    .sticky-bar-text {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--white-50);
-    }
-
-    .sticky-bar-text strong { color: var(--green); font-weight: 500; }
-
-    .sticky-bar-right { display: flex; align-items: center; gap: 16px; }
-
-    .sticky-dismiss {
-      background: none;
-      border: none;
-      color: var(--white-30);
-      font-size: 18px;
-      cursor: pointer;
-      padding: 4px 8px;
-      transition: color 0.2s;
-      line-height: 1;
-    }
-    .sticky-dismiss:hover { color: var(--white-100); }
-
-    /* ─── FOOTER ──────────────────────────────────── */
-    footer {
-      padding: 40px 48px;
-      border-top: 1px solid var(--border);
-      background: rgba(0,0,0,0.2);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .footer-left { display: flex; align-items: center; gap: 24px; }
-    .footer-mark { font-size: 10px; font-weight: 500; letter-spacing: 3.5px; color: var(--white-50); }
-    .footer-co { font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.15); }
-
-    .footer-links { display: flex; align-items: center; gap: 28px; }
-
-    .footer-link {
-      font-size: 12px;
-      font-weight: 400;
-      color: var(--white-30);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-link:hover { color: var(--white-70); }
-
-    /* ─── RESPONSIVE ──────────────────────────────── */
-    @media (max-width: 900px) {
-      nav { padding: 0 20px; }
-      .nav-links { gap: 14px; }
-      .container, .container-wide { padding: 0 20px; }
-      .hero { min-height: 720px; }
-      .hero-actions { flex-direction: column; gap: 12px; }
-      .founding-strip { padding: 0 20px; }
-      .founding-strip-inner { grid-template-columns: 1fr; gap: 24px; padding: 32px 28px; }
-      .founding-right { align-items: flex-start; }
-      .founding-copy { text-align: left; max-width: 100%; }
-      .breeding-belief-inner { padding: 36px 28px; }
-      .problem-card { grid-template-columns: 1fr; gap: 16px; }
-      .problem-card-quote { border-left: none; border-top: 1px solid rgba(159,207,40,0.15); padding-left: 0; padding-top: 16px; }
-      .showcase-grid, .showcase-grid.reverse { grid-template-columns: 1fr; gap: 36px; }
-      .showcase-grid.reverse .showcase-copy { order: 1; }
-      .showcase-grid.reverse .showcase-art { order: 2; }
-      .features-grid { grid-template-columns: 1fr; }
-      .photo-full { height: 380px; }
-      .photo-overlap-card { grid-template-columns: 1fr; gap: 16px; margin-top: -70px; padding: 0 20px 64px; }
-      .photo-text-body { padding-top: 0; }
-      .mobile-card { padding: 56px 24px; }
-      .pricing-grid { grid-template-columns: 1fr; gap: 12px; }
-      .sticky-bar { padding: 14px 20px; }
-      footer { flex-direction: column; gap: 20px; text-align: center; padding: 28px 20px; }
-      .footer-left { flex-direction: column; gap: 8px; }
-      .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
-    }
-
-    /* ─── MOBILE (≤ 640px) ────────────────────────── */
-    @media (max-width: 640px) {
-      /* Nav: hide desktop links, show hamburger */
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-      .nav-drawer { display: flex; }
-
-      /* Hero */
-      .hero { padding: 80px 0 60px; min-height: 100svh; }
-      .hero-content { padding: 0 20px; }
-      .hero-pill { font-size: 9px; letter-spacing: 2px; padding: 5px 12px 5px 10px; }
-
-      /* Hero CTA glass card — full width, sensible padding */
-      .hero-content .glass-card {
-        display: block !important;
-        width: 100%;
-        padding: 20px 20px 18px !important;
-        border-radius: 14px !important;
-      }
-      .hero-actions { flex-direction: column; gap: 10px; width: 100%; }
-      .btn-green { display: block; text-align: center; padding: 15px 24px; width: 100%; }
-      .btn-ghost { justify-content: center; }
-
-      /* Hero note — allow wrapping */
-      .hero-note {
-        font-size: 10px;
-        white-space: normal;
-        line-height: 1.6;
-      }
-
-      /* Problem section */
-      .problem-section { padding: 56px 0 72px; }
-      .problem-card { padding: 24px 20px 20px; }
-
-      /* Founding strip */
-      .founding-strip-inner { padding: 28px 20px; }
-      .founding-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
-      .founding-note { font-size: 11px; }
-      .founding-h { font-size: clamp(20px, 5vw, 28px); }
-
-      /* Features */
-      .features-section { padding: 72px 0 56px; }
-      .feature-cell { padding: 32px 24px 28px; }
-
-      /* Photo sections */
-      .photo-full { height: 260px; }
-      .photo-overlap-card { margin-top: -48px; padding: 0 16px 48px; gap: 12px; }
-      .photo-text-title { font-size: clamp(22px, 6vw, 32px); }
-
-      /* Showcase */
-      .showcase-section { padding: 56px 0; }
-      .showcase-grid, .showcase-grid.reverse { gap: 24px; }
-
-      /* Waitlist form — stack input and button vertically */
-      .waitlist-row {
-        flex-direction: column;
-        border-radius: 12px;
-        padding: 8px;
-        gap: 8px;
-      }
-      .waitlist-input { padding: 10px 12px; text-align: center; }
-      .waitlist-btn { width: 100%; border-radius: 8px; padding: 12px 20px; font-size: 13px; }
-
-      /* Mobile app card */
-      .mobile-section { padding: 56px 0 72px; }
-      .mobile-card { padding: 40px 20px 36px; border-radius: 20px; }
-      .mobile-chips { gap: 6px; }
-      .mobile-chip { font-size: 11px; padding: 6px 12px; }
-
-      /* Pricing */
-      .pricing-section { padding: 56px 0 72px; }
-      .pricing-card { padding: 28px 24px 24px; }
-      .pricing-price { font-size: 38px; }
-      .pricing-head-sub { font-size: 13.5px; }
-
-      /* Sticky bar — stack on very small screens */
-      .sticky-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        padding: 14px 16px;
-      }
-      .sticky-bar-text { font-size: 12px; line-height: 1.5; }
-      .sticky-bar-right { width: 100%; justify-content: space-between; }
-      .sticky-bar-right .btn-green { flex: 1; text-align: center; padding: 10px 16px !important; font-size: 12px !important; }
-
-      /* Footer */
-      .footer-co { font-size: 10px; }
-    }
-
-    /* ─── VERY SMALL (≤ 380px) ───────────────────── */
-    @media (max-width: 380px) {
-      .hero-h1, .hero-h1-dim { letter-spacing: -1px; }
-      .mobile-card { padding: 32px 16px 28px; }
-      .feature-cell { padding: 24px 16px 20px; }
-      .pricing-card { padding: 24px 16px 20px; }
-    }
-  </style>
-  <template id="__bundler_thumbnail" data-bg-color="#18100a">
-    <svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
-      <rect width="400" height="260" fill="#18100a"/>
-      <text x="200" y="118" font-family="sans-serif" font-size="13" font-weight="300" letter-spacing="14" fill="rgba(255,255,255,0.9)" text-anchor="middle">WHELPORA</text>
-      <rect x="160" y="135" width="80" height="2" rx="1" fill="rgba(159,207,40,0.5)"/>
-      <text x="200" y="158" font-family="sans-serif" font-size="8" letter-spacing="3" fill="rgba(159,207,40,0.7)" text-anchor="middle">BREEDING SOFTWARE</text>
-    </svg>
-  </template>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whelpora | Breeding program management for dog breeders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0e9e0;
+    --glass: rgba(255, 252, 248, 0.65);
+    --glass-strong: rgba(255, 252, 248, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.8);
+    --accent: #8a6e52;
+    --accent-light: #b8956e;
+    --accent-warm: #c4a882;
+    --text-primary: #221608;
+    --text-secondary: #6b5540;
+    --text-muted: #a08060;
+    --border: rgba(140, 110, 82, 0.15);
+    --shadow: 0 4px 32px rgba(100, 75, 50, 0.1);
+    --shadow-lg: 0 16px 64px rgba(100, 75, 50, 0.15);
+    --radius: 18px;
+    --radius-sm: 12px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* warm layered background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 15% 10%, rgba(210, 185, 150, 0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 85% 85%, rgba(195, 165, 125, 0.2) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 50% 50%, rgba(220, 200, 170, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(240, 233, 224, 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+  }
+
+  .nav-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+
+  .nav-cta {
+    background: var(--text-primary) !important;
+    color: var(--bg) !important;
+    padding: 9px 22px !important;
+    border-radius: 100px;
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    letter-spacing: 0.02em;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--accent) !important; color: white !important; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 140px 48px 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1600&q=70');
+    background-size: cover;
+    background-position: center 35%;
+    opacity: 0.12;
+    z-index: 0;
+  }
+
+  .hero-content { position: relative; z-index: 1; max-width: 780px; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 40px;
+    background: var(--glass);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-weight: 400;
+    box-shadow: var(--shadow);
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent-light);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(54px, 8vw, 96px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .hero-title em { font-style: italic; font-weight: 400; color: var(--accent-light); }
+
+  .hero-title-2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(54px, 8vw, 96px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--text-muted);
+    margin-bottom: 44px;
+  }
+
+  .hero-glass {
+    background: var(--glass);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 32px 44px;
+    max-width: 620px;
+    margin: 0 auto 36px;
+    box-shadow: var(--shadow);
+  }
+
+  .hero-origin {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .hero-body {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .btn-primary {
+    background: var(--text-primary);
+    color: #f0e9e0;
+    padding: 13px 28px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent); }
+
+  .btn-ghost {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 13px 22px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 300;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.85); color: var(--text-primary); }
+
+  .hero-meta { font-size: 12px; color: var(--text-muted); letter-spacing: 0.04em; }
+  .hero-meta span { margin: 0 8px; }
+
+  /* TICKER */
+  .ticker {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 15px 0;
+    overflow: hidden;
+    background: rgba(255,252,248,0.45);
+    backdrop-filter: blur(8px);
+  }
+
+  .ticker-inner {
+    display: flex;
+    gap: 48px;
+    animation: tick 35s linear infinite;
+    width: max-content;
+  }
+
+  .ticker-item {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+    font-weight: 400;
+  }
+
+  @keyframes tick {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* PROBLEMS */
+  .problems {
+    position: relative; z-index: 1;
+    padding: 90px 48px;
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .problem-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 38px 44px;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .problem-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+  .problem-num {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--accent-light);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .problem-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+  }
+
+  .problem-body {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* FOUNDING */
+  .founding-wrap {
+    position: relative; z-index: 1;
+    padding: 0 48px 90px;
+  }
+
+  .founding {
+    background: var(--glass);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 56px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    box-shadow: var(--shadow-lg);
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  .label-row {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 400;
+  }
+  .label-row::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+
+  .founding-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--text-primary);
+  }
+
+  .founding-body {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  /* ONE SYSTEM */
+  .one-system {
+    position: relative; z-index: 1;
+    padding: 90px 48px;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  .section-header { text-align: center; margin-bottom: 48px; }
+
+  .section-label-center {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .section-label-center::before, .section-label-center::after {
+    content: ''; width: 20px; height: 1px; background: var(--accent-warm);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .section-title em { font-style: italic; font-weight: 400; color: var(--accent-light); }
+
+  .section-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    max-width: 460px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .feature-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 34px 38px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .feature-card:hover { transform: translateY(-2px); }
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(200, 168, 130, 0.5), transparent);
+  }
+
+  .feature-num {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--accent-warm);
+    margin-bottom: 12px;
+    font-weight: 400;
+    float: right;
+  }
+
+  .feature-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    clear: both;
+  }
+
+  .feature-body {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* SHOWCASE ROWS */
+  .showcase {
+    position: relative; z-index: 1;
+    padding: 0 48px 90px;
+    max-width: 1060px;
+    margin: 0 auto;
+  }
+
+  .showcase-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+  .showcase-row.reverse { direction: rtl; }
+  .showcase-row.reverse > * { direction: ltr; }
+
+  .showcase-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 400;
+  }
+  .showcase-label::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+
+  .showcase-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3.5vw, 46px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+  .showcase-title em { font-style: italic; font-weight: 400; color: var(--accent-light); }
+
+  .showcase-body {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 22px;
+    font-weight: 300;
+  }
+
+  .showcase-link {
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+  .showcase-link:hover { gap: 10px; }
+
+  /* APP FRAME */
+  .app-frame {
+    background: var(--glass-strong);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .frame-bar {
+    padding: 12px 16px;
+    background: rgba(255,252,248,0.7);
+    border-bottom: 1px solid rgba(200,180,160,0.2);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .dot { width: 9px; height: 9px; border-radius: 50%; }
+  .dot-r { background: #ff9494; }
+  .dot-y { background: #ffd080; }
+  .dot-g { background: #90d090; }
+
+  .frame-url {
+    flex: 1;
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .frame-img {
+    width: 100%;
+    display: block;
+  }
+
+  /* MOBILE */
+  .mobile-section {
+    position: relative; z-index: 1;
+    padding: 0 48px 90px;
+  }
+
+  .mobile-inner {
+    background: var(--glass);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 72px 48px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .mobile-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    border: 1px solid var(--border);
+    padding: 7px 16px;
+    border-radius: 100px;
+    font-weight: 400;
+  }
+
+  .mobile-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+
+  .mobile-title .dim { color: var(--text-muted); }
+  .mobile-title em { font-style: italic; font-weight: 400; color: var(--accent-light); }
+
+  /* PRICING */
+  .pricing {
+    position: relative; z-index: 1;
+    padding: 0 48px 90px;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .pricing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 62px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+  }
+  .pricing-title em { font-style: italic; font-weight: 400; color: var(--accent-light); }
+
+  .pricing-sub {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 36px;
+    font-weight: 300;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+  }
+
+  .pricing-toggle {
+    display: inline-flex;
+    gap: 4px;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 100px;
+    padding: 4px;
+    margin-bottom: 48px;
+    box-shadow: var(--shadow);
+  }
+
+  .toggle-btn {
+    padding: 9px 22px;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .toggle-btn.active {
+    background: white;
+    color: var(--text-primary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    font-weight: 400;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    text-align: left;
+  }
+
+  .pricing-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 44px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(200, 168, 130, 0.6), transparent);
+  }
+
+  .pricing-tag {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+
+  .pricing-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  .price-was {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-bottom: 2px;
+  }
+
+  .price-now {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+  .price-unit { font-size: 17px; font-family: 'DM Sans'; font-weight: 300; color: var(--text-muted); }
+
+  .price-meta {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.07em;
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  .pricing-divider { height: 1px; background: var(--border); margin-bottom: 22px; }
+
+  .pricing-features { list-style: none; margin-bottom: 28px; }
+  .pricing-features li {
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding: 5px 0 5px 18px;
+    position: relative;
+    font-weight: 300;
+  }
+  .pricing-features li::before { content: '–'; position: absolute; left: 0; color: var(--accent-warm); }
+  .pricing-features li.highlight { color: var(--text-primary); font-weight: 400; }
+
+  .most-popular {
+    position: absolute;
+    top: 16px; right: 16px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 100px;
+    color: var(--text-muted);
+    background: rgba(255,255,255,0.6);
+  }
+
+  .pricing-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 20px;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    position: relative; z-index: 1;
+    padding: 56px 48px 96px;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-origin {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 44px;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-links { display: flex; gap: 22px; }
+  .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text-secondary); }
+
+  /* STICKY */
+  .sticky-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(240, 233, 224, 0.88);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-top: 1px solid rgba(255,255,255,0.6);
+    padding: 14px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 99;
+    font-size: 13px;
+  }
+  .sticky-bar strong { color: var(--text-primary); font-weight: 500; }
+  .sticky-bar .dim { color: var(--text-muted); font-weight: 300; }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="/" class="nav-wordmark">WHELPORA</a>
-    <!-- Desktop links -->
-    <div class="nav-links">
-      <a href="#features" class="nav-link">Features</a>
-      <a href="#pricing" class="nav-link">Pricing</a>
-      <a href="#mobile" class="nav-link">Mobile</a>
-      <a href="https://app.whelpora.com" class="nav-link">Sign in</a>
-      <a href="https://app.whelpora.com/signup" class="nav-btn">Join the Beta</a>
+<!-- NAV -->
+<nav>
+  <a href="https://www.whelpora.com" class="nav-logo">Whelpora</a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#mobile">Mobile</a></li>
+    <li><a href="https://app.whelpora.com">Sign in</a></li>
+    <li><a href="https://app.whelpora.com/signup" class="nav-cta">Join the Beta</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Now in Beta · Built in Australia</div>
+    <h1 class="hero-title">Breeding can be <em>messy.</em></h1>
+    <h2 class="hero-title-2">Managing your program doesn't have to be.</h2>
+    <div class="hero-glass">
+      <p class="hero-origin">Responsible breeders have been running serious programs on sticky notes and goodwill for decades. That felt worth fixing.</p>
+      <p class="hero-body">Breeding is made up of far more than milestones. It is planning, timing, testing, watching, recording, worrying, adjusting, and showing up again the next morning. Whelpora is built for all of it.</p>
     </div>
-    <!-- Mobile hamburger -->
-    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-  <!-- Mobile nav drawer -->
-  <div class="nav-drawer" id="navDrawer" aria-hidden="true">
-    <a href="#features" class="nav-link">Features</a>
-    <a href="#pricing" class="nav-link">Pricing</a>
-    <a href="#mobile" class="nav-link">Mobile</a>
-    <a href="https://app.whelpora.com" class="nav-link">Sign in</a>
-    <a href="https://app.whelpora.com/signup" class="nav-btn">Join the Beta</a>
+    <div class="hero-ctas">
+      <a href="https://app.whelpora.com/signup" class="btn-primary">Join the Beta. It's Free</a>
+      <a href="#features" class="btn-ghost">See what's inside ↓</a>
+    </div>
+    <p class="hero-meta">Free during beta <span>·</span> Beta ends 31 May 2026 <span>·</span> No credit card required</p>
   </div>
+</section>
 
-  <!-- AMBIENT ORBS -->
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-photo"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div style="font-size:clamp(28px,4.5vw,68px);font-weight:300;letter-spacing:clamp(12px,1.8vw,22px);color:var(--white-100);margin-bottom:48px;margin-top:80px;line-height:1;text-transform:uppercase;">WHELPORA</div>
-      <div class="hero-pill">
-        <span class="hero-pill-dot"></span>
-        Now in Beta &nbsp;·&nbsp; Built in Australia
-      </div>
-      <h1 class="hero-h1">Breeding can be <span class="serif">messy.</span></h1>
-      <h1 class="hero-h1-dim">Managing your program doesn't have to be.</h1>
-      <p class="hero-sub">Breeding is made up of far more than milestones. It is planning, timing, testing, watching, recording, worrying, adjusting, and showing up again the next morning. Whelpora is built for all of it.</p>
-      <div class="glass-card glass-shimmer" style="display:inline-block;border-radius:16px;padding:28px 40px 24px;margin-top:8px;">
-        <div class="hero-actions">
-          <a href="https://app.whelpora.com/signup" class="btn-green">Join the Beta. It's Free</a>
-          <a href="#features" class="btn-ghost">See what's inside</a>
-        </div>
-        <p class="hero-note" style="margin-top:16px;">Free during beta &nbsp;<span>·</span>&nbsp; Beta ends 31 May 2026 &nbsp;<span>·</span>&nbsp; No credit card required</p>
-      </div>
-    </div>
-    <div class="scroll-hint"><div class="scroll-line"></div></div>
-  </section>
-
-  <!-- MARQUEE -->
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span class="marquee-item">Litter Management</span>
-      <span class="marquee-item">Health Records</span>
-      <span class="marquee-item">Customer Management</span>
-      <span class="marquee-item">Invoicing &amp; Contracts</span>
-      <span class="marquee-item">Tasks &amp; Calendar</span>
-      <span class="marquee-item">Dog Profiles</span>
-      <span class="marquee-item">Financial Insights</span>
-      <span class="marquee-item">Coat Predictor</span>
-      <span class="marquee-item">Genetics</span>
-      <span class="marquee-item">Pedigree</span>
-      <span class="marquee-item">Litter Management</span>
-      <span class="marquee-item">Health Records</span>
-      <span class="marquee-item">Customer Management</span>
-      <span class="marquee-item">Invoicing &amp; Contracts</span>
-      <span class="marquee-item">Tasks &amp; Calendar</span>
-      <span class="marquee-item">Dog Profiles</span>
-      <span class="marquee-item">Financial Insights</span>
-      <span class="marquee-item">Coat Predictor</span>
-      <span class="marquee-item">Genetics</span>
-      <span class="marquee-item">Pedigree</span>
-    </div>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Litter Management</span>
+    <span class="ticker-item">Health Records</span>
+    <span class="ticker-item">Customer Management</span>
+    <span class="ticker-item">Invoicing & Contracts</span>
+    <span class="ticker-item">Tasks & Calendar</span>
+    <span class="ticker-item">Dog Profiles</span>
+    <span class="ticker-item">Financial Insights</span>
+    <span class="ticker-item">Coat Predictor</span>
+    <span class="ticker-item">Genetics</span>
+    <span class="ticker-item">Pedigree</span>
+    <span class="ticker-item">Litter Management</span>
+    <span class="ticker-item">Health Records</span>
+    <span class="ticker-item">Customer Management</span>
+    <span class="ticker-item">Invoicing & Contracts</span>
+    <span class="ticker-item">Tasks & Calendar</span>
+    <span class="ticker-item">Dog Profiles</span>
+    <span class="ticker-item">Financial Insights</span>
+    <span class="ticker-item">Coat Predictor</span>
+    <span class="ticker-item">Genetics</span>
+    <span class="ticker-item">Pedigree</span>
   </div>
+</div>
 
-  <!-- PROBLEM -->
-  <section class="section problem-section reveal">
-    <div class="container">
-      <div class="problem-grid">
+<!-- PROBLEMS -->
+<section class="problems">
+  <div class="problem-card">
+    <div class="problem-num">01</div>
+    <h3 class="problem-title">The whelping notebook you can't find.</h3>
+    <p class="problem-body">Yesterday's weights on a Post-it. Today's on your phone. Last litter's in a notebook somewhere. When the vet asks, you're scrolling through your camera roll.</p>
+  </div>
+  <div class="problem-card">
+    <div class="problem-num">02</div>
+    <h3 class="problem-title">The heat you almost missed.</h3>
+    <p class="problem-body">Three females, different cycles, one coming into season earlier than expected. The spreadsheet from last time. The note on your phone. The reminder you set and forgot to check. Managing multiple dogs means managing multiple timelines and one missed window changes everything.</p>
+  </div>
+  <div class="problem-card">
+    <div class="problem-num">03</div>
+    <h3 class="problem-title">The eight weeks before they go home.</h3>
+    <p class="problem-body">Every weigh-in from day one. The collar colour, the personality note, the day their eyes opened. By pickup day you have watched this puppy become itself. That story deserves to be somewhere better than your camera roll.</p>
+  </div>
+</section>
 
-        <div class="problem-card">
-          <div>
-            <div class="problem-card-num">01</div>
-            <div class="problem-card-h">The whelping notebook you can't find.</div>
-            <p class="problem-card-body">Yesterday's weights on a Post-it. Today's on your phone. Last litter's in a notebook somewhere. When the vet asks, you're scrolling through your camera roll.</p>
-          </div>
-        </div>
-
-        <div class="problem-card">
-          <div>
-            <div class="problem-card-num">02</div>
-            <div class="problem-card-h">The heat you almost missed.</div>
-            <p class="problem-card-body">Three females, different cycles, one coming into season earlier than expected. The spreadsheet from last time. The note on your phone. The reminder you set and forgot to check. Managing multiple dogs means managing multiple timelines and one missed window changes everything.</p>
-          </div>
-        </div>
-
-        <div class="problem-card">
-          <div>
-            <div class="problem-card-num">03</div>
-            <div class="problem-card-h">The eight weeks before they go home.</div>
-            <p class="problem-card-body">Every weigh-in from day one. The collar colour, the personality note, the day their eyes opened. By pickup day you have watched this puppy become itself. That story deserves to be somewhere better than your camera roll.</p>
-          </div>
-        </div>
-
-      </div>
+<!-- FOUNDING BETA -->
+<div class="founding-wrap">
+  <div class="founding">
+    <div>
+      <div class="label-row">Founding Beta</div>
+      <h3 class="founding-title">Join now. Your rate stays with you.</h3>
     </div>
-  </section>
-
-  <!-- FOUNDING STRIP -->
-  <div class="founding-strip reveal" style="padding-top:80px;padding-bottom:80px;">
-    <div class="founding-strip-inner">
-      <div>
-        <div class="founding-label">Founding beta</div>
-        <h2 class="founding-h">Join now. Your rate stays with you.</h2>
-      </div>
-      <div class="founding-right">
-        <p class="founding-copy">Beta is free until 31 May 2026. After that, founding members pay 40% off whatever we charge new members, for as long as they stay subscribed. Plus first access to the mobile app when it ships.</p>
-        <div class="founding-actions">
-          <a href="https://app.whelpora.com/signup" class="btn-green">Join the Beta</a>
-          <span class="founding-note">No credit card required</span>
-        </div>
-      </div>
+    <div>
+      <p class="founding-body">Beta is free until 31 May 2026. After that, founding members pay 40% off whatever we charge new members, for as long as they stay subscribed. Plus first access to the mobile app when it ships.</p>
+      <a href="https://app.whelpora.com/signup" class="btn-primary">Join the Beta</a>
+      <span style="font-size:12px; color: var(--text-muted); margin-left: 14px; font-weight: 300;">No credit card required</span>
     </div>
   </div>
+</div>
 
-  <!-- FEATURES -->
-  <section class="section features-section reveal" id="features">
-    <div class="container">
-      <div class="features-head">
-        <h2 class="features-title">One system for the whole <span class="serif">program.</span></h2>
-        <p class="features-sub">Every tool a serious breeder needs. No feature locked behind a higher tier. The only difference between plans is litters per year.</p>
-      </div>
-      <div class="features-grid">
-
-        <div class="feature-cell reveal">
-          <span class="feature-cell-num">01</span>
-          <div class="feature-icon">
-            <svg viewBox="0 0 16 16" fill="none" stroke="#9fcf28" stroke-width="1.4" xmlns="http://www.w3.org/2000/svg">
-              <rect x="2" y="3" width="12" height="10" rx="1.5"/>
-              <path d="M5 7h6M5 10h4"/>
-            </svg>
-          </div>
-          <div class="feature-title">Litter and puppy tracking</div>
-          <p class="feature-body">Full pipeline from planned breeding to puppy placement, all tied to the litter.</p>
-        </div>
-
-        <div class="feature-cell reveal reveal-delay-1">
-          <span class="feature-cell-num">02</span>
-          <div class="feature-icon">
-            <svg viewBox="0 0 16 16" fill="none" stroke="#9fcf28" stroke-width="1.4" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 2a3 3 0 100 6 3 3 0 000-6zM2 14c0-3.31 2.69-6 6-6s6 2.69 6 6"/>
-            </svg>
-          </div>
-          <div class="feature-title">Health records and vet history</div>
-          <p class="feature-body">Vaccinations, vet visits, medications and genetic tests attached to each dog. Find any record in seconds.</p>
-        </div>
-
-        <div class="feature-cell reveal reveal-delay-2">
-          <span class="feature-cell-num">03</span>
-          <div class="feature-icon">
-            <svg viewBox="0 0 16 16" fill="none" stroke="#9fcf28" stroke-width="1.4" xmlns="http://www.w3.org/2000/svg">
-              <rect x="2" y="2" width="12" height="12" rx="1.5"/>
-              <path d="M5 6h6M5 9h4M5 12h2"/>
-            </svg>
-          </div>
-          <div class="feature-title">Paperwork and contracts</div>
-          <p class="feature-body">Invoices, contract templates and expenses tracked per litter, all in one place.</p>
-        </div>
-
-        <div class="feature-cell reveal reveal-delay-3">
-          <span class="feature-cell-num">04</span>
-          <div class="feature-icon">
-            <svg viewBox="0 0 16 16" fill="none" stroke="#9fcf28" stroke-width="1.4" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="8" cy="8" r="6"/>
-              <path d="M8 5v3l2 2"/>
-            </svg>
-          </div>
-          <div class="feature-title">Calendar, tasks and reminders</div>
-          <p class="feature-body">Today's checklist, built automatically from every dog and litter in your program.</p>
-        </div>
-
-      </div>
+<!-- ONE SYSTEM -->
+<section class="one-system" id="features">
+  <div class="section-header">
+    <div class="section-label-center">Everything you need</div>
+    <h2 class="section-title">One system for the whole <em>program.</em></h2>
+    <p class="section-sub">Every tool a serious breeder needs. No feature locked behind a higher tier. The only difference between plans is litters per year.</p>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <span class="feature-num">01</span>
+      <h4 class="feature-title">Litter and puppy tracking</h4>
+      <p class="feature-body">Full pipeline from planned breeding to puppy placement, all tied to the litter.</p>
     </div>
-  </section>
-
-  <!-- PROGESTERONE SHOWCASE -->
-  <section class="section showcase-section reveal">
-    <div class="container-wide">
-      <div class="showcase-grid reverse">
-        <div class="showcase-art">
-          <div class="browser-wrap">
-            <div class="browser-glow"></div>
-            <div class="browser">
-              <div class="browser-chrome">
-                <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
-                <span class="browser-url">app.whelpora.com</span>
-              </div>
-              <img src="03_progesterone_cost.png" class="browser-img" alt="Whelpora progesterone and cost tracking">
-            </div>
-          </div>
-        </div>
-        <div class="showcase-copy">
-          <div class="eyebrow">Breeding &amp; finances</div>
-          <h2 class="showcase-h">For the parts spreadsheets can't <span class="serif">handle.</span></h2>
-          <p class="showcase-body">The level of detail serious breeders already track, now in one place that remembers it for you.</p>
-          <a href="https://app.whelpora.com/signup" class="showcase-link">See the full toolkit</a>
-        </div>
-      </div>
+    <div class="feature-card">
+      <span class="feature-num">02</span>
+      <h4 class="feature-title">Health records and vet history</h4>
+      <p class="feature-body">Vaccinations, vet visits, medications and genetic tests attached to each dog. Find any record in seconds.</p>
     </div>
-  </section>
-
-  <!-- SHOWCASE: Puppy profile -->
-  <section class="section showcase-section wash reveal">
-    <div class="container-wide">
-      <div class="showcase-grid">
-        <div class="showcase-copy">
-          <div class="eyebrow">Puppies</div>
-          <h2 class="showcase-h">Every puppy tracked from day <span class="serif">one.</span></h2>
-          <p class="showcase-body">Every weigh-in, photo, and note from day one. A complete record of each puppy's first weeks, ready to share or print for their new family.</p>
-          <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself</a>
-        </div>
-        <div class="showcase-art">
-          <div class="browser-wrap">
-            <div class="browser-glow"></div>
-            <div class="browser">
-              <div class="browser-chrome">
-                <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
-                <span class="browser-url">app.whelpora.com</span>
-              </div>
-              <img src="07_puppy_profile.png" class="browser-img" alt="Whelpora puppy profile">
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="feature-card">
+      <span class="feature-num">03</span>
+      <h4 class="feature-title">Paperwork and contracts</h4>
+      <p class="feature-body">Invoices, contract templates and expenses tracked per litter, all in one place.</p>
     </div>
-  </section>
-
-  <!-- SHOWCASE: Litter overview -->
-  <section class="section showcase-section reveal">
-    <div class="container-wide">
-      <div class="showcase-grid reverse">
-        <div class="showcase-art">
-          <div class="browser-wrap">
-            <div class="browser-glow"></div>
-            <div class="browser">
-              <div class="browser-chrome">
-                <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
-                <span class="browser-url">app.whelpora.com</span>
-              </div>
-              <img src="01_litter_overview.png" class="browser-img" alt="Whelpora litter overview">
-            </div>
-          </div>
-        </div>
-        <div class="showcase-copy">
-          <div class="eyebrow">Health records</div>
-          <h2 class="showcase-h">Every weigh-in from day zero. All of <span class="serif">them.</span></h2>
-          <p class="showcase-body">Catch the puppy falling behind before it becomes a problem and know with confidence that every pup in the litter is thriving.</p>
-          <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself</a>
-        </div>
-      </div>
+    <div class="feature-card">
+      <span class="feature-num">04</span>
+      <h4 class="feature-title">Calendar, tasks and reminders</h4>
+      <p class="feature-body">Today's checklist, built automatically from every dog and litter in your program.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SHOWCASE: Dog genetics -->
-  <section class="section showcase-section wash reveal">
-    <div class="container-wide">
-      <div class="showcase-grid">
-        <div class="showcase-copy">
-          <div class="eyebrow">Genetics</div>
-          <h2 class="showcase-h">DNA results on every dog in your <span class="serif">program.</span></h2>
-          <p class="showcase-body">Every genetic test result stored on the dog's profile, linked to the pedigree, accessible when you're planning the next pairing.</p>
-          <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself</a>
-        </div>
-        <div class="showcase-art">
-          <div class="browser-wrap">
-            <div class="browser-glow"></div>
-            <div class="browser">
-              <div class="browser-chrome">
-                <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
-                <span class="browser-url">app.whelpora.com</span>
-              </div>
-              <img src="06_dog_genetics.png" class="browser-img" alt="Whelpora dog genetics profile">
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- SHOWCASE -->
+<section class="showcase">
+
+  <div class="showcase-row">
+    <div>
+      <div class="showcase-label">Breeding & Finances</div>
+      <h3 class="showcase-title">For the parts spreadsheets can't <em>handle.</em></h3>
+      <p class="showcase-body">The level of detail serious breeders already track, now in one place that remembers it for you.</p>
+      <a href="https://app.whelpora.com/signup" class="showcase-link">See the full toolkit →</a>
     </div>
-  </section>
-
-  <!-- SHOWCASE: Coat predictor -->
-  <section class="section showcase-section reveal">
-    <div class="container-wide">
-      <div class="showcase-grid reverse">
-        <div class="showcase-art">
-          <div class="browser-wrap">
-            <div class="browser-glow"></div>
-            <div class="browser">
-              <div class="browser-chrome">
-                <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
-                <span class="browser-url">app.whelpora.com</span>
-              </div>
-              <img src="04_coat_predictor.png" class="browser-img" alt="Whelpora coat predictor">
-            </div>
-          </div>
-        </div>
-        <div class="showcase-copy">
-          <div class="eyebrow">Planning</div>
-          <h2 class="showcase-h">Plan pairings before you <span class="serif">mate.</span></h2>
-          <p class="showcase-body">Pair two dogs and see what the litter might look like before the season starts.</p>
-          <a href="https://app.whelpora.com/signup" class="showcase-link">Try the planning tools</a>
-        </div>
+    <div class="app-frame">
+      <div class="frame-bar">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <div class="frame-url">app.whelpora.com</div>
       </div>
+      <img class="frame-img" src="https://www.whelpora.com/03_progesterone_cost.png" alt="Whelpora progesterone and cost tracking">
     </div>
-  </section>
+  </div>
 
-  <!-- SHOWCASE: Dogs grid -->
-  <section class="section showcase-section wash reveal">
-    <div class="container-wide">
-      <div class="showcase-grid">
-        <div class="showcase-copy">
-          <div class="eyebrow">Dogs &amp; program</div>
-          <h2 class="showcase-h">Your whole kennel. <span class="serif">One screen.</span></h2>
-          <p class="showcase-body">The program you built, finally mapped the way your brain already holds it.</p>
-          <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself</a>
-        </div>
-        <div class="showcase-art">
-          <div class="browser-wrap">
-            <div class="browser-glow"></div>
-            <div class="browser">
-              <div class="browser-chrome">
-                <span class="tl tl-r"></span><span class="tl tl-y"></span><span class="tl tl-g"></span>
-                <span class="browser-url">app.whelpora.com</span>
-              </div>
-              <img src="img-dogs-screen.png" class="browser-img" alt="Whelpora dogs grid">
-            </div>
-          </div>
-        </div>
+  <div class="showcase-row reverse">
+    <div>
+      <div class="showcase-label">Puppies</div>
+      <h3 class="showcase-title">Every puppy tracked from day <em>one.</em></h3>
+      <p class="showcase-body">Every weigh-in, photo, and note from day one. A complete record of each puppy's first weeks, ready to share or print for their new family.</p>
+      <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself →</a>
+    </div>
+    <div class="app-frame">
+      <div class="frame-bar">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <div class="frame-url">app.whelpora.com</div>
       </div>
+      <img class="frame-img" src="https://www.whelpora.com/07_puppy_profile.png" alt="Whelpora puppy profile">
     </div>
-  </section>
+  </div>
 
-  <!-- MOBILE -->
-  <section class="section mobile-section reveal" id="mobile">
-    <div class="container">
-      <div class="mobile-card">
-        <div class="mobile-pill">
-          <span class="mobile-pill-dot"></span>
-          In development &nbsp;·&nbsp; Not available yet
-        </div>
-        <h2 class="mobile-h">
-          Your desktop for the big picture.<br>
-          <span class="mobile-h-dim">Your pocket for the <span class="serif" style="color:rgba(255,255,255,0.5);">3 am whelp.</span></span>
-        </h2>
-        <p class="mobile-body">The Whelpora mobile app is in active development, built for one-handed use when you need it most. It's not available yet.</p>
+  <div class="showcase-row">
+    <div>
+      <div class="showcase-label">Health Records</div>
+      <h3 class="showcase-title">Every weigh-in from day zero. All of <em>them.</em></h3>
+      <p class="showcase-body">Catch the puppy falling behind before it becomes a problem and know with confidence that every pup in the litter is thriving.</p>
+      <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself →</a>
+    </div>
+    <div class="app-frame">
+      <div class="frame-bar">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <div class="frame-url">app.whelpora.com</div>
       </div>
+      <img class="frame-img" src="https://www.whelpora.com/01_litter_overview.png" alt="Whelpora litter overview">
     </div>
-  </section>
+  </div>
 
-  <!-- PRICING -->
-  <section class="section pricing-section reveal" id="pricing">
-    <div class="container">
-      <div class="pricing-head">
-        <span class="pricing-free-banner">Free during <em>beta.</em></span>
-        <p class="pricing-head-sub">Beta ends 31 May 2026. These are your founding rates from that date.<br>Join now and they stay with you.</p>
-        <div class="pricing-toggle" role="tablist">
-          <button class="pt-btn" data-period="monthly" role="tab" aria-selected="false">Monthly</button>
-          <button class="pt-btn active" data-period="annual" role="tab" aria-selected="true">
-            Annual <span class="pt-save">Save ~20%</span>
-          </button>
-        </div>
+  <div class="showcase-row reverse">
+    <div>
+      <div class="showcase-label">Genetics</div>
+      <h3 class="showcase-title">DNA results on every dog in your <em>program.</em></h3>
+      <p class="showcase-body">Every genetic test result stored on the dog's profile, linked to the pedigree, accessible when you're planning the next pairing.</p>
+      <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself →</a>
+    </div>
+    <div class="app-frame">
+      <div class="frame-bar">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <div class="frame-url">app.whelpora.com</div>
       </div>
+      <img class="frame-img" src="https://www.whelpora.com/06_dog_genetics.png" alt="Whelpora genetics profile">
+    </div>
+  </div>
 
-      <div class="pricing-grid">
-
-        <div class="pricing-card">
-          <div class="pricing-tier">Essential</div>
-          <p class="pricing-tagline">Up to 2 litters per rolling 12 months.</p>
-          <div class="pricing-amount">
-            <div class="pricing-amount-row" data-show-for="annual">
-              <span class="pricing-strike" data-price="essential_yr_full">$89</span>
-              <span class="pricing-price" data-price="essential_yr_disc">$53</span>
-              <span class="pricing-period">/ yr</span>
-            </div>
-            <div class="pricing-amount-row hidden" data-show-for="monthly">
-              <span class="pricing-strike" data-price="essential_mo_full">$8.99</span>
-              <span class="pricing-price" data-price="essential_mo_disc">$5.49</span>
-              <span class="pricing-period">/ mo</span>
-            </div>
-            <p class="pricing-note" data-currency-label>AUD &nbsp;·&nbsp; 40% off &nbsp;·&nbsp; your rate stays with you</p>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-list">
-            <li>Every Whelpora feature included</li>
-            <li>All breeding tools included</li>
-            <li><strong>Up to 2 litters per rolling 12 months</strong></li>
-          </ul>
-          <a href="https://app.whelpora.com/signup" class="pricing-cta pricing-cta-ghost">Start free on Essential</a>
-          <p class="pricing-card-note">Free during beta. First charge 31 May 2026.</p>
-        </div>
-
-        <div class="pricing-card pricing-card-featured">
-          <div class="pricing-featured-tag">Most Popular</div>
-          <div class="pricing-tier">Pro</div>
-          <p class="pricing-tagline">Unlimited litters. No caps, ever.</p>
-          <div class="pricing-amount">
-            <div class="pricing-amount-row" data-show-for="annual">
-              <span class="pricing-strike" data-price="pro_yr_full">$229</span>
-              <span class="pricing-price" data-price="pro_yr_disc">$137</span>
-              <span class="pricing-period">/ yr</span>
-            </div>
-            <div class="pricing-amount-row hidden" data-show-for="monthly">
-              <span class="pricing-strike" data-price="pro_mo_full">$22.99</span>
-              <span class="pricing-price" data-price="pro_mo_disc">$13.99</span>
-              <span class="pricing-period">/ mo</span>
-            </div>
-            <p class="pricing-note" data-currency-label>AUD &nbsp;·&nbsp; 40% off &nbsp;·&nbsp; your rate stays with you</p>
-          </div>
-          <div class="pricing-divider"></div>
-          <ul class="pricing-list">
-            <li>Every Whelpora feature included</li>
-            <li>All breeding tools included</li>
-            <li><strong>Unlimited litters</strong></li>
-          </ul>
-          <a href="https://app.whelpora.com/signup" class="pricing-cta pricing-cta-solid">Start free on Pro</a>
-          <p class="pricing-card-note">Free during beta. First charge 31 May 2026.</p>
-        </div>
-
+  <div class="showcase-row">
+    <div>
+      <div class="showcase-label">Planning</div>
+      <h3 class="showcase-title">Plan pairings before you <em>mate.</em></h3>
+      <p class="showcase-body">Pair two dogs and see what the litter might look like before the season starts.</p>
+      <a href="https://app.whelpora.com/signup" class="showcase-link">Try the planning tools →</a>
+    </div>
+    <div class="app-frame">
+      <div class="frame-bar">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <div class="frame-url">app.whelpora.com</div>
       </div>
-      <p class="pricing-footnote" data-currency-footer>Founding rates stay active for as long as your subscription is active, and are held for 12 months if you cancel. Both plans are solo accounts. All prices in AUD.</p>
+      <img class="frame-img" src="https://www.whelpora.com/04_coat_predictor.png" alt="Whelpora coat predictor">
     </div>
-  </section>
+  </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-left">
-      <span class="footer-mark">WHELPORA</span>
-      <span class="footer-co">Susse Pty Ltd ACN 695 394 079 &nbsp;·&nbsp; New Farm QLD 4005</span>
+  <div class="showcase-row reverse">
+    <div>
+      <div class="showcase-label">Dogs & Program</div>
+      <h3 class="showcase-title">Your whole kennel. <em>One screen.</em></h3>
+      <p class="showcase-body">The program you built, finally mapped the way your brain already holds it.</p>
+      <a href="https://app.whelpora.com/signup" class="showcase-link">See it for yourself →</a>
     </div>
+    <div class="app-frame">
+      <div class="frame-bar">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <div class="frame-url">app.whelpora.com</div>
+      </div>
+      <img class="frame-img" src="https://www.whelpora.com/img-dogs-screen.png" alt="Whelpora dogs grid">
+    </div>
+  </div>
+
+</section>
+
+<!-- MOBILE -->
+<section class="mobile-section" id="mobile">
+  <div class="mobile-inner">
+    <div class="mobile-badge">In development · Not available yet</div>
+    <h2 class="mobile-title">Your desktop for the big picture.<br><span class="dim">Your pocket for the 3 am <em>whelp.</em></span></h2>
+    <p style="font-size:14px; color: var(--text-secondary); max-width: 420px; margin: 0 auto; line-height: 1.85; font-weight: 300;">The Whelpora mobile app is in active development, built for one-handed use when you need it most. It's not available yet.</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <h2 class="pricing-title">Free during <em>beta.</em></h2>
+  <p class="pricing-sub">Beta ends 31 May 2026. These are your founding rates from that date. Join now and they stay with you.</p>
+
+  <div class="pricing-toggle">
+    <button class="toggle-btn">Monthly</button>
+    <button class="toggle-btn active">Annual <span style="color: var(--accent); font-size:11px; margin-left:4px;">Save ~20%</span></button>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tag">Essential</div>
+      <p class="pricing-desc">Up to 2 litters per rolling 12 months.</p>
+      <p class="price-was">A$89</p>
+      <p class="price-now">A$53<span class="price-unit">/yr</span></p>
+      <p class="price-meta">AUD · 40% off · your rate stays with you</p>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>Every Whelpora feature included</li>
+        <li>All breeding tools included</li>
+        <li class="highlight">Up to 2 litters per rolling 12 months</li>
+      </ul>
+      <a href="https://app.whelpora.com/signup" class="btn-ghost" style="display:block; text-align:center; width:100%;">Start free on Essential</a>
+      <p style="font-size:11px; color:var(--text-muted); margin-top:10px; text-align:center; font-weight:300;">Free during beta. First charge 31 May 2026.</p>
+    </div>
+    <div class="pricing-card">
+      <div class="most-popular">Most Popular</div>
+      <div class="pricing-tag">Pro</div>
+      <p class="pricing-desc">Unlimited litters. No caps, ever.</p>
+      <p class="price-was">A$229</p>
+      <p class="price-now">A$137<span class="price-unit">/yr</span></p>
+      <p class="price-meta">AUD · 40% off · your rate stays with you</p>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>Every Whelpora feature included</li>
+        <li>All breeding tools included</li>
+        <li class="highlight">Unlimited litters</li>
+      </ul>
+      <a href="https://app.whelpora.com/signup" class="btn-primary" style="display:block; text-align:center; width:100%;">Start free on Pro</a>
+      <p style="font-size:11px; color:var(--text-muted); margin-top:10px; text-align:center; font-weight:300;">Free during beta. First charge 31 May 2026.</p>
+    </div>
+  </div>
+  <p class="pricing-note">Founding rates stay active for as long as your subscription is active, and are held for 12 months if you cancel. Both plans are solo accounts. All prices in AUD.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-origin">This started with one breeder. It's built for all of them.</p>
+  <div class="footer-bottom">
+    <span style="font-size:12px; letter-spacing:0.16em; text-transform:uppercase; font-weight:400; color:var(--text-secondary);">Whelpora</span>
+    <span>Susse Pty Ltd ACN 695 394 079 · New Farm QLD 4005</span>
     <div class="footer-links">
-      <a href="/privacy.html" class="footer-link">Privacy Policy</a>
-      <a href="/terms.html" class="footer-link">Terms of Service</a>
-      <a href="mailto:support@whelpora.com" class="footer-link">support@whelpora.com</a>
-      <a href="https://app.whelpora.com" class="footer-link">Sign in</a>
-    </div>
-  </footer>
-
-  <!-- STICKY BAR -->
-  <div class="sticky-bar" id="stickyBar">
-    <p class="sticky-bar-text">
-      <strong>Beta closes 31 May 2026.</strong>
-      &nbsp;&nbsp;Join free now and lock in your founding rate.
-    </p>
-    <div class="sticky-bar-right">
-      <a href="https://app.whelpora.com/signup" class="btn-green" style="padding:10px 22px;font-size:12px;">Join the Beta</a>
-      <button class="sticky-dismiss" id="stickyDismiss" aria-label="Dismiss">&#215;</button>
+      <a href="https://www.whelpora.com/privacy.html">Privacy Policy</a>
+      <a href="https://www.whelpora.com/terms.html">Terms of Service</a>
+      <a href="mailto:support@whelpora.com">support@whelpora.com</a>
+      <a href="https://app.whelpora.com">Sign in</a>
     </div>
   </div>
+</footer>
 
-  <script>
-    // ─── CURRENCY LOCALISATION ───────────────────────
-    (function() {
-      var RATES = {
-        AU: { code: 'AUD', symbol: 'A$',  rate: 1    },
-        US: { code: 'USD', symbol: 'US$', rate: 0.64 },
-        GB: { code: 'GBP', symbol: '£',   rate: 0.50 },
-        CA: { code: 'CAD', symbol: 'CA$', rate: 0.88 },
-        NZ: { code: 'NZD', symbol: 'NZ$', rate: 1.08 },
-      };
-
-      // AUD source prices
-      var PRICES = {
-        essential_mo_full: 8.99,
-        essential_mo_disc: 5.49,
-        essential_yr_full: 89,
-        essential_yr_disc: 53,
-        pro_mo_full:       22.99,
-        pro_mo_disc:       13.99,
-        pro_yr_full:       229,
-        pro_yr_disc:       137,
-      };
-
-      function fmt(sym, amount) {
-        // Show decimals only if the source price has them
-        var hasDecimal = (amount % 1 !== 0);
-        return sym + (hasDecimal ? amount.toFixed(2) : Math.round(amount));
-      }
-
-      function applyPricing(curr) {
-        var r = curr.rate;
-        var s = curr.symbol;
-
-        Object.keys(PRICES).forEach(function(key) {
-          document.querySelectorAll('[data-price="' + key + '"]').forEach(function(el) {
-            el.textContent = fmt(s, PRICES[key] * r);
-          });
-        });
-
-        // Currency label under each price
-        document.querySelectorAll('[data-currency-label]').forEach(function(el) {
-          el.innerHTML = curr.code + ' &nbsp;·&nbsp; 40% off &nbsp;·&nbsp; your rate stays with you';
-        });
-
-        // Footer footnote
-        var footer = document.querySelector('[data-currency-footer]');
-        if (footer) {
-          if (curr.code === 'AUD') {
-            footer.textContent = 'Founding rates stay active for as long as your subscription is active, and are held for 12 months if you cancel. Both plans are solo accounts. All prices in AUD.';
-          } else {
-            footer.textContent = 'Founding rates stay active for as long as your subscription is active, and are held for 12 months if you cancel. Both plans are solo accounts. Prices shown in ' + curr.code + ' are approximate conversions — you will be charged in AUD. Your bank may apply a foreign transaction fee.';
-          }
-        }
-      }
-
-      fetch('https://ipapi.co/json/')
-        .then(function(res) { return res.json(); })
-        .then(function(data) {
-          var curr = RATES[data.country_code] || RATES['US'];
-          applyPricing(curr);
-        })
-        .catch(function() {
-          // On error, leave AUD defaults as-is
-        });
-    })();
-  </script>
-
-  <script>
-    // Scroll reveal
-    (function() {
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            observer.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-      document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
-    })();
-
-    // Pricing toggle
-    (function() {
-      var btns = document.querySelectorAll('.pt-btn');
-      var rows = document.querySelectorAll('.pricing-amount-row');
-      btns.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          var p = btn.getAttribute('data-period');
-          btns.forEach(function(b) {
-            var on = b.getAttribute('data-period') === p;
-            b.classList.toggle('active', on);
-            b.setAttribute('aria-selected', String(on));
-          });
-          rows.forEach(function(r) {
-            r.classList.toggle('hidden', r.getAttribute('data-show-for') !== p);
-          });
-        });
-      });
-    })();
-
-    (function() {
-      var bar = document.getElementById('stickyBar');
-      var dismiss = document.getElementById('stickyDismiss');
-      var dismissed = false;
-      function updateBar() {
-        if (dismissed) return;
-        var scrollY = window.scrollY;
-        var windowH = window.innerHeight;
-        var docH = document.documentElement.scrollHeight;
-        var nearBottom = (scrollY + windowH) >= (docH - 120);
-        if (nearBottom) {
-          bar.classList.remove('visible');
-        } else if (scrollY > 800) {
-          bar.classList.add('visible');
-        } else if (scrollY < 400) {
-          bar.classList.remove('visible');
-        }
-      }
-      window.addEventListener('scroll', updateBar, { passive: true });
-      dismiss.addEventListener('click', function() {
-        dismissed = true;
-        bar.classList.remove('visible');
-      });
-    })();
-    // Hamburger nav
-    (function() {
-      var btn = document.getElementById('navHamburger');
-      var drawer = document.getElementById('navDrawer');
-      if (!btn || !drawer) return;
-      function toggle(open) {
-        btn.classList.toggle('open', open);
-        drawer.classList.toggle('open', open);
-        btn.setAttribute('aria-expanded', String(open));
-        drawer.setAttribute('aria-hidden', String(!open));
-      }
-      btn.addEventListener('click', function() { toggle(!btn.classList.contains('open')); });
-      // Close on link click
-      drawer.querySelectorAll('a').forEach(function(a) {
-        a.addEventListener('click', function() { toggle(false); });
-      });
-      // Close on outside click
-      document.addEventListener('click', function(e) {
-        if (!btn.contains(e.target) && !drawer.contains(e.target)) toggle(false);
-      });
-    })();
-  </script>
+<!-- STICKY BAR -->
+<div class="sticky-bar">
+  <span><strong>Beta closes 31 May 2026.</strong> <span class="dim"> Join free now and lock in your founding rate.</span></span>
+  <a href="https://app.whelpora.com/signup" class="btn-primary">Join the Beta</a>
+</div>
 
 </body>
 </html>
