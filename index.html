@@ -123,14 +123,14 @@ nav {
   margin-bottom:48px;
 }
 
-/* Badge: no glow, no pill, just quiet text */
+/* Badge: frosted glass pill */
 .hero-badge {
   display:inline-flex; align-items:center; gap:8px;
   font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase;
-  color:rgba(245,240,232,0.45); font-weight:400;
-  margin-bottom:24px;
-  /* No background, no border, no pill */
-  background:none; border:none; padding:0; box-shadow:none;
+  color:rgba(245,240,232,0.7); font-weight:400;
+  background:rgba(255,255,255,0.1); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.18); border-radius:100px;
+  padding:7px 18px; margin-bottom:24px; box-shadow:0 2px 12px rgba(0,0,0,0.2);
 }
 .hero-badge::before {
   content:''; width:5px; height:5px; border-radius:50%;
@@ -211,7 +211,7 @@ nav {
 
 /* ── PROBLEMS ───────────────────────────── */
 .problems {
-  padding:72px 48px 56px; max-width:720px; margin:0 auto;
+  padding:72px 48px 56px; max-width:1000px; margin:0 auto;
   display:flex; flex-direction:column; gap:10px;
 }
 
@@ -237,7 +237,7 @@ nav {
 /* ── FOUNDING BETA ──────────────────────── */
 /* Sits on dark, punchy CTA */
 .founding-wrap { position:relative; z-index:1; padding:0 48px 0; background:var(--bg); }
-.founding-inner { padding:72px 0; max-width:920px; margin:0 auto; }
+.founding-inner { padding:72px 0; max-width:1100px; margin:0 auto; }
 
 .founding {
   background:var(--glass-mid); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
@@ -260,7 +260,7 @@ nav {
 /* ── DARK FEATURES ──────────────────────── */
 .features-dark { background:var(--bg-mid); position:relative; z-index:1; }
 
-.one-system { padding:72px 48px 64px; max-width:920px; margin:0 auto; }
+.one-system { padding:72px 48px 64px; max-width:1100px; margin:0 auto; }
 
 .section-eyebrow {
   display:flex; align-items:center; justify-content:center; gap:12px;
@@ -301,7 +301,7 @@ nav {
 .feature-body { font-size:12.5px; color:var(--td-3); line-height:1.7; font-weight:300; }
 
 /* ── SHOWCASE ───────────────────────────── */
-.showcase { padding:64px 48px 32px; max-width:920px; margin:0 auto; }
+.showcase { padding:64px 48px 32px; max-width:1100px; margin:0 auto; }
 
 .showcase-row { display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:center; margin-bottom:64px; }
 .showcase-row.reverse { direction:rtl; }
@@ -353,7 +353,7 @@ nav {
   background:var(--glass-mid); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
   border:1px solid var(--border-d);
   border-radius:var(--r-lg); padding:56px 48px;
-  max-width:680px; margin:0 auto; text-align:center; box-shadow:var(--shadow-md);
+  max-width:800px; margin:0 auto; text-align:center; box-shadow:var(--shadow-md);
 }
 
 .mobile-badge {
@@ -372,7 +372,7 @@ nav {
 .mobile-body { font-size:13px; color:var(--td-2); line-height:1.82; font-weight:300; max-width:360px; margin:0 auto; }
 
 /* ── PRICING — light section ────────────── */
-.pricing-section { padding:72px 48px; text-align:center; max-width:800px; margin:0 auto; }
+.pricing-section { padding:72px 48px; text-align:center; max-width:960px; margin:0 auto; }
 
 .pricing-title {
   font-size:clamp(32px,4.5vw,52px); font-weight:300;
