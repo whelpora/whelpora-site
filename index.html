@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Whelpora | Breeding program management for dog breeders</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #f0e9e0;
@@ -15,6 +15,8 @@
     --accent: #8a6e52;
     --accent-light: #b8956e;
     --accent-warm: #c4a882;
+    --green: #a8c832;
+    --green-dim: rgba(168, 200, 50, 0.7);
     --text-primary: #221608;
     --text-secondary: #6b5540;
     --text-muted: #a08060;
@@ -44,9 +46,8 @@
     position: fixed;
     inset: 0;
     background:
-      radial-gradient(ellipse 70% 60% at 15% 10%, rgba(210, 185, 150, 0.25) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 50% at 85% 85%, rgba(195, 165, 125, 0.2) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 40% at 50% 50%, rgba(220, 200, 170, 0.1) 0%, transparent 70%);
+      radial-gradient(ellipse 70% 60% at 15% 10%, rgba(210, 185, 150, 0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 85% 85%, rgba(195, 165, 125, 0.1) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -88,8 +89,8 @@
   .nav-links a:hover { color: var(--text-primary); }
 
   .nav-cta {
-    background: var(--text-primary) !important;
-    color: var(--bg) !important;
+    background: var(--green) !important;
+    color: #1a1208 !important;
     padding: 9px 22px !important;
     border-radius: 100px;
     font-weight: 400 !important;
@@ -97,7 +98,7 @@
     letter-spacing: 0.02em;
     transition: background 0.2s !important;
   }
-  .nav-cta:hover { background: var(--accent) !important; color: white !important; }
+  .nav-cta:hover { background: #c8e840 !important; color: #1a1208 !important; }
 
   /* HERO */
   .hero {
@@ -116,14 +117,24 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1600&q=70');
+    background-image: url('https://www.whelpora.com/img-golden-puppies.png');
     background-size: cover;
-    background-position: center 35%;
-    opacity: 0.12;
+    background-position: center 40%;
+    opacity: 0.3;
     z-index: 0;
   }
 
   .hero-content { position: relative; z-index: 1; max-width: 780px; }
+
+  .hero-wordmark {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 40px;
+  }
 
   .hero-badge {
     display: inline-flex;
@@ -147,13 +158,14 @@
     content: '';
     width: 6px; height: 6px;
     border-radius: 50%;
-    background: var(--accent-light);
+    background: var(--green);
+    box-shadow: 0 0 6px var(--green);
   }
 
   .hero-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(54px, 8vw, 96px);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.0;
     letter-spacing: -0.02em;
     color: var(--text-primary);
@@ -163,11 +175,11 @@
   .hero-title em { font-style: italic; font-weight: 400; color: var(--accent-light); }
 
   .hero-title-2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(54px, 8vw, 96px);
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
     font-weight: 300;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
     color: var(--text-muted);
     margin-bottom: 44px;
   }
@@ -185,13 +197,13 @@
   }
 
   .hero-origin {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 300;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18px;
+    font-weight: 400;
     font-style: italic;
     color: var(--accent);
     margin-bottom: 14px;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .hero-body {
@@ -210,21 +222,21 @@
   }
 
   .btn-primary {
-    background: var(--text-primary);
-    color: #f0e9e0;
+    background: var(--green);
+    color: #1a1208;
     padding: 13px 28px;
     border-radius: 100px;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.02em;
     text-decoration: none;
     border: none;
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.15s;
     display: inline-block;
   }
-  .btn-primary:hover { background: var(--accent); }
+  .btn-primary:hover { background: #c8e840; transform: translateY(-1px); }
 
   .btn-ghost {
     background: var(--glass);
@@ -244,7 +256,34 @@
   .hero-meta { font-size: 12px; color: var(--text-muted); letter-spacing: 0.04em; }
   .hero-meta span { margin: 0 8px; }
 
-  /* TICKER */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* DARK FEATURE SECTION */
+  [style*="background: #1e1610"] .section-title { color: #f0e9e0; }
+  [style*="background: #1e1610"] .section-sub { color: #9a7d63; }
+  [style*="background: #1e1610"] .section-label-center { color: var(--green); opacity: 0.8; }
+  [style*="background: #1e1610"] .section-label-center::before,
+  [style*="background: #1e1610"] .section-label-center::after { background: var(--green); opacity: 0.4; }
+  [style*="background: #1e1610"] .feature-card {
+    background: rgba(255,252,248,0.05);
+    border-color: rgba(255,255,255,0.08);
+  }
+  [style*="background: #1e1610"] .feature-card::before {
+    background: linear-gradient(to right, transparent, rgba(200, 168, 130, 0.2), transparent);
+  }
+  [style*="background: #1e1610"] .feature-title { color: #f0e9e0; }
+  [style*="background: #1e1610"] .feature-body { color: #9a7d63; }
+  [style*="background: #1e1610"] .feature-num { color: var(--green); opacity: 0.7; }
+
+
   .ticker {
     position: relative; z-index: 1;
     border-top: 1px solid var(--border);
@@ -271,6 +310,13 @@
     font-weight: 400;
   }
 
+  .ticker-item::after {
+    content: '·';
+    margin-left: 48px;
+    color: var(--green);
+    opacity: 0.5;
+  }
+
   @keyframes tick {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
@@ -292,23 +338,24 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
+    border-left: 3px solid rgba(168, 200, 50, 0.4);
     border-radius: var(--radius);
     padding: 38px 44px;
     box-shadow: var(--shadow);
-    transition: transform 0.25s, box-shadow 0.25s;
+    transition: transform 0.25s, box-shadow 0.25s, border-left-color 0.25s;
   }
-  .problem-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .problem-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-left-color: var(--green); }
 
   .problem-num {
     font-size: 11px;
     letter-spacing: 0.14em;
-    color: var(--accent-light);
+    color: var(--green);
     margin-bottom: 12px;
-    font-weight: 400;
+    font-weight: 500;
   }
 
   .problem-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 26px;
     font-weight: 400;
     margin-bottom: 10px;
@@ -355,14 +402,15 @@
     gap: 10px;
     font-weight: 400;
   }
-  .label-row::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+  .label-row::before { content: ''; width: 20px; height: 1px; background: var(--green); }
 
   .founding-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 38px;
-    font-weight: 300;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
     line-height: 1.15;
     color: var(--text-primary);
+    letter-spacing: -0.02em;
   }
 
   .founding-body {
@@ -396,19 +444,24 @@
     gap: 10px;
   }
   .section-label-center::before, .section-label-center::after {
-    content: ''; width: 20px; height: 1px; background: var(--accent-warm);
+    content: ''; width: 20px; height: 1px; background: var(--green); opacity: 0.6;
   }
 
   .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 4.5vw, 56px);
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
     font-weight: 300;
     line-height: 1.1;
     color: var(--text-primary);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
     margin-bottom: 14px;
   }
-  .section-title em { font-style: italic; font-weight: 400; color: var(--accent-light); }
+  .section-title em {
+    font-style: italic;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    color: var(--accent-light);
+  }
 
   .section-sub {
     font-size: 14px;
@@ -456,7 +509,7 @@
   }
 
   .feature-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 22px;
     font-weight: 400;
     color: var(--text-primary);
@@ -484,7 +537,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 60px;
     align-items: center;
-    margin-bottom: 80px;
+    margin-bottom: 56px;
   }
   .showcase-row.reverse { direction: rtl; }
   .showcase-row.reverse > * { direction: ltr; }
@@ -500,18 +553,23 @@
     gap: 10px;
     font-weight: 400;
   }
-  .showcase-label::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+  .showcase-label::before { content: ''; width: 20px; height: 1px; background: var(--green); }
 
   .showcase-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(30px, 3.5vw, 46px);
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(28px, 3.2vw, 44px);
     font-weight: 300;
-    line-height: 1.1;
+    line-height: 1.15;
     margin-bottom: 16px;
     color: var(--text-primary);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
   }
-  .showcase-title em { font-style: italic; font-weight: 400; color: var(--accent-light); }
+  .showcase-title em {
+    font-style: italic;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    color: var(--accent-light);
+  }
 
   .showcase-body {
     font-size: 14px;
@@ -531,7 +589,7 @@
     gap: 6px;
     transition: gap 0.2s;
   }
-  .showcase-link:hover { gap: 10px; }
+  .showcase-link:hover { gap: 10px; color: var(--green); }
 
   /* APP FRAME */
   .app-frame {
@@ -556,7 +614,7 @@
   .dot { width: 9px; height: 9px; border-radius: 50%; }
   .dot-r { background: #ff9494; }
   .dot-y { background: #ffd080; }
-  .dot-g { background: #90d090; }
+  .dot-g { background: var(--green); }
 
   .frame-url {
     flex: 1;
@@ -606,7 +664,7 @@
   }
 
   .mobile-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(36px, 5vw, 58px);
     font-weight: 300;
     line-height: 1.1;
@@ -628,7 +686,7 @@
   }
 
   .pricing-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(40px, 5vw, 62px);
     font-weight: 300;
     line-height: 1.1;
@@ -679,6 +737,8 @@
     color: var(--text-primary);
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     font-weight: 400;
+    outline: 2px solid rgba(168, 200, 50, 0.3);
+    outline-offset: -2px;
   }
 
   .pricing-grid {
@@ -731,7 +791,7 @@
   }
 
   .price-now {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 52px;
     font-weight: 300;
     line-height: 1;
@@ -760,7 +820,8 @@
     font-weight: 300;
   }
   .pricing-features li::before { content: '–'; position: absolute; left: 0; color: var(--accent-warm); }
-  .pricing-features li.highlight { color: var(--text-primary); font-weight: 400; }
+  .pricing-features li.highlight { color: var(--text-primary); font-weight: 500; }
+  .pricing-features li.highlight::before { content: '–'; color: var(--green); }
 
   .most-popular {
     position: absolute;
@@ -792,11 +853,12 @@
 
   .footer-origin {
     text-align: center;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 20px;
     font-weight: 300;
     font-style: italic;
-    color: var(--text-muted);
+    color: var(--accent);
+    opacity: 0.7;
     margin-bottom: 44px;
     letter-spacing: 0.02em;
   }
@@ -820,10 +882,10 @@
   .sticky-bar {
     position: fixed;
     bottom: 0; left: 0; right: 0;
-    background: rgba(240, 233, 224, 0.88);
+    background: rgba(240, 233, 224, 0.92);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border-top: 1px solid rgba(255,255,255,0.6);
+    border-top: 2px solid rgba(168, 200, 50, 0.3);
     padding: 14px 48px;
     display: flex;
     align-items: center;
@@ -833,6 +895,32 @@
   }
   .sticky-bar strong { color: var(--text-primary); font-weight: 500; }
   .sticky-bar .dim { color: var(--text-muted); font-weight: 300; }
+
+  /* COLOUR SYSTEM — green on functional elements, brown on text/labels */
+  .label-row { color: var(--accent); }
+  .label-row::before { background: var(--green); }
+  .section-label-center { color: var(--accent); }
+  .section-label-center::before, .section-label-center::after { background: var(--green); opacity: 0.5; }
+  .showcase-label { color: var(--accent); }
+  .showcase-label::before { background: var(--green); }
+  .founding-label { color: var(--accent); }
+  .founding-label::before { background: var(--green); }
+  .pricing-tag { color: var(--accent); }
+  .price-meta { color: var(--accent-light); }
+  .hero-badge { color: var(--accent); }
+  .hero-origin { color: var(--accent); }
+  .showcase-link { color: var(--accent); }
+  .showcase-link:hover { color: var(--green); gap: 10px; }
+  .footer-links a:hover { color: var(--green); }
+  .footer-origin { color: var(--accent); opacity: 0.75; }
+
+  /* FEATURE CARD top line — alternating brown/green for rhythm */
+  .feature-card:nth-child(odd)::before {
+    background: linear-gradient(to right, transparent, rgba(168, 200, 50, 0.3), transparent);
+  }
+  .feature-card:nth-child(even)::before {
+    background: linear-gradient(to right, transparent, rgba(184, 149, 110, 0.4), transparent);
+  }
 </style>
 </head>
 <body>
@@ -853,6 +941,7 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
+    <div class="hero-wordmark">Whelpora</div>
     <div class="hero-badge">Now in Beta · Built in Australia</div>
     <h1 class="hero-title">Breeding can be <em>messy.</em></h1>
     <h2 class="hero-title-2">Managing your program doesn't have to be.</h2>
@@ -929,7 +1018,8 @@
 </div>
 
 <!-- ONE SYSTEM -->
-<section class="one-system" id="features">
+<div style="background: #1e1610; position: relative; z-index: 1; margin-top: 0;">
+<section class="one-system" id="features" style="--section-title-color: #f0e9e0; --section-sub-color: #9a7d63;">
   <div class="section-header">
     <div class="section-label-center">Everything you need</div>
     <h2 class="section-title">One system for the whole <em>program.</em></h2>
@@ -958,6 +1048,7 @@
     </div>
   </div>
 </section>
+</div>
 
 <!-- SHOWCASE -->
 <section class="showcase">
@@ -1075,8 +1166,8 @@
   <p class="pricing-sub">Beta ends 31 May 2026. These are your founding rates from that date. Join now and they stay with you.</p>
 
   <div class="pricing-toggle">
-    <button class="toggle-btn">Monthly</button>
-    <button class="toggle-btn active">Annual <span style="color: var(--accent); font-size:11px; margin-left:4px;">Save ~20%</span></button>
+    <button class="toggle-btn active">Monthly</button>
+    <button class="toggle-btn">Annual <span style="color: var(--accent); font-size:11px; margin-left:4px;">Save ~20%</span></button>
   </div>
 
   <div class="pricing-grid">
