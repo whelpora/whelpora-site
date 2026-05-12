@@ -1,830 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service -- Whelpora</title>
-  <meta name="description" content="Whelpora Terms of Service -- the agreement governing your use of the Whelpora platform.">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms and Conditions — Whelpora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f5;
+    --text: #1a1208;
+    --text-2: #4a3018;
+    --text-3: #8a6845;
+    --choc: #3d2410;
+    --green: #a8c832;
+    --border: rgba(61,36,16,0.12);
+    --shadow: 0 2px 20px rgba(30,10,0,0.06);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); font-family:'DM Sans',sans-serif; font-weight:300; color:var(--text); line-height:1.7; font-size:15px; }
 
-    :root {
-      --bg: #1a0f08;
-      --card: #2a1810;
-      --card-inner: #331e12;
-      --green: #A8D832;
-      --green-dark: #8ab228;
-      --white-100: rgba(255,255,255,0.95);
-      --white-60: rgba(255,255,255,0.6);
-      --white-35: rgba(255,255,255,0.35);
-      --white-15: rgba(255,255,255,0.15);
-      --white-08: rgba(255,255,255,0.08);
-      --white-04: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.10);
-      --border-bright: rgba(255,255,255,0.18);
-    }
+  nav {
+    position:sticky; top:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 48px; height:58px;
+    background:rgba(250,248,245,0.88); backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-logo { font-size:11px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--choc); text-decoration:none; }
+  .nav-links { display:flex; align-items:center; gap:24px; list-style:none; }
+  .nav-links a { font-size:13px; font-weight:300; color:var(--text-2); text-decoration:none; }
+  .nav-cta { background:var(--green); color:#111 !important; padding:7px 18px; border-radius:100px; font-weight:500 !important; font-size:13px !important; }
 
-    html { scroll-behavior: smooth; }
+  .legal-header { padding:60px 0 40px; border-bottom:1px solid var(--border); margin-bottom:0; }
+  .legal-header-inner { max-width:860px; margin:0 auto; padding:0 48px; }
+  .legal-label { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-3); margin-bottom:12px; }
+  h1 { font-size:36px; font-weight:400; letter-spacing:-0.02em; color:var(--choc); margin-bottom:8px; }
+  .legal-meta { font-size:13px; color:var(--text-3); font-weight:300; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--white-100);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
+  .legal-body { max-width:860px; margin:0 auto; padding:48px 48px 120px; }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
-    }
+  .summary-box {
+    background:rgba(168,200,50,0.08); border:1px solid rgba(168,200,50,0.25);
+    border-radius:12px; padding:24px 28px; margin-bottom:48px;
+  }
+  .summary-box h3 { font-size:13px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--choc); margin-bottom:10px; }
+  .summary-box p { font-size:13px; color:var(--text-2); line-height:1.75; }
 
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      padding: 0 52px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(26,15,8,0.80);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
-    }
+  .toc { margin-bottom:56px; }
+  .toc h3 { font-size:11px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-3); margin-bottom:14px; }
+  .toc ol { padding-left:20px; }
+  .toc li { font-size:13px; color:var(--text-2); margin-bottom:4px; }
+  .toc a { color:var(--choc); text-decoration:none; }
+  .toc a:hover { text-decoration:underline; }
 
-    .nav-wordmark {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 3.5px;
-      color: var(--white-100);
-      text-decoration: none;
-    }
+  .clause { margin-bottom:52px; scroll-margin-top:80px; }
+  .clause-num { font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--green); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .clause-num::after { content:''; height:1px; background:var(--border); width:40px; }
+  h2 { font-size:22px; font-weight:400; color:var(--choc); margin-bottom:18px; letter-spacing:-0.01em; }
+  h3.sub { font-size:15px; font-weight:500; color:var(--text); margin:20px 0 8px; }
 
-    .nav-links { display: flex; align-items: center; gap: 32px; }
+  p { margin-bottom:14px; }
+  p:last-child { margin-bottom:0; }
 
-    .nav-link {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--white-35);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-link:hover { color: var(--white-100); }
+  .notice-box {
+    background:rgba(61,36,16,0.05); border-left:3px solid var(--choc);
+    border-radius:0 8px 8px 0; padding:16px 20px; margin:20px 0;
+  }
+  .notice-box strong { font-weight:500; color:var(--choc); }
 
-    .nav-btn {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--bg);
-      background: var(--green);
-      padding: 9px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .nav-btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+  ol.clauses { list-style:none; padding:0; }
+  ol.clauses li { padding:6px 0 6px 0; color:var(--text-2); }
+  ol.clauses li::before { content:attr(data-n); font-weight:500; color:var(--choc); margin-right:8px; }
 
-    .page-wrap {
-      position: relative;
-      z-index: 1;
-      padding-top: 64px;
-    }
+  ul.plain { list-style:none; padding:0; }
+  ul.plain li { padding:5px 0 5px 18px; position:relative; color:var(--text-2); }
+  ul.plain li::before { content:'–'; position:absolute; left:0; color:var(--text-3); }
 
-    .doc-hero {
-      padding: 80px 52px 64px;
-      max-width: 860px;
-      margin: 0 auto;
-    }
+  table { width:100%; border-collapse:collapse; margin:20px 0; font-size:13px; }
+  th { text-align:left; font-weight:500; color:var(--choc); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:10px 14px; border-bottom:2px solid var(--border); }
+  td { padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text-2); vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  tr:hover td { background:rgba(61,36,16,0.02); }
 
-    .doc-eyebrow {
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .doc-eyebrow::before {
-      content: '';
-      width: 24px;
-      height: 1px;
-      background: var(--green);
-    }
-
-    .doc-title {
-      font-size: clamp(36px, 4.5vw, 56px);
-      font-weight: 300;
-      line-height: 1.1;
-      letter-spacing: -0.8px;
-      color: var(--white-100);
-      margin-bottom: 16px;
-    }
-
-    .doc-meta {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--white-35);
-      line-height: 1.6;
-    }
-
-    .doc-body {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 52px 120px;
-    }
-
-    /* Plain English summary card */
-    .plain-english {
-      background: rgba(168,216,50,0.06);
-      border: 1px solid rgba(168,216,50,0.18);
-      border-top-color: rgba(168,216,50,0.3);
-      border-radius: 20px;
-      padding: 36px 40px;
-      margin-bottom: 48px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .plain-english::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(168,216,50,0.4), transparent);
-    }
-
-    .pe-label {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 16px;
-    }
-
-    .pe-text {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--white-60);
-    }
-
-    .toc-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-top-color: var(--border-bright);
-      border-radius: 20px;
-      padding: 36px 40px;
-      margin-bottom: 48px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .toc-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.18), transparent);
-    }
-
-    .toc-title {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--white-35);
-      margin-bottom: 20px;
-    }
-
-    .toc-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .toc-list a {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--white-60);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: color 0.2s;
-    }
-
-    .toc-list a:hover { color: var(--white-100); }
-
-    .toc-list a::before {
-      content: attr(data-num);
-      font-size: 10px;
-      font-weight: 400;
-      color: var(--green);
-      letter-spacing: 1px;
-      min-width: 24px;
-    }
-
-    .doc-section {
-      margin-bottom: 48px;
-      scroll-margin-top: 80px;
-    }
-
-    .section-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-top-color: var(--border-bright);
-      border-radius: 20px;
-      padding: 40px 44px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .section-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-    }
-
-    .section-num {
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 2px;
-      color: var(--green);
-      margin-bottom: 10px;
-    }
-
-    .section-heading {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--white-100);
-      letter-spacing: -0.2px;
-      margin-bottom: 24px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--white-08);
-    }
-
-    .doc-p {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--white-60);
-      margin-bottom: 16px;
-    }
-
-    .doc-p:last-child { margin-bottom: 0; }
-
-    .sub-heading {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--white-100);
-      margin: 24px 0 10px;
-    }
-
-    .sub-heading:first-child { margin-top: 0; }
-
-    .doc-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .doc-list li {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--white-60);
-      line-height: 1.7;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .doc-list li::before {
-      content: '';
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--green);
-      flex-shrink: 0;
-      margin-top: 9px;
-    }
-
-    .doc-list.alpha li::before { display: none; }
-    .doc-list.alpha { padding-left: 8px; }
-    .doc-list.alpha li { gap: 8px; }
-
-    .notice-card {
-      background: rgba(168,216,50,0.06);
-      border: 1px solid rgba(168,216,50,0.18);
-      border-radius: 14px;
-      padding: 20px 24px;
-      margin: 16px 0;
-    }
-
-    .notice-card .doc-p { color: var(--white-60); margin-bottom: 0; }
-    .notice-card .notice-label {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 8px;
-    }
-
-    .founding-box {
-      background: rgba(168,216,50,0.06);
-      border: 1px solid rgba(168,216,50,0.18);
-      border-radius: 14px;
-      padding: 20px 24px;
-      margin: 0 0 20px 0;
-    }
-
-    .intl-box {
-      background: var(--card-inner);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px 24px;
-      margin: 12px 0;
-    }
-
-    .intl-box p {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--white-60);
-      line-height: 1.7;
-      margin-bottom: 3px;
-    }
-
-    .intl-box p:last-child { margin-bottom: 0; }
-
-    .intl-label {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--white-35);
-      margin-bottom: 8px;
-    }
-
-    .contact-block {
-      background: var(--card-inner);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px 28px;
-      margin: 16px 0;
-    }
-
-    .contact-block p {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--white-60);
-      line-height: 1.8;
-    }
-
-    .contact-block a {
-      color: var(--green);
-      text-decoration: none;
-    }
-
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--border);
-      padding: 32px 52px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-left { display: flex; align-items: center; gap: 24px; }
-
-    .footer-mark {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 3px;
-      color: var(--white-60);
-    }
-
-    .footer-co {
-      font-size: 11px;
-      font-weight: 300;
-      color: var(--white-15);
-    }
-
-    .footer-links { display: flex; align-items: center; gap: 28px; }
-
-    .footer-link {
-      font-size: 12px;
-      font-weight: 300;
-      color: var(--white-35);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-link:hover { color: var(--white-100); }
-
-    @media (max-width: 760px) {
-      nav { padding: 0 24px; }
-      .nav-links { gap: 16px; }
-      .doc-hero { padding: 60px 24px 40px; }
-      .doc-body { padding: 0 24px 80px; }
-      .section-card { padding: 28px 24px; }
-      .toc-card { padding: 28px 24px; }
-      .plain-english { padding: 28px 24px; }
-      footer { flex-direction: column; gap: 20px; text-align: center; padding: 28px 20px; }
-      .footer-left { flex-direction: column; gap: 8px; }
-      .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
-    }
-  </style>
+  footer { background:var(--choc); padding:36px 48px; }
+  .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:11.5px; }
+  .footer-logo { color:rgba(250,248,245,0.5); letter-spacing:0.18em; text-transform:uppercase; font-weight:400; }
+  .footer-links { display:flex; gap:20px; }
+  .footer-links a { color:rgba(250,248,245,0.45); text-decoration:none; }
+  .footer-links a:hover { color:var(--green); }
+</style>
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="nav-wordmark">WHELPORA</a>
-    <div class="nav-links">
-      <a href="/#features" class="nav-link">Features</a>
-      <a href="/#pricing" class="nav-link">Pricing</a>
-      <a href="https://app.whelpora.com" class="nav-link">Sign in</a>
-      <a href="https://app.whelpora.com/signup" class="nav-btn">Join the Beta</a>
+<nav>
+  <a href="https://www.whelpora.com" class="nav-logo">Whelpora</a>
+  <ul class="nav-links">
+    <li><a href="https://www.whelpora.com/#features">Features</a></li>
+    <li><a href="https://www.whelpora.com/#pricing">Pricing</a></li>
+    <li><a href="https://app.whelpora.com">Sign in</a></li>
+    <li><a href="https://app.whelpora.com/signup" class="nav-cta">Join the Beta</a></li>
+  </ul>
+</nav>
+
+<div class="legal-header">
+  <div class="legal-header-inner">
+    <p class="legal-label">Legal</p>
+    <h1>Terms and Conditions</h1>
+    <p class="legal-meta">Susse Pty Ltd ACN 695 394 079 trading as Whelpora &nbsp;·&nbsp; Version 2.1 (Beta) &nbsp;·&nbsp; Effective date: 16 March 2026 &nbsp;·&nbsp; Last updated: 12 May 2026</p>
+  </div>
+</div>
+
+<div class="legal-body">
+
+  <div class="summary-box">
+    <h3>Plain English summary</h3>
+    <p>Whelpora is in beta — it is a work in progress and free to use while we build it. You may encounter bugs. Your feedback helps us improve. Please keep technical details about the platform confidential. Your data belongs to you. Beta ends 31 May 2026, after which founding members pay a discounted rate locked in for as long as their subscription is active. You can leave at any time. Whelpora uses AI features to help draft messages, predict coat colours, and parse documents — these are suggestions only and you remain the decision-maker.</p>
+  </div>
+
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#s1">About these Terms</a></li>
+      <li><a href="#s2">Eligibility and account registration</a></li>
+      <li><a href="#s3">Permitted use</a></li>
+      <li><a href="#s4">Prohibited conduct</a></li>
+      <li><a href="#s5">User content</a></li>
+      <li><a href="#s5a">Data controller and data processor</a></li>
+      <li><a href="#s6">Subscriptions and payment</a></li>
+      <li><a href="#s6a">Founding member rate</a></li>
+      <li><a href="#s7">Intellectual property</a></li>
+      <li><a href="#s8">Third-party services</a></li>
+      <li><a href="#s9">Disclaimer of warranties and tax disclaimer</a></li>
+      <li><a href="#s10">Limitation of liability</a></li>
+      <li><a href="#s11">Termination of accounts</a></li>
+      <li><a href="#s12">Privacy</a></li>
+      <li><a href="#s13">Governing law and disputes</a></li>
+      <li><a href="#s14">General</a></li>
+    </ol>
+  </div>
+
+  <!-- 01 -->
+  <div class="clause" id="s1">
+    <div class="clause-num">01</div>
+    <h2>About these Terms</h2>
+    <p><strong>1.1</strong> These Terms and Conditions (<strong>Terms</strong>) govern your access to and use of the Whelpora platform (<strong>Platform</strong>), operated by Susse Pty Ltd ACN 695 394 079 trading as Whelpora, Level 1, 888 Brunswick Street, New Farm QLD 4005 (<strong>Whelpora</strong>, <strong>we</strong>, <strong>us</strong>, or <strong>our</strong>).</p>
+    <p><strong>1.2</strong> By creating an account or accessing the Platform, you agree to be bound by these Terms. If you do not agree, you must not use the Platform.</p>
+    <p><strong>1.3</strong> During the current beta phase, these Terms are supplemented by the Beta Tester Agreement, which is publicly available at <a href="https://www.whelpora.com/beta-agreement.html">whelpora.com/beta-agreement</a> and within the Platform after login. In the event of any inconsistency between these Terms and the Beta Tester Agreement, the Beta Tester Agreement prevails.</p>
+    <p><strong>1.4</strong> We may update these Terms at any time. We will notify you of material changes by email or in-platform notification at least 14 days before the changes take effect. Continued use after the effective date of updated Terms constitutes acceptance.</p>
+    <div class="notice-box">
+      <strong>Important notice — organisational tool only.</strong> Whelpora is an organisational tool only. It does not provide veterinary, medical, legal, or financial advice. All health-related schedules and templates are for organisational purposes only and do not replace professional veterinary guidance.
     </div>
-  </nav>
+  </div>
 
-  <div class="page-wrap">
+  <!-- 02 -->
+  <div class="clause" id="s2">
+    <div class="clause-num">02</div>
+    <h2>Eligibility and account registration</h2>
+    <p><strong>2.1</strong> The Platform is intended for use by individuals aged 18 years or over. By creating an account, you confirm that you are at least 18 years of age. Users outside Australia access the Platform at their own risk and are responsible for compliance with their local laws.</p>
+    <p><strong>2.2</strong> To access the Platform, you must create an account by providing accurate and complete information including your name, email address, and any other details required during registration.</p>
+    <p><strong>2.3</strong> You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account.</p>
+    <p><strong>2.4</strong> You must notify us immediately at <a href="mailto:support@whelpora.com">support@whelpora.com</a> if you become aware of any unauthorised access to your account.</p>
+    <p><strong>2.5</strong> We reserve the right to refuse registration or cancel accounts at our discretion.</p>
+  </div>
 
-    <div class="doc-hero">
-      <div class="doc-eyebrow">Legal</div>
-      <h1 class="doc-title">Terms of Service</h1>
-      <p class="doc-meta">
-        Susse Pty Ltd ACN 695 394 079 trading as Whelpora<br>
-        Version 2.0 (Beta) &nbsp;·&nbsp; Effective date: 16 March 2026 &nbsp;·&nbsp; Last updated: 23 April 2026
-      </p>
-    </div>
+  <!-- 03 -->
+  <div class="clause" id="s3">
+    <div class="clause-num">03</div>
+    <h2>Permitted use</h2>
+    <p><strong>3.1</strong> Subject to these Terms, Whelpora grants you a limited, non-exclusive, non-transferable, revocable licence to access and use the Platform for the following permitted purposes:</p>
+    <ul class="plain">
+      <li>managing your dog breeding records, whelping logs, and litter health information;</li>
+      <li>accessing Platform features as made available to you from time to time; and</li>
+      <li>during the beta phase, testing and providing feedback in accordance with the Beta Tester Agreement.</li>
+    </ul>
+    <p><strong>3.2</strong> You must use the Platform only for lawful purposes and in compliance with all applicable laws and regulations, including applicable animal welfare legislation.</p>
+  </div>
 
-    <div class="doc-body">
+  <!-- 04 -->
+  <div class="clause" id="s4">
+    <div class="clause-num">04</div>
+    <h2>Prohibited conduct</h2>
+    <p><strong>4.1</strong> You must not:</p>
+    <ul class="plain">
+      <li>use the Platform for any unlawful purpose or in any manner that could damage, disable, or impair the Platform or its infrastructure;</li>
+      <li>attempt to gain unauthorised access to any part of the Platform, its servers, or any connected systems;</li>
+      <li>upload, transmit, or distribute any content that is defamatory, abusive, obscene, fraudulent, or that infringes the intellectual property rights of any person;</li>
+      <li>use any automated tools, bots, scrapers, or scripts to access the Platform without our express written consent;</li>
+      <li>resell, sub-licence, or commercialise your access to the Platform without our written permission;</li>
+      <li>reverse engineer, decompile, disassemble, or attempt to extract the source code of the Platform;</li>
+      <li>interfere with or disrupt the integrity or performance of the Platform or the data contained therein;</li>
+      <li>upload any malicious code, virus, trojan, or other harmful material;</li>
+      <li>impersonate any person or misrepresent your identity or affiliation; or</li>
+      <li>use the Platform to store, process, or transmit data in a manner that would violate the <em>Privacy Act 1988</em> (Cth) or the Australian Privacy Principles.</li>
+    </ul>
+  </div>
 
-      <!-- PLAIN ENGLISH SUMMARY -->
-      <div class="plain-english">
-        <p class="pe-label">Plain English summary</p>
-        <p class="pe-text">Whelpora is a dog breeding management platform. During the beta phase it is free to use. Your data belongs to you. We are an organisational tool only -- not a vet, lawyer, or advisor. You must be 18 or older. After beta ends, a paid subscription is required; founding members lock in a 40% discount permanently. If you are outside Australia, you retain all rights under your local privacy and consumer protection law -- nothing in these Terms removes them. You can leave at any time.</p>
-      </div>
+  <!-- 05 -->
+  <div class="clause" id="s5">
+    <div class="clause-num">05</div>
+    <h2>User content</h2>
+    <p><strong>5.1</strong> You may upload, enter, and store data including dog breeding records, whelping logs, health tests, and related information (<strong>User Content</strong>) into the Platform.</p>
+    <p><strong>5.2</strong> You retain all rights in your User Content. By uploading User Content, you grant Whelpora a limited, non-exclusive, royalty-free licence to store, process, and display your User Content solely to the extent necessary to provide the Platform to you.</p>
+    <p><strong>5.3</strong> You represent and warrant that:</p>
+    <ul class="plain">
+      <li>you own or have the right to upload and store your User Content;</li>
+      <li>your User Content does not infringe any intellectual property rights or privacy rights of any third party; and</li>
+      <li>where your User Content includes personal information about other individuals (including co-owners or buyers of animals), you have obtained all necessary consents to store that information on the Platform.</li>
+    </ul>
+    <p><strong>5.4</strong> Whelpora does not review or monitor User Content and is not responsible for the accuracy, legality, or appropriateness of any User Content.</p>
+  </div>
 
-      <!-- TABLE OF CONTENTS -->
-      <div class="toc-card">
-        <p class="toc-title">Contents</p>
-        <ol class="toc-list">
-          <li><a href="#s1" data-num="01">About these Terms</a></li>
-          <li><a href="#s2" data-num="02">Eligibility and account registration</a></li>
-          <li><a href="#s3" data-num="03">Permitted use</a></li>
-          <li><a href="#s4" data-num="04">Prohibited conduct</a></li>
-          <li><a href="#s5" data-num="05">User content</a></li>
-          <li><a href="#s5a" data-num="5A">Data controller and data processor</a></li>
-          <li><a href="#s6" data-num="06">Subscriptions and payment</a></li>
-          <li><a href="#s6a" data-num="6A">Founding member rate</a></li>
-          <li><a href="#s7" data-num="07">Intellectual property</a></li>
-          <li><a href="#s8" data-num="08">Third-party services</a></li>
-          <li><a href="#s9" data-num="09">Disclaimer of warranties</a></li>
-          <li><a href="#s10" data-num="10">Limitation of liability</a></li>
-          <li><a href="#s11" data-num="11">Termination of accounts</a></li>
-          <li><a href="#s12" data-num="12">Privacy</a></li>
-          <li><a href="#s13" data-num="13">Governing law, disputes, and international users</a></li>
-          <li><a href="#s14" data-num="14">General</a></li>
-        </ol>
-      </div>
+  <!-- 5A -->
+  <div class="clause" id="s5a">
+    <div class="clause-num">5A</div>
+    <h2>Data controller and data processor</h2>
+    <p><strong>5A.1</strong> Where you enter personal information about third parties (including puppy buyers, co-owners, or other individuals) into the Platform, you are the Data Controller of that personal information within the meaning of applicable privacy legislation.</p>
+    <p><strong>5A.2</strong> Whelpora acts as a Data Processor on your behalf in respect of any personal information you enter about third parties. Whelpora will process that information only to the extent necessary to provide the Platform to you.</p>
+    <p><strong>5A.3</strong> As Data Controller, you are responsible for:</p>
+    <ul class="plain">
+      <li>having a lawful basis to collect and store the personal information you enter;</li>
+      <li>responding to any access, correction, or deletion requests made by your buyers or other third parties whose information you have entered;</li>
+      <li>ensuring the accuracy of the personal information you enter; and</li>
+      <li>deleting third-party personal information when it is no longer required for your legitimate purposes.</li>
+    </ul>
+    <p><strong>5A.4</strong> Breeders who process buyer data through the Platform and who are subject to GDPR or UK GDPR may request a Data Processing Agreement by contacting <a href="mailto:support@whelpora.com">support@whelpora.com</a>.</p>
+  </div>
 
-      <!-- SECTION 1 -->
-      <div class="doc-section" id="s1">
-        <div class="section-card">
-          <div class="section-num">01</div>
-          <h2 class="section-heading">About these Terms</h2>
-          <p class="doc-p"><strong>1.1</strong> These Terms and Conditions (<strong>Terms</strong>) govern your access to and use of the Whelpora platform (<strong>Platform</strong>), operated by Susse Pty Ltd ACN 695 394 079 trading as Whelpora (<strong>Whelpora</strong>, <strong>we</strong>, <strong>us</strong>, or <strong>our</strong>).</p>
-          <p class="doc-p"><strong>1.2</strong> By creating an account or accessing the Platform, you agree to be bound by these Terms. If you do not agree, you must not use the Platform.</p>
-          <p class="doc-p"><strong>1.3</strong> During the current beta phase, these Terms are supplemented by the Beta Tester Agreement, which is available within the Platform after login or by request to <a href="mailto:support@whelpora.com" style="color:var(--green);">support@whelpora.com</a>. In the event of any inconsistency between these Terms and the Beta Tester Agreement, the Beta Tester Agreement prevails.</p>
-          <p class="doc-p"><strong>1.4</strong> We may update these Terms at any time. We will notify you of material changes by email or in-platform notification at least 14 days before the changes take effect. Continued use after the effective date of updated Terms constitutes acceptance.</p>
+  <!-- 06 -->
+  <div class="clause" id="s6">
+    <div class="clause-num">06</div>
+    <h2>Subscriptions and payment</h2>
+    <p><strong>6.1</strong> Access to the Platform during the beta phase is provided free of charge. The beta phase ends on 31 May 2026.</p>
+    <p><strong>6.2</strong> Following the conclusion of the beta phase, access to the Platform requires a valid subscription plan. You will receive no less than 14 days' written notice before any transition from free beta access to a paid subscription is required.</p>
+    <p><strong>6.3</strong> All pricing for subscription plans will be displayed in Australian Dollars (AUD) inclusive of GST where applicable.</p>
+    <p><strong>6.4</strong> Payment processing is handled through Stripe. Whelpora does not store your payment card details. By subscribing, you agree to be bound by Stripe's terms and conditions.</p>
+    <p><strong>6.5</strong> Subscriptions are billed on a recurring basis (monthly or annually, depending on your selected plan) and will automatically renew at the end of each billing period unless cancelled before the renewal date. You authorise Whelpora to charge your payment method on file for each renewal period. For annual plans, we will send you a renewal reminder by email at least 14 days before your renewal date.</p>
+    <p><strong>6.6</strong> You may cancel your subscription at any time. Access continues until the end of the current billing period.</p>
+    <p><strong>6.7</strong> Refunds are not provided for partial billing periods or unused portions of a subscription, except where required by the Australian Consumer Law (Schedule 2, <em>Competition and Consumer Act 2010</em> (Cth)) or other applicable law that cannot be excluded by agreement.</p>
+    <p><strong>6.8</strong> Whelpora reserves the right to modify, discontinue, or change subscription plans at any time, subject to providing reasonable notice to existing subscribers.</p>
+    <h3 class="sub">iCal calendar subscription</h3>
+    <p><strong>6.9</strong> The Platform provides an iCal subscription feed for your calendar data. This feed is accessed via a bearer URL — anyone with the URL can read your calendar data without logging in. You should treat this URL as a private token. If you believe your iCal URL has been compromised, you can rotate it from within your account settings, which will invalidate the old URL immediately.</p>
+  </div>
 
-          <div class="notice-card" style="margin-top:20px;">
-            <p class="notice-label">Important notice -- organisational tool only</p>
-            <p class="doc-p">Whelpora is an organisational tool only. It does not provide veterinary, medical, legal, or financial advice. All health-related schedules and templates are for organisational purposes only and do not replace professional veterinary guidance. In a health emergency involving an animal, contact a qualified veterinarian immediately.</p>
-          </div>
-        </div>
-      </div>
+  <!-- 6A -->
+  <div class="clause" id="s6a">
+    <div class="clause-num">6A</div>
+    <h2>Founding member rate</h2>
+    <p style="font-size:13px; color:var(--text-3); font-style:italic; margin-bottom:16px;">40% off, locked for as long as your subscription is active — for beta users only.</p>
+    <p><strong>6A.1</strong> Users who subscribe to a paid subscription plan during the beta phase or within 30 days of its conclusion (<strong>Founding Members</strong>) will be eligible for a discounted subscription rate (<strong>Founding Rate</strong>) equal to 40% off the then-current standard price for the equivalent subscription plan.</p>
+    <p><strong>6A.2</strong> The Founding Rate will remain in effect for as long as the Founding Member maintains a continuous active subscription.</p>
+    <p><strong>6A.3</strong> If a Founding Member cancels their subscription, the Founding Rate will be reserved for a period of 12 months from the date of cancellation. If the Founding Member resubscribes within that 12-month period, the Founding Rate will be reinstated. After 12 months from the date of cancellation, the Founding Rate is permanently forfeited and standard pricing applies upon any resubscription.</p>
+    <p><strong>6A.4</strong> The Founding Rate discount of 40% applies to the subscription plan tier held at the time of the founding subscription. If a Founding Member upgrades to a higher tier, the 40% discount applies to the standard price of that higher tier at the time of upgrade. If the Founding Member subsequently cancels and the 12-month reservation period expires, the Founding Rate on the upgraded tier is also forfeited.</p>
+    <p><strong>6A.5</strong> Whelpora reserves the right to modify or discontinue the Founding Member Rate program with 60 days' written notice to affected Founding Members.</p>
+  </div>
 
-      <!-- SECTION 2 -->
-      <div class="doc-section" id="s2">
-        <div class="section-card">
-          <div class="section-num">02</div>
-          <h2 class="section-heading">Eligibility and account registration</h2>
-          <p class="doc-p"><strong>2.1</strong> The Platform is intended for use by individuals aged 18 years or over.</p>
-          <p class="doc-p"><strong>2.2</strong> To access the Platform, you must create an account by providing accurate and complete information including your name, email address, and any other details required during registration.</p>
-          <p class="doc-p"><strong>2.3</strong> You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account.</p>
-          <p class="doc-p"><strong>2.4</strong> You must notify us immediately at <a href="mailto:support@whelpora.com" style="color:var(--green);">support@whelpora.com</a> if you become aware of any unauthorised access to your account.</p>
-          <p class="doc-p"><strong>2.5</strong> We reserve the right to refuse registration or cancel accounts at our discretion.</p>
-          <p class="doc-p"><strong>2.6 International users.</strong> If you are located outside Australia, you may access and use the Platform subject to these Terms and your local laws. Nothing in these Terms removes or limits any rights you hold under applicable consumer protection or data protection legislation in your jurisdiction. In particular:</p>
-          <ul class="doc-list">
-            <li>EU and EEA users retain all rights under the GDPR and applicable national law.</li>
-            <li>UK users retain all rights under the UK GDPR and the Consumer Rights Act 2015.</li>
-            <li>New Zealand users retain all rights under the Privacy Act 2020 (NZ) and Consumer Guarantees Act 1993 (NZ).</li>
-            <li>Canadian users retain all rights under PIPEDA and applicable provincial consumer protection law.</li>
-          </ul>
-          <p class="doc-p" style="margin-top:8px;">You are responsible for ensuring your use of the Platform complies with the laws of your jurisdiction, including any licensing or regulatory requirements applicable to animal breeding in your country or region.</p>
-        </div>
-      </div>
+  <!-- 07 -->
+  <div class="clause" id="s7">
+    <div class="clause-num">07</div>
+    <h2>Intellectual property</h2>
+    <p><strong>7.1</strong> All intellectual property in the Platform — including software, source code, databases, user interface design, features, branding, trademarks, logos, trade names, and documentation — is owned by or licensed to Susse Pty Ltd ACN 695 394 079 trading as Whelpora.</p>
+    <p><strong>7.2</strong> Nothing in these Terms transfers or assigns any intellectual property rights in the Platform to you.</p>
+    <p><strong>7.3</strong> The Whelpora name, logo, and associated marks are trademarks of Susse Pty Ltd ACN 695 394 079 trading as Whelpora. You must not use these marks without our prior written consent.</p>
+    <p><strong>7.4</strong> You retain ownership of your User Content as set out in clause 5.</p>
+  </div>
 
-      <!-- SECTION 3 -->
-      <div class="doc-section" id="s3">
-        <div class="section-card">
-          <div class="section-num">03</div>
-          <h2 class="section-heading">Permitted use</h2>
-          <p class="doc-p"><strong>3.1</strong> Subject to these Terms, Whelpora grants you a limited, non-exclusive, non-transferable, revocable licence to access and use the Platform for the following permitted purposes:</p>
-          <ul class="doc-list alpha">
-            <li>(a) &nbsp;managing your dog breeding records, whelping logs, and litter health information;</li>
-            <li>(b) &nbsp;accessing Platform features as made available to you from time to time; and</li>
-            <li>(c) &nbsp;during the beta phase, testing and providing feedback in accordance with the Beta Tester Agreement.</li>
-          </ul>
-          <p class="doc-p" style="margin-top:16px;"><strong>3.2</strong> You must use the Platform only for lawful purposes and in compliance with all applicable laws and regulations, including applicable animal welfare legislation in your jurisdiction.</p>
-        </div>
-      </div>
+  <!-- 08 -->
+  <div class="clause" id="s8">
+    <div class="clause-num">08</div>
+    <h2>Third-party services</h2>
+    <p><strong>8.1</strong> The Platform uses third-party services including:</p>
+    <table>
+      <thead>
+        <tr><th>Provider</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Supabase</td><td>Database hosting and authentication</td></tr>
+        <tr><td>Vercel</td><td>Web hosting and delivery infrastructure</td></tr>
+        <tr><td>Stripe</td><td>Payment processing</td></tr>
+        <tr><td>Resend</td><td>Transactional email delivery (account notifications, invoice sends, contract signature notifications, support emails)</td></tr>
+        <tr><td>Mailchimp (Intuit Inc.)</td><td>Product update communications and waitlist management</td></tr>
+        <tr><td>Sentry</td><td>Error monitoring and crash reporting</td></tr>
+        <tr><td>AI provider (via Lovable AI Gateway)</td><td>AI-assisted features including buyer message drafting, coat colour prediction image generation, and DNA report and pedigree document parsing. See clause 9.5 for further details.</td></tr>
+      </tbody>
+    </table>
+    <p><strong>8.2</strong> Use of third-party services may be subject to their own terms of service and privacy policies. Whelpora is not responsible for the practices of third-party service providers beyond its contractual obligations with them.</p>
+  </div>
 
-      <!-- SECTION 4 -->
-      <div class="doc-section" id="s4">
-        <div class="section-card">
-          <div class="section-num">04</div>
-          <h2 class="section-heading">Prohibited conduct</h2>
-          <p class="doc-p"><strong>4.1</strong> You must not:</p>
-          <ul class="doc-list alpha">
-            <li>(a) &nbsp;use the Platform for any unlawful purpose or in any manner that could damage, disable, or impair the Platform or its infrastructure;</li>
-            <li>(b) &nbsp;attempt to gain unauthorised access to any part of the Platform, its servers, or any connected systems;</li>
-            <li>(c) &nbsp;upload, transmit, or distribute any content that is defamatory, abusive, obscene, fraudulent, or that infringes the intellectual property rights of any person;</li>
-            <li>(d) &nbsp;use any automated tools, bots, scrapers, or scripts to access the Platform without our express written consent;</li>
-            <li>(e) &nbsp;resell, sub-licence, or commercialise your access to the Platform without our written permission;</li>
-            <li>(f) &nbsp;reverse engineer, decompile, disassemble, or attempt to extract the source code of the Platform;</li>
-            <li>(g) &nbsp;interfere with or disrupt the integrity or performance of the Platform or the data contained therein;</li>
-            <li>(h) &nbsp;upload any malicious code, virus, trojan, or other harmful material;</li>
-            <li>(i) &nbsp;impersonate any person or misrepresent your identity or affiliation;</li>
-            <li>(j) &nbsp;use the Platform to store, process, or transmit personal information of third parties in a manner that would violate applicable privacy law in your jurisdiction, including the <em>Privacy Act 1988</em> (Cth), GDPR, UK GDPR, the <em>Privacy Act 2020</em> (NZ), or PIPEDA; or</li>
-            <li>(k) &nbsp;engage in or facilitate inhumane breeding practices, animal cruelty, or conduct that violates applicable animal welfare law.</li>
-          </ul>
-        </div>
-      </div>
+  <!-- 09 -->
+  <div class="clause" id="s9">
+    <div class="clause-num">09</div>
+    <h2>Disclaimer of warranties and tax disclaimer</h2>
+    <p><strong>9.1</strong> To the maximum extent permitted by law, the Platform is provided "as is" and "as available" without any warranty of any kind, whether express, implied, or statutory.</p>
+    <p><strong>9.2</strong> Whelpora does not warrant that:</p>
+    <ul class="plain">
+      <li>the Platform will meet your requirements or be suitable for your particular purpose;</li>
+      <li>the Platform will be uninterrupted, timely, secure, or error-free;</li>
+      <li>any data you enter will be preserved, accurate, or recoverable; or</li>
+      <li>any defects will be corrected.</li>
+    </ul>
+    <p><strong>9.3</strong> Nothing in these Terms excludes, restricts, or modifies rights under the Australian Consumer Law (Schedule 2, <em>Competition and Consumer Act 2010</em> (Cth)) that cannot lawfully be excluded.</p>
+    <h3 class="sub">Tax disclaimer</h3>
+    <p><strong>9.4</strong> The invoicing, receipts, expenses, and Year Summary features within the Platform are organisational tools only. Whelpora does not:</p>
+    <ul class="plain">
+      <li>provide tax, accounting, or financial advice;</li>
+      <li>guarantee the accuracy, completeness, or compliance of any tax amounts, GST or VAT figures, or financial summaries generated by or entered into the Platform;</li>
+      <li>verify your GST or VAT registration status or calculate your tax obligations; or</li>
+      <li>submit any information to any tax authority on your behalf.</li>
+    </ul>
+    <p>You are solely responsible for verifying all tax figures with a qualified accountant or tax agent before relying on them for lodgment, reporting, or any other purpose. Whelpora is not liable for any tax penalties, assessments, or losses arising from your use of these features.</p>
+    <h3 class="sub">AI features disclaimer</h3>
+    <p><strong>9.5</strong> The Platform includes AI-assisted features that use a third-party AI provider (via Lovable AI Gateway) to generate outputs including drafted buyer messages, coat colour predictions, and parsed DNA report and pedigree data. These outputs are suggestions only. You remain the decision-maker and are responsible for reviewing, verifying, and approving any AI-generated content before acting on it or sharing it with third parties. Whelpora does not warrant the accuracy or completeness of any AI-generated output.</p>
+  </div>
 
-      <!-- SECTION 5 -->
-      <div class="doc-section" id="s5">
-        <div class="section-card">
-          <div class="section-num">05</div>
-          <h2 class="section-heading">User content</h2>
-          <p class="doc-p"><strong>5.1</strong> You may upload, enter, and store data including dog breeding records, whelping logs, health tests, and related information (<strong>User Content</strong>) into the Platform.</p>
-          <p class="doc-p"><strong>5.2</strong> You retain all rights in your User Content. By uploading User Content, you grant Whelpora a limited, non-exclusive, royalty-free licence to store, process, and display your User Content solely to the extent necessary to provide the Platform to you. This licence ends when you delete your User Content or close your account.</p>
-          <p class="doc-p"><strong>5.3</strong> You represent and warrant that:</p>
-          <ul class="doc-list alpha">
-            <li>(a) &nbsp;you own or have the right to upload and store your User Content;</li>
-            <li>(b) &nbsp;your User Content does not infringe any intellectual property rights or privacy rights of any third party; and</li>
-            <li>(c) &nbsp;where your User Content includes personal information about other individuals (including co-owners or buyers of animals), you have a lawful basis to store that information and have complied with all applicable notice and consent requirements.</li>
-          </ul>
-          <p class="doc-p" style="margin-top:16px;"><strong>5.4</strong> Whelpora does not review or monitor User Content and is not responsible for the accuracy, legality, or appropriateness of any User Content.</p>
-        </div>
-      </div>
+  <!-- 10 -->
+  <div class="clause" id="s10">
+    <div class="clause-num">10</div>
+    <h2>Limitation of liability</h2>
+    <p><strong>10.1</strong> To the maximum extent permitted by applicable law, Whelpora's total aggregate liability to you for any loss or damage arising out of or in connection with the Platform or these Terms — whether in contract, tort (including negligence), statute, or otherwise — shall not exceed AUD $100 or the total fees paid by you in the twelve (12) months preceding the claim, whichever is greater. This cap will be reviewed prior to commercial launch.</p>
+    <p><strong>10.2</strong> Whelpora shall not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, including but not limited to loss of data, loss of profits, loss of revenue, loss of goodwill, or business interruption.</p>
+    <p><strong>10.3</strong> Where liability cannot be excluded, it is limited as set out in clause 9.3.</p>
+  </div>
 
-      <!-- SECTION 5A -->
-      <div class="doc-section" id="s5a">
-        <div class="section-card">
-          <div class="section-num">5A</div>
-          <h2 class="section-heading">Data controller and data processor</h2>
-          <p class="doc-p"><strong>5A.1</strong> Where you enter personal information about third parties (including puppy buyers, co-owners, or other individuals) into the Platform, you are the <strong>Data Controller</strong> (or equivalent under applicable law) of that personal information.</p>
-          <p class="doc-p"><strong>5A.2</strong> Whelpora acts as a <strong>Data Processor</strong> on your behalf in respect of any personal information you enter about third parties. Whelpora will process that information only to the extent necessary to provide the Platform to you.</p>
-          <p class="doc-p"><strong>5A.3</strong> As Data Controller, you are responsible for:</p>
-          <ul class="doc-list alpha">
-            <li>(a) &nbsp;having a lawful basis to collect and store the personal information you enter;</li>
-            <li>(b) &nbsp;informing third parties whose data you enter how their information will be used;</li>
-            <li>(c) &nbsp;responding to any access, correction, or deletion requests made by those third parties;</li>
-            <li>(d) &nbsp;ensuring the accuracy of the personal information you enter; and</li>
-            <li>(e) &nbsp;deleting third-party personal information when it is no longer required for your legitimate purposes.</li>
-          </ul>
-          <p class="doc-p" style="margin-top:16px;"><strong>5A.4</strong> If you are subject to GDPR or UK GDPR as a data controller, you may request a Data Processing Agreement (DPA) with Whelpora by contacting <a href="mailto:support@whelpora.com" style="color:var(--green);">support@whelpora.com</a>. We will provide a standard DPA within a reasonable time.</p>
-        </div>
-      </div>
+  <!-- 11 -->
+  <div class="clause" id="s11">
+    <div class="clause-num">11</div>
+    <h2>Termination of accounts</h2>
+    <p><strong>11.1</strong> You may close your account at any time by contacting us at <a href="mailto:support@whelpora.com">support@whelpora.com</a> or using any account deletion feature available within the Platform.</p>
+    <p><strong>11.2</strong> Whelpora may suspend or terminate your account at any time, with or without notice, if:</p>
+    <ul class="plain">
+      <li>you breach these Terms;</li>
+      <li>Whelpora determines, in its discretion, that your use of the Platform poses a risk to other users or the Platform's integrity; or</li>
+      <li>Whelpora discontinues the Platform or ceases operations.</li>
+    </ul>
+    <p><strong>11.3</strong> Upon termination of your account:</p>
+    <ul class="plain">
+      <li>your licence to use the Platform is immediately revoked;</li>
+      <li>Whelpora will notify you by email upon account termination of your right to request a copy of your User Content within 30 days before it is deleted; and</li>
+      <li>Whelpora may retain certain data as required by law or for legitimate business purposes.</li>
+    </ul>
+  </div>
 
-      <!-- SECTION 6 -->
-      <div class="doc-section" id="s6">
-        <div class="section-card">
-          <div class="section-num">06</div>
-          <h2 class="section-heading">Subscriptions and payment</h2>
-          <p class="doc-p"><strong>6.1</strong> Access to the Platform during the beta phase is provided free of charge. The beta phase continues until Whelpora provides written notice of its conclusion. You will receive no less than 14 days' written notice before any transition from free beta access to a paid subscription is required.</p>
-          <p class="doc-p"><strong>6.2</strong> Following the conclusion of the beta phase, access to the Platform requires a valid subscription plan.</p>
-          <p class="doc-p"><strong>6.3</strong> All pricing for subscription plans will be displayed in Australian Dollars (AUD) inclusive of GST where applicable. Currency conversion for international users will be handled at checkout.</p>
-          <p class="doc-p"><strong>6.4</strong> Payment processing will be handled through Stripe. By subscribing, you agree to be bound by Stripe's terms and conditions.</p>
-          <p class="doc-p"><strong>6.5</strong> Subscriptions are billed on a recurring basis (monthly or annually, depending on your selected plan) and will automatically renew at the end of each billing period unless cancelled before the renewal date. You authorise Whelpora to charge your payment method on file for each renewal period.</p>
-          <p class="doc-p"><strong>6.6</strong> You may cancel your subscription at any time. Access continues until the end of the current billing period.</p>
-          <p class="doc-p"><strong>6.7 Refunds.</strong> Refunds are not provided for partial billing periods or unused portions of a subscription, except:</p>
-          <ul class="doc-list alpha">
-            <li>(a) &nbsp;where required by the Australian Consumer Law (Schedule 2, <em>Competition and Consumer Act 2010</em> (Cth)) or other applicable law that cannot be excluded by agreement;</li>
-            <li>(b) &nbsp;for EU consumers: you have a right to withdraw from a contract within 14 days of purchase under EU consumer law, unless you have already begun using the service;</li>
-            <li>(c) &nbsp;for UK consumers: you have equivalent rights under the Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013; and</li>
-            <li>(d) &nbsp;for NZ consumers: you have remedies available under the Consumer Guarantees Act 1993 (NZ).</li>
-          </ul>
-          <p class="doc-p" style="margin-top:16px;"><strong>6.8</strong> Whelpora reserves the right to modify, discontinue, or change subscription plans at any time, subject to providing at least 30 days' notice to existing subscribers.</p>
-        </div>
-      </div>
+  <!-- 12 -->
+  <div class="clause" id="s12">
+    <div class="clause-num">12</div>
+    <h2>Privacy</h2>
+    <p><strong>12.1</strong> Whelpora collects and handles personal information in accordance with the <em>Privacy Act 1988</em> (Cth), the Australian Privacy Principles, and its Privacy Policy, available at <a href="https://www.whelpora.com/privacy.html">whelpora.com/privacy</a>.</p>
+    <p><strong>12.2</strong> By using the Platform, you consent to the collection, use, and disclosure of your personal information as described in the Privacy Policy.</p>
+  </div>
 
-      <!-- SECTION 6A -->
-      <div class="doc-section" id="s6a">
-        <div class="section-card">
-          <div class="section-num">6A</div>
-          <h2 class="section-heading">Founding member rate</h2>
+  <!-- 13 -->
+  <div class="clause" id="s13">
+    <div class="clause-num">13</div>
+    <h2>Governing law and disputes</h2>
+    <p><strong>13.1</strong> These Terms are governed by the laws of Queensland, Australia. Each party irrevocably submits to the non-exclusive jurisdiction of the courts of Queensland and the Federal Court of Australia.</p>
+    <p><strong>13.2</strong> The parties agree to attempt to resolve any dispute by good-faith negotiation for a period of not less than 30 days before initiating formal legal proceedings.</p>
+    <p><strong>13.3</strong> If you are an EU, UK, NZ, or Canadian consumer, you retain all statutory dispute resolution rights available under your local law. You may also use any consumer alternative dispute resolution scheme available in your country of residence.</p>
+  </div>
 
-          <div class="founding-box">
-            <p class="doc-p" style="color:var(--green);font-weight:500;margin-bottom:8px;">40% off, locked forever -- for beta users only</p>
-            <p class="doc-p">Users who subscribe during or within 30 days of the conclusion of the beta phase lock in a founding rate that stays with them for as long as their subscription remains active.</p>
-          </div>
+  <!-- 14 -->
+  <div class="clause" id="s14">
+    <div class="clause-num">14</div>
+    <h2>General</h2>
+    <p><strong>14.1 Entire agreement.</strong> These Terms, together with the Privacy Policy and (during the beta phase) the Beta Tester Agreement, constitute the entire agreement between the parties regarding use of the Platform.</p>
+    <p><strong>14.2 Severability.</strong> If any provision is found to be unenforceable, it is severed to the minimum extent necessary and the remaining provisions continue in full force.</p>
+    <p><strong>14.3 No waiver.</strong> A failure to exercise any right under these Terms does not constitute a waiver of that right.</p>
+    <p><strong>14.4 Assignment.</strong> You may not assign your rights under these Terms without Whelpora's prior written consent. Whelpora may assign its rights without restriction.</p>
+    <p><strong>14.5 Force majeure.</strong> Whelpora is not liable for any delay or failure to perform its obligations where such failure results from circumstances beyond its reasonable control, including internet outages, third-party service failures, natural disasters, or government action.</p>
+    <p><strong>14.6 Contact.</strong></p>
+    <p>
+      <strong>Susse Pty Ltd ACN 695 394 079 trading as Whelpora</strong><br>
+      Level 1, 888 Brunswick Street, New Farm QLD 4005<br>
+      Email: <a href="mailto:support@whelpora.com">support@whelpora.com</a><br>
+      Website: <a href="https://whelpora.com">whelpora.com</a>
+    </p>
+  </div>
 
-          <p class="doc-p"><strong>6A.1</strong> Users who subscribe to a paid subscription plan during the beta phase or within 30 days of its conclusion (<strong>Founding Members</strong>) will be eligible for a discounted subscription rate (<strong>Founding Rate</strong>) equal to 40% off the then-current standard price for the equivalent subscription plan.</p>
-          <p class="doc-p"><strong>6A.2</strong> The Founding Rate will remain in effect for as long as the Founding Member maintains a continuous active subscription.</p>
-          <p class="doc-p"><strong>6A.3</strong> If a Founding Member cancels their subscription, the Founding Rate will be reserved for a period of 12 months from the date of cancellation. If the Founding Member resubscribes within that 12-month period, the Founding Rate will be reinstated. After 12 months from the date of cancellation, the Founding Rate is permanently forfeited and standard pricing applies upon any resubscription.</p>
-          <p class="doc-p"><strong>6A.4</strong> The Founding Rate applies to the subscription plan tier selected at the time of the founding subscription. If a Founding Member upgrades to a different plan tier, the 40% Founding Rate discount applies to the new plan's standard price at the time of upgrade.</p>
-          <p class="doc-p"><strong>6A.5</strong> Whelpora reserves the right to modify or discontinue the Founding Member Rate program with 60 days' written notice to affected Founding Members.</p>
-        </div>
-      </div>
+</div>
 
-      <!-- SECTION 7 -->
-      <div class="doc-section" id="s7">
-        <div class="section-card">
-          <div class="section-num">07</div>
-          <h2 class="section-heading">Intellectual property</h2>
-          <p class="doc-p"><strong>7.1</strong> All intellectual property in the Platform -- including software, source code, databases, user interface design, features, branding, trademarks, logos, trade names, and documentation -- is owned by or licensed to Susse Pty Ltd ACN 695 394 079 trading as Whelpora.</p>
-          <p class="doc-p"><strong>7.2</strong> Nothing in these Terms transfers or assigns any intellectual property rights in the Platform to you.</p>
-          <p class="doc-p"><strong>7.3</strong> The Whelpora name, logo, and associated marks are trademarks of Susse Pty Ltd ACN 695 394 079 trading as Whelpora. You must not use these marks without our prior written consent.</p>
-          <p class="doc-p"><strong>7.4</strong> You retain ownership of your User Content as set out in clause 5.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 8 -->
-      <div class="doc-section" id="s8">
-        <div class="section-card">
-          <div class="section-num">08</div>
-          <h2 class="section-heading">Third-party services</h2>
-          <p class="doc-p"><strong>8.1</strong> The Platform uses third-party services including:</p>
-          <ul class="doc-list alpha">
-            <li>(a) &nbsp;Supabase -- database hosting and authentication;</li>
-            <li>(b) &nbsp;Vercel -- web hosting and delivery infrastructure;</li>
-            <li>(c) &nbsp;Stripe -- payment processing (post-beta);</li>
-            <li>(d) &nbsp;Mailchimp (Intuit Inc.) -- mobile app waitlist and product update communications; and</li>
-            <li>(e) &nbsp;Sentry -- error monitoring and crash reporting.</li>
-          </ul>
-          <p class="doc-p" style="margin-top:16px;"><strong>8.2</strong> Use of third-party services may be subject to their own terms of service and privacy policies. Whelpora is not responsible for the practices of third-party service providers beyond its contractual obligations with them.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 9 -->
-      <div class="doc-section" id="s9">
-        <div class="section-card">
-          <div class="section-num">09</div>
-          <h2 class="section-heading">Disclaimer of warranties</h2>
-          <p class="doc-p"><strong>9.1</strong> To the maximum extent permitted by law, the Platform is provided "as is" and "as available" without any warranty of any kind, whether express, implied, or statutory.</p>
-          <p class="doc-p"><strong>9.2</strong> Whelpora does not warrant that:</p>
-          <ul class="doc-list alpha">
-            <li>(a) &nbsp;the Platform will meet your requirements or be suitable for your particular purpose;</li>
-            <li>(b) &nbsp;the Platform will be uninterrupted, timely, secure, or error-free;</li>
-            <li>(c) &nbsp;any data you enter will be preserved, accurate, or recoverable; or</li>
-            <li>(d) &nbsp;any defects will be corrected.</li>
-          </ul>
-          <p class="doc-p" style="margin-top:16px;"><strong>9.3</strong> Nothing in these Terms excludes, restricts, or modifies any rights or guarantees that cannot lawfully be excluded, including rights under the Australian Consumer Law (Schedule 2, <em>Competition and Consumer Act 2010</em> (Cth)), the Consumer Rights Act 2015 (UK), the Consumer Guarantees Act 1993 (NZ), or any equivalent consumer protection legislation in your jurisdiction.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 10 -->
-      <div class="doc-section" id="s10">
-        <div class="section-card">
-          <div class="section-num">10</div>
-          <h2 class="section-heading">Limitation of liability</h2>
-          <p class="doc-p"><strong>10.1</strong> To the maximum extent permitted by applicable law, Whelpora's total aggregate liability to you for any loss or damage arising out of or in connection with the Platform or these Terms -- whether in contract, tort (including negligence), statute, or otherwise -- shall not exceed AUD $100 or the total fees paid by you in the twelve (12) months preceding the claim, whichever is greater.</p>
-          <p class="doc-p"><strong>10.2</strong> Whelpora shall not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, including but not limited to loss of data, loss of profits, loss of revenue, loss of goodwill, or business interruption.</p>
-          <p class="doc-p"><strong>10.3</strong> The limitations in clauses 10.1 and 10.2 do not apply to the extent that applicable law in your jurisdiction does not permit such limitations, including under EU, UK, NZ, or Canadian consumer protection law. In those jurisdictions, our liability is limited only to the extent permitted by law.</p>
-          <p class="doc-p"><strong>10.4</strong> Nothing in these Terms limits our liability for: (a) death or personal injury caused by our negligence; (b) fraud or fraudulent misrepresentation; or (c) any liability that cannot be excluded by law.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 11 -->
-      <div class="doc-section" id="s11">
-        <div class="section-card">
-          <div class="section-num">11</div>
-          <h2 class="section-heading">Termination of accounts</h2>
-          <p class="doc-p"><strong>11.1</strong> You may close your account at any time by contacting us at <a href="mailto:support@whelpora.com" style="color:var(--green);">support@whelpora.com</a> or using any account deletion feature available within the Platform.</p>
-          <p class="doc-p"><strong>11.2</strong> Whelpora may suspend or terminate your account at any time, with or without notice, if:</p>
-          <ul class="doc-list alpha">
-            <li>(a) &nbsp;you breach these Terms;</li>
-            <li>(b) &nbsp;Whelpora determines, in its discretion, that your use of the Platform poses a risk to other users or the Platform's integrity; or</li>
-            <li>(c) &nbsp;Whelpora discontinues the Platform or ceases operations.</li>
-          </ul>
-          <p class="doc-p" style="margin-top:16px;"><strong>11.3</strong> Upon termination of your account:</p>
-          <ul class="doc-list alpha">
-            <li>(a) &nbsp;your licence to use the Platform is immediately revoked;</li>
-            <li>(b) &nbsp;you may request a copy of your User Content within 30 days of termination before it is deleted, subject to our Privacy Policy; and</li>
-            <li>(c) &nbsp;Whelpora may retain certain data as required by law or for legitimate business purposes.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- SECTION 12 -->
-      <div class="doc-section" id="s12">
-        <div class="section-card">
-          <div class="section-num">12</div>
-          <h2 class="section-heading">Privacy</h2>
-          <p class="doc-p"><strong>12.1</strong> Whelpora collects and handles personal information in accordance with the <em>Privacy Act 1988</em> (Cth) as amended, the Australian Privacy Principles, and applicable privacy law in your jurisdiction. Full details are set out in our Privacy Policy, available at <a href="/privacy.html" style="color:var(--green);">whelpora.com/privacy</a>.</p>
-          <p class="doc-p"><strong>12.2</strong> Where you use the Platform in a jurisdiction subject to GDPR, UK GDPR, the NZ <em>Privacy Act 2020</em>, or PIPEDA, Whelpora processes your personal information in accordance with those laws. The Privacy Policy sets out your rights under each applicable framework.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 13 -->
-      <div class="doc-section" id="s13">
-        <div class="section-card">
-          <div class="section-num">13</div>
-          <h2 class="section-heading">Governing law, disputes, and international users</h2>
-
-          <p class="sub-heading">13.1 Governing law</p>
-          <p class="doc-p">These Terms are governed by the laws of Queensland, Australia.</p>
-
-          <p class="sub-heading">13.2 Dispute resolution</p>
-          <p class="doc-p">The parties agree to attempt to resolve any dispute by good-faith negotiation for a period of not less than 30 days before initiating formal legal proceedings.</p>
-
-          <p class="sub-heading">13.3 Jurisdiction</p>
-
-          <div class="intl-box">
-            <p class="intl-label">Australian users and business users</p>
-            <p>Any legal proceedings must be brought in the courts of Queensland, Australia.</p>
-          </div>
-
-          <div class="intl-box">
-            <p class="intl-label">EU consumers</p>
-            <p>You may bring proceedings in the courts of your country of residence, or in Queensland, Australia, at your option. You also have access to the EU Online Dispute Resolution platform at <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener" style="color:var(--green);">ec.europa.eu/consumers/odr</a>.</p>
-          </div>
-
-          <div class="intl-box">
-            <p class="intl-label">UK consumers</p>
-            <p>You may bring proceedings in the courts of England and Wales, Scotland, or Northern Ireland (as applicable to your place of residence), or in Queensland, Australia, at your option.</p>
-          </div>
-
-          <div class="intl-box">
-            <p class="intl-label">New Zealand consumers</p>
-            <p>You may bring proceedings in New Zealand courts or through the Disputes Tribunal (New Zealand).</p>
-          </div>
-
-          <p class="sub-heading">13.4 Consumer rights preserved</p>
-          <p class="doc-p">Nothing in clause 13.1 or 13.3 removes or limits any statutory rights you hold under the consumer protection or data protection law of your jurisdiction that cannot be excluded by contract.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 14 -->
-      <div class="doc-section" id="s14">
-        <div class="section-card">
-          <div class="section-num">14</div>
-          <h2 class="section-heading">General</h2>
-          <p class="doc-p"><strong>14.1 Entire agreement.</strong> These Terms, together with the Privacy Policy and (during the beta phase) the Beta Tester Agreement, constitute the entire agreement between the parties regarding use of the Platform.</p>
-          <p class="doc-p"><strong>14.2 Severability.</strong> If any provision is found to be unenforceable, it is severed to the minimum extent necessary and the remaining provisions continue in full force.</p>
-          <p class="doc-p"><strong>14.3 No waiver.</strong> A failure to exercise any right under these Terms does not constitute a waiver of that right.</p>
-          <p class="doc-p"><strong>14.4 Assignment.</strong> You may not assign your rights under these Terms without Whelpora's prior written consent. Whelpora may assign its rights without restriction.</p>
-          <p class="doc-p"><strong>14.5 Force majeure.</strong> Whelpora is not liable for any delay or failure to perform its obligations where such failure results from circumstances beyond its reasonable control, including internet outages, third-party service failures, natural disasters, or government action.</p>
-          <p class="doc-p"><strong>14.6 Language.</strong> These Terms are written in English. In the event of any inconsistency between the English version and any translation, the English version prevails.</p>
-
-          <p class="sub-heading" style="margin-top:28px;">14.7 Contact</p>
-          <div class="contact-block">
-            <p><strong style="color:var(--white-100);">Susse Pty Ltd ACN 695 394 079 trading as Whelpora</strong></p>
-            <p>Level 1, 888 Brunswick Street, New Farm QLD 4005</p>
-            <p>Queensland, Australia</p>
-            <p>Email: <a href="mailto:support@whelpora.com">support@whelpora.com</a></p>
-            <p>Website: <a href="https://whelpora.com">whelpora.com</a></p>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /doc-body -->
-  </div><!-- /page-wrap -->
-
-  <footer>
-    <div class="footer-left">
-      <span class="footer-mark">WHELPORA</span>
-      <span class="footer-co">Susse Pty Ltd ACN 695 394 079 · New Farm QLD 4005</span>
-    </div>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">Whelpora &nbsp;·&nbsp; Susse Pty Ltd ACN 695 394 079 &nbsp;·&nbsp; New Farm QLD 4005</span>
     <div class="footer-links">
-      <a href="/privacy.html" class="footer-link">Privacy Policy</a>
-      <a href="/terms.html" class="footer-link">Terms of Service</a>
-      <a href="mailto:support@whelpora.com" class="footer-link">support@whelpora.com</a>
-      <a href="https://app.whelpora.com" class="footer-link">Sign in</a>
+      <a href="https://www.whelpora.com/privacy.html">Privacy Policy</a>
+      <a href="https://www.whelpora.com/terms.html">Terms and Conditions</a>
+      <a href="mailto:support@whelpora.com">support@whelpora.com</a>
+      <a href="https://app.whelpora.com">Sign in</a>
     </div>
-  </footer>
+  </div>
+</footer>
 
 </body>
 </html>

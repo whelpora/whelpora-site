@@ -1,1004 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy -- Whelpora</title>
-  <meta name="description" content="Whelpora Privacy Policy -- how we collect, use, store and protect your personal information.">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display:ital@1&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Whelpora Privacy Policy — how we collect, use, store and protect your personal information.">
+<title>Privacy Policy — Whelpora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f5;
+    --text: #1a1208;
+    --text-2: #4a3018;
+    --text-3: #8a6845;
+    --choc: #3d2410;
+    --green: #a8c832;
+    --border: rgba(61,36,16,0.12);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); font-family:'DM Sans',sans-serif; font-weight:300; color:var(--text); line-height:1.7; font-size:15px; }
 
-    :root {
-      --bg: #1a0f08;
-      --card: #2a1810;
-      --card-inner: #331e12;
-      --green: #A8D832;
-      --green-dark: #8ab228;
-      --white-100: rgba(255,255,255,0.95);
-      --white-60: rgba(255,255,255,0.6);
-      --white-35: rgba(255,255,255,0.35);
-      --white-15: rgba(255,255,255,0.15);
-      --white-08: rgba(255,255,255,0.08);
-      --white-04: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.10);
-      --border-bright: rgba(255,255,255,0.18);
-    }
+  nav {
+    position:sticky; top:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 48px; height:58px;
+    background:rgba(250,248,245,0.88); backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-logo { font-size:11px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--choc); text-decoration:none; }
+  .nav-links { display:flex; align-items:center; gap:24px; list-style:none; }
+  .nav-links a { font-size:13px; font-weight:300; color:var(--text-2); text-decoration:none; }
+  .nav-cta { background:var(--green); color:#111 !important; padding:7px 18px; border-radius:100px; font-weight:500 !important; font-size:13px !important; }
 
-    html { scroll-behavior: smooth; }
+  .legal-header { padding:60px 0 40px; border-bottom:1px solid var(--border); }
+  .legal-header-inner { max-width:860px; margin:0 auto; padding:0 48px; }
+  .legal-label { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-3); margin-bottom:12px; }
+  h1 { font-size:36px; font-weight:400; letter-spacing:-0.02em; color:var(--choc); margin-bottom:8px; }
+  .legal-meta { font-size:13px; color:var(--text-3); font-weight:300; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--white-100);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
+  .legal-body { max-width:860px; margin:0 auto; padding:48px 48px 120px; }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
-    }
+  .summary-box {
+    background:rgba(168,200,50,0.08); border:1px solid rgba(168,200,50,0.25);
+    border-radius:12px; padding:24px 28px; margin-bottom:48px;
+  }
+  .summary-box h3 { font-size:13px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; color:var(--choc); margin-bottom:10px; }
+  .summary-box p { font-size:13px; color:var(--text-2); line-height:1.75; }
 
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 200;
-      padding: 0 52px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(26,15,8,0.80);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
-    }
+  .toc { margin-bottom:56px; }
+  .toc h3 { font-size:11px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-3); margin-bottom:14px; }
+  .toc ol { padding-left:20px; }
+  .toc li { font-size:13px; color:var(--text-2); margin-bottom:4px; }
+  .toc a { color:var(--choc); text-decoration:none; }
+  .toc a:hover { text-decoration:underline; }
 
-    .nav-wordmark {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 3.5px;
-      color: var(--white-100);
-      text-decoration: none;
-    }
+  .clause { margin-bottom:52px; scroll-margin-top:80px; }
+  .clause-num { font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--green); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .clause-num::after { content:''; height:1px; background:var(--border); width:40px; }
+  h2 { font-size:22px; font-weight:400; color:var(--choc); margin-bottom:18px; letter-spacing:-0.01em; }
+  h3.sub { font-size:15px; font-weight:500; color:var(--text); margin:20px 0 8px; }
 
-    .nav-links { display: flex; align-items: center; gap: 32px; }
+  p { margin-bottom:14px; }
+  p:last-child { margin-bottom:0; }
 
-    .nav-link {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--white-35);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-link:hover { color: var(--white-100); }
+  .notice-box {
+    background:rgba(61,36,16,0.05); border-left:3px solid var(--choc);
+    border-radius:0 8px 8px 0; padding:16px 20px; margin:20px 0;
+    font-size:13px; color:var(--text-2);
+  }
+  .notice-box strong { font-weight:500; color:var(--choc); }
 
-    .nav-btn {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--bg);
-      background: var(--green);
-      padding: 9px 22px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .nav-btn:hover { background: var(--green-dark); transform: translateY(-1px); }
+  ul.plain { list-style:none; padding:0; margin-bottom:14px; }
+  ul.plain li { padding:5px 0 5px 18px; position:relative; color:var(--text-2); }
+  ul.plain li::before { content:'–'; position:absolute; left:0; color:var(--text-3); }
 
-    .page-wrap {
-      position: relative;
-      z-index: 1;
-      padding-top: 64px;
-    }
+  table { width:100%; border-collapse:collapse; margin:20px 0; font-size:13px; }
+  th { text-align:left; font-weight:500; color:var(--choc); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:10px 14px; border-bottom:2px solid var(--border); }
+  td { padding:10px 14px; border-bottom:1px solid var(--border); color:var(--text-2); vertical-align:top; }
+  tr:last-child td { border-bottom:none; }
+  tr:hover td { background:rgba(61,36,16,0.02); }
 
-    .doc-hero {
-      padding: 80px 52px 64px;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    .doc-eyebrow {
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .doc-eyebrow::before {
-      content: '';
-      width: 24px;
-      height: 1px;
-      background: var(--green);
-    }
-
-    .doc-title {
-      font-size: clamp(36px, 4.5vw, 56px);
-      font-weight: 300;
-      line-height: 1.1;
-      letter-spacing: -0.8px;
-      color: var(--white-100);
-      margin-bottom: 16px;
-    }
-
-    .doc-meta {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--white-35);
-      line-height: 1.6;
-    }
-
-    .doc-body {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 52px 120px;
-    }
-
-    .toc-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-top-color: var(--border-bright);
-      border-radius: 20px;
-      padding: 36px 40px;
-      margin-bottom: 48px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .toc-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.18), transparent);
-    }
-
-    .toc-title {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--white-35);
-      margin-bottom: 20px;
-    }
-
-    .toc-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .toc-list a {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--white-60);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: color 0.2s;
-    }
-
-    .toc-list a:hover { color: var(--white-100); }
-
-    .toc-list a::before {
-      content: attr(data-num);
-      font-size: 10px;
-      font-weight: 400;
-      color: var(--green);
-      letter-spacing: 1px;
-      min-width: 20px;
-    }
-
-    .doc-section {
-      margin-bottom: 48px;
-      scroll-margin-top: 80px;
-    }
-
-    .section-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-top-color: var(--border-bright);
-      border-radius: 20px;
-      padding: 40px 44px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .section-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-    }
-
-    .section-num {
-      font-size: 10px;
-      font-weight: 400;
-      letter-spacing: 2px;
-      color: var(--green);
-      margin-bottom: 10px;
-    }
-
-    .section-heading {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--white-100);
-      letter-spacing: -0.2px;
-      margin-bottom: 24px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--white-08);
-    }
-
-    .doc-p {
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--white-60);
-      margin-bottom: 16px;
-    }
-
-    .doc-p:last-child { margin-bottom: 0; }
-
-    .sub-heading {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--white-100);
-      margin: 24px 0 10px;
-      letter-spacing: 0.1px;
-    }
-
-    .sub-heading:first-child { margin-top: 0; }
-
-    .doc-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .doc-list li {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--white-60);
-      line-height: 1.7;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .doc-list li::before {
-      content: '';
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--green);
-      flex-shrink: 0;
-      margin-top: 9px;
-    }
-
-    .doc-list.alpha li::before { display: none; }
-    .doc-list.alpha { padding-left: 8px; }
-    .doc-list.alpha li { gap: 8px; }
-
-    .inner-card {
-      background: var(--card-inner);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px 28px;
-      margin: 16px 0;
-    }
-
-    .provider-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      font-weight: 300;
-    }
-
-    .provider-table th {
-      text-align: left;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--white-35);
-      padding: 0 16px 14px 0;
-      border-bottom: 1px solid var(--white-08);
-    }
-
-    .provider-table td {
-      padding: 14px 16px 14px 0;
-      color: var(--white-60);
-      line-height: 1.55;
-      border-bottom: 1px solid var(--white-04);
-      vertical-align: top;
-    }
-
-    .provider-table tr:last-child td { border-bottom: none; }
-    .provider-table td:first-child { color: var(--white-100); font-weight: 400; }
-
-    .notice-card {
-      background: rgba(168,216,50,0.06);
-      border: 1px solid rgba(168,216,50,0.18);
-      border-radius: 14px;
-      padding: 20px 24px;
-      margin: 16px 0;
-    }
-
-    .notice-card .doc-p { color: var(--white-60); margin-bottom: 0; }
-    .notice-card .notice-label {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 8px;
-    }
-
-    .regulator-block {
-      background: var(--card-inner);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px 28px;
-      margin: 12px 0;
-    }
-
-    .regulator-block p {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--white-60);
-      line-height: 1.7;
-      margin-bottom: 3px;
-    }
-
-    .regulator-block p:last-child { margin-bottom: 0; }
-
-    .regulator-block a {
-      color: var(--green);
-      text-decoration: none;
-    }
-
-    .regulator-name {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--white-35);
-      margin-bottom: 10px;
-    }
-
-    .contact-block {
-      background: var(--card-inner);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px 28px;
-      margin: 16px 0;
-    }
-
-    .contact-block p {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--white-60);
-      line-height: 1.8;
-    }
-
-    .contact-block a {
-      color: var(--green);
-      text-decoration: none;
-    }
-
-    .lawful-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      font-weight: 300;
-    }
-
-    .lawful-table th {
-      text-align: left;
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--white-35);
-      padding: 0 16px 14px 0;
-      border-bottom: 1px solid var(--white-08);
-    }
-
-    .lawful-table td {
-      padding: 12px 16px 12px 0;
-      color: var(--white-60);
-      line-height: 1.55;
-      border-bottom: 1px solid var(--white-04);
-      vertical-align: top;
-    }
-
-    .lawful-table tr:last-child td { border-bottom: none; }
-    .lawful-table td:first-child { color: var(--white-100); font-weight: 400; width: 55%; }
-    .lawful-table td:last-child { color: var(--green); font-size: 12px; }
-
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--border);
-      padding: 32px 52px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-left { display: flex; align-items: center; gap: 24px; }
-
-    .footer-mark {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 3px;
-      color: var(--white-60);
-    }
-
-    .footer-co {
-      font-size: 11px;
-      font-weight: 300;
-      color: var(--white-15);
-    }
-
-    .footer-links { display: flex; align-items: center; gap: 28px; }
-
-    .footer-link {
-      font-size: 12px;
-      font-weight: 300;
-      color: var(--white-35);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-link:hover { color: var(--white-100); }
-
-    @media (max-width: 760px) {
-      nav { padding: 0 24px; }
-      .nav-links { gap: 16px; }
-      .doc-hero { padding: 60px 24px 40px; }
-      .doc-body { padding: 0 24px 80px; }
-      .section-card { padding: 28px 24px; }
-      .toc-card { padding: 28px 24px; }
-      .provider-table { font-size: 12px; }
-      .lawful-table { font-size: 12px; }
-      footer { flex-direction: column; gap: 20px; text-align: center; padding: 28px 20px; }
-      .footer-left { flex-direction: column; gap: 8px; }
-      .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
-    }
-  </style>
+  footer { background:var(--choc); padding:36px 48px; }
+  .footer-inner { max-width:860px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:11.5px; }
+  .footer-logo { color:rgba(250,248,245,0.5); letter-spacing:0.18em; text-transform:uppercase; font-weight:400; }
+  .footer-links { display:flex; gap:20px; }
+  .footer-links a { color:rgba(250,248,245,0.45); text-decoration:none; }
+  .footer-links a:hover { color:var(--green); }
+</style>
 </head>
 <body>
 
-  <nav>
-    <a href="/" class="nav-wordmark">WHELPORA</a>
-    <div class="nav-links">
-      <a href="/#features" class="nav-link">Features</a>
-      <a href="/#pricing" class="nav-link">Pricing</a>
-      <a href="https://app.whelpora.com" class="nav-link">Sign in</a>
-      <a href="https://app.whelpora.com/signup" class="nav-btn">Join the Beta</a>
+<nav>
+  <a href="https://www.whelpora.com" class="nav-logo">Whelpora</a>
+  <ul class="nav-links">
+    <li><a href="https://www.whelpora.com/#features">Features</a></li>
+    <li><a href="https://www.whelpora.com/#pricing">Pricing</a></li>
+    <li><a href="https://app.whelpora.com">Sign in</a></li>
+    <li><a href="https://app.whelpora.com/signup" class="nav-cta">Join the Beta</a></li>
+  </ul>
+</nav>
+
+<div class="legal-header">
+  <div class="legal-header-inner">
+    <p class="legal-label">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="legal-meta">Susse Pty Ltd ACN 695 394 079 trading as Whelpora &nbsp;·&nbsp; Version 1.1 &nbsp;·&nbsp; Effective date: 16 March 2026 &nbsp;·&nbsp; Last updated: 12 May 2026</p>
+  </div>
+</div>
+
+<div class="legal-body">
+
+  <div class="summary-box">
+    <h3>Plain English summary</h3>
+    <p>We collect the information you give us to run the platform — your account details, breeding records, and standard technical data. We do not sell your data. We use a small number of trusted third-party providers to run the platform, including Supabase, Vercel, Stripe, Resend, Mailchimp, Sentry, and an AI provider for AI-assisted features. AI outputs are suggestions only and your data is not used to train models. You can access, correct, export, or delete your data at any time by emailing support@whelpora.com. The platform is currently in beta, so please do not store highly sensitive information during this phase.</p>
+  </div>
+
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#s1">Introduction</a></li>
+      <li><a href="#s2">What personal information we collect</a></li>
+      <li><a href="#s3">How we collect personal information</a></li>
+      <li><a href="#s4">How we use your personal information and our lawful bases</a></li>
+      <li><a href="#s5">How we store and protect your personal information</a></li>
+      <li><a href="#s6">Disclosure of personal information to third parties</a></li>
+      <li><a href="#s7">Data retention, deletion, and portability</a></li>
+      <li><a href="#s8">Cookies and tracking technologies</a></li>
+      <li><a href="#s9">Buyers and contract recipients</a></li>
+      <li><a href="#s10">AI-assisted features</a></li>
+      <li><a href="#s11">Tax figures</a></li>
+      <li><a href="#s12">Children's privacy</a></li>
+      <li><a href="#s13">Your rights by jurisdiction</a></li>
+      <li><a href="#s14">Complaints by jurisdiction</a></li>
+      <li><a href="#s15">Changes to this Privacy Policy</a></li>
+      <li><a href="#s16">Contact us</a></li>
+    </ol>
+  </div>
+
+  <!-- 01 -->
+  <div class="clause" id="s1">
+    <div class="clause-num">01</div>
+    <h2>Introduction</h2>
+    <p>Susse Pty Ltd ACN 695 394 079 trading as Whelpora (<strong>Whelpora</strong>, <strong>we</strong>, <strong>us</strong>, or <strong>our</strong>) operates the Whelpora platform (<strong>Platform</strong>), a dog breeding and whelping management tool for professional and hobby dog breeders.</p>
+    <p>We are committed to protecting the privacy of our users (<strong>you</strong>) and handling personal information responsibly. This Privacy Policy explains how we collect, use, store, disclose, and protect your personal information.</p>
+    <h3 class="sub">Applicable law</h3>
+    <p>Whelpora is an Australian entity primarily regulated by the <em>Privacy Act 1988</em> (Cth) and the Australian Privacy Principles (APPs), as amended by the <em>Privacy and Other Legislation Amendment Act 2024</em> (Cth). We also comply with:</p>
+    <ul class="plain">
+      <li>the <strong>General Data Protection Regulation</strong> (EU) 2016/679 (<strong>GDPR</strong>) for users in the European Economic Area;</li>
+      <li>the <strong>UK General Data Protection Regulation</strong> and <em>Data Protection Act 2018</em> (<strong>UK GDPR</strong>) for users in the United Kingdom;</li>
+      <li>the <strong>New Zealand Privacy Act 2020</strong> for users in New Zealand; and</li>
+      <li>the <strong>Personal Information Protection and Electronic Documents Act</strong> (Canada) (<strong>PIPEDA</strong>) for users in Canada.</li>
+    </ul>
+    <p>Where this Policy refers to obligations under a specific law, those obligations apply only to users in the relevant jurisdiction. The strongest applicable standard always takes precedence.</p>
+    <p>If you have any questions about this Privacy Policy, please contact us at the details in clause 16.</p>
+  </div>
+
+  <!-- 02 -->
+  <div class="clause" id="s2">
+    <div class="clause-num">02</div>
+    <h2>What personal information we collect</h2>
+    <h3 class="sub">2.1 Account and identity information</h3>
+    <ul class="plain">
+      <li>Full name</li>
+      <li>Email address</li>
+      <li>Password (stored in hashed form — we do not access your password)</li>
+      <li>Profile information you choose to provide</li>
+    </ul>
+    <h3 class="sub">2.2 Breeding and platform data</h3>
+    <ul class="plain">
+      <li>Dog breeding records (breed, sire, dam, date of birth, registration numbers)</li>
+      <li>Whelping logs and litter records</li>
+      <li>Dog health test results and genetic data you upload</li>
+      <li>Coat genetics and physical characteristic records</li>
+      <li>Financial records related to litter sales or stud fees that you enter into the Platform</li>
+      <li>Customer management information (names and contact details of buyers, co-owners, or other persons you enter into the Platform)</li>
+    </ul>
+    <h3 class="sub">2.3 Technical and usage data</h3>
+    <ul class="plain">
+      <li>IP address and device information</li>
+      <li>Browser type and operating system</li>
+      <li>Pages visited and features used within the Platform</li>
+      <li>Session duration and interaction data</li>
+      <li>Log data and error reports (collected via Sentry — see clause 6)</li>
+    </ul>
+    <h3 class="sub">2.4 Communications</h3>
+    <ul class="plain">
+      <li>Correspondence you send to us (including feedback, support requests, and bug reports)</li>
+    </ul>
+    <h3 class="sub">2.5 Mobile app waitlist</h3>
+    <ul class="plain">
+      <li>Email address provided when joining the mobile app waitlist</li>
+    </ul>
+    <h3 class="sub">2.6 Payment information</h3>
+    <ul class="plain">
+      <li>Payment card details (processed by Stripe — Whelpora does not store card numbers)</li>
+      <li>Billing name and address</li>
+      <li>Transaction history</li>
+    </ul>
+  </div>
+
+  <!-- 03 -->
+  <div class="clause" id="s3">
+    <div class="clause-num">03</div>
+    <h2>How we collect personal information</h2>
+    <p>We collect personal information:</p>
+    <ul class="plain">
+      <li>directly from you when you create an account, use the Platform, join the mobile waitlist, or contact us;</li>
+      <li>automatically when you use the Platform, through cookies, log files, and error monitoring tools (see clauses 6 and 8); and</li>
+      <li>from third-party service providers in connection with authentication or payment processing (see clause 6).</li>
+    </ul>
+    <p>We will only collect personal information that is reasonably necessary for our functions and activities. Where practicable, we will give you the option to interact with us anonymously or using a pseudonym, unless identification is required by law or to deliver the service.</p>
+  </div>
+
+  <!-- 04 -->
+  <div class="clause" id="s4">
+    <div class="clause-num">04</div>
+    <h2>How we use your personal information and our lawful bases</h2>
+    <p>We use your personal information for the following purposes. Where GDPR or UK GDPR applies, we also identify the lawful basis for each use.</p>
+    <table>
+      <thead><tr><th>Purpose</th><th>Lawful basis (GDPR / UK GDPR)</th></tr></thead>
+      <tbody>
+        <tr><td>Create and manage your account</td><td>Contract</td></tr>
+        <tr><td>Provide, operate, maintain, and improve the Platform</td><td>Contract</td></tr>
+        <tr><td>Communicate with you about your account, updates, or changes</td><td>Contract / Legitimate interests</td></tr>
+        <tr><td>Respond to your feedback, support requests, and enquiries</td><td>Contract / Legitimate interests</td></tr>
+        <tr><td>Process payments and manage billing</td><td>Contract</td></tr>
+        <tr><td>Analyse usage patterns and improve user experience</td><td>Legitimate interests</td></tr>
+        <tr><td>Comply with our legal obligations</td><td>Legal obligation</td></tr>
+        <tr><td>Detect, investigate, and prevent fraudulent or unlawful activity</td><td>Legitimate interests / Legal obligation</td></tr>
+        <tr><td>Send you product updates and feature announcements</td><td>Consent (opt out at any time)</td></tr>
+        <tr><td>Process AI-assisted feature requests (message drafting, coat prediction, document parsing)</td><td>Contract / Legitimate interests</td></tr>
+      </tbody>
+    </table>
+    <p>We will not use your personal information for a secondary purpose without your consent, unless an exception under the APPs or applicable law permits it.</p>
+    <p>To opt out of marketing communications, use the unsubscribe link in any such email or contact us at <a href="mailto:support@whelpora.com">support@whelpora.com</a>.</p>
+  </div>
+
+  <!-- 05 -->
+  <div class="clause" id="s5">
+    <div class="clause-num">05</div>
+    <h2>How we store and protect your personal information</h2>
+    <h3 class="sub">5.1 Storage location</h3>
+    <p>Your personal information is stored on servers managed by third-party infrastructure providers set out in clause 6. These servers may be located in Australia, the United States, and other countries.</p>
+    <h3 class="sub">5.2 Security measures</h3>
+    <p>We take reasonable steps to protect your personal information from misuse, interference, loss, and unauthorised access, modification, or disclosure. These steps include:</p>
+    <ul class="plain">
+      <li>encryption of data in transit (TLS) and at rest;</li>
+      <li>password hashing (via Supabase Auth);</li>
+      <li>access controls limiting staff access to personal information;</li>
+      <li>technical and organisational measures as required by the amended <em>Privacy Act 1988</em> (Cth) (effective December 2024); and</li>
+      <li>regular review of our security practices.</li>
+    </ul>
+    <h3 class="sub">5.3 Data breach notification</h3>
+    <p>In the event of an eligible data breach:</p>
+    <ul class="plain">
+      <li><strong>Australian users:</strong> We will notify affected individuals and the OAIC as required under the Notifiable Data Breaches scheme (<em>Privacy Act 1988</em> (Cth), Part IIIC).</li>
+      <li><strong>EU / UK users:</strong> We will notify the relevant supervisory authority within 72 hours of becoming aware of a breach that poses a risk to your rights and freedoms, and will notify affected individuals without undue delay where the risk is high, as required by GDPR / UK GDPR Articles 33–34.</li>
+      <li><strong>NZ users:</strong> We will notify the Privacy Commissioner and affected individuals of notifiable privacy breaches as required by the <em>Privacy Act 2020</em> (NZ).</li>
+    </ul>
+    <h3 class="sub">5.4 Cross-border disclosure</h3>
+    <p>Some of our third-party service providers store or process data on servers located outside Australia, including in the United States of America. We take reasonable steps to ensure those providers apply data protection standards consistent with the APPs before disclosing personal information to them (APP 8).</p>
+    <p>For EU / UK users: where personal data is transferred outside the EEA or UK, we rely on Standard Contractual Clauses approved by the European Commission (or equivalent UK mechanisms) as the transfer safeguard. For Mailchimp specifically, EU and UK transfers are covered by Standard Contractual Clauses incorporated into Mailchimp's Data Processing Addendum.</p>
+    <div class="notice-box">
+      <strong>Beta phase notice.</strong> The Platform is currently in beta development. While we apply security measures, beta software carries inherently higher risks of data loss, errors, or unexpected behaviour. We encourage you not to store highly sensitive information during this phase.
     </div>
-  </nav>
+  </div>
 
-  <div class="page-wrap">
+  <!-- 06 -->
+  <div class="clause" id="s6">
+    <div class="clause-num">06</div>
+    <h2>Disclosure of personal information to third parties</h2>
+    <h3 class="sub">6.1 Third-party providers</h3>
+    <p>We may disclose your personal information to the following third-party providers:</p>
+    <table>
+      <thead><tr><th>Provider</th><th>Purpose</th><th>Location</th></tr></thead>
+      <tbody>
+        <tr><td>Supabase</td><td>Database hosting and authentication</td><td>USA / Global (AWS)</td></tr>
+        <tr><td>Vercel</td><td>Web hosting and delivery</td><td>USA / Global</td></tr>
+        <tr><td>Stripe</td><td>Payment processing</td><td>USA / Global</td></tr>
+        <tr><td>Resend</td><td>Transactional email delivery (account notifications, invoice sends, contract signature notifications, support emails, cancellation emails)</td><td>USA / Global</td></tr>
+        <tr><td>Mailchimp (Intuit Inc.)</td><td>Mobile app waitlist and product update communications</td><td>USA</td></tr>
+        <tr><td>Sentry</td><td>Error monitoring and crash reporting. Sentry is configured to minimise collection of personally identifiable information. Sentry's Data Processing Agreement is available at sentry.io/legal/dpa.</td><td>USA / Global</td></tr>
+        <tr><td>AI provider (via Lovable AI Gateway)</td><td>AI-assisted features: buyer message drafting, coat colour prediction, DNA report parsing, pedigree document parsing. See clause 10 for details of what data is sent and how it is handled.</td><td>USA / Global</td></tr>
+      </tbody>
+    </table>
+    <p>We may engage additional third-party service providers from time to time. Where we do, we will update this Privacy Policy accordingly. All providers are contractually required to handle your personal information only as directed by us and in accordance with applicable privacy law.</p>
+    <h3 class="sub">6.2 No sale of data</h3>
+    <p>We do not sell, rent, or trade your personal information to third parties for marketing purposes.</p>
+    <h3 class="sub">6.3 Other disclosures</h3>
+    <p>We may disclose your personal information:</p>
+    <ul class="plain">
+      <li>if required or authorised by applicable law (for example, in response to a court order or regulatory requirement);</li>
+      <li>in connection with a business sale, merger, or acquisition of Whelpora, subject to the acquirer agreeing to maintain the same privacy standards; or</li>
+      <li>with your express consent.</li>
+    </ul>
+  </div>
 
-    <div class="doc-hero">
-      <div class="doc-eyebrow">Legal</div>
-      <h1 class="doc-title">Privacy Policy</h1>
-      <p class="doc-meta">
-        Susse Pty Ltd ACN 695 394 079 trading as Whelpora<br>
-        Effective date: 16 March 2026 &nbsp;·&nbsp; Last updated: 23 April 2026
-      </p>
-    </div>
+  <!-- 07 -->
+  <div class="clause" id="s7">
+    <div class="clause-num">07</div>
+    <h2>Data retention, deletion, and portability</h2>
+    <h3 class="sub">7.1 Retention</h3>
+    <p>We retain personal information for as long as: (a) your account remains active; (b) it is necessary to provide the Platform to you; or (c) required by applicable law. Retention periods by data category:</p>
+    <table>
+      <thead><tr><th>Data category</th><th>Retention period</th></tr></thead>
+      <tbody>
+        <tr><td>Account data</td><td>Life of your account plus 30 days after deletion</td></tr>
+        <tr><td>Breeding records</td><td>Life of your account (or until you delete them)</td></tr>
+        <tr><td>Usage and analytics data</td><td>Up to 12 months</td></tr>
+        <tr><td>Support correspondence</td><td>Up to 2 years</td></tr>
+        <tr><td>Payment records</td><td>7 years as required by Australian tax law. For EU and UK users, the longer applicable local retention period applies (for example, HMRC requires 6 years from the end of the relevant accounting period; certain EU member states may require longer periods).</td></tr>
+        <tr><td>Contract and e-signature records</td><td>Minimum 7 years from date of execution, to support legal enforceability.</td></tr>
+      </tbody>
+    </table>
+    <h3 class="sub">7.2 Deletion on request</h3>
+    <p>If you close your account, you may request deletion of your personal information. Upon receiving a valid deletion request, we will delete or de-identify your personal information within 30 days and notify you when deletion is complete.</p>
+    <h3 class="sub">7.3 Retention after deletion</h3>
+    <p>We may retain certain information after deletion where required by law, for legitimate dispute resolution, or to enforce our agreements.</p>
+    <h3 class="sub">7.4 How to request deletion</h3>
+    <p>Email <a href="mailto:support@whelpora.com">support@whelpora.com</a> with the subject line "Data Deletion Request." Alternatively, account deletion may be available directly within your account settings.</p>
+    <h3 class="sub">7.5 Data portability</h3>
+    <p>You may request an export of your personal data and breeding records at any time by contacting <a href="mailto:support@whelpora.com">support@whelpora.com</a>. We will provide your data in a commonly used, machine-readable format within 30 days of your request. This right also applies under GDPR / UK GDPR Article 20 for EU and UK users.</p>
+  </div>
 
-    <div class="doc-body">
+  <!-- 08 -->
+  <div class="clause" id="s8">
+    <div class="clause-num">08</div>
+    <h2>Cookies and tracking technologies</h2>
+    <h3 class="sub">8.1 Cookies and trackers we use</h3>
+    <table>
+      <thead><tr><th>Tool</th><th>Type</th><th>Purpose</th><th>Can be declined?</th></tr></thead>
+      <tbody>
+        <tr><td>Supabase Auth session cookie</td><td>Essential</td><td>Maintains your authenticated session. Without this cookie you cannot remain logged in.</td><td>No — required for login</td></tr>
+        <tr><td>Supabase Auth refresh token</td><td>Essential</td><td>Refreshes your session token to keep you logged in without requiring repeated password entry.</td><td>No — required for login</td></tr>
+        <tr><td>Cookie consent preference</td><td>Functional</td><td>Stores your cookie consent choice so we do not ask again on every visit.</td><td>No — required to remember your preference</td></tr>
+        <tr><td>Sentry</td><td>Functional</td><td>Error monitoring and crash reporting to maintain Platform stability.</td><td>No — required for Platform stability</td></tr>
+        <tr><td>Analytics (if introduced)</td><td>Analytics</td><td>Usage pattern analysis to improve the Platform.</td><td>Yes — via cookie banner</td></tr>
+      </tbody>
+    </table>
+    <p>We do not currently use third-party advertising or marketing cookies. If we introduce analytics tools that set cookies, we will update this section and present you with a cookie consent banner before any such cookies are set.</p>
+    <h3 class="sub">8.2 Cookie consent</h3>
+    <p>For users in the EU, UK, and other jurisdictions requiring prior consent for non-essential cookies: we will present a cookie consent banner that allows you to accept or decline analytics cookies before they are set. Essential and functional cookies required for the Platform to operate do not require your consent.</p>
+    <h3 class="sub">8.3 Cookie controls</h3>
+    <p>You can control cookies through your browser settings. Disabling essential cookies may affect Platform functionality.</p>
+  </div>
 
-      <!-- TABLE OF CONTENTS -->
-      <div class="toc-card">
-        <p class="toc-title">Contents</p>
-        <ol class="toc-list">
-          <li><a href="#s1" data-num="01">Introduction</a></li>
-          <li><a href="#s2" data-num="02">What personal information we collect</a></li>
-          <li><a href="#s3" data-num="03">How we collect personal information</a></li>
-          <li><a href="#s4" data-num="04">How we use your personal information -- and our lawful bases</a></li>
-          <li><a href="#s5" data-num="05">How we store and protect your personal information</a></li>
-          <li><a href="#s6" data-num="06">Disclosure of personal information to third parties</a></li>
-          <li><a href="#s7" data-num="07">Data retention, deletion, and portability</a></li>
-          <li><a href="#s8" data-num="08">Cookies and tracking technologies</a></li>
-          <li><a href="#s9" data-num="09">Children's privacy</a></li>
-          <li><a href="#s10" data-num="10">Your rights -- by jurisdiction</a></li>
-          <li><a href="#s11" data-num="11">Complaints -- by jurisdiction</a></li>
-          <li><a href="#s12" data-num="12">Changes to this Privacy Policy</a></li>
-          <li><a href="#s13" data-num="13">Contact us</a></li>
-        </ol>
-      </div>
+  <!-- 09 -->
+  <div class="clause" id="s9">
+    <div class="clause-num">09</div>
+    <h2>Buyers and contract recipients</h2>
+    <p>This clause applies to individuals who receive a contract, invoice, or other document sent through the Platform by a Whelpora user (a breeder). If you are a breeder, please refer to the earlier clauses of this Policy which apply to your use of the Platform.</p>
+    <h3 class="sub">9.1 Who controls your data</h3>
+    <p>The breeder who sent you a document through the Platform is the primary data controller of your personal information. Whelpora is a joint controller to the limited extent required to maintain the integrity and enforceability of the e-signature audit trail, and acts as a data processor for all other processing.</p>
+    <h3 class="sub">9.2 What we collect from you</h3>
+    <p>When a breeder sends you a contract or other document for signature or review through the Platform, we collect the following information about you:</p>
+    <ul class="plain">
+      <li>your name and email address (as provided by the breeder);</li>
+      <li>your IP address, browser type, device type, and operating system at the time of signing or viewing;</li>
+      <li>timestamps of when the document was opened, reviewed, and signed;</li>
+      <li>a cryptographic hash of the signed document and consent text at the time of signing; and</li>
+      <li>your electronic signature (where provided).</li>
+    </ul>
+    <h3 class="sub">9.3 Why we collect it and our lawful basis</h3>
+    <p>This information is collected to create a legally enforceable audit trail for the e-signed document, consistent with the requirements of the <em>Electronic Transactions Act 1999</em> (Cth) and equivalent legislation in relevant jurisdictions (eIDAS (EU), ESIGN Act and UETA (USA), CCLA 2017 (NZ)).</p>
+    <p>For GDPR and UK GDPR purposes, the lawful bases are:</p>
+    <ul class="plain">
+      <li>Article 6(1)(b) — performance of a contract to which you are a party; and</li>
+      <li>Article 6(1)(f) — legitimate interests in maintaining the integrity and legal enforceability of executed documents.</li>
+    </ul>
+    <h3 class="sub">9.4 Who sees your data</h3>
+    <p>Your information is accessible to:</p>
+    <ul class="plain">
+      <li>the breeder who sent you the document;</li>
+      <li>Whelpora (for platform operation and audit trail maintenance); and</li>
+      <li>Supabase and Vercel (infrastructure providers — see clause 6).</li>
+    </ul>
+    <h3 class="sub">9.5 Retention</h3>
+    <p>E-signature audit trail data is retained for a minimum of 7 years from the date of execution to support the legal enforceability of the document. After that period, data is deleted or de-identified unless a longer retention period is required by applicable law.</p>
+    <h3 class="sub">9.6 Cross-border transfers</h3>
+    <p>Your data may be processed on servers located in the United States via our infrastructure providers (Supabase / AWS, Vercel). Transfers are subject to appropriate safeguards as described in clause 5.4.</p>
+    <h3 class="sub">9.7 Your rights as a recipient</h3>
+    <p>You have the right to access, correct, and in certain circumstances request deletion of your personal information. To exercise these rights, contact us at <a href="mailto:support@whelpora.com">support@whelpora.com</a>. Please note that we may not be able to delete certain information that forms part of the legal audit trail without compromising the enforceability of the signed document.</p>
+    <h3 class="sub">9.8 Notice at point of collection</h3>
+    <p>When you open a document sent through the Platform, you will be notified that your IP address, device information, and timestamps are being collected for the purpose of creating a legally enforceable audit trail. You do not need to create a Whelpora account to sign a document.</p>
+  </div>
 
-      <!-- SECTION 1 -->
-      <div class="doc-section" id="s1">
-        <div class="section-card">
-          <div class="section-num">01</div>
-          <h2 class="section-heading">Introduction</h2>
-          <p class="doc-p">Susse Pty Ltd ACN 695 394 079 trading as Whelpora (<strong>Whelpora</strong>, <strong>we</strong>, <strong>us</strong>, or <strong>our</strong>) operates the Whelpora platform (<strong>Platform</strong>), a dog breeding and whelping management tool for professional and hobby dog breeders.</p>
-          <p class="doc-p">We are committed to protecting the privacy of our users (<strong>you</strong>) and handling personal information responsibly. This Privacy Policy explains how we collect, use, store, disclose, and protect your personal information.</p>
+  <!-- 10 -->
+  <div class="clause" id="s10">
+    <div class="clause-num">10</div>
+    <h2>AI-assisted features</h2>
+    <p><strong>10.1</strong> The Platform includes AI-assisted features powered by a third-party AI provider (via Lovable AI Gateway, which may use underlying providers including OpenAI, Anthropic, or Google). These features include:</p>
+    <ul class="plain">
+      <li>buyer message drafting (where relevant breeding or litter information may be included in the prompt);</li>
+      <li>coat colour prediction image generation (where coat genetics data may be sent);</li>
+      <li>DNA report parsing (where the content of an uploaded DNA PDF may be sent for extraction); and</li>
+      <li>pedigree document parsing (where the content of an uploaded pedigree document may be sent for extraction).</li>
+    </ul>
+    <p><strong>10.2</strong> Data sent to the AI provider is used solely to generate the requested output and is not used to train AI models.</p>
+    <p><strong>10.3</strong> AI-generated outputs are suggestions only. Consistent with GDPR Article 22, no decision that produces a legal or similarly significant effect for any person is made solely by automated means through this Platform. You remain the decision-maker and are responsible for reviewing and approving any AI-generated content before acting on it.</p>
+    <p><strong>10.4</strong> You can manage your AI feature usage and quota through your account settings.</p>
+  </div>
 
-          <p class="sub-heading">Applicable law</p>
-          <p class="doc-p">Whelpora is an Australian entity primarily regulated by the <em>Privacy Act 1988</em> (Cth) and the Australian Privacy Principles (APPs), as amended by the <em>Privacy and Other Legislation Amendment Act 2024</em> (Cth). We also comply with:</p>
-          <ul class="doc-list alpha">
-            <li>(a) &nbsp;the <strong>General Data Protection Regulation</strong> (EU) 2016/679 (<strong>GDPR</strong>) for users in the European Economic Area;</li>
-            <li>(b) &nbsp;the <strong>UK General Data Protection Regulation</strong> and <em>Data Protection Act 2018</em> (<strong>UK GDPR</strong>) for users in the United Kingdom;</li>
-            <li>(c) &nbsp;the <strong>New Zealand Privacy Act 2020</strong> for users in New Zealand; and</li>
-            <li>(d) &nbsp;the <strong>Personal Information Protection and Electronic Documents Act</strong> (Canada) (<strong>PIPEDA</strong>) for users in Canada.</li>
-          </ul>
-          <p class="doc-p" style="margin-top:16px;">Where this Policy refers to obligations under a specific law, those obligations apply only to users in the relevant jurisdiction. The strongest applicable standard always takes precedence.</p>
-          <p class="doc-p">If you have any questions about this Privacy Policy, please contact us at the details in clause 13.</p>
-        </div>
-      </div>
+  <!-- 11 -->
+  <div class="clause" id="s11">
+    <div class="clause-num">11</div>
+    <h2>Tax figures</h2>
+    <p>Tax amounts you enter on invoices, receipts, and expenses are stored as part of your kennel records so you can review and export them. We do not transmit tax figures to any tax authority and we do not calculate or verify them. You are responsible for the accuracy of any tax figures you enter and for confirming your tax obligations with a qualified accountant or tax agent.</p>
+  </div>
 
-      <!-- SECTION 2 -->
-      <div class="doc-section" id="s2">
-        <div class="section-card">
-          <div class="section-num">02</div>
-          <h2 class="section-heading">What personal information we collect</h2>
+  <!-- 12 -->
+  <div class="clause" id="s12">
+    <div class="clause-num">12</div>
+    <h2>Children's privacy</h2>
+    <p>The Platform is not intended for use by persons under 18 years of age. Account registration requires confirmation that you are at least 18 years old. We do not knowingly collect personal information from minors. If we become aware that a minor has provided personal information without appropriate consent, we will take steps to delete that information promptly.</p>
+    <p>If you believe a minor has provided us with personal information, please contact us at <a href="mailto:support@whelpora.com">support@whelpora.com</a>.</p>
+    <p>Note: A Children's Online Privacy Code for Australia is expected to be developed by December 2026 under the <em>Privacy and Other Legislation Amendment Act 2024</em> (Cth). We will update this Policy accordingly when that Code is finalised.</p>
+  </div>
 
-          <p class="sub-heading">2.1 Account and identity information</p>
-          <ul class="doc-list">
-            <li>Full name</li>
-            <li>Email address</li>
-            <li>Password (stored in hashed form -- we do not access your password)</li>
-            <li>Profile information you choose to provide</li>
-          </ul>
+  <!-- 13 -->
+  <div class="clause" id="s13">
+    <div class="clause-num">13</div>
+    <h2>Your rights by jurisdiction</h2>
+    <h3 class="sub">13.1 All users</h3>
+    <p>Under the Australian Privacy Principles (APPs), you have the right to:</p>
+    <ul class="plain">
+      <li>access the personal information we hold about you (APP 12);</li>
+      <li>request correction of inaccurate, incomplete, or out-of-date personal information (APP 13); and</li>
+      <li>make a complaint about how we handle your personal information (APP 1).</li>
+    </ul>
+    <h3 class="sub">13.2 EU and EEA users (GDPR)</h3>
+    <p>In addition to the above, you have the right to:</p>
+    <ul class="plain">
+      <li><strong>Access</strong> — receive a copy of your personal data (Article 15);</li>
+      <li><strong>Rectification</strong> — have inaccurate data corrected (Article 16);</li>
+      <li><strong>Erasure</strong> — request deletion of your personal data in certain circumstances (Article 17);</li>
+      <li><strong>Restriction</strong> — limit how we process your personal data (Article 18);</li>
+      <li><strong>Portability</strong> — receive your data in a structured, machine-readable format (Article 20);</li>
+      <li><strong>Objection</strong> — object to processing based on legitimate interests (Article 21);</li>
+      <li><strong>Withdraw consent</strong> — where we rely on consent as a lawful basis, withdraw it at any time without affecting the lawfulness of prior processing; and</li>
+      <li><strong>Lodge a complaint</strong> — with your local data protection supervisory authority (Article 77).</li>
+    </ul>
+    <h3 class="sub">13.3 UK users (UK GDPR)</h3>
+    <p>You have the same rights as EU users under clause 13.2, enforceable under UK GDPR. You may also lodge a complaint with the <strong>Information Commissioner's Office (ICO)</strong>: <a href="https://ico.org.uk">ico.org.uk</a>.</p>
+    <h3 class="sub">13.4 New Zealand users</h3>
+    <p>You have the right to access and correct personal information we hold about you under the <em>Privacy Act 2020</em> (NZ). You may also complain to the <strong>Office of the Privacy Commissioner (NZ)</strong>: <a href="https://privacy.org.nz">privacy.org.nz</a>.</p>
+    <h3 class="sub">13.5 Canadian users</h3>
+    <p>You have rights under PIPEDA to access and correct personal information we hold, and to withdraw consent for optional uses of your data. You may also complain to the <strong>Office of the Privacy Commissioner of Canada</strong>: <a href="https://priv.gc.ca">priv.gc.ca</a>.</p>
+    <p>To exercise any of these rights, contact us at <a href="mailto:support@whelpora.com">support@whelpora.com</a>. We will respond within 30 days. We will not discriminate against you for exercising your privacy rights.</p>
+    <p>Breeders who process buyer data and who are subject to GDPR or UK GDPR may also request a Data Processing Agreement by emailing <a href="mailto:support@whelpora.com">support@whelpora.com</a>.</p>
+  </div>
 
-          <p class="sub-heading">2.2 Breeding and platform data</p>
-          <ul class="doc-list">
-            <li>Dog breeding records (breed, sire, dam, date of birth, registration numbers)</li>
-            <li>Whelping logs and litter records</li>
-            <li>Dog health test results and genetic data you upload</li>
-            <li>Coat genetics and physical characteristic records</li>
-            <li>Financial records related to litter sales or stud fees that you enter into the Platform</li>
-            <li>Customer management information (names and contact details of buyers, co-owners, or other persons you enter into the Platform)</li>
-          </ul>
+  <!-- 14 -->
+  <div class="clause" id="s14">
+    <div class="clause-num">14</div>
+    <h2>Complaints by jurisdiction</h2>
+    <p>If you believe we have mishandled your personal information, please contact us first at <a href="mailto:support@whelpora.com">support@whelpora.com</a>. We will acknowledge your complaint within 5 business days and respond with an outcome within 30 days.</p>
+    <p>If you are not satisfied with our response, you may contact the relevant regulator for your jurisdiction:</p>
+    <h3 class="sub">Australia</h3>
+    <p><strong>Office of the Australian Information Commissioner (OAIC)</strong><br>Website: <a href="https://www.oaic.gov.au">www.oaic.gov.au</a><br>Phone: 1300 363 992</p>
+    <h3 class="sub">European Union / EEA</h3>
+    <p><strong>Your local data protection authority</strong><br>Full list at: <a href="https://edpb.europa.eu/about-edpb/board/members_en">edpb.europa.eu</a></p>
+    <h3 class="sub">United Kingdom</h3>
+    <p><strong>Information Commissioner's Office (ICO)</strong><br>Website: <a href="https://ico.org.uk">ico.org.uk</a><br>Phone: 0303 123 1113</p>
+    <h3 class="sub">New Zealand</h3>
+    <p><strong>Office of the Privacy Commissioner</strong><br>Website: <a href="https://privacy.org.nz">privacy.org.nz</a><br>Phone: 0800 803 909</p>
+    <h3 class="sub">Canada</h3>
+    <p><strong>Office of the Privacy Commissioner of Canada</strong><br>Website: <a href="https://priv.gc.ca">priv.gc.ca</a><br>Phone: 1-800-282-1376</p>
+  </div>
 
-          <p class="sub-heading">2.3 Technical and usage data</p>
-          <ul class="doc-list">
-            <li>IP address and device information</li>
-            <li>Browser type and operating system</li>
-            <li>Pages visited and features used within the Platform</li>
-            <li>Session duration and interaction data (collected via analytics tools -- see clause 8)</li>
-            <li>Log data and error reports (collected via Sentry -- see clause 6)</li>
-          </ul>
+  <!-- 15 -->
+  <div class="clause" id="s15">
+    <div class="clause-num">15</div>
+    <h2>Changes to this Privacy Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements.</p>
+    <p>We will notify you of material changes by email or in-platform notification at least 14 days before the changes take effect. The "Last updated" date at the top of this Policy reflects the date of the most recent revision.</p>
+    <p>Your continued use of the Platform after the effective date of any changes constitutes acceptance of the updated Policy.</p>
+  </div>
 
-          <p class="sub-heading">2.4 Communications</p>
-          <ul class="doc-list">
-            <li>Correspondence you send to us (including feedback, support requests, and bug reports)</li>
-          </ul>
+  <!-- 16 -->
+  <div class="clause" id="s16">
+    <div class="clause-num">16</div>
+    <h2>Contact us</h2>
+    <p>For all privacy-related enquiries, requests, and complaints:</p>
+    <p>
+      <strong>Privacy Officer</strong><br>
+      Susse Pty Ltd ACN 695 394 079 trading as Whelpora<br>
+      Level 1, 888 Brunswick Street, New Farm QLD 4005<br>
+      Queensland, Australia<br>
+      Email: <a href="mailto:support@whelpora.com">support@whelpora.com</a><br>
+      Website: <a href="https://whelpora.com">whelpora.com</a>
+    </p>
+    <p>Susse Pty Ltd ACN 695 394 079 trading as Whelpora is an Australian entity subject to the <em>Privacy Act 1988</em> (Cth) as amended, and the Australian Privacy Principles.</p>
+  </div>
 
-          <p class="sub-heading">2.5 Mobile app waitlist</p>
-          <ul class="doc-list">
-            <li>Email address provided when joining the mobile app waitlist</li>
-          </ul>
+</div>
 
-          <p class="sub-heading">2.6 Payment information (post-beta)</p>
-          <ul class="doc-list">
-            <li>Payment card details (processed by Stripe -- Whelpora does not store card numbers)</li>
-            <li>Billing name and address</li>
-            <li>Transaction history</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- SECTION 3 -->
-      <div class="doc-section" id="s3">
-        <div class="section-card">
-          <div class="section-num">03</div>
-          <h2 class="section-heading">How we collect personal information</h2>
-          <p class="doc-p">We collect personal information:</p>
-          <ul class="doc-list alpha">
-            <li>(a) &nbsp;directly from you when you create an account, use the Platform, join the mobile waitlist, or contact us;</li>
-            <li>(b) &nbsp;automatically when you use the Platform, through cookies, log files, and error monitoring tools (see clauses 6 and 8); and</li>
-            <li>(c) &nbsp;from third-party service providers in connection with authentication or payment processing (see clause 6).</li>
-          </ul>
-          <p class="doc-p" style="margin-top:16px;">We will only collect personal information that is reasonably necessary for our functions and activities. Where practicable, we will give you the option to interact with us anonymously or using a pseudonym, unless identification is required by law or to deliver the service.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 4 -->
-      <div class="doc-section" id="s4">
-        <div class="section-card">
-          <div class="section-num">04</div>
-          <h2 class="section-heading">How we use your personal information -- and our lawful bases</h2>
-          <p class="doc-p">We use your personal information for the following purposes. Where GDPR or UK GDPR applies, we also identify the lawful basis for each use.</p>
-
-          <div class="inner-card">
-            <table class="lawful-table">
-              <thead>
-                <tr>
-                  <th>Purpose</th>
-                  <th>Lawful basis (GDPR / UK GDPR)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Create and manage your account</td>
-                  <td>Contract</td>
-                </tr>
-                <tr>
-                  <td>Provide, operate, maintain, and improve the Platform</td>
-                  <td>Contract</td>
-                </tr>
-                <tr>
-                  <td>Communicate with you about your account, updates, or changes</td>
-                  <td>Contract / Legitimate interests</td>
-                </tr>
-                <tr>
-                  <td>Respond to your feedback, support requests, and enquiries</td>
-                  <td>Contract / Legitimate interests</td>
-                </tr>
-                <tr>
-                  <td>Process payments and manage billing (post-beta)</td>
-                  <td>Contract</td>
-                </tr>
-                <tr>
-                  <td>Analyse usage patterns and improve user experience</td>
-                  <td>Legitimate interests</td>
-                </tr>
-                <tr>
-                  <td>Comply with our legal obligations</td>
-                  <td>Legal obligation</td>
-                </tr>
-                <tr>
-                  <td>Detect, investigate, and prevent fraudulent or unlawful activity</td>
-                  <td>Legitimate interests / Legal obligation</td>
-                </tr>
-                <tr>
-                  <td>Send you product updates and feature announcements</td>
-                  <td>Consent (opt out at any time)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p class="doc-p">We will not use your personal information for a secondary purpose without your consent, unless an exception under the APPs or applicable law permits it.</p>
-          <p class="doc-p">To opt out of marketing communications, use the unsubscribe link in any such email or contact us at <a href="mailto:support@whelpora.com" style="color:var(--green);">support@whelpora.com</a>.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 5 -->
-      <div class="doc-section" id="s5">
-        <div class="section-card">
-          <div class="section-num">05</div>
-          <h2 class="section-heading">How we store and protect your personal information</h2>
-
-          <p class="sub-heading">5.1 Storage location</p>
-          <p class="doc-p">Your personal information is stored on servers managed by third-party infrastructure providers set out in clause 6.1. These servers may be located in Australia, the United States, and other countries.</p>
-
-          <p class="sub-heading">5.2 Security measures</p>
-          <p class="doc-p">We take reasonable steps to protect your personal information from misuse, interference, loss, and unauthorised access, modification, or disclosure. These steps include:</p>
-          <ul class="doc-list alpha">
-            <li>(a) &nbsp;encryption of data in transit (TLS) and at rest;</li>
-            <li>(b) &nbsp;password hashing (via Supabase Auth);</li>
-            <li>(c) &nbsp;access controls limiting staff access to personal information;</li>
-            <li>(d) &nbsp;technical and organisational measures as required by the amended <em>Privacy Act 1988</em> (Cth) (effective December 2024); and</li>
-            <li>(e) &nbsp;regular review of our security practices.</li>
-          </ul>
-
-          <p class="sub-heading">5.3 Data breach notification</p>
-          <p class="doc-p">In the event of an eligible data breach:</p>
-          <ul class="doc-list">
-            <li><strong style="color:var(--white-100);">Australian users:</strong> We will notify affected individuals and the OAIC as required under the Notifiable Data Breaches scheme (<em>Privacy Act 1988</em> (Cth), Part IIIC).</li>
-            <li><strong style="color:var(--white-100);">EU / UK users:</strong> We will notify the relevant supervisory authority within 72 hours of becoming aware of a breach that poses a risk to your rights and freedoms, and will notify affected individuals without undue delay where the risk is high, as required by GDPR / UK GDPR Articles 33–34.</li>
-            <li><strong style="color:var(--white-100);">NZ users:</strong> We will notify the Privacy Commissioner and affected individuals of notifiable privacy breaches as required by the <em>Privacy Act 2020</em> (NZ).</li>
-          </ul>
-
-          <p class="sub-heading">5.4 Cross-border disclosure</p>
-          <p class="doc-p">Some of our third-party service providers store or process data on servers located outside Australia, including in the United States of America. We take reasonable steps to ensure those providers apply data protection standards consistent with the APPs before disclosing personal information to them (APP 8).</p>
-          <p class="doc-p">For EU / UK users: where personal data is transferred outside the EEA or UK, we rely on Standard Contractual Clauses approved by the European Commission (or equivalent UK mechanisms) as the transfer safeguard.</p>
-
-          <div class="notice-card">
-            <p class="notice-label">Beta phase notice</p>
-            <p class="doc-p">The Platform is currently in beta development. While we apply security measures, beta software carries inherently higher risks of data loss, errors, or unexpected behaviour. We encourage you not to store highly sensitive information during this phase.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 6 -->
-      <div class="doc-section" id="s6">
-        <div class="section-card">
-          <div class="section-num">06</div>
-          <h2 class="section-heading">Disclosure of personal information to third parties</h2>
-
-          <p class="sub-heading">6.1 Third-party providers</p>
-          <p class="doc-p">We may disclose your personal information to the following third-party providers:</p>
-
-          <div class="inner-card">
-            <table class="provider-table">
-              <thead>
-                <tr>
-                  <th>Provider</th>
-                  <th>Purpose</th>
-                  <th>Location</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Supabase</td>
-                  <td>Database hosting and authentication</td>
-                  <td>USA / Global (AWS)</td>
-                </tr>
-                <tr>
-                  <td>Vercel</td>
-                  <td>Web hosting and delivery</td>
-                  <td>USA / Global</td>
-                </tr>
-                <tr>
-                  <td>Stripe</td>
-                  <td>Payment processing (post-beta)</td>
-                  <td>USA / Global</td>
-                </tr>
-                <tr>
-                  <td>Mailchimp (Intuit Inc.)</td>
-                  <td>Mobile app waitlist and product update communications</td>
-                  <td>USA</td>
-                </tr>
-                <tr>
-                  <td>Sentry</td>
-                  <td>Error monitoring and crash reporting</td>
-                  <td>USA / Global</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p class="doc-p">We may engage additional third-party service providers from time to time. Where we do, we will update this Privacy Policy accordingly. All providers are contractually required to handle your personal information only as directed by us and in accordance with applicable privacy law.</p>
-
-          <p class="sub-heading">6.2 No sale of data</p>
-          <p class="doc-p">We do not sell, rent, or trade your personal information to third parties for marketing purposes.</p>
-
-          <p class="sub-heading">6.3 Other disclosures</p>
-          <p class="doc-p">We may disclose your personal information:</p>
-          <ul class="doc-list alpha">
-            <li>(a) &nbsp;if required or authorised by applicable law (e.g., in response to a court order or regulatory requirement);</li>
-            <li>(b) &nbsp;in connection with a business sale, merger, or acquisition of Whelpora, subject to the acquirer agreeing to maintain the same privacy standards; or</li>
-            <li>(c) &nbsp;with your express consent.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- SECTION 7 -->
-      <div class="doc-section" id="s7">
-        <div class="section-card">
-          <div class="section-num">07</div>
-          <h2 class="section-heading">Data retention, deletion, and portability</h2>
-
-          <p class="sub-heading">7.1 Retention</p>
-          <p class="doc-p">We retain personal information for as long as: (a) your account remains active; (b) it is necessary to provide the Platform to you; or (c) required by applicable law. Retention periods by data category:</p>
-          <ul class="doc-list">
-            <li>Account data: retained for the life of your account plus 30 days after deletion</li>
-            <li>Breeding records: retained for the life of your account (or until you delete them)</li>
-            <li>Usage and analytics data: retained for up to 12 months</li>
-            <li>Support correspondence: retained for up to 2 years</li>
-            <li>Payment records (post-beta): retained for 7 years as required by Australian tax law</li>
-          </ul>
-
-          <p class="sub-heading">7.2 Deletion on request</p>
-          <p class="doc-p">If you close your account, you may request deletion of your personal information. Upon receiving a valid deletion request, we will delete or de-identify your personal information within 30 days and notify you when deletion is complete.</p>
-
-          <p class="sub-heading">7.3 Retention after deletion</p>
-          <p class="doc-p">We may retain certain information after deletion where required by law, for legitimate dispute resolution, or to enforce our agreements.</p>
-
-          <p class="sub-heading">7.4 How to request deletion</p>
-          <p class="doc-p">Email <a href="mailto:support@whelpora.com" style="color:var(--green);">support@whelpora.com</a> with the subject line "Data Deletion Request." Alternatively, account deletion may be available directly within your account settings.</p>
-
-          <p class="sub-heading">7.5 Data portability</p>
-          <p class="doc-p">You may request an export of your personal data and breeding records at any time by contacting <a href="mailto:support@whelpora.com" style="color:var(--green);">support@whelpora.com</a>. We will provide your data in a commonly used, machine-readable format within 30 days of your request. This right also applies under GDPR / UK GDPR Article 20 for EU and UK users.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 8 -->
-      <div class="doc-section" id="s8">
-        <div class="section-card">
-          <div class="section-num">08</div>
-          <h2 class="section-heading">Cookies and tracking technologies</h2>
-
-          <p class="sub-heading">8.1 Cookies and trackers we use</p>
-
-          <div class="inner-card">
-            <table class="provider-table">
-              <thead>
-                <tr>
-                  <th>Tool</th>
-                  <th>Type</th>
-                  <th>Purpose</th>
-                  <th>Can be declined?</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Supabase Auth</td>
-                  <td>Essential</td>
-                  <td>Authentication session management</td>
-                  <td>No -- required for login</td>
-                </tr>
-                <tr>
-                  <td>Sentry</td>
-                  <td>Functional</td>
-                  <td>Error monitoring and crash reporting</td>
-                  <td>No -- required for Platform stability</td>
-                </tr>
-                <tr>
-                  <td>Analytics (if introduced)</td>
-                  <td>Analytics</td>
-                  <td>Usage pattern analysis to improve the Platform</td>
-                  <td>Yes -- via cookie banner</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <p class="doc-p">We do not currently use third-party advertising or marketing cookies. If we introduce analytics tools that set cookies, we will update this section and present you with a cookie consent banner before any such cookies are set.</p>
-
-          <p class="sub-heading">8.2 Cookie consent</p>
-          <p class="doc-p">For users in the EU, UK, and other jurisdictions requiring prior consent for non-essential cookies: we will present a cookie consent banner that allows you to accept or decline analytics cookies before they are set. Essential and functional cookies required for the Platform to operate do not require your consent.</p>
-
-          <p class="sub-heading">8.3 Cookie controls</p>
-          <p class="doc-p">You can control cookies through your browser settings. Disabling essential cookies may affect Platform functionality.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 9 -->
-      <div class="doc-section" id="s9">
-        <div class="section-card">
-          <div class="section-num">09</div>
-          <h2 class="section-heading">Children's privacy</h2>
-          <p class="doc-p">The Platform is not intended for use by persons under 18 years of age. We do not knowingly collect personal information from minors. If we become aware that a minor has provided personal information without appropriate consent, we will take steps to delete that information promptly.</p>
-          <p class="doc-p">If you believe a minor has provided us with personal information, please contact us at <a href="mailto:support@whelpora.com" style="color:var(--green);">support@whelpora.com</a>.</p>
-          <p class="doc-p" style="color:var(--white-35);font-size:13px;">Note: A Children's Online Privacy Code for Australia is expected to be developed by December 2026 under the <em>Privacy and Other Legislation Amendment Act 2024</em> (Cth). We will update this Policy accordingly when that Code is finalised.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 10 -->
-      <div class="doc-section" id="s10">
-        <div class="section-card">
-          <div class="section-num">10</div>
-          <h2 class="section-heading">Your rights -- by jurisdiction</h2>
-
-          <p class="sub-heading">10.1 All users</p>
-          <p class="doc-p">Under the Australian Privacy Principles (APPs), you have the right to:</p>
-          <ul class="doc-list">
-            <li>access the personal information we hold about you (APP 12)</li>
-            <li>request correction of inaccurate, incomplete, or out-of-date personal information (APP 13)</li>
-            <li>make a complaint about how we handle your personal information (APP 1)</li>
-          </ul>
-
-          <p class="sub-heading">10.2 EU and EEA users (GDPR)</p>
-          <p class="doc-p">In addition to the above, you have the right to:</p>
-          <ul class="doc-list">
-            <li><strong style="color:var(--white-100);">Access</strong> -- receive a copy of your personal data (Article 15)</li>
-            <li><strong style="color:var(--white-100);">Rectification</strong> -- have inaccurate data corrected (Article 16)</li>
-            <li><strong style="color:var(--white-100);">Erasure</strong> -- request deletion of your personal data in certain circumstances (Article 17)</li>
-            <li><strong style="color:var(--white-100);">Restriction</strong> -- limit how we process your personal data (Article 18)</li>
-            <li><strong style="color:var(--white-100);">Portability</strong> -- receive your data in a structured, machine-readable format (Article 20)</li>
-            <li><strong style="color:var(--white-100);">Objection</strong> -- object to processing based on legitimate interests (Article 21)</li>
-            <li><strong style="color:var(--white-100);">Withdraw consent</strong> -- where we rely on consent as a lawful basis, withdraw it at any time without affecting the lawfulness of prior processing</li>
-            <li><strong style="color:var(--white-100);">Lodge a complaint</strong> -- with your local data protection supervisory authority (Article 77)</li>
-          </ul>
-
-          <p class="sub-heading">10.3 UK users (UK GDPR)</p>
-          <p class="doc-p">You have the same rights as EU users under clause 10.2 above, enforceable under UK GDPR. You may also lodge a complaint with the <strong style="color:var(--white-100);">Information Commissioner's Office (ICO)</strong>: <a href="https://ico.org.uk" target="_blank" rel="noopener" style="color:var(--green);">ico.org.uk</a>.</p>
-
-          <p class="sub-heading">10.4 New Zealand users</p>
-          <p class="doc-p">You have the right to access and correct personal information we hold about you under the <em>Privacy Act 2020</em> (NZ). You may also complain to the <strong style="color:var(--white-100);">Office of the Privacy Commissioner (NZ)</strong>: <a href="https://privacy.org.nz" target="_blank" rel="noopener" style="color:var(--green);">privacy.org.nz</a>.</p>
-
-          <p class="sub-heading">10.5 Canadian users</p>
-          <p class="doc-p">You have rights under PIPEDA to access and correct personal information we hold, and to withdraw consent for optional uses of your data. You may also complain to the <strong style="color:var(--white-100);">Office of the Privacy Commissioner of Canada</strong>: <a href="https://priv.gc.ca" target="_blank" rel="noopener" style="color:var(--green);">priv.gc.ca</a>.</p>
-
-          <p class="doc-p" style="margin-top:20px;">To exercise any of these rights, contact us at <a href="mailto:support@whelpora.com" style="color:var(--green);">support@whelpora.com</a>. We will respond within 30 days. We will not discriminate against you for exercising your privacy rights.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 11 -->
-      <div class="doc-section" id="s11">
-        <div class="section-card">
-          <div class="section-num">11</div>
-          <h2 class="section-heading">Complaints -- by jurisdiction</h2>
-          <p class="doc-p">If you believe we have mishandled your personal information, please contact us first at <a href="mailto:support@whelpora.com" style="color:var(--green);">support@whelpora.com</a>. We will acknowledge your complaint within 5 business days and respond with an outcome within 30 days.</p>
-          <p class="doc-p">If you are not satisfied with our response, you may contact the relevant regulator for your jurisdiction:</p>
-
-          <div class="regulator-block">
-            <p class="regulator-name">Australia</p>
-            <p><strong style="color:var(--white-100);">Office of the Australian Information Commissioner (OAIC)</strong></p>
-            <p>Website: <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">www.oaic.gov.au</a></p>
-            <p>Phone: 1300 363 992</p>
-            <p>Post: GPO Box 5218, Sydney NSW 2001</p>
-          </div>
-
-          <div class="regulator-block">
-            <p class="regulator-name">European Union / EEA</p>
-            <p><strong style="color:var(--white-100);">Your local data protection authority</strong></p>
-            <p>Full list at: <a href="https://edpb.europa.eu/about-edpb/board/members_en" target="_blank" rel="noopener">edpb.europa.eu/about-edpb/board/members_en</a></p>
-          </div>
-
-          <div class="regulator-block">
-            <p class="regulator-name">United Kingdom</p>
-            <p><strong style="color:var(--white-100);">Information Commissioner's Office (ICO)</strong></p>
-            <p>Website: <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a></p>
-            <p>Phone: 0303 123 1113</p>
-          </div>
-
-          <div class="regulator-block">
-            <p class="regulator-name">New Zealand</p>
-            <p><strong style="color:var(--white-100);">Office of the Privacy Commissioner</strong></p>
-            <p>Website: <a href="https://privacy.org.nz" target="_blank" rel="noopener">privacy.org.nz</a></p>
-            <p>Phone: 0800 803 909</p>
-          </div>
-
-          <div class="regulator-block">
-            <p class="regulator-name">Canada</p>
-            <p><strong style="color:var(--white-100);">Office of the Privacy Commissioner of Canada</strong></p>
-            <p>Website: <a href="https://priv.gc.ca" target="_blank" rel="noopener">priv.gc.ca</a></p>
-            <p>Phone: 1-800-282-1376</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 12 -->
-      <div class="doc-section" id="s12">
-        <div class="section-card">
-          <div class="section-num">12</div>
-          <h2 class="section-heading">Changes to this Privacy Policy</h2>
-          <p class="doc-p">We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements.</p>
-          <p class="doc-p">We will notify you of material changes by email or in-platform notification before the changes take effect. The "Last updated" date at the top of this Policy reflects the date of the most recent revision.</p>
-          <p class="doc-p">Your continued use of the Platform after the effective date of any changes constitutes acceptance of the updated Policy.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 13 -->
-      <div class="doc-section" id="s13">
-        <div class="section-card">
-          <div class="section-num">13</div>
-          <h2 class="section-heading">Contact us</h2>
-          <p class="doc-p">For all privacy-related enquiries, requests, and complaints:</p>
-          <div class="contact-block">
-            <p><strong style="color:var(--white-100);">Privacy Officer</strong></p>
-            <p>Susse Pty Ltd ACN 695 394 079 trading as Whelpora</p>
-            <p>Level 1, 888 Brunswick Street, New Farm QLD 4005</p>
-            <p>Queensland, Australia</p>
-            <p>Email: <a href="mailto:support@whelpora.com">support@whelpora.com</a></p>
-            <p>Website: <a href="https://whelpora.com">whelpora.com</a></p>
-          </div>
-          <p class="doc-p" style="margin-top:16px;">Susse Pty Ltd ACN 695 394 079 trading as Whelpora is an Australian entity subject to the <em>Privacy Act 1988</em> (Cth) as amended, and the Australian Privacy Principles.</p>
-        </div>
-      </div>
-
-    </div><!-- /doc-body -->
-  </div><!-- /page-wrap -->
-
-  <footer>
-    <div class="footer-left">
-      <span class="footer-mark">WHELPORA</span>
-      <span class="footer-co">Susse Pty Ltd ACN 695 394 079 · New Farm QLD 4005</span>
-    </div>
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">Whelpora &nbsp;·&nbsp; Susse Pty Ltd ACN 695 394 079 &nbsp;·&nbsp; New Farm QLD 4005</span>
     <div class="footer-links">
-      <a href="/privacy.html" class="footer-link">Privacy Policy</a>
-      <a href="/terms.html" class="footer-link">Terms of Service</a>
-      <a href="mailto:support@whelpora.com" class="footer-link">support@whelpora.com</a>
-      <a href="https://app.whelpora.com" class="footer-link">Sign in</a>
+      <a href="https://www.whelpora.com/privacy.html">Privacy Policy</a>
+      <a href="https://www.whelpora.com/terms.html">Terms and Conditions</a>
+      <a href="mailto:support@whelpora.com">support@whelpora.com</a>
+      <a href="https://app.whelpora.com">Sign in</a>
     </div>
-  </footer>
+  </div>
+</footer>
 
 </body>
 </html>
