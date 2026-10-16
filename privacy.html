@@ -73,6 +73,10 @@
   ul.plain { list-style:none; padding:0; margin-bottom:14px; }
   ul.plain li { padding:5px 0 5px 18px; position:relative; color:var(--text-2); }
   ul.plain li::before { content:'–'; position:absolute; left:0; color:var(--text-3); }
+  ul.plain.lettered li { padding-left:0; }
+  ul.plain.lettered li::before { content:none; }
+  .legacy-anchor { display:block; scroll-margin-top:80px; }
+  .table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
 
   table { width:100%; border-collapse:collapse; margin:20px 0; font-size:13px; }
   th { text-align:left; font-weight:500; color:var(--choc); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:10px 14px; border-bottom:2px solid var(--border); }
@@ -104,7 +108,7 @@
   <div class="legal-header-inner">
     <p class="legal-label">Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="legal-meta">Susse Pty Ltd ACN 695 394 079 trading as Whelpora &nbsp;·&nbsp; Version 1.1 &nbsp;·&nbsp; Effective date: 16 March 2026 &nbsp;·&nbsp; Last updated: 12 May 2026</p>
+    <p class="legal-meta">Susse Pty Ltd ACN 695 394 079 trading as Whelpora &nbsp;·&nbsp; Version 1.2 &nbsp;·&nbsp; Effective date: 16 March 2026 &nbsp;·&nbsp; Last updated: 16 October 2026</p>
   </div>
 </div>
 
@@ -112,7 +116,7 @@
 
   <div class="summary-box">
     <h3>Plain English summary</h3>
-    <p>We collect the information you give us to run the platform — your account details, breeding records, and standard technical data. We do not sell your data. We use a small number of trusted third-party providers to run the platform, including Supabase, Vercel, Stripe, Resend, Mailchimp, Sentry, and an AI provider for AI-assisted features. AI outputs are suggestions only and your data is not used to train models. You can access, correct, export, or delete your data at any time by emailing support@whelpora.com. The platform is currently in beta, so please do not store highly sensitive information during this phase.</p>
+    <p>We collect the information you give us to run the platform — your account details, breeding records, and standard technical data. We do not sell your data. We use a small number of trusted third-party providers to run the platform, including Supabase, Vercel, Stripe, Resend, Mailchimp, Sentry, and Lovable and Google for optional AI-assisted features. AI outputs are suggestions only and are saved to your records only when you confirm them. You can access, correct, export, or delete your data at any time by emailing support@whelpora.com. The platform is currently in beta, so please do not store highly sensitive information during this phase.</p>
   </div>
 
   <div class="toc">
@@ -127,7 +131,7 @@
       <li><a href="#s7">Data retention, deletion, and portability</a></li>
       <li><a href="#s8">Cookies and tracking technologies</a></li>
       <li><a href="#s9">Buyers and contract recipients</a></li>
-      <li><a href="#s10">AI-assisted features</a></li>
+      <li><a href="#ai-processing">AI-assisted features</a></li>
       <li><a href="#s11">Tax figures</a></li>
       <li><a href="#s12">Children's privacy</a></li>
       <li><a href="#s13">Your rights by jurisdiction</a></li>
@@ -229,7 +233,7 @@
         <tr><td>Comply with our legal obligations</td><td>Legal obligation</td></tr>
         <tr><td>Detect, investigate, and prevent fraudulent or unlawful activity</td><td>Legitimate interests / Legal obligation</td></tr>
         <tr><td>Send you product updates and feature announcements</td><td>Consent (opt out at any time)</td></tr>
-        <tr><td>Process AI-assisted feature requests (message drafting, coat prediction, document parsing)</td><td>Contract / Legitimate interests</td></tr>
+        <tr><td>Process AI-assisted feature requests (message drafting, coat colour previews, and document reading such as DNA reports, pedigrees, and contracts; see clause 10)</td><td>Contract / Legitimate interests</td></tr>
       </tbody>
     </table>
     <p>We will not use your personal information for a secondary purpose without your consent, unless an exception under the APPs or applicable law permits it.</p>
@@ -259,7 +263,7 @@
       <li><strong>NZ users:</strong> We will notify the Privacy Commissioner and affected individuals of notifiable privacy breaches as required by the <em>Privacy Act 2020</em> (NZ).</li>
     </ul>
     <h3 class="sub">5.4 Cross-border disclosure</h3>
-    <p>Some of our third-party service providers store or process data on servers located outside Australia, including in the United States of America. We take reasonable steps to ensure those providers apply data protection standards consistent with the APPs before disclosing personal information to them (APP 8).</p>
+    <p>Some of our third-party service providers (including Supabase/AWS, Vercel, Stripe, Resend, Xero, and the AI service providers Lovable and Google described in clause 10) store or process data on servers located outside Australia, including in the United States of America. We take reasonable steps to ensure those providers apply data protection standards consistent with the APPs before disclosing personal information to them (APP 8).</p>
     <p>For EU / UK users: where personal data is transferred outside the EEA or UK, we rely on Standard Contractual Clauses approved by the European Commission (or equivalent UK mechanisms) as the transfer safeguard. For Mailchimp specifically, EU and UK transfers are covered by Standard Contractual Clauses incorporated into Mailchimp's Data Processing Addendum.</p>
     <div class="notice-box">
       <strong>Beta phase notice.</strong> The Platform is currently in beta development. While we apply security measures, beta software carries inherently higher risks of data loss, errors, or unexpected behaviour. We encourage you not to store highly sensitive information during this phase.
@@ -281,7 +285,12 @@
         <tr><td>Resend</td><td>Transactional email delivery (account notifications, invoice sends, contract signature notifications, support emails, cancellation emails)</td><td>USA / Global</td></tr>
         <tr><td>Mailchimp (Intuit Inc.)</td><td>Mobile app waitlist and product update communications</td><td>USA</td></tr>
         <tr><td>Sentry</td><td>Error monitoring and crash reporting. Sentry is configured to minimise collection of personally identifiable information. Sentry's Data Processing Agreement is available at sentry.io/legal/dpa.</td><td>USA / Global</td></tr>
-        <tr><td>AI provider (via Lovable AI Gateway)</td><td>AI-assisted features: buyer message drafting, coat colour prediction, DNA report parsing, pedigree document parsing. See clause 10 for details of what data is sent and how it is handled.</td><td>USA / Global</td></tr>
+        <tr><td>Lovable (AI gateway)</td><td>Routes requests from our AI-assisted features to the AI model (see clause 10)</td><td>USA / Global</td></tr>
+        <tr><td>Google (Gemini AI models, via Lovable)</td><td>Reads documents and drafts text for our AI-assisted features (see clause 10)</td><td>USA / Global</td></tr>
+        <tr><td>Xero</td><td>Accounting sync, only if you connect your Xero organisation: invoices, payments, and the related customer contact details are sent to your Xero account</td><td>USA / Global</td></tr>
+        <tr><td>ipapi.co</td><td>IP geolocation: when a contract is signed, the signer's IP address is used to look up an approximate country, which is recorded on the signature certificate</td><td>USA</td></tr>
+        <tr><td>Apple (Apple Push Notification service)</td><td>Delivery of push notifications to our iOS app: device push token and notification content</td><td>USA / Global</td></tr>
+        <tr><td>Google (Firebase Cloud Messaging)</td><td>Delivery of push notifications to our Android app: device push token and notification content</td><td>USA / Global</td></tr>
       </tbody>
     </table>
     <p>We may engage additional third-party service providers from time to time. Where we do, we will update this Privacy Policy accordingly. All providers are contractually required to handle your personal information only as directed by us and in accordance with applicable privacy law.</p>
@@ -328,6 +337,7 @@
     <div class="clause-num">08</div>
     <h2>Cookies and tracking technologies</h2>
     <h3 class="sub">8.1 Cookies and trackers we use</h3>
+    <div class="table-scroll">
     <table>
       <thead><tr><th>Tool</th><th>Type</th><th>Purpose</th><th>Can be declined?</th></tr></thead>
       <tbody>
@@ -338,6 +348,7 @@
         <tr><td>Analytics (if introduced)</td><td>Analytics</td><td>Usage pattern analysis to improve the Platform.</td><td>Yes — via cookie banner</td></tr>
       </tbody>
     </table>
+    </div>
     <p>We do not currently use third-party advertising or marketing cookies. If we introduce analytics tools that set cookies, we will update this section and present you with a cookie consent banner before any such cookies are set.</p>
     <h3 class="sub">8.2 Cookie consent</h3>
     <p>For users in the EU, UK, and other jurisdictions requiring prior consent for non-essential cookies: we will present a cookie consent banner that allows you to accept or decline analytics cookies before they are set. Essential and functional cookies required for the Platform to operate do not require your consent.</p>
@@ -356,7 +367,7 @@
     <p>When a breeder sends you a contract or other document for signature or review through the Platform, we collect the following information about you:</p>
     <ul class="plain">
       <li>your name and email address (as provided by the breeder);</li>
-      <li>your IP address, browser type, device type, and operating system at the time of signing or viewing;</li>
+      <li>your IP address, browser type, device type, and operating system at the time of signing or viewing, and an approximate country derived from your IP address;</li>
       <li>timestamps of when the document was opened, reviewed, and signed;</li>
       <li>a cryptographic hash of the signed document and consent text at the time of signing; and</li>
       <li>your electronic signature (where provided).</li>
@@ -372,13 +383,15 @@
     <p>Your information is accessible to:</p>
     <ul class="plain">
       <li>the breeder who sent you the document;</li>
-      <li>Whelpora (for platform operation and audit trail maintenance); and</li>
-      <li>Supabase and Vercel (infrastructure providers — see clause 6).</li>
+      <li>Whelpora (for platform operation and audit trail maintenance);</li>
+      <li>Supabase and Vercel (infrastructure providers — see clause 6);</li>
+      <li>ipapi.co, which receives your IP address at the time of signing to look up an approximate country for the signature certificate (see clause 6); and</li>
+      <li>our AI service providers (Lovable and Google, see clause 10), but only if the breeder chooses to use an AI feature on a document that contains your information, such as guardian contract smart fill.</li>
     </ul>
     <h3 class="sub">9.5 Retention</h3>
     <p>E-signature audit trail data is retained for a minimum of 7 years from the date of execution to support the legal enforceability of the document. After that period, data is deleted or de-identified unless a longer retention period is required by applicable law.</p>
     <h3 class="sub">9.6 Cross-border transfers</h3>
-    <p>Your data may be processed on servers located in the United States via our infrastructure providers (Supabase / AWS, Vercel). Transfers are subject to appropriate safeguards as described in clause 5.4.</p>
+    <p>Your data may be processed on servers located in the United States via our infrastructure providers (Supabase / AWS, Vercel) and, where described in clause 9.4, ipapi.co and our AI service providers. Transfers are subject to appropriate safeguards as described in clause 5.4.</p>
     <h3 class="sub">9.7 Your rights as a recipient</h3>
     <p>You have the right to access, correct, and in certain circumstances request deletion of your personal information. To exercise these rights, contact us at <a href="mailto:support@whelpora.com">support@whelpora.com</a>. Please note that we may not be able to delete certain information that forms part of the legal audit trail without compromising the enforceability of the signed document.</p>
     <h3 class="sub">9.8 Notice at point of collection</h3>
@@ -386,17 +399,34 @@
   </div>
 
   <!-- 10 -->
-  <div class="clause" id="s10">
+  <span class="legacy-anchor" id="s10"></span>
+  <div class="clause" id="ai-processing">
     <div class="clause-num">10</div>
     <h2>AI-assisted features</h2>
-    <p><strong>10.1</strong> The Platform includes AI-assisted features powered by a third-party AI provider (via Lovable AI Gateway, which may use underlying providers including OpenAI, Anthropic, or Google). These features include:</p>
-    <ul class="plain">
-      <li>buyer message drafting (where relevant breeding or litter information may be included in the prompt);</li>
-      <li>coat colour prediction image generation (where coat genetics data may be sent);</li>
-      <li>DNA report parsing (where the content of an uploaded DNA PDF may be sent for extraction); and</li>
-      <li>pedigree document parsing (where the content of an uploaded pedigree document may be sent for extraction).</li>
+    <p><strong>10.1</strong> Some optional features of the Platform use artificial intelligence (<strong>AI</strong>) to read documents or draft text. When you use one of these features, the content described below is sent to the AI gateway operated by Lovable, which passes it to a Google Gemini AI model to produce the result. Lovable and Google process this content as our service providers (subprocessors) for that purpose only.</p>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Feature</th><th>What is sent to the AI service</th><th>What the AI produces</th></tr></thead>
+      <tbody>
+        <tr><td>DNA report Smart Import</td><td>The DNA report file (PDF or image) you upload or select. It may include the dog's name, owner or breeder details printed on the report, and genetic and health test results.</td><td>Lab name, report date, coat colour genotypes and health test results</td></tr>
+        <tr><td>Pedigree Smart Import</td><td>The pedigree document (PDF or image) you upload or select. It may include names of dogs, breeders and owners, and registration numbers.</td><td>The list of ancestors</td></tr>
+        <tr><td>Guardian contract smart fill</td><td>The guardian contract file stored for that guardian arrangement. It may include the names, contact details and signatures of you and the guardian.</td><td>Contract dates, buy-back price, desexing deadline, litters owed and notes</td></tr>
+        <tr><td>Contract template import</td><td>The text of the contract you upload or, if text cannot be extracted from a PDF, the PDF file itself. It may include any personal information written in that contract.</td><td>Clauses and suggested auto-fill fields for a new template</td></tr>
+        <tr><td>Message drafting (Message Studio and the waitlist writing helper)</td><td>Your kennel name; details of the litter or dog you select (such as names, dates, puppy numbers, sexes and collar colours); your chosen tone and format; your country, currency and tax labels; and any instructions or observations you type.</td><td>A draft message</td></tr>
+        <tr><td>Coat colour previews (Coat Predictor)</td><td>Breed and coat colour, pattern and texture descriptions only. No files and no personal information.</td><td>An illustrative image of the predicted coat</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><strong>10.2</strong> How we handle content sent to the AI service:</p>
+    <ul class="plain lettered">
+      <li>(a) <strong>Only when you use the feature.</strong> Documents and text are sent to the AI service only when you, or someone using your kennel account, start one of the features above. Coat colour previews are generated when you view coat predictions and contain no personal information.</li>
+      <li>(b) <strong>Purpose.</strong> The content is sent only so the AI service can produce the result described above for you. AI results can be wrong: they are shown to you for review and are saved to your records only when you confirm them.</li>
+      <li>(c) <strong>What we keep.</strong> We keep the results you confirm as part of your records. DNA reports are kept in the dog's documents as the source record, unless you use a report in the Coat Predictor without saving it, in which case we delete our copy after use. Pedigree documents are kept in the dog's documents if you choose to save them; otherwise we delete our copy once the import has run. Guardian contracts stay where you stored them. Contract files you import as a template are kept in your kennel's storage. Message drafts are kept only if you save them. We also record each use of an AI feature (the feature, time, outcome and simple counts such as the number of fields found) to apply monthly usage limits and to fix problems, and our error logs may contain short technical excerpts of an AI response when something goes wrong.</li>
+      <!-- AI-PROVIDER-TERMS -->
+      <li>(d) <strong>The AI providers.</strong> We are confirming these providers' data retention and training terms and will update this section.</li>
+      <li>(e) <strong>Your choice.</strong> Each of these features is optional. You can upload and store documents, and write messages, without using AI.</li>
+      <li>(f) <strong>Other people's information.</strong> Documents you send to an AI feature may contain personal information about other people, such as buyers, guardians or co-owners. Please only use these features with documents you are entitled to share for this purpose.</li>
     </ul>
-    <p><strong>10.2</strong> Data sent to the AI provider is used solely to generate the requested output and is not used to train AI models.</p>
     <p><strong>10.3</strong> AI-generated outputs are suggestions only. Consistent with GDPR Article 22, no decision that produces a legal or similarly significant effect for any person is made solely by automated means through this Platform. You remain the decision-maker and are responsible for reviewing and approving any AI-generated content before acting on it.</p>
     <p><strong>10.4</strong> You can manage your AI feature usage and quota through your account settings.</p>
   </div>
