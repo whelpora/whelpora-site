@@ -30,6 +30,12 @@
   .nav-logo { font-size:11px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--choc); text-decoration:none; }
   .nav-links { display:flex; align-items:center; gap:24px; list-style:none; }
   .nav-links a { font-size:13px; font-weight:300; color:var(--text-2); text-decoration:none; }
+  .nav-links a { white-space:nowrap; }
+  @media (max-width:600px) {
+    nav { padding:0 20px; }
+    .nav-links { gap:16px; }
+    .nav-links li:nth-child(-n+2) { display:none; }
+  }
   .nav-cta { background:var(--green); color:#111 !important; padding:7px 18px; border-radius:100px; font-weight:500 !important; font-size:13px !important; }
 
   .legal-header { padding:60px 0 40px; border-bottom:1px solid var(--border); margin-bottom:0; }
@@ -73,9 +79,11 @@
   ol.clauses li { padding:6px 0 6px 0; color:var(--text-2); }
   ol.clauses li::before { content:attr(data-n); font-weight:500; color:var(--choc); margin-right:8px; }
 
-  ul.plain { list-style:none; padding:0; }
+  ul.plain { list-style:none; padding:0; margin-bottom:14px; }
   ul.plain li { padding:5px 0 5px 18px; position:relative; color:var(--text-2); }
   ul.plain li::before { content:'–'; position:absolute; left:0; color:var(--text-3); }
+  ul.plain.lettered li { padding-left:0; }
+  ul.plain.lettered li::before { content:none; }
 
   table { width:100%; border-collapse:collapse; margin:20px 0; font-size:13px; }
   th { text-align:left; font-weight:500; color:var(--choc); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:10px 14px; border-bottom:2px solid var(--border); }
@@ -99,7 +107,7 @@
     <li><a href="https://www.whelpora.com/#features">Features</a></li>
     <li><a href="https://www.whelpora.com/#pricing">Pricing</a></li>
     <li><a href="https://app.whelpora.com">Sign in</a></li>
-    <li><a href="https://app.whelpora.com/signup" class="nav-cta">Join the Beta</a></li>
+    <li><a href="https://app.whelpora.com/signup" class="nav-cta">Start free</a></li>
   </ul>
 </nav>
 
@@ -107,7 +115,7 @@
   <div class="legal-header-inner">
     <p class="legal-label">Legal</p>
     <h1>Terms and Conditions</h1>
-    <p class="legal-meta">Susse Pty Ltd ACN 695 394 079 trading as Whelpora &nbsp;·&nbsp; Version 2.2 (Beta) &nbsp;·&nbsp; Effective date: 16 March 2026 &nbsp;·&nbsp; Last updated: 16 October 2026</p>
+    <p class="legal-meta">Susse Pty Ltd ACN 695 394 079 trading as Whelpora &nbsp;·&nbsp; Version 3.0 &nbsp;·&nbsp; Effective date: 16 March 2026 &nbsp;·&nbsp; Last updated: 16 October 2026</p>
   </div>
 </div>
 
@@ -115,7 +123,7 @@
 
   <div class="summary-box">
     <h3>Plain English summary</h3>
-    <p>Whelpora is in beta — it is a work in progress and free to use while we build it. You may encounter bugs. Your feedback helps us improve. Please keep technical details about the platform confidential. Your data belongs to you. Beta ends 31 May 2026, after which founding members pay a discounted rate locked in for as long as their subscription is active. You can leave at any time. Whelpora uses AI features to help draft messages, predict coat colours, and parse documents — these are suggestions only and you remain the decision-maker.</p>
+    <p>Whelpora is a subscription platform for managing your breeding records. Your data belongs to you, and you can leave at any time. Founding members, who joined us on or before 31 May 2026, keep a discounted founding rate for as long as their subscription stays active (clause 6A). Whelpora uses AI features to help draft messages, predict coat colours, and read documents — these are suggestions only, so please check them before relying on them. Our liability is limited as explained in clause 10, but nothing in these Terms takes away your rights under the Australian Consumer Law or other laws that cannot be excluded.</p>
   </div>
 
   <div class="toc">
@@ -146,8 +154,7 @@
     <h2>About these Terms</h2>
     <p><strong>1.1</strong> These Terms and Conditions (<strong>Terms</strong>) govern your access to and use of the Whelpora platform (<strong>Platform</strong>), operated by Susse Pty Ltd ACN 695 394 079 (ABN 67 695 394 079) trading as Whelpora, Level 1, 888 Brunswick Street, New Farm QLD 4005, Australia (<strong>Whelpora</strong>, <strong>we</strong>, <strong>us</strong>, or <strong>our</strong>).</p>
     <p><strong>1.2</strong> By creating an account or accessing the Platform, you agree to be bound by these Terms. If you do not agree, you must not use the Platform.</p>
-    <p><strong>1.3</strong> During the current beta phase, these Terms are supplemented by the Beta Tester Agreement, which is publicly available at <a href="https://www.whelpora.com/beta-agreement.html">whelpora.com/beta-agreement</a> and within the Platform after login. In the event of any inconsistency between these Terms and the Beta Tester Agreement, the Beta Tester Agreement prevails.</p>
-    <p><strong>1.4</strong> We may update these Terms at any time. We will notify you of material changes by email or in-platform notification at least 14 days before the changes take effect. Continued use after the effective date of updated Terms constitutes acceptance.</p>
+    <p><strong>1.3</strong> We may update these Terms at any time. We will notify you of material changes by email or in-platform notification at least 14 days before the changes take effect. Continued use after the effective date of updated Terms constitutes acceptance.</p>
     <div class="notice-box">
       <strong>Important notice — organisational tool only.</strong> Whelpora is an organisational tool only. It does not provide veterinary, medical, legal, or financial advice. All health-related schedules and templates are for organisational purposes only and do not replace professional veterinary guidance. Whelpora is not a law firm and does not provide legal advice or legal services. Contract templates and electronic signature features are software tools, not legal advice; our <a href="https://app.whelpora.com/legal/contract-templates">Contract template terms</a> explain this in plain English.
     </div>
@@ -170,9 +177,8 @@
     <h2>Permitted use</h2>
     <p><strong>3.1</strong> Subject to these Terms, Whelpora grants you a limited, non-exclusive, non-transferable, revocable licence to access and use the Platform for the following permitted purposes:</p>
     <ul class="plain">
-      <li>managing your dog breeding records, whelping logs, and litter health information;</li>
-      <li>accessing Platform features as made available to you from time to time; and</li>
-      <li>during the beta phase, testing and providing feedback in accordance with the Beta Tester Agreement.</li>
+      <li>managing your dog breeding records, whelping logs, and litter health information; and</li>
+      <li>accessing Platform features as made available to you from time to time.</li>
     </ul>
     <p><strong>3.2</strong> You must use the Platform only for lawful purposes and in compliance with all applicable laws and regulations, including applicable animal welfare legislation.</p>
   </div>
@@ -231,8 +237,8 @@
   <div class="clause" id="s6">
     <div class="clause-num">06</div>
     <h2>Subscriptions and payment</h2>
-    <p><strong>6.1</strong> Access to the Platform during the beta phase is provided free of charge. The beta phase ends on 31 May 2026.</p>
-    <p><strong>6.2</strong> Following the conclusion of the beta phase, access to the Platform requires a valid subscription plan. You will receive no less than 14 days' written notice before any transition from free beta access to a paid subscription is required.</p>
+    <p><strong>6.1</strong> Access to the Platform requires a valid paid subscription plan. We may offer a free trial for new accounts. The length and conditions of any free trial are shown when you sign up.</p>
+    <p><strong>6.2</strong> If you created your account on or before 31 May 2026, you may be a Founding Member with the rights set out in clause 6A.</p>
     <p><strong>6.3</strong> All pricing for subscription plans will be displayed in Australian Dollars (AUD) inclusive of GST where applicable.</p>
     <p><strong>6.4</strong> Payment processing is handled through Stripe. Whelpora does not store your payment card details. By subscribing, you agree to be bound by Stripe's terms and conditions.</p>
     <p><strong>6.5</strong> Subscriptions are billed on a recurring basis (monthly or annually, depending on your selected plan) and will automatically renew at the end of each billing period unless cancelled before the renewal date. You authorise Whelpora to charge your payment method on file for each renewal period. For annual plans, we will send you a renewal reminder by email at least 14 days before your renewal date.</p>
@@ -247,8 +253,8 @@
   <div class="clause" id="s6a">
     <div class="clause-num">6A</div>
     <h2>Founding member rate</h2>
-    <p style="font-size:13px; color:var(--text-3); font-style:italic; margin-bottom:16px;">40% off, locked for as long as your subscription is active — for beta users only.</p>
-    <p><strong>6A.1</strong> Users who subscribe to a paid subscription plan during the beta phase or within 30 days of its conclusion (<strong>Founding Members</strong>) will be eligible for a discounted subscription rate (<strong>Founding Rate</strong>) equal to 40% off the then-current standard price for the equivalent subscription plan.</p>
+    <p style="font-size:13px; color:var(--text-3); font-style:italic; margin-bottom:16px;">40% off, locked for as long as your subscription is active — for our founding members.</p>
+    <p><strong>6A.1</strong> You are a <strong>Founding Member</strong> if you created a Whelpora account on or before 31 May 2026, or subscribed to a paid subscription plan on or before 30 June 2026. Founding Members are eligible for a discounted subscription rate (<strong>Founding Rate</strong>) equal to 40% off the then-current standard price for the equivalent subscription plan.</p>
     <p><strong>6A.2</strong> The Founding Rate will remain in effect for as long as the Founding Member maintains a continuous active subscription.</p>
     <p><strong>6A.3</strong> If a Founding Member cancels their subscription, the Founding Rate will be reserved for a period of 12 months from the date of cancellation. If the Founding Member resubscribes within that 12-month period, the Founding Rate will be reinstated. After 12 months from the date of cancellation, the Founding Rate is permanently forfeited and standard pricing applies upon any resubscription.</p>
     <p><strong>6A.4</strong> The Founding Rate discount of 40% applies to the subscription plan tier held at the time of the founding subscription. If a Founding Member upgrades to a higher tier, the 40% discount applies to the standard price of that higher tier at the time of upgrade. If the Founding Member subsequently cancels and the 12-month reservation period expires, the Founding Rate on the upgraded tier is also forfeited.</p>
@@ -291,15 +297,15 @@
   <div class="clause" id="s9">
     <div class="clause-num">09</div>
     <h2>Disclaimer of warranties and tax disclaimer</h2>
-    <p><strong>9.1</strong> To the maximum extent permitted by law, the Platform is provided "as is" and "as available" without any warranty of any kind, whether express, implied, or statutory.</p>
-    <p><strong>9.2</strong> Whelpora does not warrant that:</p>
-    <ul class="plain">
-      <li>the Platform will meet your requirements or be suitable for your particular purpose;</li>
-      <li>the Platform will be uninterrupted, timely, secure, or error-free;</li>
-      <li>any data you enter will be preserved, accurate, or recoverable; or</li>
-      <li>any defects will be corrected.</li>
+    <p><strong>9.1</strong> Subject to clause 10.1, and to the maximum extent permitted by law, the Platform is provided "as is" and "as available", and we give no warranty other than as set out in these Terms.</p>
+    <p><strong>9.2</strong> Subject to clause 10.1, Whelpora does not promise that:</p>
+    <ul class="plain lettered">
+      <li>(a) the Platform will meet every requirement you have or be suitable for every purpose;</li>
+      <li>(b) the Platform will be uninterrupted or error-free; or</li>
+      <li>(c) every defect will be corrected.</li>
     </ul>
-    <p><strong>9.3</strong> Nothing in these Terms excludes, restricts, or modifies rights under the Australian Consumer Law (Schedule 2, <em>Competition and Consumer Act 2010</em> (Cth)) that cannot lawfully be excluded.</p>
+    <p>We take reasonable steps to protect and back up your data. Clause 10.5 explains what happens if data is lost.</p>
+    <p><strong>9.3</strong> Your rights under the Australian Consumer Law and other laws that cannot be excluded are not affected by this clause 9. See clause 10.1.</p>
     <h3 class="sub">Tax disclaimer</h3>
     <p><strong>9.4</strong> The invoicing, receipts, expenses, and Year Summary features within the Platform are organisational tools only. Whelpora does not:</p>
     <ul class="plain">
@@ -308,18 +314,49 @@
       <li>verify your GST or VAT registration status or calculate your tax obligations; or</li>
       <li>submit any information to any tax authority on your behalf.</li>
     </ul>
-    <p>You are solely responsible for verifying all tax figures with a qualified accountant or tax agent before relying on them for lodgment, reporting, or any other purpose. Whelpora is not liable for any tax penalties, assessments, or losses arising from your use of these features.</p>
+    <p>You are solely responsible for verifying all tax figures with a qualified accountant or tax agent before relying on them for lodgment, reporting, or any other purpose. To the maximum extent permitted by law, and subject to clause 10.1, Whelpora is not liable for any tax penalty, interest, or assessment arising from your use of these features.</p>
     <h3 class="sub">AI features disclaimer</h3>
-    <p><strong>9.5</strong> The Platform includes AI-assisted features that use third-party AI models (Google Gemini, via Lovable AI Gateway) to generate outputs including drafted buyer messages, coat colour predictions, and parsed DNA report and pedigree data. These outputs are suggestions only. You remain the decision-maker and are responsible for reviewing, verifying, and approving any AI-generated content before acting on it or sharing it with third parties. Whelpora does not warrant the accuracy or completeness of any AI-generated output.</p>
+    <p><strong>9.5</strong> The Platform includes AI-assisted features that use third-party AI models (Google Gemini, via Lovable AI Gateway) to generate outputs including drafted buyer messages, coat colour predictions, and parsed DNA report and pedigree data. These outputs are suggestions only. You remain the decision-maker and are responsible for reviewing, verifying, and approving any AI-generated content before acting on it or sharing it with third parties. Whelpora does not warrant the accuracy or completeness of any AI-generated output. Clause 10.7 explains how this affects liability.</p>
   </div>
 
   <!-- 10 -->
   <div class="clause" id="s10">
     <div class="clause-num">10</div>
     <h2>Limitation of liability</h2>
-    <p><strong>10.1</strong> To the maximum extent permitted by applicable law, Whelpora's total aggregate liability to you for any loss or damage arising out of or in connection with the Platform or these Terms — whether in contract, tort (including negligence), statute, or otherwise — shall not exceed AUD $100 or the total fees paid by you in the twelve (12) months preceding the claim, whichever is greater. This cap will be reviewed prior to commercial launch.</p>
-    <p><strong>10.2</strong> Whelpora shall not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, including but not limited to loss of data, loss of profits, loss of revenue, loss of goodwill, or business interruption.</p>
-    <p><strong>10.3</strong> Where liability cannot be excluded, it is limited as set out in clause 9.3.</p>
+    <p><strong>10.1 Rights you cannot lose.</strong> Our services come with guarantees that cannot be excluded under the Australian Consumer Law (Schedule 2 to the <em>Competition and Consumer Act 2010</em> (Cth)). If you are outside Australia, you may have similar rights under your local law, such as the <em>Consumer Guarantees Act 1993</em> (NZ), the <em>Consumer Rights Act 2015</em> (UK), or Canadian provincial consumer protection law, including Quebec's <em>Consumer Protection Act</em>. Nothing in these Terms excludes, restricts, or modifies any right, remedy, guarantee, or liability that the law does not allow to be excluded, restricted, or modified (<strong>Non-excludable Rights</strong>). Clause 9 and clauses 10.2 to 10.8 apply only to the extent the law allows.</p>
+    <p><strong>10.2 Limit for business-type services.</strong> Where the law allows it, including under section 64A of the Australian Consumer Law, and only where the Platform is not of a kind ordinarily acquired for personal, domestic, or household use or consumption, our liability for failing to meet a consumer guarantee is limited, at our option, to:</p>
+    <ul class="plain lettered">
+      <li>(a) supplying the relevant services again; or</li>
+      <li>(b) paying the cost of having the relevant services supplied again.</li>
+    </ul>
+    <p><strong>10.3 Overall cap.</strong> Subject to clauses 10.1 and 10.6, each party's total aggregate liability to the other for all claims arising out of or in connection with these Terms or the Platform, whether in contract, tort (including negligence), under statute, or otherwise, is limited to the greater of:</p>
+    <ul class="plain lettered">
+      <li>(a) the total fees paid or payable by you to us for the Platform in the 12 months immediately before the event giving rise to the first claim; and</li>
+      <li>(b) AUD $500.</li>
+    </ul>
+    <p><strong>10.4 Indirect loss.</strong> Subject to clauses 10.1 and 10.6, neither party is liable to the other for:</p>
+    <ul class="plain lettered">
+      <li>(a) loss of profit, revenue, business opportunity, or goodwill; or</li>
+      <li>(b) any indirect or consequential loss that does not arise naturally from the breach in the usual course of things,</li>
+    </ul>
+    <p>even if that party was told the loss was possible. Loss of data is dealt with in clause 10.5, not in this clause.</p>
+    <p><strong>10.5 Your data.</strong></p>
+    <ul class="plain lettered">
+      <li>(a) We keep regular backups of the Platform's data.</li>
+      <li>(b) If your User Content is lost or corrupted because of our breach of these Terms or our failure to take reasonable care, we will, at no charge, use reasonable efforts to restore it from our most recent available backup.</li>
+      <li>(c) Any further liability we have for that loss is subject to the cap in clause 10.3.</li>
+      <li>(d) We recommend that you regularly export copies of important records, such as signed contracts, using the Platform's export features.</li>
+    </ul>
+    <p><strong>10.6 Exceptions.</strong> Clauses 10.3, 10.4, and 10.5 do not limit or exclude:</p>
+    <ul class="plain lettered">
+      <li>(a) liability for fraud or dishonesty;</li>
+      <li>(b) liability for wilful misconduct, meaning a deliberate act or omission that the party knows will, or is reckless as to whether it will, cause loss or breach these Terms;</li>
+      <li>(c) liability for death or personal injury caused by negligence;</li>
+      <li>(d) your obligation to pay fees that are properly due; or</li>
+      <li>(e) any Non-excludable Right or any other liability that cannot lawfully be limited or excluded.</li>
+    </ul>
+    <p><strong>10.7 Shared responsibility.</strong> Each party's liability is reduced to the extent that the other party, or anyone acting for it, caused or contributed to the loss. For example, our liability is reduced to the extent you did not review a contract template, AI-generated output, or AI-extracted DNA result before relying on it or sending it to a buyer, or did not keep your login details secure.</p>
+    <p><strong>10.8 Outside Australia.</strong> If you use the Platform in New Zealand, the United Kingdom, the European Union, the United States, Canada, or another country outside Australia, the limits in this clause 10 apply only to the extent permitted by the law that applies to you. They do not limit liability that law says cannot be limited, including, in some places, liability for gross negligence or for wilful or intentional acts.</p>
   </div>
 
   <!-- 11 -->
@@ -362,7 +399,7 @@
   <div class="clause" id="s14">
     <div class="clause-num">14</div>
     <h2>General</h2>
-    <p><strong>14.1 Entire agreement.</strong> These Terms, together with the Privacy Policy and (during the beta phase) the Beta Tester Agreement, constitute the entire agreement between the parties regarding use of the Platform.</p>
+    <p><strong>14.1 Entire agreement.</strong> These Terms, together with the Privacy Policy, constitute the entire agreement between the parties regarding use of the Platform.</p>
     <p><strong>14.2 Severability.</strong> If any provision is found to be unenforceable, it is severed to the minimum extent necessary and the remaining provisions continue in full force.</p>
     <p><strong>14.3 No waiver.</strong> A failure to exercise any right under these Terms does not constitute a waiver of that right.</p>
     <p><strong>14.4 Assignment.</strong> You may not assign your rights under these Terms without Whelpora's prior written consent. Whelpora may assign its rights without restriction.</p>
