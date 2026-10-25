@@ -30,12 +30,6 @@
   .nav-logo { font-size:11px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--choc); text-decoration:none; }
   .nav-links { display:flex; align-items:center; gap:24px; list-style:none; }
   .nav-links a { font-size:13px; font-weight:300; color:var(--text-2); text-decoration:none; }
-  .nav-links a { white-space:nowrap; }
-  @media (max-width:600px) {
-    nav { padding:0 20px; }
-    .nav-links { gap:16px; }
-    .nav-links li:nth-child(-n+2) { display:none; }
-  }
   .nav-cta { background:var(--green); color:#111 !important; padding:7px 18px; border-radius:100px; font-weight:500 !important; font-size:13px !important; }
 
   .legal-header { padding:60px 0 40px; border-bottom:1px solid var(--border); }
@@ -79,10 +73,6 @@
   ul.plain { list-style:none; padding:0; margin-bottom:14px; }
   ul.plain li { padding:5px 0 5px 18px; position:relative; color:var(--text-2); }
   ul.plain li::before { content:'–'; position:absolute; left:0; color:var(--text-3); }
-  ul.plain.lettered li { padding-left:0; }
-  ul.plain.lettered li::before { content:none; }
-  .legacy-anchor { display:block; scroll-margin-top:80px; }
-  .table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
 
   table { width:100%; border-collapse:collapse; margin:20px 0; font-size:13px; }
   th { text-align:left; font-weight:500; color:var(--choc); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:10px 14px; border-bottom:2px solid var(--border); }
@@ -106,7 +96,7 @@
     <li><a href="https://www.whelpora.com/#features">Features</a></li>
     <li><a href="https://www.whelpora.com/#pricing">Pricing</a></li>
     <li><a href="https://app.whelpora.com">Sign in</a></li>
-    <li><a href="https://app.whelpora.com/signup" class="nav-cta">Start free</a></li>
+    <li><a href="https://app.whelpora.com/signup" class="nav-cta">Join the Beta</a></li>
   </ul>
 </nav>
 
@@ -114,7 +104,7 @@
   <div class="legal-header-inner">
     <p class="legal-label">Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="legal-meta">Susse Pty Ltd ACN 695 394 079 trading as Whelpora &nbsp;·&nbsp; Version 1.4 &nbsp;·&nbsp; First published: 16 March 2026 &nbsp;·&nbsp; Last updated: 25 October 2026</p>
+    <p class="legal-meta">Susse Pty Ltd ACN 695 394 079 trading as Whelpora &nbsp;·&nbsp; Version 1.1 &nbsp;·&nbsp; Effective date: 16 March 2026 &nbsp;·&nbsp; Last updated: 12 May 2026</p>
   </div>
 </div>
 
@@ -122,7 +112,7 @@
 
   <div class="summary-box">
     <h3>Plain English summary</h3>
-    <p>We collect the information you give us to run the platform — your account details, breeding records, and standard technical data. We do not sell your data. We use a small number of trusted third-party providers to run the platform, including Supabase (our database, hosted in India), Vercel, Stripe, Resend, and Lovable and Google for optional AI-assisted features. AI outputs are suggestions only and are saved to your records only when you confirm them. You can export or delete your account yourself in Settings, or ask us to access, correct, export, or delete your data by emailing support@whelpora.com. Contracts your buyers signed are kept for 7 years after you delete your account, so each buyer can still get their copy.</p>
+    <p>We collect the information you give us to run the platform — your account details, breeding records, and standard technical data. We do not sell your data. We use a small number of trusted third-party providers to run the platform, including Supabase, Vercel, Stripe, Resend, Mailchimp, Sentry, and an AI provider for AI-assisted features. AI outputs are suggestions only and your data is not used to train models. You can access, correct, export, or delete your data at any time by emailing support@whelpora.com. The platform is currently in beta, so please do not store highly sensitive information during this phase.</p>
   </div>
 
   <div class="toc">
@@ -137,7 +127,7 @@
       <li><a href="#s7">Data retention, deletion, and portability</a></li>
       <li><a href="#s8">Cookies and tracking technologies</a></li>
       <li><a href="#s9">Buyers and contract recipients</a></li>
-      <li><a href="#ai-processing">AI-assisted features</a></li>
+      <li><a href="#s10">AI-assisted features</a></li>
       <li><a href="#s11">Tax figures</a></li>
       <li><a href="#s12">Children's privacy</a></li>
       <li><a href="#s13">Your rights by jurisdiction</a></li>
@@ -171,7 +161,7 @@
     <h2>What personal information we collect</h2>
     <h3 class="sub">2.1 Account and identity information</h3>
     <ul class="plain">
-      <li>Name (if you add it to your profile)</li>
+      <li>Full name</li>
       <li>Email address</li>
       <li>Password (stored in hashed form — we do not access your password)</li>
       <li>Profile information you choose to provide</li>
@@ -191,8 +181,7 @@
       <li>Browser type and operating system</li>
       <li>Pages visited and features used within the Platform</li>
       <li>Session duration and interaction data</li>
-      <li>Log data and error reports kept by our hosting providers (Supabase and Vercel — see clause 6)</li>
-      <li>Device push token, if you turn on notifications in our mobile app</li>
+      <li>Log data and error reports (collected via Sentry — see clause 6)</li>
     </ul>
     <h3 class="sub">2.4 Communications</h3>
     <ul class="plain">
@@ -240,7 +229,7 @@
         <tr><td>Comply with our legal obligations</td><td>Legal obligation</td></tr>
         <tr><td>Detect, investigate, and prevent fraudulent or unlawful activity</td><td>Legitimate interests / Legal obligation</td></tr>
         <tr><td>Send you product updates and feature announcements</td><td>Consent (opt out at any time)</td></tr>
-        <tr><td>Process AI-assisted feature requests (message drafting, coat colour previews, and document reading such as DNA reports, pedigrees, and contracts; see clause 10)</td><td>Contract / Legitimate interests</td></tr>
+        <tr><td>Process AI-assisted feature requests (message drafting, coat prediction, document parsing)</td><td>Contract / Legitimate interests</td></tr>
       </tbody>
     </table>
     <p>We will not use your personal information for a secondary purpose without your consent, unless an exception under the APPs or applicable law permits it.</p>
@@ -252,7 +241,7 @@
     <div class="clause-num">05</div>
     <h2>How we store and protect your personal information</h2>
     <h3 class="sub">5.1 Storage location</h3>
-    <p>Our main database and file storage (your account, kennel records, documents, and the records of contracts signed through the Platform) are hosted by Supabase on Amazon Web Services servers in Mumbai, India. Our website and app are delivered by Vercel from servers in several countries. Other providers listed in clause 6 process some information in other countries, mainly the United States.</p>
+    <p>Your personal information is stored on servers managed by third-party infrastructure providers set out in clause 6. These servers may be located in Australia, the United States, and other countries.</p>
     <h3 class="sub">5.2 Security measures</h3>
     <p>We take reasonable steps to protect your personal information from misuse, interference, loss, and unauthorised access, modification, or disclosure. These steps include:</p>
     <ul class="plain">
@@ -270,8 +259,11 @@
       <li><strong>NZ users:</strong> We will notify the Privacy Commissioner and affected individuals of notifiable privacy breaches as required by the <em>Privacy Act 2020</em> (NZ).</li>
     </ul>
     <h3 class="sub">5.4 Cross-border disclosure</h3>
-    <p>Some of our third-party service providers (including Supabase/AWS, Vercel, Stripe, Resend, Xero, and the AI service providers Lovable and Google described in clause 10) store or process data on servers located outside Australia, including in India (our main database, see clause 5.1) and the United States of America. We take reasonable steps to ensure those providers apply data protection standards consistent with the APPs before disclosing personal information to them (APP 8).</p>
-    <p>For EU / UK users: where personal data is transferred outside the EEA or UK, we rely on Standard Contractual Clauses approved by the European Commission (or equivalent UK mechanisms) as the transfer safeguard.</p>
+    <p>Some of our third-party service providers store or process data on servers located outside Australia, including in the United States of America. We take reasonable steps to ensure those providers apply data protection standards consistent with the APPs before disclosing personal information to them (APP 8).</p>
+    <p>For EU / UK users: where personal data is transferred outside the EEA or UK, we rely on Standard Contractual Clauses approved by the European Commission (or equivalent UK mechanisms) as the transfer safeguard. For Mailchimp specifically, EU and UK transfers are covered by Standard Contractual Clauses incorporated into Mailchimp's Data Processing Addendum.</p>
+    <div class="notice-box">
+      <strong>Beta phase notice.</strong> The Platform is currently in beta development. While we apply security measures, beta software carries inherently higher risks of data loss, errors, or unexpected behaviour. We encourage you not to store highly sensitive information during this phase.
+    </div>
   </div>
 
   <!-- 06 -->
@@ -283,17 +275,13 @@
     <table>
       <thead><tr><th>Provider</th><th>Purpose</th><th>Location</th></tr></thead>
       <tbody>
-        <tr><td>Supabase</td><td>Database, file storage and authentication</td><td>India (AWS, Mumbai region)</td></tr>
+        <tr><td>Supabase</td><td>Database hosting and authentication</td><td>USA / Global (AWS)</td></tr>
         <tr><td>Vercel</td><td>Web hosting and delivery</td><td>USA / Global</td></tr>
         <tr><td>Stripe</td><td>Payment processing</td><td>USA / Global</td></tr>
         <tr><td>Resend</td><td>Transactional email delivery (account notifications, invoice sends, contract signature notifications, support emails, cancellation emails)</td><td>USA / Global</td></tr>
-        <tr><td>Lovable (AI gateway, Lovable Labs Sweden AB)</td><td>Routes requests from our AI-assisted features to the AI model (see clause 10)</td><td>Sweden (company); processing USA / Global</td></tr>
-        <tr><td>Google (Gemini AI models, via Lovable)</td><td>Reads documents and drafts text for our AI-assisted features (see clause 10)</td><td>USA / Global</td></tr>
-        <tr><td>Xero</td><td>Accounting sync, only if you connect your Xero organisation: invoices, payments, and the related customer contact details are sent to your Xero account</td><td>USA / Global</td></tr>
-        <tr><td>Google Fonts</td><td>Supplies the typefaces used in our website and some of our emails; when a page or email loads them, Google receives the viewer's IP address and browser details</td><td>USA / Global</td></tr>
-        <tr><td>ipapi.co</td><td>IP geolocation: when a contract is signed, the signer's IP address is used to look up an approximate country, which is recorded on the signature certificate</td><td>USA</td></tr>
-        <tr><td>Apple (Apple Push Notification service)</td><td>Delivery of push notifications to our iOS app: device push token and notification content</td><td>USA / Global</td></tr>
-        <tr><td>Google (Firebase Cloud Messaging)</td><td>Delivery of push notifications to our Android app: device push token and notification content</td><td>USA / Global</td></tr>
+        <tr><td>Mailchimp (Intuit Inc.)</td><td>Mobile app waitlist and product update communications</td><td>USA</td></tr>
+        <tr><td>Sentry</td><td>Error monitoring and crash reporting. Sentry is configured to minimise collection of personally identifiable information. Sentry's Data Processing Agreement is available at sentry.io/legal/dpa.</td><td>USA / Global</td></tr>
+        <tr><td>AI provider (via Lovable AI Gateway)</td><td>AI-assisted features: buyer message drafting, coat colour prediction, DNA report parsing, pedigree document parsing. See clause 10 for details of what data is sent and how it is handled.</td><td>USA / Global</td></tr>
       </tbody>
     </table>
     <p>We may engage additional third-party service providers from time to time. Where we do, we will update this Privacy Policy accordingly. All providers are contractually required to handle your personal information only as directed by us and in accordance with applicable privacy law.</p>
@@ -317,23 +305,22 @@
     <table>
       <thead><tr><th>Data category</th><th>Retention period</th></tr></thead>
       <tbody>
-        <tr><td>Account data</td><td>Life of your account. When you delete your account you are signed out everywhere and it is permanently deleted 14 days later (you can restore it during those 14 days). Copies in our backups are removed as the backups roll over.</td></tr>
+        <tr><td>Account data</td><td>Life of your account plus 30 days after deletion</td></tr>
         <tr><td>Breeding records</td><td>Life of your account (or until you delete them)</td></tr>
         <tr><td>Usage and analytics data</td><td>Up to 12 months</td></tr>
         <tr><td>Support correspondence</td><td>Up to 2 years</td></tr>
         <tr><td>Payment records</td><td>7 years as required by Australian tax law. For EU and UK users, the longer applicable local retention period applies (for example, HMRC requires 6 years from the end of the relevant accounting period; certain EU member states may require longer periods).</td></tr>
-        <tr><td>Signed contracts and e-signature records</td><td>For as long as they stay in your account and, if you delete your account, for 7 years after deletion (see clause 7.3).</td></tr>
-        <tr><td>Record of the Terms and Privacy Policy versions you accepted</td><td>Life of your account plus 7 years after deletion.</td></tr>
+        <tr><td>Contract and e-signature records</td><td>Minimum 7 years from date of execution, to support legal enforceability.</td></tr>
       </tbody>
     </table>
     <h3 class="sub">7.2 Deletion on request</h3>
     <p>If you close your account, you may request deletion of your personal information. Upon receiving a valid deletion request, we will delete or de-identify your personal information within 30 days and notify you when deletion is complete.</p>
     <h3 class="sub">7.3 Retention after deletion</h3>
-    <p>When you delete your account, contracts that were signed (electronically, or a signed copy you uploaded) are kept for 7 years after deletion, together with their PDFs, signature images, and the signing, viewing and email-delivery records. This is so each buyer can still download their copy and the signature can be proven if there is a dispute. Nobody can open these records in the Platform, and they are deleted at the end of the 7 years. We may also retain certain other information after deletion where required by law (for example our own billing records), for legitimate dispute resolution, or to enforce our agreements.</p>
+    <p>We may retain certain information after deletion where required by law, for legitimate dispute resolution, or to enforce our agreements.</p>
     <h3 class="sub">7.4 How to request deletion</h3>
-    <p>Email <a href="mailto:support@whelpora.com">support@whelpora.com</a> with the subject line "Data Deletion Request." You can also delete your account yourself in the app: Settings → Profile &amp; Account → Delete Account. See our <a href="https://www.whelpora.com/data-deletion.html">Data Deletion</a> page for the steps.</p>
+    <p>Email <a href="mailto:support@whelpora.com">support@whelpora.com</a> with the subject line "Data Deletion Request." Alternatively, account deletion may be available directly within your account settings.</p>
     <h3 class="sub">7.5 Data portability</h3>
-    <p>You can download a copy of your data in the app (Settings → Profile &amp; Account → Delete Account → Download my data; downloading does not delete anything), which gives you a .zip of your records and uploaded files. You may also request an export by contacting <a href="mailto:support@whelpora.com">support@whelpora.com</a>. We will provide your data in a commonly used, machine-readable format within 30 days of your request. This right also applies under GDPR / UK GDPR Article 20 for EU and UK users.</p>
+    <p>You may request an export of your personal data and breeding records at any time by contacting <a href="mailto:support@whelpora.com">support@whelpora.com</a>. We will provide your data in a commonly used, machine-readable format within 30 days of your request. This right also applies under GDPR / UK GDPR Article 20 for EU and UK users.</p>
   </div>
 
   <!-- 08 -->
@@ -341,18 +328,17 @@
     <div class="clause-num">08</div>
     <h2>Cookies and tracking technologies</h2>
     <h3 class="sub">8.1 Cookies and trackers we use</h3>
-    <div class="table-scroll">
     <table>
       <thead><tr><th>Tool</th><th>Type</th><th>Purpose</th><th>Can be declined?</th></tr></thead>
       <tbody>
         <tr><td>Supabase Auth session cookie</td><td>Essential</td><td>Maintains your authenticated session. Without this cookie you cannot remain logged in.</td><td>No — required for login</td></tr>
         <tr><td>Supabase Auth refresh token</td><td>Essential</td><td>Refreshes your session token to keep you logged in without requiring repeated password entry.</td><td>No — required for login</td></tr>
         <tr><td>Cookie consent preference</td><td>Functional</td><td>Stores your cookie consent choice so we do not ask again on every visit.</td><td>No — required to remember your preference</td></tr>
+        <tr><td>Sentry</td><td>Functional</td><td>Error monitoring and crash reporting to maintain Platform stability.</td><td>No — required for Platform stability</td></tr>
         <tr><td>Analytics (if introduced)</td><td>Analytics</td><td>Usage pattern analysis to improve the Platform.</td><td>Yes — via cookie banner</td></tr>
       </tbody>
     </table>
-    </div>
-    <p>We do not currently use third-party advertising or marketing cookies, or any third-party error-monitoring tool in the browser. If we add error monitoring, users in the EU and UK can decline it in the cookie banner. If we introduce analytics tools that set cookies, we will update this section and present you with a cookie consent banner before any such cookies are set.</p>
+    <p>We do not currently use third-party advertising or marketing cookies. If we introduce analytics tools that set cookies, we will update this section and present you with a cookie consent banner before any such cookies are set.</p>
     <h3 class="sub">8.2 Cookie consent</h3>
     <p>For users in the EU, UK, and other jurisdictions requiring prior consent for non-essential cookies: we will present a cookie consent banner that allows you to accept or decline analytics cookies before they are set. Essential and functional cookies required for the Platform to operate do not require your consent.</p>
     <h3 class="sub">8.3 Cookie controls</h3>
@@ -363,21 +349,20 @@
   <div class="clause" id="s9">
     <div class="clause-num">09</div>
     <h2>Buyers and contract recipients</h2>
-    <p>This clause applies to individuals who receive a contract, invoice, or other document sent through the Platform by a Whelpora user (a breeder), and to people a breeder adds to a waitlist or contact list, who may receive emails the breeder sends through the Platform. Those emails show the breeder as the sender. If you are a breeder, please refer to the earlier clauses of this Policy which apply to your use of the Platform.</p>
+    <p>This clause applies to individuals who receive a contract, invoice, or other document sent through the Platform by a Whelpora user (a breeder). If you are a breeder, please refer to the earlier clauses of this Policy which apply to your use of the Platform.</p>
     <h3 class="sub">9.1 Who controls your data</h3>
     <p>The breeder who sent you a document through the Platform is the primary data controller of your personal information. Whelpora is a joint controller to the limited extent required to maintain the integrity and enforceability of the e-signature audit trail, and acts as a data processor for all other processing.</p>
     <h3 class="sub">9.2 What we collect from you</h3>
     <p>When a breeder sends you a contract or other document for signature or review through the Platform, we collect the following information about you:</p>
     <ul class="plain">
-      <li>your name and email address (as provided by the breeder), and any address, phone number, or notes the breeder records about you;</li>
-      <li>your IP address, browser type, device type, and operating system when you first open the signing link and when you sign, and an approximate country derived from your IP address;</li>
-      <li>whether the contract displayed correctly on your device, with your browser type and any error message (used only to fix display problems);</li>
+      <li>your name and email address (as provided by the breeder);</li>
+      <li>your IP address, browser type, device type, and operating system at the time of signing or viewing;</li>
       <li>timestamps of when the document was opened, reviewed, and signed;</li>
       <li>a cryptographic hash of the signed document and consent text at the time of signing; and</li>
-      <li>your electronic signature (typed or drawn, where provided).</li>
+      <li>your electronic signature (where provided).</li>
     </ul>
     <h3 class="sub">9.3 Why we collect it and our lawful basis</h3>
-    <p>This information is collected to create an audit trail for the e-signed document, designed to support its enforceability under the <em>Electronic Transactions Act 1999</em> (Cth) and equivalent legislation in relevant jurisdictions (eIDAS (EU), ESIGN Act and UETA (USA), CCLA 2017 (NZ)).</p>
+    <p>This information is collected to create a legally enforceable audit trail for the e-signed document, consistent with the requirements of the <em>Electronic Transactions Act 1999</em> (Cth) and equivalent legislation in relevant jurisdictions (eIDAS (EU), ESIGN Act and UETA (USA), CCLA 2017 (NZ)).</p>
     <p>For GDPR and UK GDPR purposes, the lawful bases are:</p>
     <ul class="plain">
       <li>Article 6(1)(b) — performance of a contract to which you are a party; and</li>
@@ -387,50 +372,31 @@
     <p>Your information is accessible to:</p>
     <ul class="plain">
       <li>the breeder who sent you the document;</li>
-      <li>Whelpora (for platform operation and audit trail maintenance);</li>
-      <li>Supabase and Vercel (infrastructure providers — see clause 6);</li>
-      <li>ipapi.co, which receives your IP address at the time of signing to look up an approximate country for the signature certificate (see clause 6); and</li>
-      <li>our AI service providers (Lovable and Google, see clause 10), but only if the breeder chooses to use an AI feature on a document that contains your information, such as guardian contract smart fill.</li>
+      <li>Whelpora (for platform operation and audit trail maintenance); and</li>
+      <li>Supabase and Vercel (infrastructure providers — see clause 6).</li>
     </ul>
     <h3 class="sub">9.5 Retention</h3>
-    <p>The signed contract and its e-signature record are kept for as long as the breeder keeps them in their account. If the breeder deletes their account, they are kept for 7 years after that so you can still download your copy and the signature can be proven, and are then deleted unless a longer retention period is required by applicable law.</p>
+    <p>E-signature audit trail data is retained for a minimum of 7 years from the date of execution to support the legal enforceability of the document. After that period, data is deleted or de-identified unless a longer retention period is required by applicable law.</p>
     <h3 class="sub">9.6 Cross-border transfers</h3>
-    <p>Your data is stored on servers in India (Supabase / AWS, Mumbai region) and may be processed on servers in the United States and other countries via our infrastructure provider Vercel and, where described in clause 9.4, ipapi.co and our AI service providers. Transfers are subject to appropriate safeguards as described in clause 5.4.</p>
+    <p>Your data may be processed on servers located in the United States via our infrastructure providers (Supabase / AWS, Vercel). Transfers are subject to appropriate safeguards as described in clause 5.4.</p>
     <h3 class="sub">9.7 Your rights as a recipient</h3>
     <p>You have the right to access, correct, and in certain circumstances request deletion of your personal information. To exercise these rights, contact us at <a href="mailto:support@whelpora.com">support@whelpora.com</a>. Please note that we may not be able to delete certain information that forms part of the legal audit trail without compromising the enforceability of the signed document.</p>
     <h3 class="sub">9.8 Notice at point of collection</h3>
-    <p>When you open a document sent through the Platform, you will be notified that your IP address, device information, and timestamps are being collected to create an audit trail designed to support the enforceability of the signed document. You do not need to create a Whelpora account to sign a document.</p>
+    <p>When you open a document sent through the Platform, you will be notified that your IP address, device information, and timestamps are being collected for the purpose of creating a legally enforceable audit trail. You do not need to create a Whelpora account to sign a document.</p>
   </div>
 
   <!-- 10 -->
-  <span class="legacy-anchor" id="s10"></span>
-  <div class="clause" id="ai-processing">
+  <div class="clause" id="s10">
     <div class="clause-num">10</div>
     <h2>AI-assisted features</h2>
-    <p><strong>10.1</strong> Some optional features of the Platform use artificial intelligence (<strong>AI</strong>) to read documents or draft text. When you use one of these features, the content described below is sent to the AI gateway operated by Lovable, which passes it to a Google Gemini AI model to produce the result. Lovable and Google process this content as our service providers (subprocessors) for that purpose only.</p>
-    <div class="table-scroll">
-    <table>
-      <thead><tr><th>Feature</th><th>What is sent to the AI service</th><th>What the AI produces</th></tr></thead>
-      <tbody>
-        <tr><td>DNA report Smart Import</td><td>The DNA report file (PDF or image) you upload or select. It may include the dog's name, owner or breeder details printed on the report, and genetic and health test results.</td><td>Lab name, report date, coat colour genotypes and health test results</td></tr>
-        <tr><td>Pedigree Smart Import</td><td>The pedigree document (PDF or image) you upload or select. It may include names of dogs, breeders and owners, and registration numbers.</td><td>The list of ancestors</td></tr>
-        <tr><td>Guardian contract smart fill</td><td>The guardian contract file stored for that guardian arrangement. It may include the names, contact details and signatures of you and the guardian.</td><td>Contract dates, buy-back price, desexing deadline, litters owed and notes</td></tr>
-        <tr><td>Contract template import</td><td>The text of the contract you upload or, if text cannot be extracted from a PDF, the PDF file itself. It may include any personal information written in that contract.</td><td>Clauses and suggested auto-fill fields for a new template</td></tr>
-        <tr><td>Message drafting (Message Studio and the waitlist writing helper)</td><td>Your kennel name; details of the litter or dog you select (such as names, dates, puppy numbers, sexes and collar colours); your chosen tone and format; your country, currency and tax labels; and any instructions or observations you type.</td><td>A draft message</td></tr>
-        <tr><td>Coat colour previews (Coat Predictor)</td><td>Breed and coat colour, pattern and texture descriptions only. No files and no personal information.</td><td>An illustrative image of the predicted coat</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <p><strong>10.2</strong> How we handle content sent to the AI service:</p>
-    <ul class="plain lettered">
-      <li>(a) <strong>Only when you use the feature.</strong> Documents and text are sent to the AI service only when you, or someone using your kennel account, start one of the features above. Coat colour previews are generated when you view coat predictions and contain no personal information.</li>
-      <li>(b) <strong>Purpose.</strong> The content is sent only so the AI service can produce the result described above for you. AI results can be wrong: they are shown to you for review and are saved to your records only when you confirm them.</li>
-      <li>(c) <strong>What we keep.</strong> We keep the results you confirm as part of your records. DNA reports are kept in the dog's documents as the source record, unless you use a report in the Coat Predictor without saving it, in which case we delete our copy after use. Pedigree documents are kept in the dog's documents if you choose to save them; otherwise we delete our copy once the import has run. Guardian contracts stay where you stored them. Contract files you import as a template are kept in your kennel's storage. Message drafts are kept only if you save them. We also record each use of an AI feature (the feature, time, outcome and simple counts such as the number of fields found) to apply monthly usage limits and to fix problems, and our error logs may contain short technical excerpts of an AI response when something goes wrong.</li>
-      <!-- AI-PROVIDER-TERMS -->
-      <li>(d) <strong>The AI providers.</strong> Content sent to an AI feature passes through Lovable's AI Gateway, operated by Lovable Labs Sweden AB, to a Google Gemini AI model. Lovable states that its agreements with its model providers restrict how those providers may use content, including for training AI models. Lovable records basic details of each request, such as the model used, its size, cost and timing. Google's terms for its paid Gemini API services say that Google does not use prompts or responses to improve its products, and keeps them for a limited period solely to detect and prevent breaches of its usage policies. This content may be processed outside Australia, including in the United States (see clause 5.4). These are the providers' own published terms, which they may change; we will update this section if we become aware of a material change.</li>
-      <li>(e) <strong>Your choice.</strong> Each of these features is optional. You can upload and store documents, and write messages, without using AI.</li>
-      <li>(f) <strong>Other people's information.</strong> Documents you send to an AI feature may contain personal information about other people, such as buyers, guardians or co-owners. Please only use these features with documents you are entitled to share for this purpose.</li>
+    <p><strong>10.1</strong> The Platform includes AI-assisted features powered by a third-party AI provider (via Lovable AI Gateway, which may use underlying providers including OpenAI, Anthropic, or Google). These features include:</p>
+    <ul class="plain">
+      <li>buyer message drafting (where relevant breeding or litter information may be included in the prompt);</li>
+      <li>coat colour prediction image generation (where coat genetics data may be sent);</li>
+      <li>DNA report parsing (where the content of an uploaded DNA PDF may be sent for extraction); and</li>
+      <li>pedigree document parsing (where the content of an uploaded pedigree document may be sent for extraction).</li>
     </ul>
+    <p><strong>10.2</strong> Data sent to the AI provider is used solely to generate the requested output and is not used to train AI models.</p>
     <p><strong>10.3</strong> AI-generated outputs are suggestions only. Consistent with GDPR Article 22, no decision that produces a legal or similarly significant effect for any person is made solely by automated means through this Platform. You remain the decision-maker and are responsible for reviewing and approving any AI-generated content before acting on it.</p>
     <p><strong>10.4</strong> You can manage your AI feature usage and quota through your account settings.</p>
   </div>
